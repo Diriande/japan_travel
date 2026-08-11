@@ -428,7 +428,7 @@ const ALPS_CITIES = [
 
 const KANTO_CITIES = [
   {
-    id: "k-tokyo", name: "Tokyo (base)", nights: 11, nights2w: 7, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
+    id: "k-tokyo", name: "Tokyo (base)", nights: 13, nights2w: 8, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
     meta: "Base du séjour · Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza",
     activities: [
       { id: "k-senso-ji", name: "Senso-ji (Asakusa)", duration: "1h30", price: 0 },
@@ -485,14 +485,13 @@ const KANTO_CITIES = [
     ]
   },
   {
-    id: "k-chichibu", name: "Chichibu", nights: 2, nights2w: 1, lodging: { individual: 60, shared: { 2: 85, 3: 112 } },
-    meta: "Mitsumineyama, gorges de Nagatoro, descente en bateau",
+    id: "k-chichibu", name: "Chichibu", nights: 0, nights2w: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
+    meta: "Excursion d'une journée depuis Tokyo (~1h20 de train) · Nagatoro, Hodosan, Chichibu-jinja",
     activities: [
-      { id: "k-mitsumine", name: "Mitsumineyama - sanctuaire + ropeway", duration: "2h", price: 11, vertige: true, alt: "Sentier de randonnée jusqu'au sanctuaire (~2h30), pour les amateurs de marche" },
       { id: "k-chichibu-jinja", name: "Chichibu-jinja (sanctuaire en ville)", duration: "30min", price: 0 },
       { id: "k-nagatoro-gorge", name: "Nagatoro - gorges rocheuses Iwadatami (balade)", duration: "1h", price: 0 },
       { id: "k-nagatoro-boat", name: "Nagatoro - descente en bateau (funakudari)", duration: "30min", price: 25 },
-      { id: "k-hodosan", name: "Hodosan - sanctuaire + ropeway (alternative à Mitsumine)", duration: "1h30", price: 10, vertige: true, alt: "Sentier de randonnée (~1h)" }
+      { id: "k-hodosan", name: "Hodosan - sanctuaire + ropeway", duration: "1h30", price: 10, vertige: true, alt: "Sentier de randonnée (~1h)" }
     ]
   },
   {

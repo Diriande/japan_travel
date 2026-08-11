@@ -44,15 +44,15 @@ Ouvrir `dashboard/index.html` dans un navigateur (aucune connexion internet requ
 | | 2 personnes | 3 personnes |
 |---|---|---|
 | **Alpes japonaises** — total / par pers. | ~7078€ / ~3539€ | ~10347€ / ~3449€ |
-| **Kanto économique** — total / par pers. | ~6618€ / ~3309€ | ~9658€ / ~3219€ |
+| **Kanto économique** — total / par pers. | ~6566€ / ~3283€ | ~9585€ / ~3195€ |
 
-La variante Kanto économise ~450-700€ au total, principalement grâce à l'absence de Shinkansen. Détail dans `06_budget/` et `variante_kanto_economique/06_budget/`.
+La variante Kanto économise ~500-760€ au total, principalement grâce à l'absence de Shinkansen et à moins de nuits hors de Tokyo. Détail dans `06_budget/` et `variante_kanto_economique/06_budget/`.
 
 ## Itinéraires en un coup d'oeil
 
 **Alpes japonaises** : Tokyo (8 nuits, arrivée + retour) → Kamakura (excursion) → Kawaguchiko/Fuji (2 nuits) → Hakone (1 nuit) → Nagoya & Gifu (2 nuits) → Gero Onsen (1 nuit) → Takayama & Shirakawa-go (2 nuits) → Kanazawa (3 nuits) → retour direct Tokyo en Shinkansen. Détail dans `04_itineraire/`.
 
-**Kanto économique** : Tokyo (11 nuits, base) → Kamakura & Enoshima (2 nuits) → Yokohama (excursion) → Kawaguchiko/Fuji (2 nuits) → Hakone (1 nuit) → Chichibu (2 nuits) → Nokogiriyama/Chiba (excursion) → Narita (1 nuit, avant le vol). Détail dans `variante_kanto_economique/04_itineraire/`.
+**Kanto économique** : Tokyo (13 nuits, base) → Kamakura & Enoshima (2 nuits) → Yokohama (excursion) → Kawaguchiko/Fuji (2 nuits) → Hakone (1 nuit) → Chichibu (excursion) → Nokogiriyama/Chiba (excursion) → Narita (1 nuit, avant le vol). Détail dans `variante_kanto_economique/04_itineraire/`.
 
 ## Piste à explorer plus tard
 

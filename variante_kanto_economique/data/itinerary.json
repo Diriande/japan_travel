@@ -4,16 +4,16 @@
   "duree_condensee_jours": 14,
   "nuits_condensees": 12,
   "hypothese_saison": "mi-saison type avril (sakura) ou novembre (momiji) - haute saison, tarifs à ajuster à la baisse hors de ces périodes",
-  "route": "Tokyo (base) -> Kamakura & Enoshima -> Yokohama (excursion) -> Kawaguchiko/Fuji -> Hakone -> Chichibu -> Nokogiriyama/Chiba (excursion) -> Narita (avant le vol retour)",
+  "route": "Tokyo (base) -> Kamakura & Enoshima -> Yokohama (excursion) -> Kawaguchiko/Fuji -> Hakone -> Chichibu (excursion) -> Nokogiriyama/Chiba (excursion) -> Narita (avant le vol retour)",
   "priorites": ["temples", "randonnée", "découverte", "nourriture"],
   "etapes": [
-    { "id": "tokyo", "ville": "Tokyo (base)", "jours": "J2-J6, J9-J11, J15, J18-J19", "nuits": 11, "resume": "Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza" },
+    { "id": "tokyo", "ville": "Tokyo (base)", "jours": "J2-J6, J9-J11, J15, J17-J19", "nuits": 13, "resume": "Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza" },
     { "id": "kamakura", "ville": "Kamakura & Enoshima", "jours": "J7-J8", "nuits": 2, "resume": "Grand Bouddha, Hase-dera, Hokoku-ji, sentier de randonnée Daibutsu, île d'Enoshima" },
     { "id": "yokohama", "ville": "Yokohama", "jours": "J10", "nuits": 0, "resume": "Excursion depuis Tokyo : Chinatown, jardin Sankeien, quartier Yamate" },
     { "id": "kawaguchiko", "ville": "Kawaguchiko (Fuji Five Lakes)", "jours": "J12-J13", "nuits": 2, "resume": "Pagode Chureito, Oshino Hakkai, randonnée Mont Tenjo, croisière sur le lac" },
     { "id": "hakone", "ville": "Hakone", "jours": "J14", "nuits": 1, "resume": "Owakudani, lac Ashi, ancienne route du Tokaido, sanctuaire Hakone-jinja" },
-    { "id": "chichibu", "ville": "Chichibu", "jours": "J16-J17", "nuits": 2, "resume": "Mitsumineyama, gorges de Nagatoro, descente en bateau" },
-    { "id": "chiba", "ville": "Nokogiriyama (Chiba)", "jours": "J19", "nuits": 0, "resume": "Excursion depuis Tokyo : temple Nihon-ji, point de vue Jigoku Nozoki, randonnée" },
+    { "id": "chichibu", "ville": "Chichibu", "jours": "J16", "nuits": 0, "resume": "Excursion depuis Tokyo : Nagatoro (gorges + bateau), Hodosan, Chichibu-jinja - Mitsumineyama écarté car trop excentré pour une journée combinée" },
+    { "id": "chiba", "ville": "Nokogiriyama (Chiba)", "jours": "J18", "nuits": 0, "resume": "Excursion depuis Tokyo : temple Nihon-ji, point de vue Jigoku Nozoki, randonnée" },
     { "id": "narita", "ville": "Narita", "jours": "J20", "nuits": 1, "resume": "Temple Naritasan Shinshoji, rue de l'anguille (Unagi-dori), dernière nuit avant le vol" }
   ],
   "jours_detail": [
@@ -32,10 +32,10 @@
     {"jour": "J13", "titre": "Kawaguchiko", "detail": "Oshino Hakkai, croisière, randonnée Mont Tenjo"},
     {"jour": "J14", "titre": "Kawaguchiko -> Hakone", "detail": "Owakudani, lac Ashi, ancienne route du Tokaido, nuit en ryokan avec onsen"},
     {"jour": "J15", "titre": "Hakone -> Tokyo", "detail": "Retour à Tokyo, après-midi libre"},
-    {"jour": "J16", "titre": "Tokyo -> Chichibu", "detail": "Mitsumineyama"},
-    {"jour": "J17", "titre": "Chichibu - Nagatoro", "detail": "Gorges, descente en bateau, retour Tokyo le soir"},
-    {"jour": "J18", "titre": "Tokyo libre", "detail": "Journée tampon"},
-    {"jour": "J19", "titre": "Excursion Nokogiriyama (Chiba)", "detail": "Temple Nihon-ji, Jigoku Nozoki, randonnée"},
+    {"jour": "J16", "titre": "Excursion Chichibu", "detail": "Nagatoro (gorges + bateau), Hodosan, Chichibu-jinja - retour Tokyo le soir"},
+    {"jour": "J17", "titre": "Tokyo libre", "detail": "Journée tampon"},
+    {"jour": "J18", "titre": "Excursion Nokogiriyama (Chiba)", "detail": "Temple Nihon-ji, Jigoku Nozoki, randonnée"},
+    {"jour": "J19", "titre": "Tokyo libre", "detail": "Tsukiji/Ginza, derniers achats"},
     {"jour": "J20", "titre": "Tokyo -> Narita", "detail": "Naritasan Shinshoji, rue de l'anguille"},
     {"jour": "J21", "titre": "Retour", "detail": "Vol Narita -> Helsinki -> Paris"}
   ]

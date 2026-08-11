@@ -54,14 +54,14 @@
       ]
     },
     {
-      "ville": "Chichibu",
+      "ville": "Chichibu (excursion d'une journée)",
       "activites": [
-        {"nom": "Mitsumineyama - sanctuaire + ropeway", "prix_pers_eur": 11, "duree": "2h", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée jusqu'au sanctuaire (~2h30), pour les amateurs de marche"},
         {"nom": "Chichibu-jinja (sanctuaire en ville)", "prix_pers_eur": 0, "duree": "30min"},
         {"nom": "Nagatoro - gorges rocheuses Iwadatami (balade)", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Nagatoro - descente en bateau (funakudari)", "prix_pers_eur": 25, "duree": "30min"},
-        {"nom": "Hodosan - sanctuaire + ropeway (alternative à Mitsumine)", "prix_pers_eur": 10, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~1h)"}
-      ]
+        {"nom": "Hodosan - sanctuaire + ropeway", "prix_pers_eur": 10, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~1h)"}
+      ],
+      "note": "Nagatoro et Hodosan sont sur la même ligne de train (Chichibu Railway), combinables en une journée depuis Tokyo (~1h20 de train). Mitsumineyama a été écarté : plus excentré (bus + ropeway en plus), difficile à combiner avec Nagatoro dans la même journée."
     },
     {
       "ville": "Nokogiriyama (Chiba)",

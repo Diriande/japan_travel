@@ -1,9 +1,5 @@
-# Hébergement - Chichibu (2 nuits)
+# Hébergement - Chichibu
 
-**Positionnement** : minshuku ou ryokan simple, région moins touristique que Hakone.
+Pas de nuit sur place : Chichibu est traitée comme une excursion d'une journée depuis Tokyo (~1h20 de train, Nagatoro et Hodosan étant sur la même ligne). Mitsumineyama a été écarté car trop excentré pour être combiné à Nagatoro dans la même journée sans se presser.
 
-| Formule | Prix/nuit | Sur 2 nuits |
-|---|---|---|
-| Individuelle (1 chambre/pers) | 60€/pers | 120€/pers |
-| Partagée (chambre à 2) | 85€ total | 170€ |
-| Partagée (chambre à 3) | 112€ total | 224€ |
+Une nuit sur place reste une option si vous préférez inclure Mitsumineyama sans vous presser, mais n'est pas incluse dans le budget par défaut.
