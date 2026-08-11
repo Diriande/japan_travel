@@ -9,6 +9,7 @@
 | TeamLab Planets ou Borderless | ~26€ | 2h30 | Réservation en ligne obligatoire, billets datés |
 | Shinjuku Gyoen (jardin) | ~3€ | 1h30 | |
 | Observatoire gratuit Tocho (Shinjuku) | Gratuit | 45min | Alternative sans vertige au Skytree |
-| Excursion Nikko (Toshogu + chutes Kegon) | ~15€ | journée | Train ~2h depuis Tokyo |
 
-**Total activités payantes indicatif/pers (hors excursion Nikko)** : ~56€
+**Total activités payantes indicatif/pers** : ~56€
+
+Voir `05_activites/kamakura.md` pour l'excursion d'une journée depuis Tokyo.

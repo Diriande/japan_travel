@@ -1,6 +1,6 @@
-# Hébergement - Hakone (1 nuit, J7)
+# Hébergement - Hakone (1 nuit, J9)
 
-**Positionnement** : ryokan simple avec onsen, en demi-pension (dîner + petit-déjeuner inclus). Même en visant l'entrée de gamme, un ryokan reste plus cher qu'un business hotel classique car les repas sont inclus dans le tarif — c'est le seul poste hébergement du voyage où l'on s'écarte volontairement du "low-cost" pour l'expérience onsen.
+**Positionnement** : ryokan simple avec onsen, en demi-pension (dîner + petit-déjeuner inclus). Même en visant l'entrée de gamme, un ryokan reste plus cher qu'un business hotel classique car les repas sont inclus dans le tarif.
 
 | Formule | Prix/nuit (tout compris) |
 |---|---|

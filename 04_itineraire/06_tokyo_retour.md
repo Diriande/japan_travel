@@ -1,7 +1,7 @@
 # J18-J21 - Tokyo (3 nuits) + retour
 
-## J18 soir (Lun) - Arrivée Tokyo
-Ginza en soirée (vitrines, ambiance chic).
+## J18 (Lun) - Kanazawa → Tokyo
+Shinkansen Hokuriku, direct (~2h30), sans détour. Ginza en soirée (vitrines, ambiance chic).
 
 ## J19 (Mar) - Tsukiji / Ginza
 Marché extérieur de Tsukiji (petit-déjeuner sushi/street food), shopping à Ginza.

@@ -1,17 +1,24 @@
 {
-  "trajets_longue_distance_shinkansen": [
-    {"trajet": "Tokyo -> Odawara (pour Hakone)", "prix_pers_eur": 22},
-    {"trajet": "Hakone/Odawara -> Kyoto", "prix_pers_eur": 65},
-    {"trajet": "Kyoto -> Hiroshima", "prix_pers_eur": 68},
-    {"trajet": "Hiroshima -> Kanazawa (via Shin-Osaka + Thunderbird)", "prix_pers_eur": 92},
-    {"trajet": "Kanazawa -> Takayama (bus Nohi, non-JR)", "prix_pers_eur": 24},
-    {"trajet": "Takayama -> Tokyo (via Nagoya, Shinkansen)", "prix_pers_eur": 80},
-    {"total_point_a_point_pers_eur": 351}
+  "trajets_longue_distance": [
+    {"trajet": "Tokyo -> Kawaguchiko (bus autoroutier)", "prix_pers_eur": 18, "jr": false},
+    {"trajet": "Kawaguchiko -> Hakone (bus via Gotemba)", "prix_pers_eur": 25, "jr": false},
+    {"trajet": "Hakone (Odawara) -> Nagoya (Shinkansen)", "prix_pers_eur": 75, "jr": true},
+    {"trajet": "Nagoya -> Gifu (train local/rapide)", "prix_pers_eur": 5, "jr": true},
+    {"trajet": "Gifu -> Gero Onsen (Hida limited express)", "prix_pers_eur": 30, "jr": true},
+    {"trajet": "Gero Onsen -> Takayama (Hida limited express)", "prix_pers_eur": 25, "jr": true},
+    {"trajet": "Kanazawa -> Tokyo (Shinkansen Hokuriku, direct)", "prix_pers_eur": 110, "jr": true},
+    {"total_fixe_pers_eur": 288, "note": "Somme des trajets ci-dessus hors segment Takayama-Kanazawa, traité séparément (bus/train vs voiture, voir ci-dessous)"}
   ],
+  "takayama_kanazawa": {
+    "bus_train_pers_eur": 24,
+    "location_voiture_groupe_eur": 230,
+    "note": "Le trajet Takayama -> Kanazawa peut se faire en bus (Nohi, ~24€/pers, éventuel arrêt Shirakawa-go) ou en voiture de location (~230€ pour le groupe), qui permet en plus les détours Gokayama et Hida Furukawa. Voir 02_transport/location_voiture.md."
+  },
   "jr_pass_options": {
-    "jr_pass_21_jours_ordinaire": {"prix_pers_eur": 620, "commentaire": "Couvre quasi tout le Shinkansen (hors Nozomi/Mizuho) + trains JR locaux. Sur cet itinéraire, plus cher que les billets à l'unité (~351€) car plusieurs trajets ne sont pas en JR (bus Kanazawa-Takayama) et il y a peu de trajets JR longue distance au total."},
-    "jr_pass_7_jours": {"prix_pers_eur": 195, "commentaire": "Intéressant seulement si concentré sur la semaine Kyoto-Hiroshima ; peu rentable ici vu l'étalement sur 3 semaines."},
-    "recommandation": "Acheter les billets Shinkansen à l'unité (réservables 1 mois avant sur SmartEX/site JR, ou sur place) plutôt qu'un JR Pass, sauf si l'itinéraire change pour inclure plus d'allers-retours JR."
+    "segments_couverts_par_jr": "Odawara-Nagoya, Nagoya-Gifu, Gifu-Gero, Gero-Takayama, Kanazawa-Tokyo (~245€/pers de trajets JR sur les ~288€ de trajets longue distance fixes)",
+    "segments_non_jr": "Tokyo-Kawaguchiko et Kawaguchiko-Hakone (bus autoroutiers), Takayama-Kanazawa (bus Nohi)",
+    "jr_pass_21_jours_ordinaire": {"prix_pers_eur": 620, "commentaire": "Bien plus cher que les billets à l'unité JR (~245€), d'autant que plusieurs trajets clés de cet itinéraire ne sont pas couverts par le JR Pass"},
+    "recommandation": "Acheter les billets à l'unité (SmartEX pour les Shinkansen/Hida, sur place pour les bus autoroutiers) plutôt qu'un JR Pass sur cet itinéraire"
   },
   "transport_local_quotidien": {
     "moyen": "IC card (Suica/Pasmo, ou Welcome Suica mobile) pour métro/bus locaux",
@@ -19,18 +26,11 @@
     "budget_total_20_jours_pers_eur": 140
   },
   "resume_transport_pers_eur": {
-    "shinkansen_point_a_point": 351,
+    "trajets_longue_distance_fixes": 288,
+    "takayama_kanazawa_bus": 24,
     "transport_local_20j": 140,
-    "total_indicatif": 491,
-    "note": "Hakone Free Pass (~50€/pers) comptabilisé dans data/activities.json, pas ici, pour éviter le double comptage"
-  },
-  "location_voiture_kanazawa_takayama": {
-    "description": "Alternative au bus Kanazawa->Takayama (24€/pers), en voiture de location sur 2 jours, avec détours Gokayama et Hida Furukawa",
-    "cout_total_vehicule_eur": {"bas": 175, "haut": 285, "moyen": 230},
-    "cout_par_pers_eur_a_3": 77,
-    "cout_par_pers_eur_a_2": 115,
-    "remplace": "bus Kanazawa -> Takayama (24€/pers)",
-    "formalite": "Permis de conduire international requis",
-    "avantage": "Accès à Gokayama et Hida Furukawa, hors circuit train/bus classique"
+    "total_sans_voiture": 452,
+    "total_avec_voiture_groupe_eur_supplementaire": 230,
+    "note": "Avec voiture : remplacer les 24€/pers de bus Takayama-Kanazawa par 230€ forfaitaire pour le groupe (location voiture)"
   }
 }

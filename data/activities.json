@@ -7,66 +7,52 @@
         {"nom": "Senso-ji (Asakusa)", "prix_pers_eur": 0, "duree": "1h30"},
         {"nom": "Tokyo National Museum (Ueno)", "prix_pers_eur": 7, "duree": "2h"},
         {"nom": "Meiji Jingu", "prix_pers_eur": 0, "duree": "1h"},
-        {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Tokyo Tower niveau bas (jusqu'au 150m seulement) ou observatoire gratuit Tocho à Shinjuku (moins impressionnant, moins exposé)"},
+        {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Observatoire gratuit Tocho à Shinjuku ou étage bas de la Tokyo Tower"},
+        {"nom": "Observatoire gratuit Tocho (Shinjuku)", "prix_pers_eur": 0, "duree": "45min"},
         {"nom": "TeamLab Planets ou Borderless", "prix_pers_eur": 26, "duree": "2h30"},
-        {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"},
-        {"nom": "Observatoire gratuit Tocho (mairie Shinjuku)", "prix_pers_eur": 0, "duree": "45min"},
-        {"nom": "Excursion Nikko (Toshogu + chutes Kegon)", "prix_pers_eur": 15, "duree": "journée"}
+        {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"}
+      ]
+    },
+    {
+      "ville": "Kamakura",
+      "activites": [
+        {"nom": "Kotoku-in (Grand Bouddha)", "prix_pers_eur": 2, "duree": "1h"},
+        {"nom": "Hase-dera", "prix_pers_eur": 3, "duree": "1h"},
+        {"nom": "Tsurugaoka Hachiman-gu", "prix_pers_eur": 0, "duree": "45min"},
+        {"nom": "Komachi-dori (street food, balade)", "prix_pers_eur": 0, "duree": "1h"}
+      ]
+    },
+    {
+      "ville": "Kawaguchiko (Fuji Five Lakes)",
+      "activites": [
+        {"nom": "Pagode Chureito (point de vue Fuji)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Oshino Hakkai (village des sources)", "prix_pers_eur": 0, "duree": "1h30"},
+        {"nom": "Kachi Kachi Yama Ropeway", "prix_pers_eur": 15, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Vue équivalente depuis les rives du lac Kawaguchiko ou le pont Fuji Omuro Sengen, sans téléphérique"},
+        {"nom": "Croisière sur le lac Kawaguchiko", "prix_pers_eur": 9, "duree": "30min"}
       ]
     },
     {
       "ville": "Hakone",
       "activites": [
-        {"nom": "Hakone Free Pass (ropeway + bateau + bus + train)", "prix_pers_eur": 50, "duree": "journée", "attention_vertige": true, "alternative_sans_hauteur": "Le ropeway d'Owakudani est une cabine suspendue très exposée au-dessus de la vallée volcanique - remplaçable par le bus Hakone Tozan (au sol) pour rejoindre le lac Ashi directement, en sautant le tronçon en cabine"},
-        {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"},
-        {"nom": "Onsen (souvent inclus au ryokan)", "prix_pers_eur": 0, "duree": "libre"}
+        {"nom": "Hakone Free Pass (ropeway + bateau + bus + train)", "prix_pers_eur": 50, "duree": "journée", "attention_vertige": true, "alternative_sans_hauteur": "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani"},
+        {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"}
       ]
     },
     {
-      "ville": "Kyoto",
+      "ville": "Nagoya & Gifu",
       "activites": [
-        {"nom": "Kiyomizu-dera", "prix_pers_eur": 4, "duree": "1h30"},
-        {"nom": "Fushimi Inari (torii)", "prix_pers_eur": 0, "duree": "2h"},
-        {"nom": "Arashiyama - bambouseraie", "prix_pers_eur": 0, "duree": "1h"},
-        {"nom": "Tenryu-ji (temple + jardin)", "prix_pers_eur": 5, "duree": "1h"},
-        {"nom": "Kinkaku-ji (pavillon d'or)", "prix_pers_eur": 5, "duree": "1h"},
-        {"nom": "Nijo Castle", "prix_pers_eur": 10, "duree": "1h30"},
-        {"nom": "Gion - balade quartier geisha", "prix_pers_eur": 0, "duree": "1h30"}
+        {"nom": "Château de Nagoya (étape en chemin)", "prix_pers_eur": 6, "duree": "1h30"},
+        {"nom": "Château de Gifu + ropeway (mont Kinka)", "prix_pers_eur": 7, "duree": "2h", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée jusqu'au château (30-40min à pied) sans téléphérique, ou balade au parc Gifu au pied de la montagne"},
+        {"nom": "Pêche au cormoran (ukai, bateau, saisonnier mai-oct)", "prix_pers_eur": 25, "duree": "2h, soirée"},
+        {"nom": "Arcade Yanagase (balade)", "prix_pers_eur": 0, "duree": "1h"}
       ]
     },
     {
-      "ville": "Nara (excursion)",
+      "ville": "Gero Onsen",
       "activites": [
-        {"nom": "Parc aux daims", "prix_pers_eur": 0, "duree": "libre"},
-        {"nom": "Todai-ji (grand bouddha)", "prix_pers_eur": 5, "duree": "1h"},
-        {"nom": "Kasuga Taisha", "prix_pers_eur": 3, "duree": "45min"}
-      ]
-    },
-    {
-      "ville": "Osaka (excursion)",
-      "activites": [
-        {"nom": "Château d'Osaka", "prix_pers_eur": 6, "duree": "1h30"},
-        {"nom": "Dotonbori (balade + street food)", "prix_pers_eur": 0, "duree": "2h"},
-        {"nom": "Umeda Sky Building (observatoire)", "prix_pers_eur": 13, "duree": "1h", "attention_vertige": true, "alternative_sans_hauteur": "Passerelle vitrée en plein air en hauteur, très exposée - remplaçable par la balade à Dotonbori/Shinsekai au niveau du sol"}
-      ]
-    },
-    {
-      "ville": "Hiroshima / Miyajima",
-      "activites": [
-        {"nom": "Musée du mémorial de la paix", "prix_pers_eur": 2, "duree": "1h30"},
-        {"nom": "Parc de la Paix (extérieur)", "prix_pers_eur": 0, "duree": "1h"},
-        {"nom": "Ferry pour Miyajima (A/R)", "prix_pers_eur": 2, "duree": "10min"},
-        {"nom": "Itsukushima-jinja (sanctuaire flottant)", "prix_pers_eur": 2, "duree": "1h"},
-        {"nom": "Téléphérique mont Misen (A/R)", "prix_pers_eur": 16, "duree": "2h avec rando sommet", "attention_vertige": true, "alternative_sans_hauteur": "Cabine suspendue au-dessus de la forêt sur une longue distance - remplaçable par la balade au niveau du sanctuaire Itsukushima et le pied du mont Misen sans monter"}
-      ]
-    },
-    {
-      "ville": "Kanazawa",
-      "activites": [
-        {"nom": "Jardin Kenrokuen", "prix_pers_eur": 3, "duree": "1h30"},
-        {"nom": "Quartier Higashi Chaya (balade)", "prix_pers_eur": 0, "duree": "1h"},
-        {"nom": "Musée d'art contemporain du 21e siècle", "prix_pers_eur": 10, "duree": "1h30"},
-        {"nom": "Marché Omicho (street food)", "prix_pers_eur": 0, "duree": "1h"}
+        {"nom": "Bains de pieds publics (ashiyu)", "prix_pers_eur": 0, "duree": "libre"},
+        {"nom": "Gero Gassho Village (musée en plein air)", "prix_pers_eur": 3, "duree": "1h"},
+        {"nom": "Bain public (si pas d'onsen privé au ryokan)", "prix_pers_eur": 3, "duree": "1h"}
       ]
     },
     {
@@ -76,8 +62,17 @@
         {"nom": "Marché du matin", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Bus A/R Shirakawa-go depuis Takayama", "prix_pers_eur": 24, "duree": "demi-journée"},
         {"nom": "Village de Shirakawa-go (entrée sites)", "prix_pers_eur": 3, "duree": "2h"},
-        {"nom": "Gokayama (village gassho-zukuri, moins fréquenté)", "prix_pers_eur": 0, "duree": "1h30", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture, pas de supplément séparé"},
-        {"nom": "Hida Furukawa (vieille ville, canaux)", "prix_pers_eur": 0, "duree": "1h", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture, pas de supplément séparé"}
+        {"nom": "Gokayama (gassho-zukuri, moins fréquenté)", "prix_pers_eur": 0, "duree": "1h30", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture Takayama-Kanazawa, pas de supplément séparé"},
+        {"nom": "Hida Furukawa (vieille ville, canaux)", "prix_pers_eur": 0, "duree": "1h", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture Takayama-Kanazawa, pas de supplément séparé"}
+      ]
+    },
+    {
+      "ville": "Kanazawa",
+      "activites": [
+        {"nom": "Jardin Kenrokuen", "prix_pers_eur": 3, "duree": "1h30"},
+        {"nom": "Quartier Higashi Chaya (balade)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Musée d'art contemporain du 21e siècle", "prix_pers_eur": 10, "duree": "1h30"},
+        {"nom": "Marché Omicho (street food)", "prix_pers_eur": 0, "duree": "1h"}
       ]
     }
   ]

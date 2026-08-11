@@ -1,77 +1,41 @@
 {
   "duree_totale_jours": 21,
   "nuits_totales": 19,
+  "duree_condensee_jours": 14,
+  "nuits_condensees": 12,
   "hypothese_saison": "mi-saison type avril (sakura) ou novembre (momiji) - haute saison, tarifs à ajuster à la baisse hors de ces périodes",
+  "route": "Tokyo -> Kamakura (excursion) -> Kawaguchiko/Fuji -> Hakone -> Nagoya/Gifu -> Gero Onsen -> Takayama/Shirakawa-go -> Kanazawa -> Tokyo (retour direct en Shinkansen Hokuriku)",
+  "note_kansai": "Alternative envisagée mais non retenue pour cette version : un circuit plus économique centré sur Osaka/Kyoto/Nara/Kobe/Wakayama (Kansai). À explorer dans une itération séparée si besoin.",
   "etapes": [
-    {
-      "id": "tokyo1",
-      "ville": "Tokyo",
-      "jours": "J2-J6",
-      "nuits": 5,
-      "resume": "Arrivée, Asakusa, Ueno, Akihabara, Shibuya, Harajuku, Meiji Jingu, Shinjuku, TeamLab, excursion Nikko"
-    },
-    {
-      "id": "hakone",
-      "ville": "Hakone",
-      "jours": "J7",
-      "nuits": 1,
-      "resume": "Owakudani, croisière lac Ashi, vue Mt Fuji, ryokan onsen, musée plein air"
-    },
-    {
-      "id": "kyoto",
-      "ville": "Kyoto",
-      "jours": "J8-J12",
-      "nuits": 5,
-      "resume": "Higashiyama, Kiyomizu-dera, Gion, Fushimi Inari, Arashiyama, excursions Nara et Osaka"
-    },
-    {
-      "id": "hiroshima",
-      "ville": "Hiroshima",
-      "jours": "J13-J14",
-      "nuits": 2,
-      "resume": "Parc de la Paix, musée, excursion Miyajima (Itsukushima, mont Misen)"
-    },
-    {
-      "id": "kanazawa",
-      "ville": "Kanazawa",
-      "jours": "J15-J16",
-      "nuits": 2,
-      "resume": "Kenrokuen, Higashi Chaya, marché Omicho, Nagamachi, option Shirakawa-go"
-    },
-    {
-      "id": "takayama",
-      "ville": "Takayama",
-      "jours": "J17",
-      "nuits": 1,
-      "resume": "Shirakawa-go, vieille ville, marché du matin"
-    },
-    {
-      "id": "tokyo2",
-      "ville": "Tokyo",
-      "jours": "J18-J20",
-      "nuits": 3,
-      "resume": "Ginza, Tsukiji, shopping, dernières visites"
-    }
+    { "id": "tokyo1", "ville": "Tokyo (1ère partie)", "jours": "J2-J6", "nuits": 5, "resume": "Arrivée, Asakusa, Ueno, Akihabara, Shibuya, Harajuku, Meiji Jingu, Shinjuku, TeamLab" },
+    { "id": "kamakura", "ville": "Kamakura", "jours": "J6", "nuits": 0, "resume": "Excursion d'une journée depuis Tokyo : Grand Bouddha, Hase-dera, Komachi-dori" },
+    { "id": "fuji", "ville": "Kawaguchiko (Fuji Five Lakes)", "jours": "J7-J8", "nuits": 2, "resume": "Pagode Chureito, Oshino Hakkai, croisière sur le lac, vues sur le Mont Fuji" },
+    { "id": "hakone", "ville": "Hakone", "jours": "J9", "nuits": 1, "resume": "Owakudani, croisière lac Ashi, ryokan avec onsen" },
+    { "id": "gifu", "ville": "Nagoya & Gifu", "jours": "J10-J11", "nuits": 2, "resume": "Château de Nagoya en chemin, château de Gifu, rivière Nagara" },
+    { "id": "gero", "ville": "Gero Onsen", "jours": "J12", "nuits": 1, "resume": "Ville thermale, bains de pieds gratuits, trajet en train panoramique Hida" },
+    { "id": "takayama", "ville": "Takayama & Shirakawa-go", "jours": "J13-J14", "nuits": 2, "resume": "Vieille ville, marché du matin, excursion Shirakawa-go" },
+    { "id": "kanazawa", "ville": "Kanazawa", "jours": "J15-J17", "nuits": 3, "resume": "Kenrokuen, Higashi Chaya, Nagamachi, marché Omicho" },
+    { "id": "tokyo2", "ville": "Tokyo (retour)", "jours": "J18-J20", "nuits": 3, "resume": "Ginza, Tsukiji, shopping, dernières visites" }
   ],
   "jours_detail": [
     {"jour": "J1", "date_relative": "Ven", "titre": "Vol Paris -> Helsinki -> Tokyo", "detail": "Nuit dans l'avion, escale Helsinki ~2-3h"},
     {"jour": "J2", "date_relative": "Sam", "titre": "Arrivée Tokyo (Haneda)", "detail": "Transfert hôtel Asakusa, Senso-ji au coucher du soleil"},
-    {"jour": "J3", "date_relative": "Dim", "titre": "Tokyo - Asakusa / Ueno / Akihabara", "detail": "Parc Ueno, musées, quartier électronique/manga"},
+    {"jour": "J3", "date_relative": "Dim", "titre": "Tokyo - Ueno / Akihabara", "detail": "Parc Ueno, musées, quartier électronique/manga"},
     {"jour": "J4", "date_relative": "Lun", "titre": "Tokyo - Shibuya / Harajuku / Omotesando", "detail": "Croisement Shibuya, Takeshita-dori, Meiji Jingu"},
-    {"jour": "J5", "date_relative": "Mar", "titre": "Tokyo - Shinjuku / TeamLab", "detail": "Shinjuku Gyoen, Golden Gai le soir, TeamLab Planets/Borderless"},
-    {"jour": "J6", "date_relative": "Mer", "titre": "Excursion Nikko", "detail": "Toshogu, chutes Kegon, retour Tokyo le soir"},
-    {"jour": "J7", "date_relative": "Jeu", "titre": "Hakone", "detail": "Owakudani, lac Ashi, vue Fuji, nuit en ryokan avec onsen"},
-    {"jour": "J8", "date_relative": "Ven", "titre": "Hakone -> Kyoto", "detail": "Musée plein air le matin, Shinkansen vers Kyoto, Higashiyama/Gion le soir"},
-    {"jour": "J9", "date_relative": "Sam", "titre": "Kyoto - Higashiyama", "detail": "Kiyomizu-dera, Sannenzaka/Ninenzaka, Gion"},
-    {"jour": "J10", "date_relative": "Dim", "titre": "Kyoto - Fushimi Inari / Arashiyama", "detail": "Torii tôt le matin, bambouseraie, Tenryu-ji"},
-    {"jour": "J11", "date_relative": "Lun", "titre": "Excursion Nara", "detail": "Parc aux daims, Todai-ji, Kasuga Taisha"},
-    {"jour": "J12", "date_relative": "Mar", "titre": "Excursion Osaka", "detail": "Château d'Osaka, Dotonbori, Umeda Sky Building"},
-    {"jour": "J13", "date_relative": "Mer", "titre": "Kyoto -> Hiroshima", "detail": "Shinkansen, Parc de la Paix et musée l'après-midi"},
-    {"jour": "J14", "date_relative": "Jeu", "titre": "Excursion Miyajima", "detail": "Itsukushima, mont Misen (téléphérique ou rando)"},
-    {"jour": "J15", "date_relative": "Ven", "titre": "Hiroshima -> Kanazawa", "detail": "Train via Shin-Osaka/Thunderbird, Kenrokuen l'après-midi"},
-    {"jour": "J16", "date_relative": "Sam", "titre": "Kanazawa", "detail": "Marché Omicho, Nagamachi, musée 21st Century, option Shirakawa-go"},
-    {"jour": "J17", "date_relative": "Dim", "titre": "Kanazawa -> Takayama", "detail": "Shirakawa-go en chemin (bus), vieille ville de Takayama le soir"},
-    {"jour": "J18", "date_relative": "Lun", "titre": "Takayama -> Tokyo", "detail": "Marché du matin, Shinkansen via Nagoya, Ginza en soirée"},
+    {"jour": "J5", "date_relative": "Mar", "titre": "Tokyo - Shinjuku / TeamLab", "detail": "Shinjuku Gyoen, TeamLab Planets/Borderless"},
+    {"jour": "J6", "date_relative": "Mer", "titre": "Excursion Kamakura", "detail": "Grand Bouddha, Hase-dera, Komachi-dori, retour Tokyo le soir"},
+    {"jour": "J7", "date_relative": "Jeu", "titre": "Tokyo -> Kawaguchiko", "detail": "Bus ~1h45, installation, Chureito si le temps le permet"},
+    {"jour": "J8", "date_relative": "Ven", "titre": "Kawaguchiko", "detail": "Oshino Hakkai, croisière sur le lac, vues sur le Mont Fuji"},
+    {"jour": "J9", "date_relative": "Sam", "titre": "Kawaguchiko -> Hakone", "detail": "Bus via Gotemba, Owakudani, lac Ashi, nuit en ryokan avec onsen"},
+    {"jour": "J10", "date_relative": "Dim", "titre": "Hakone -> Nagoya -> Gifu", "detail": "Shinkansen vers Nagoya, étape château de Nagoya, puis Gifu"},
+    {"jour": "J11", "date_relative": "Lun", "titre": "Gifu", "detail": "Château de Gifu + ropeway, rivière Nagara, arcade Yanagase"},
+    {"jour": "J12", "date_relative": "Mar", "titre": "Gifu -> Gero Onsen", "detail": "Train panoramique Hida, après-midi/soir dans les bains thermaux"},
+    {"jour": "J13", "date_relative": "Mer", "titre": "Gero Onsen -> Takayama", "detail": "Train Hida, vieille ville de Takayama l'après-midi"},
+    {"jour": "J14", "date_relative": "Jeu", "titre": "Takayama", "detail": "Marché du matin, excursion Shirakawa-go"},
+    {"jour": "J15", "date_relative": "Ven", "titre": "Takayama -> Kanazawa", "detail": "Bus ou voiture de location (option Gokayama/Hida Furukawa), Kenrokuen à l'arrivée"},
+    {"jour": "J16", "date_relative": "Sam", "titre": "Kanazawa", "detail": "Higashi Chaya, Nagamachi"},
+    {"jour": "J17", "date_relative": "Dim", "titre": "Kanazawa", "detail": "Marché Omicho, musée d'art contemporain du 21e siècle"},
+    {"jour": "J18", "date_relative": "Lun", "titre": "Kanazawa -> Tokyo", "detail": "Shinkansen Hokuriku direct (~2h30), Ginza en soirée"},
     {"jour": "J19", "date_relative": "Mar", "titre": "Tokyo - Tsukiji / Ginza", "detail": "Marché extérieur, shopping"},
     {"jour": "J20", "date_relative": "Mer", "titre": "Tokyo - libre", "detail": "Rattrapage, derniers achats, dîner de fin de voyage"},
     {"jour": "J21", "date_relative": "Jeu", "titre": "Retour", "detail": "Transfert Haneda, vol Tokyo -> Helsinki -> Paris"}

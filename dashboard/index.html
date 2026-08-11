@@ -1,4 +1,4 @@
-<title>Japon 2026 — Dashboard de voyage</title>
+<title>Japon — Dashboard de voyage</title>
 <style>
   :root {
     color-scheme: light;
@@ -73,7 +73,11 @@
 
   header.top { margin-bottom: 24px; }
   header.top h1 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.15rem); }
-  header.top p { margin: 8px 0 0; color: var(--ink-secondary); max-width: 65ch; font-size: 0.97rem; }
+  header.top p { margin: 8px 0 0; color: var(--ink-secondary); max-width: 68ch; font-size: 0.97rem; }
+  .route-strip {
+    margin-top: 12px; font-size: 0.84rem; color: var(--accent-strong); background: var(--accent-soft);
+    display: inline-block; padding: 7px 14px; border-radius: 999px;
+  }
 
   .layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
   @media (max-width: 900px) {
@@ -91,12 +95,12 @@
   main.content { display: flex; flex-direction: column; gap: 18px; }
   aside.summary { position: sticky; top: 20px; display: flex; flex-direction: column; gap: 16px; }
 
-  .controls h2, .city-card h3 { font-size: 1.05rem; }
+  .controls h2, .city-card h3, .hyp h2 { font-size: 1.05rem; }
   .controls { display: flex; flex-direction: column; gap: 16px; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label.field-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; }
 
-  .segmented { display: inline-flex; border: 1px solid var(--divider); border-radius: 10px; overflow: hidden; width: fit-content; }
+  .segmented { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--divider); border-radius: 10px; overflow: hidden; width: fit-content; }
   .segmented input { position: absolute; opacity: 0; pointer-events: none; }
   .segmented label {
     padding: 9px 14px; font-size: 0.9rem; cursor: pointer; color: var(--ink-secondary);
@@ -107,7 +111,7 @@
   .segmented input:focus-visible + label { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
 
   input[type="number"] {
-    font: inherit; font-variant-numeric: tabular-nums; width: 120px;
+    font: inherit; font-variant-numeric: tabular-nums; width: 110px;
     padding: 8px 10px; border-radius: 8px; border: 1px solid var(--divider);
     background: var(--bg-page); color: var(--ink-primary);
   }
@@ -137,6 +141,15 @@
   button.chip:hover { border-color: var(--accent); }
   button.chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
   button.chip.attn { background: var(--attention-soft); color: var(--attention); }
+
+  .hyp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  @media (max-width: 520px) { .hyp-grid { grid-template-columns: 1fr; } }
+  .hyp-field { display: flex; flex-direction: column; gap: 5px; }
+  .hyp-field .hf-label { font-size: 0.82rem; color: var(--ink-secondary); }
+  .hyp-field .hf-row { display: flex; align-items: center; gap: 6px; }
+  .hyp-field .hf-unit { font-size: 0.8rem; color: var(--ink-muted); white-space: nowrap; }
+  .hyp-field input { width: 90px; }
+  .hyp-note { font-size: 0.78rem; color: var(--ink-muted); margin-top: 2px; }
 
   .city-card .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .city-card .meta { color: var(--ink-secondary); font-size: 0.86rem; margin: 4px 0 14px; }
@@ -185,19 +198,15 @@
   .bar-value { font-variant-numeric: tabular-nums; font-size: 0.82rem; min-width: 62px; text-align: right; }
   .chart-baseline { border-top: 1px solid var(--divider); margin-top: 4px; padding-top: 8px; font-size: 0.76rem; color: var(--ink-muted); }
 
-  .assumptions { font-size: 0.82rem; color: var(--ink-secondary); }
-  .assumptions summary { cursor: pointer; font-weight: 600; color: var(--ink-primary); font-size: 0.88rem; }
-  .assumptions ul { margin: 10px 0 0; padding-left: 18px; }
-  .assumptions li { margin-bottom: 4px; }
-
   footer.foot { margin-top: 34px; color: var(--ink-muted); font-size: 0.8rem; text-align: center; }
 </style>
 
 <div class="wrap">
 
   <header class="top">
-    <h1>Japon — 21 jours, dashboard de préparation</h1>
-    <p>Coche les activités que vous voulez vraiment faire, choisis 2 ou 3 voyageurs, ajuste le prix du vol : le budget total se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée.</p>
+    <h1>Japon — dashboard de préparation</h1>
+    <p>Choisis la durée, les voyageurs, l'hébergement et les activités : le budget se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée. Toutes les hypothèses de coût (nourriture, transport, etc.) sont modifiables en bas de la colonne de gauche.</p>
+    <div class="route-strip">Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo (retour direct)</div>
   </header>
 
   <div class="layout">
@@ -214,6 +223,16 @@
             <label for="t2">2 — toi + un parent</label>
             <input type="radio" name="travelers" id="t3" value="3">
             <label for="t3">3 — toi + tes deux parents</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Durée du voyage</span>
+          <div class="segmented" id="duration-group">
+            <input type="radio" name="duration" id="d3" value="3w" checked>
+            <label for="d3">3 semaines (défaut, 19 nuits)</label>
+            <input type="radio" name="duration" id="d2" value="2w">
+            <label for="d2">2 semaines (condensé, 12 nuits)</label>
           </div>
         </div>
 
@@ -238,8 +257,8 @@
             <span class="track"></span><span class="thumb"></span>
           </label>
           <div class="switch-text">
-            <strong>Voiture de location Kanazawa → Takayama</strong>
-            <span>Remplace le bus (~24€/pers) par ~230€ pour le groupe, avec accès à Gokayama et Hida Furukawa. Voir <code>02_transport/location_voiture.md</code>.</span>
+            <strong>Voiture de location Takayama → Kanazawa</strong>
+            <span>Remplace le trajet en bus/train (~24€/pers) par ~230€ pour le groupe, avec accès à Gokayama et Hida Furukawa en chemin. Voir <code>02_transport/location_voiture.md</code>.</span>
           </div>
         </div>
 
@@ -253,18 +272,36 @@
 
       <div id="cities"></div>
 
-      <details class="card assumptions">
-        <summary>Hypothèses de calcul</summary>
-        <ul>
-          <li>1 EUR ≈ 160-165 JPY, tarifs indicatifs 2025/2026 à vérifier avant réservation</li>
-          <li>Nombre de nuits par étape modifiable (champ "nuits" sur chaque carte ville) ; hébergement, nourriture et transport local se recalculent selon la durée totale choisie</li>
-          <li>Durée par défaut : 19 nuits (Tokyo 8, Hakone 1, Kyoto 5, Hiroshima 2, Kanazawa 2, Takayama 1), un lit garanti par personne (twin/triple ou futons individuels)</li>
-          <li>Transport de base : ~351€/pers Shinkansen point à point (fixe, indépendant de la durée) + ~7€/pers/jour de transport local (IC card)</li>
-          <li>Nourriture : ~40€/pers/jour (mix konbini, ramen, izakaya)</li>
-          <li>Divers : ~300€/pers, forfaitaire (eSIM, assurance voyage, souvenirs)</li>
-          <li>Saison de référence : mi-saison type avril (sakura) ou novembre (momiji) — compter 15-25% de moins hors de ces périodes</li>
-        </ul>
-      </details>
+      <section class="card hyp">
+        <h2>Hypothèses budgétaires (modifiables)</h2>
+        <p class="hyp-note">Valeurs par défaut estimées pour 2025/2026, 1 EUR ≈ 160-165 JPY. Ajuste-les si tu as de meilleures estimations.</p>
+        <div class="hyp-grid">
+          <div class="hyp-field">
+            <span class="hf-label">Nourriture</span>
+            <div class="hf-row"><input type="number" id="hyp-food" value="40" min="0" step="5"><span class="hf-unit">€ / pers / jour</span></div>
+          </div>
+          <div class="hyp-field">
+            <span class="hf-label">Transport local (IC card)</span>
+            <div class="hf-row"><input type="number" id="hyp-local" value="7" min="0" step="1"><span class="hf-unit">€ / pers / jour</span></div>
+          </div>
+          <div class="hyp-field">
+            <span class="hf-label">Trajets longue distance (trains/bus fixes)</span>
+            <div class="hf-row"><input type="number" id="hyp-longdist" value="288" min="0" step="10"><span class="hf-unit">€ / pers, forfait</span></div>
+          </div>
+          <div class="hyp-field">
+            <span class="hf-label">Takayama → Kanazawa en bus/train (si pas de voiture)</span>
+            <div class="hf-row"><input type="number" id="hyp-alpstransit" value="24" min="0" step="1"><span class="hf-unit">€ / pers, forfait</span></div>
+          </div>
+          <div class="hyp-field">
+            <span class="hf-label">Location voiture Takayama → Kanazawa</span>
+            <div class="hf-row"><input type="number" id="hyp-car" value="230" min="0" step="10"><span class="hf-unit">€ / groupe, forfait</span></div>
+          </div>
+          <div class="hyp-field">
+            <span class="hf-label">Divers (eSIM, assurance, souvenirs)</span>
+            <div class="hf-row"><input type="number" id="hyp-misc" value="300" min="0" step="10"><span class="hf-unit">€ / pers, forfait</span></div>
+          </div>
+        </div>
+      </section>
 
     </main>
 
@@ -290,13 +327,13 @@
 
   </div>
 
-  <footer class="foot">Estimations de préparation — à confronter aux prix réels au moment de la réservation. Généré pour un itinéraire Tokyo → Hakone → Kyoto/Nara/Osaka → Hiroshima/Miyajima → Kanazawa → Takayama → Tokyo.</footer>
+  <footer class="foot">Estimations de préparation — à confronter aux prix réels au moment de la réservation. Itinéraire : Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo.</footer>
 </div>
 
 <script>
 const CITIES = [
   {
-    id: "tokyo", name: "Tokyo", nights: 8, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
+    id: "tokyo", name: "Tokyo", nights: 8, nights2w: 5, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
     meta: "J2–J6 puis J18–J20 · Asakusa, Ueno, Akihabara, Shibuya, Harajuku, Shinjuku, Ginza",
     activities: [
       { id: "senso-ji", name: "Senso-ji (Asakusa)", duration: "1h30", price: 0 },
@@ -305,66 +342,59 @@ const CITIES = [
       { id: "skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku, ou étage bas (150m) de la Tokyo Tower" },
       { id: "tocho", name: "Observatoire gratuit Tocho (Shinjuku)", duration: "45min", price: 0 },
       { id: "teamlab", name: "TeamLab Planets / Borderless", duration: "2h30", price: 26 },
-      { id: "gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 },
-      { id: "nikko", name: "Excursion Nikko (Toshogu + chutes Kegon)", duration: "journée", price: 15 }
+      { id: "gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 }
     ]
   },
   {
-    id: "hakone", name: "Hakone", nights: 1, lodging: { individual: 130, shared: { 2: 190, 3: 250 } },
-    meta: "J7 · Owakudani, lac Ashi, vue Mont Fuji, ryokan avec onsen",
+    id: "kamakura", name: "Kamakura", nights: 0, nights2w: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
+    meta: "Excursion d'une journée depuis Tokyo (~1h de train) · Grand Bouddha, Hase-dera, Komachi-dori",
+    activities: [
+      { id: "kotokuin", name: "Kotoku-in (Grand Bouddha)", duration: "1h", price: 2 },
+      { id: "hasedera", name: "Hase-dera", duration: "1h", price: 3 },
+      { id: "hachimangu", name: "Tsurugaoka Hachiman-gu", duration: "45min", price: 0 },
+      { id: "komachi", name: "Komachi-dori (street food, balade)", duration: "1h", price: 0 }
+    ]
+  },
+  {
+    id: "fuji", name: "Kawaguchiko (Fuji Five Lakes)", nights: 2, nights2w: 1, lodging: { individual: 50, shared: { 2: 68, 3: 90 } },
+    meta: "J7–J8 · Vues sur le Mont Fuji, pagode Chureito, lac Kawaguchiko",
+    activities: [
+      { id: "chureito", name: "Pagode Chureito (point de vue Fuji)", duration: "1h", price: 0 },
+      { id: "oshino", name: "Oshino Hakkai (village des sources)", duration: "1h30", price: 0 },
+      { id: "kachikachi", name: "Kachi Kachi Yama Ropeway", duration: "45min", price: 15, vertige: true, alt: "Vue équivalente depuis les rives du lac Kawaguchiko ou le pont Fuji Omuro Sengen, sans téléphérique" },
+      { id: "cruise", name: "Croisière sur le lac Kawaguchiko", duration: "30min", price: 9 }
+    ]
+  },
+  {
+    id: "hakone", name: "Hakone", nights: 1, nights2w: 1, lodging: { individual: 130, shared: { 2: 190, 3: 250 } },
+    meta: "J9 · Owakudani, lac Ashi, vue Mont Fuji, ryokan avec onsen",
     activities: [
       { id: "hakone-pass", name: "Hakone Free Pass (ropeway + bateau + bus + train)", duration: "journée", price: 50, vertige: true, alt: "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani" },
       { id: "openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 }
     ]
   },
   {
-    id: "kyoto", name: "Kyoto", nights: 5, lodging: { individual: 55, shared: { 2: 75, 3: 100 } },
-    meta: "J8–J12 · Higashiyama, Kiyomizu-dera, Gion, Fushimi Inari, Arashiyama",
+    id: "gifu", name: "Nagoya & Gifu", nights: 2, nights2w: 1, lodging: { individual: 42, shared: { 2: 58, 3: 76 } },
+    meta: "J10–J11 · Château de Nagoya en chemin, château de Gifu, rivière Nagara",
     activities: [
-      { id: "kiyomizu", name: "Kiyomizu-dera", duration: "1h30", price: 4 },
-      { id: "fushimi", name: "Fushimi Inari (torii)", duration: "2h", price: 0 },
-      { id: "bamboo", name: "Bambouseraie d'Arashiyama", duration: "1h", price: 0 },
-      { id: "tenryuji", name: "Tenryu-ji (temple + jardin)", duration: "1h", price: 5 },
-      { id: "kinkakuji", name: "Kinkaku-ji (pavillon d'or)", duration: "1h", price: 5 },
-      { id: "nijo", name: "Nijo Castle", duration: "1h30", price: 10 },
-      { id: "gion", name: "Gion — balade quartier geisha", duration: "1h30", price: 0 }
+      { id: "nagoya-castle", name: "Château de Nagoya (étape en chemin)", duration: "1h30", price: 6 },
+      { id: "gifu-castle", name: "Château de Gifu + ropeway (mont Kinka)", duration: "2h", price: 7, vertige: true, alt: "Sentier de randonnée jusqu'au château (30-40min à pied) sans téléphérique, ou balade au parc Gifu au pied de la montagne" },
+      { id: "ukai", name: "Pêche au cormoran (ukai, bateau, saisonnier mai-oct)", duration: "2h, soirée", price: 25 },
+      { id: "yanagase", name: "Arcade Yanagase (balade)", duration: "1h", price: 0 }
     ]
   },
   {
-    id: "nara-osaka", name: "Excursions Nara & Osaka", nights: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
-    meta: "J11–J12 · journées depuis Kyoto, pas de nuit supplémentaire",
+    id: "gero", name: "Gero Onsen", nights: 1, nights2w: 1, lodging: { individual: 70, shared: { 2: 100, 3: 135 } },
+    meta: "J12 · Ville thermale, bains extérieurs gratuits (ashiyu), trajet en train Hida panoramique",
     activities: [
-      { id: "todaiji", name: "Nara — Todai-ji (grand bouddha)", duration: "1h", price: 5 },
-      { id: "kasuga", name: "Nara — Kasuga Taisha", duration: "45min", price: 3 },
-      { id: "osaka-castle", name: "Osaka — Château d'Osaka", duration: "1h30", price: 6 },
-      { id: "dotonbori", name: "Osaka — Dotonbori (balade + street food)", duration: "2h", price: 0 },
-      { id: "umeda", name: "Osaka — Umeda Sky Building (observatoire)", duration: "1h", price: 13, vertige: true, alt: "Rester au niveau du sol à Dotonbori / Shinsekai" }
+      { id: "ashiyu", name: "Bains de pieds publics (ashiyu)", duration: "libre", price: 0 },
+      { id: "gassho-gero", name: "Gero Gassho Village (musée en plein air)", duration: "1h", price: 3 },
+      { id: "public-bath", name: "Bain public (si pas d'onsen privé au ryokan)", duration: "1h", price: 3 }
     ]
   },
   {
-    id: "hiroshima", name: "Hiroshima & Miyajima", nights: 2, lodging: { individual: 42, shared: { 2: 58, 3: 76 } },
-    meta: "J13–J14 · Parc de la Paix, musée, excursion Miyajima",
-    activities: [
-      { id: "peace-museum", name: "Musée du mémorial de la paix", duration: "1h30", price: 2 },
-      { id: "peace-park", name: "Parc de la Paix (extérieur)", duration: "1h", price: 0 },
-      { id: "ferry", name: "Ferry pour Miyajima (A/R)", duration: "10min", price: 2 },
-      { id: "itsukushima", name: "Itsukushima-jinja (sanctuaire flottant)", duration: "1h", price: 2 },
-      { id: "misen", name: "Téléphérique mont Misen (A/R)", duration: "2h avec rando", price: 16, vertige: true, alt: "Rester au niveau du sanctuaire et du village, sans monter au sommet" }
-    ]
-  },
-  {
-    id: "kanazawa", name: "Kanazawa", nights: 2, lodging: { individual: 45, shared: { 2: 60, 3: 80 } },
-    meta: "J15–J16 · Kenrokuen, Higashi Chaya, Nagamachi, marché Omicho",
-    activities: [
-      { id: "kenrokuen", name: "Jardin Kenrokuen", duration: "1h30", price: 3 },
-      { id: "higashi-chaya", name: "Quartier Higashi Chaya (balade)", duration: "1h", price: 0 },
-      { id: "museum21", name: "Musée d'art contemporain du 21e siècle", duration: "1h30", price: 10 },
-      { id: "omicho", name: "Marché Omicho (street food)", duration: "1h", price: 0 }
-    ]
-  },
-  {
-    id: "takayama", name: "Takayama & Shirakawa-go", nights: 1, lodging: { individual: 75, shared: { 2: 110, 3: 145 } },
-    meta: "J17–J18 · vieille ville, marché du matin, Shirakawa-go",
+    id: "takayama", name: "Takayama & Shirakawa-go", nights: 2, nights2w: 1, lodging: { individual: 75, shared: { 2: 110, 3: 145 } },
+    meta: "J13–J14 · vieille ville, marché du matin, excursion Shirakawa-go",
     activities: [
       { id: "old-town", name: "Vieille ville de Takayama (balade)", duration: "2h", price: 0 },
       { id: "morning-market", name: "Marché du matin", duration: "1h", price: 0 },
@@ -373,15 +403,22 @@ const CITIES = [
       { id: "gokayama", name: "Gokayama (gassho-zukuri, moins fréquenté)", duration: "1h30", price: 0, requiresCar: true },
       { id: "hida-furukawa", name: "Hida Furukawa (vieille ville, canaux)", duration: "1h", price: 0, requiresCar: true }
     ]
+  },
+  {
+    id: "kanazawa", name: "Kanazawa", nights: 3, nights2w: 2, lodging: { individual: 45, shared: { 2: 60, 3: 80 } },
+    meta: "J15–J17 · Kenrokuen, Higashi Chaya, Nagamachi, marché Omicho",
+    activities: [
+      { id: "kenrokuen", name: "Jardin Kenrokuen", duration: "1h30", price: 3 },
+      { id: "higashi-chaya", name: "Quartier Higashi Chaya (balade)", duration: "1h", price: 0 },
+      { id: "museum21", name: "Musée d'art contemporain du 21e siècle", duration: "1h30", price: 10 },
+      { id: "omicho", name: "Marché Omicho (street food)", duration: "1h", price: 0 }
+    ]
   }
 ];
 
-const FOOD_PER_DAY = 40;
-const MISC_PER_PERSON = 300;
-const SHINKANSEN_PER_PERSON = 351;
-const TRANSPORT_LOCAL_PER_DAY = 7;
-const BUS_COST_PER_PERSON = 24;
-const CAR_RENTAL_FLAT = 230;
+const DEFAULTS = {
+  food: 40, local: 7, longdist: 288, alpstransit: 24, car: 230, misc: 300
+};
 const TOTAL_ACTIVITIES = CITIES.reduce((n, c) => n + c.activities.length, 0);
 
 const fmt = n => Math.round(n).toLocaleString("fr-FR") + " €";
@@ -393,7 +430,7 @@ function renderCities() {
       <div class="card-head">
         <h3>${city.name}</h3>
         <label class="nights-field">Nuits
-          <input type="number" id="nights-${city.id}" min="0" max="14" value="${city.nights}" data-default="${city.nights}">
+          <input type="number" id="nights-${city.id}" min="0" max="14" value="${city.nights}" data-default3w="${city.nights}" data-default2w="${city.nights2w}">
         </label>
       </div>
       <p class="meta">${city.meta}</p>
@@ -429,6 +466,10 @@ function getLodgingFormula() {
   return document.querySelector('input[name="lodging"]:checked').value;
 }
 
+function getHyp(id) {
+  return Math.max(0, parseFloat(document.getElementById("hyp-" + id).value) || 0);
+}
+
 function syncCarDependentCheckboxes() {
   const carOn = document.getElementById("car-toggle").checked;
   document.querySelectorAll('.activity-row.car-dependent').forEach(row => {
@@ -446,6 +487,13 @@ function update() {
   const carOn = document.getElementById("car-toggle").checked;
   const lodgingFormula = getLodgingFormula();
 
+  const foodPerDay = getHyp("food");
+  const localPerDay = getHyp("local");
+  const longDist = getHyp("longdist");
+  const alpsTransit = getHyp("alpstransit");
+  const carFlat = getHyp("car");
+  const misc = getHyp("misc") * travelers;
+
   const flight = flightPerPerson * travelers;
 
   const nightsByCity = {};
@@ -458,8 +506,8 @@ function update() {
     return sum + nightsByCity[c.id] * perNight;
   }, 0);
 
-  let transport = SHINKANSEN_PER_PERSON * travelers + TRANSPORT_LOCAL_PER_DAY * totalDays * travelers;
-  if (carOn) transport = transport - (BUS_COST_PER_PERSON * travelers) + CAR_RENTAL_FLAT;
+  let transport = longDist * travelers + localPerDay * totalDays * travelers;
+  transport += carOn ? carFlat : alpsTransit * travelers;
 
   let activitiesChecked = 0;
   let activitiesCost = 0;
@@ -470,8 +518,7 @@ function update() {
     }
   });
 
-  const food = FOOD_PER_DAY * totalDays * travelers;
-  const misc = MISC_PER_PERSON * travelers;
+  const food = foodPerDay * totalDays * travelers;
 
   const total = flight + lodging + transport + activitiesCost + food + misc;
 
@@ -503,10 +550,24 @@ function renderChart(rows) {
   `).join("");
 }
 
+function applyDurationPreset(mode) {
+  CITIES.forEach(city => {
+    const el = document.getElementById("nights-" + city.id);
+    if (el) el.value = mode === "2w" ? city.nights2w : city.nights;
+  });
+  update();
+}
+
 document.getElementById("travelers-group").addEventListener("change", update);
 document.getElementById("lodging-group").addEventListener("change", update);
 document.getElementById("flight-price").addEventListener("input", update);
 document.getElementById("car-toggle").addEventListener("change", update);
+["food", "local", "longdist", "alpstransit", "car", "misc"].forEach(id => {
+  document.getElementById("hyp-" + id).addEventListener("input", update);
+});
+document.getElementById("duration-group").addEventListener("change", (e) => {
+  applyDurationPreset(document.querySelector('input[name="duration"]:checked').value);
+});
 document.getElementById("check-all").addEventListener("click", () => {
   document.querySelectorAll('#cities input[type="checkbox"]:not([disabled])').forEach(cb => cb.checked = true);
   update();
@@ -523,11 +584,8 @@ document.getElementById("uncheck-vertige").addEventListener("click", () => {
   update();
 });
 document.getElementById("reset-nights").addEventListener("click", () => {
-  CITIES.forEach(city => {
-    const el = document.getElementById("nights-" + city.id);
-    if (el) el.value = el.dataset.default;
-  });
-  update();
+  const mode = document.querySelector('input[name="duration"]:checked').value;
+  applyDurationPreset(mode);
 });
 
 renderCities();

@@ -1,6 +1,6 @@
-# Hébergement - Takayama (1 nuit, J17)
+# Hébergement - Takayama (2 nuits, J13-J14)
 
-**Positionnement** : minshuku ou ryokan simple dans la vieille ville, souvent en demi-pension - comme à Hakone, ce poste reste un peu plus cher qu'un business hotel classique car les repas sont généralement inclus.
+**Positionnement** : minshuku ou ryokan simple dans la vieille ville, souvent en demi-pension.
 
 | Formule | Prix/nuit (souvent tout compris) | Exemple de référence |
 |---|---|---|

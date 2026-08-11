@@ -15,70 +15,59 @@
     {
       "ville": "Tokyo (1er séjour + retour, cumulé)",
       "nuits": 8,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 55,
-        "partagee_2pers": 70,
-        "partagee_3pers": 92
-      },
+      "prix_nuit_eur": { "individuelle_par_pers": 55, "partagee_2pers": 70, "partagee_3pers": 92 },
       "exemples": ["R&B Hotel Ueno-Hirokoji (individuelle)", "Riverside Shinjuku (partagée, type guesthouse/hostel)", "Toyoko Inn", "APA Hotel"]
+    },
+    {
+      "ville": "Kamakura",
+      "nuits": 0,
+      "prix_nuit_eur": { "individuelle_par_pers": 0, "partagee_2pers": 0, "partagee_3pers": 0 },
+      "note": "Excursion d'une journée depuis Tokyo, pas de nuit sur place"
+    },
+    {
+      "ville": "Kawaguchiko (Fuji Five Lakes)",
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 50, "partagee_2pers": 68, "partagee_3pers": 90 },
+      "exemples": ["Guesthouses et petits hôtels avec vue sur le Mont Fuji, gamme économique"]
     },
     {
       "ville": "Hakone",
       "nuits": 1,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 130,
-        "partagee_2pers": 190,
-        "partagee_3pers": 250
-      },
-      "note": "Ryokan simple avec onsen, demi-pension (dîner + petit-déj inclus) - le tarif ryokan reste plus élevé qu'un business hotel classique même en formule économique, car les repas sont inclus",
+      "prix_nuit_eur": { "individuelle_par_pers": 130, "partagee_2pers": 190, "partagee_3pers": 250 },
+      "note": "Ryokan simple avec onsen, demi-pension (dîner + petit-déj inclus) - reste plus cher qu'un business hotel classique car les repas sont inclus",
       "exemples": ["Ryokans du secteur Hakone-Yumoto Onsen, gamme simple/moyenne"]
     },
     {
-      "ville": "Kyoto",
-      "nuits": 5,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 55,
-        "partagee_2pers": 75,
-        "partagee_3pers": 100
-      },
-      "exemples": ["Piece Hostel Sanjo (chambres triples/familiales)", "Toyoko Inn Kyoto", "APA Hotel Kyoto"]
+      "ville": "Nagoya & Gifu",
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 42, "partagee_2pers": 58, "partagee_3pers": 76 },
+      "exemples": ["Toyoko Inn Gifu", "Route Inn Gifu", "APA Hotel Nagoya"]
     },
     {
-      "ville": "Hiroshima",
-      "nuits": 2,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 42,
-        "partagee_2pers": 58,
-        "partagee_3pers": 76
-      },
-      "exemples": ["Toyoko Inn Hiroshima", "Route Inn Hiroshima"]
-    },
-    {
-      "ville": "Kanazawa",
-      "nuits": 2,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 45,
-        "partagee_2pers": 60,
-        "partagee_3pers": 80
-      },
-      "exemples": ["Toyoko Inn Kanazawa", "APA Hotel Kanazawa"]
+      "ville": "Gero Onsen",
+      "nuits": 1,
+      "prix_nuit_eur": { "individuelle_par_pers": 70, "partagee_2pers": 100, "partagee_3pers": 135 },
+      "note": "Ryokan simple, souvent en demi-pension",
+      "exemples": ["Ryokans de la gamme simple/moyenne à Gero Onsen"]
     },
     {
       "ville": "Takayama",
-      "nuits": 1,
-      "prix_nuit_eur": {
-        "individuelle_par_pers": 75,
-        "partagee_2pers": 110,
-        "partagee_3pers": 145
-      },
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 75, "partagee_2pers": 110, "partagee_3pers": 145 },
       "note": "Minshuku/ryokan simple, souvent en demi-pension",
       "exemples": ["Rickshaw Inn", "minshuku de la vieille ville"]
+    },
+    {
+      "ville": "Kanazawa",
+      "nuits": 3,
+      "prix_nuit_eur": { "individuelle_par_pers": 45, "partagee_2pers": 60, "partagee_3pers": 80 },
+      "exemples": ["Toyoko Inn Kanazawa", "APA Hotel Kanazawa"]
     }
   ],
   "totaux_indicatifs_eur": {
     "total_nuits": 19,
-    "formule_partagee": { "total_2_personnes": 1471, "total_3_personnes": 1943 },
-    "formule_individuelle": { "total_2_personnes": 2188, "total_3_personnes": 3282 },
-    "note_calcul": "Somme des (prix_nuit x nuits) par étape. La formule partagée est nettement moins chère grâce à la mutualisation. Le dashboard recalcule ce total selon la formule et le nombre de voyageurs choisis."
+    "formule_partagee": { "total_2_personnes": 1502, "total_3_personnes": 1983 },
+    "formule_individuelle": { "total_2_personnes": 2218, "total_3_personnes": 3327 },
+    "note_calcul": "Somme des (prix_nuit x nuits) par étape. La formule partagée est nettement moins chère grâce à la mutualisation. Le dashboard recalcule ce total selon la formule, le nombre de voyageurs et la durée (preset 2 ou 3 semaines, ou nuits ajustées manuellement)."
   }
 }

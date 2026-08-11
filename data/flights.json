@@ -17,7 +17,7 @@
     {"compagnie": "KLM/Air France via Amsterdam", "type": "1 escale", "prix_indicatif_eur": "850-1300", "bagages": "variable selon tarif"}
   ],
   "vols_interieurs_japon": {
-    "recommandation": "Non nécessaires pour cet itinéraire : le réseau Shinkansen couvre tout le tracé (Tokyo-Kyoto-Hiroshima-Kanazawa) de façon plus pratique que l'avion, sans les contraintes d'aéroport.",
+    "recommandation": "Non nécessaires pour cet itinéraire : le réseau ferroviaire (Shinkansen, Hida limited express, bus autoroutiers) couvre tout le tracé (Tokyo-Fuji/Hakone-Nagoya/Gifu-Gero-Takayama-Kanazawa) de façon plus pratique que l'avion, sans les contraintes d'aéroport.",
     "exception_possible": "Si extension vers Hokkaido (Sapporo) ou Okinawa envisagée, vol intérieur JAL/ANA/Peach recommandé (~80-150€ par trajet)."
   },
   "conseils_reservation": [
