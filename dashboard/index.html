@@ -1,0 +1,536 @@
+<title>Japon 2026 — Dashboard de voyage</title>
+<style>
+  :root {
+    color-scheme: light;
+    --bg-page:        #eef0f1;
+    --card:           #ffffff;
+    --card-border:    rgba(23,27,33,0.09);
+    --ink-primary:    #171b21;
+    --ink-secondary:  #545b66;
+    --ink-muted:      #8b909b;
+    --accent:         #24425f;
+    --accent-strong:  #16293a;
+    --accent-soft:    #e3e9ee;
+    --attention:      #b14d3a;
+    --attention-soft: #f5e4df;
+    --divider:        #dde1df;
+    --focus-ring:      #1c5cab;
+    --shadow: 0 1px 2px rgba(23,27,33,0.04), 0 8px 24px -12px rgba(23,27,33,0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg-page:        #12151a;
+      --card:           #1b2027;
+      --card-border:    rgba(255,255,255,0.08);
+      --ink-primary:    #eceeec;
+      --ink-secondary:  #adb3bd;
+      --ink-muted:      #7a808b;
+      --accent:         #86b0d1;
+      --accent-strong:  #b4d1e8;
+      --accent-soft:    #223140;
+      --attention:      #e08a6f;
+      --attention-soft: #3a2721;
+      --divider:        #2a3038;
+      --focus-ring:      #86b0d1;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-page:        #12151a;
+    --card:           #1b2027;
+    --card-border:    rgba(255,255,255,0.08);
+    --ink-primary:    #eceeec;
+    --ink-secondary:  #adb3bd;
+    --ink-muted:      #7a808b;
+    --accent:         #86b0d1;
+    --accent-strong:  #b4d1e8;
+    --accent-soft:    #223140;
+    --attention:      #e08a6f;
+    --attention-soft: #3a2721;
+    --divider:        #2a3038;
+    --focus-ring:      #86b0d1;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-page);
+    color: var(--ink-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    line-height: 1.45;
+  }
+  h1, h2, h3 {
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+    color: var(--ink-primary);
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  header.top { margin-bottom: 24px; }
+  header.top h1 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.15rem); }
+  header.top p { margin: 8px 0 0; color: var(--ink-secondary); max-width: 65ch; font-size: 0.97rem; }
+
+  .layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    aside.summary { order: -1; position: static; }
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+  }
+  main.content { display: flex; flex-direction: column; gap: 18px; }
+  aside.summary { position: sticky; top: 20px; display: flex; flex-direction: column; gap: 16px; }
+
+  .controls h2, .city-card h3 { font-size: 1.05rem; }
+  .controls { display: flex; flex-direction: column; gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label.field-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; }
+
+  .segmented { display: inline-flex; border: 1px solid var(--divider); border-radius: 10px; overflow: hidden; width: fit-content; }
+  .segmented input { position: absolute; opacity: 0; pointer-events: none; }
+  .segmented label {
+    padding: 9px 14px; font-size: 0.9rem; cursor: pointer; color: var(--ink-secondary);
+    border-right: 1px solid var(--divider); transition: background .12s, color .12s;
+  }
+  .segmented label:last-child { border-right: none; }
+  .segmented input:checked + label { background: var(--accent); color: #fff; }
+  .segmented input:focus-visible + label { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+
+  input[type="number"] {
+    font: inherit; font-variant-numeric: tabular-nums; width: 120px;
+    padding: 8px 10px; border-radius: 8px; border: 1px solid var(--divider);
+    background: var(--bg-page); color: var(--ink-primary);
+  }
+  input[type="number"]:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+
+  .switch-row { display: flex; align-items: flex-start; gap: 12px; }
+  .switch { position: relative; width: 42px; height: 24px; flex: none; margin-top: 2px; }
+  .switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .switch .track {
+    position: absolute; inset: 0; background: var(--divider); border-radius: 999px; transition: background .15s;
+  }
+  .switch .thumb {
+    position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
+    background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: transform .15s;
+  }
+  .switch input:checked ~ .track { background: var(--accent); }
+  .switch input:checked ~ .thumb { transform: translateX(18px); }
+  .switch input:focus-visible ~ .track { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+  .switch-text strong { display: block; font-size: 0.92rem; }
+  .switch-text span { font-size: 0.83rem; color: var(--ink-secondary); }
+
+  .util-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  button.chip {
+    font: inherit; font-size: 0.82rem; background: var(--accent-soft); color: var(--accent-strong);
+    border: 1px solid transparent; border-radius: 999px; padding: 7px 13px; cursor: pointer;
+  }
+  button.chip:hover { border-color: var(--accent); }
+  button.chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+  button.chip.attn { background: var(--attention-soft); color: var(--attention); }
+
+  .city-card .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .city-card .meta { color: var(--ink-secondary); font-size: 0.86rem; margin: 4px 0 14px; }
+  .nights-field { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--ink-secondary); flex: none; }
+  .nights-field input {
+    width: 52px; font: inherit; font-variant-numeric: tabular-nums; text-align: center;
+    padding: 5px 4px; border-radius: 7px; border: 1px solid var(--divider); background: var(--bg-page); color: var(--ink-primary);
+  }
+  .nights-field input:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+  .activity-row {
+    display: grid; grid-template-columns: 22px 1fr auto; gap: 10px 12px; align-items: start;
+    padding: 9px 0; border-top: 1px solid var(--divider);
+  }
+  .activity-row:first-of-type { border-top: none; }
+  .activity-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
+  .activity-row input[type="checkbox"]:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+  .activity-name { font-size: 0.94rem; }
+  .activity-duration { color: var(--ink-muted); font-size: 0.8rem; }
+  .activity-price { font-variant-numeric: tabular-nums; font-size: 0.92rem; white-space: nowrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600;
+    background: var(--attention-soft); color: var(--attention); border-radius: 999px; padding: 2px 8px; margin-left: 8px;
+  }
+  .alt-note {
+    grid-column: 2 / -1; font-size: 0.82rem; color: var(--ink-secondary);
+    background: var(--attention-soft); border-radius: 8px; padding: 6px 10px; margin-top: 2px;
+  }
+  .alt-note b { color: var(--attention); }
+  .car-note { grid-column: 2 / -1; font-size: 0.8rem; color: var(--ink-muted); font-style: italic; }
+  .activity-row.disabled .activity-name, .activity-row.disabled .activity-price { color: var(--ink-muted); }
+
+  .stat-hero { text-align: left; }
+  .stat-hero .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; }
+  .stat-hero .value { font-size: 2.4rem; font-weight: 700; margin-top: 2px; font-family: Georgia, "Iowan Old Style", serif; }
+  .stat-hero .sub { color: var(--ink-secondary); font-size: 0.9rem; margin-top: 2px; }
+  .stat-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .stat-tile { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; }
+  .stat-tile .t-label { font-size: 0.74rem; color: var(--ink-secondary); }
+  .stat-tile .t-value { font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 700; color: var(--accent-strong); }
+
+  .chart-title { font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 10px; }
+  .bar-row { display: grid; grid-template-columns: 92px 1fr auto; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-row .bar-label { font-size: 0.82rem; color: var(--ink-secondary); }
+  .bar-track { position: relative; height: 12px; background: var(--divider); border-radius: 6px; overflow: hidden; }
+  .bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 6px; transition: width .25s ease; }
+  .bar-value { font-variant-numeric: tabular-nums; font-size: 0.82rem; min-width: 62px; text-align: right; }
+  .chart-baseline { border-top: 1px solid var(--divider); margin-top: 4px; padding-top: 8px; font-size: 0.76rem; color: var(--ink-muted); }
+
+  .assumptions { font-size: 0.82rem; color: var(--ink-secondary); }
+  .assumptions summary { cursor: pointer; font-weight: 600; color: var(--ink-primary); font-size: 0.88rem; }
+  .assumptions ul { margin: 10px 0 0; padding-left: 18px; }
+  .assumptions li { margin-bottom: 4px; }
+
+  footer.foot { margin-top: 34px; color: var(--ink-muted); font-size: 0.8rem; text-align: center; }
+</style>
+
+<div class="wrap">
+
+  <header class="top">
+    <h1>Japon — 21 jours, dashboard de préparation</h1>
+    <p>Coche les activités que vous voulez vraiment faire, choisis 2 ou 3 voyageurs, ajuste le prix du vol : le budget total se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée.</p>
+  </header>
+
+  <div class="layout">
+
+    <main class="content">
+
+      <section class="card controls">
+        <h2>Réglages</h2>
+
+        <div class="field">
+          <span class="field-label">Voyageurs</span>
+          <div class="segmented" id="travelers-group">
+            <input type="radio" name="travelers" id="t2" value="2" checked>
+            <label for="t2">2 — toi + un parent</label>
+            <input type="radio" name="travelers" id="t3" value="3">
+            <label for="t3">3 — toi + tes deux parents</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Vol Finnair, par personne (A/R, 2×23kg)</span>
+          <input type="number" id="flight-price" value="1000" min="600" max="2500" step="25"> €
+        </div>
+
+        <div class="field">
+          <span class="field-label">Formule d'hébergement</span>
+          <div class="segmented" id="lodging-group">
+            <input type="radio" name="lodging" id="l-shared" value="shared" checked>
+            <label for="l-shared">Partagée — 1 chambre à plusieurs lits (type Riverside Shinjuku)</label>
+            <input type="radio" name="lodging" id="l-individual" value="individual">
+            <label for="l-individual">Individuelle — 1 chambre par personne (type R&amp;B Hotel)</label>
+          </div>
+        </div>
+
+        <div class="switch-row">
+          <label class="switch">
+            <input type="checkbox" id="car-toggle">
+            <span class="track"></span><span class="thumb"></span>
+          </label>
+          <div class="switch-text">
+            <strong>Voiture de location Kanazawa → Takayama</strong>
+            <span>Remplace le bus (~24€/pers) par ~230€ pour le groupe, avec accès à Gokayama et Hida Furukawa. Voir <code>02_transport/location_voiture.md</code>.</span>
+          </div>
+        </div>
+
+        <div class="util-buttons">
+          <button class="chip" id="check-all">Tout cocher</button>
+          <button class="chip" id="uncheck-all">Tout décocher</button>
+          <button class="chip attn" id="uncheck-vertige">Décocher les activités en hauteur ⚠</button>
+          <button class="chip" id="reset-nights">Réinitialiser les durées</button>
+        </div>
+      </section>
+
+      <div id="cities"></div>
+
+      <details class="card assumptions">
+        <summary>Hypothèses de calcul</summary>
+        <ul>
+          <li>1 EUR ≈ 160-165 JPY, tarifs indicatifs 2025/2026 à vérifier avant réservation</li>
+          <li>Nombre de nuits par étape modifiable (champ "nuits" sur chaque carte ville) ; hébergement, nourriture et transport local se recalculent selon la durée totale choisie</li>
+          <li>Durée par défaut : 19 nuits (Tokyo 8, Hakone 1, Kyoto 5, Hiroshima 2, Kanazawa 2, Takayama 1), un lit garanti par personne (twin/triple ou futons individuels)</li>
+          <li>Transport de base : ~351€/pers Shinkansen point à point (fixe, indépendant de la durée) + ~7€/pers/jour de transport local (IC card)</li>
+          <li>Nourriture : ~40€/pers/jour (mix konbini, ramen, izakaya)</li>
+          <li>Divers : ~300€/pers, forfaitaire (eSIM, assurance voyage, souvenirs)</li>
+          <li>Saison de référence : mi-saison type avril (sakura) ou novembre (momiji) — compter 15-25% de moins hors de ces périodes</li>
+        </ul>
+      </details>
+
+    </main>
+
+    <aside class="summary">
+      <div class="card stat-hero">
+        <div class="label">Budget total du groupe</div>
+        <div class="value" id="total-value">—</div>
+        <div class="sub" id="total-sub">—</div>
+        <div class="stat-tiles">
+          <div class="stat-tile"><div class="t-label">Par personne</div><div class="t-value" id="per-person-value">—</div></div>
+          <div class="stat-tile"><div class="t-label">Nuits sur place</div><div class="t-value" id="nights-total">—</div></div>
+          <div class="stat-tile"><div class="t-label">Activités cochées</div><div class="t-value" id="activities-count">—</div></div>
+          <div class="stat-tile"><div class="t-label">Vol A/R (groupe)</div><div class="t-value" id="flight-total">—</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="chart-title">Répartition du budget par poste</div>
+        <div id="chart"></div>
+        <div class="chart-baseline">Postes fixes (vol, hébergement, transport, nourriture, divers) + activités sélectionnées, pour le nombre de voyageurs choisi.</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="foot">Estimations de préparation — à confronter aux prix réels au moment de la réservation. Généré pour un itinéraire Tokyo → Hakone → Kyoto/Nara/Osaka → Hiroshima/Miyajima → Kanazawa → Takayama → Tokyo.</footer>
+</div>
+
+<script>
+const CITIES = [
+  {
+    id: "tokyo", name: "Tokyo", nights: 8, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
+    meta: "J2–J6 puis J18–J20 · Asakusa, Ueno, Akihabara, Shibuya, Harajuku, Shinjuku, Ginza",
+    activities: [
+      { id: "senso-ji", name: "Senso-ji (Asakusa)", duration: "1h30", price: 0 },
+      { id: "ueno-museum", name: "Tokyo National Museum (Ueno)", duration: "2h", price: 7 },
+      { id: "meiji", name: "Meiji Jingu", duration: "1h", price: 0 },
+      { id: "skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku, ou étage bas (150m) de la Tokyo Tower" },
+      { id: "tocho", name: "Observatoire gratuit Tocho (Shinjuku)", duration: "45min", price: 0 },
+      { id: "teamlab", name: "TeamLab Planets / Borderless", duration: "2h30", price: 26 },
+      { id: "gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 },
+      { id: "nikko", name: "Excursion Nikko (Toshogu + chutes Kegon)", duration: "journée", price: 15 }
+    ]
+  },
+  {
+    id: "hakone", name: "Hakone", nights: 1, lodging: { individual: 130, shared: { 2: 190, 3: 250 } },
+    meta: "J7 · Owakudani, lac Ashi, vue Mont Fuji, ryokan avec onsen",
+    activities: [
+      { id: "hakone-pass", name: "Hakone Free Pass (ropeway + bateau + bus + train)", duration: "journée", price: 50, vertige: true, alt: "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani" },
+      { id: "openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 }
+    ]
+  },
+  {
+    id: "kyoto", name: "Kyoto", nights: 5, lodging: { individual: 55, shared: { 2: 75, 3: 100 } },
+    meta: "J8–J12 · Higashiyama, Kiyomizu-dera, Gion, Fushimi Inari, Arashiyama",
+    activities: [
+      { id: "kiyomizu", name: "Kiyomizu-dera", duration: "1h30", price: 4 },
+      { id: "fushimi", name: "Fushimi Inari (torii)", duration: "2h", price: 0 },
+      { id: "bamboo", name: "Bambouseraie d'Arashiyama", duration: "1h", price: 0 },
+      { id: "tenryuji", name: "Tenryu-ji (temple + jardin)", duration: "1h", price: 5 },
+      { id: "kinkakuji", name: "Kinkaku-ji (pavillon d'or)", duration: "1h", price: 5 },
+      { id: "nijo", name: "Nijo Castle", duration: "1h30", price: 10 },
+      { id: "gion", name: "Gion — balade quartier geisha", duration: "1h30", price: 0 }
+    ]
+  },
+  {
+    id: "nara-osaka", name: "Excursions Nara & Osaka", nights: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
+    meta: "J11–J12 · journées depuis Kyoto, pas de nuit supplémentaire",
+    activities: [
+      { id: "todaiji", name: "Nara — Todai-ji (grand bouddha)", duration: "1h", price: 5 },
+      { id: "kasuga", name: "Nara — Kasuga Taisha", duration: "45min", price: 3 },
+      { id: "osaka-castle", name: "Osaka — Château d'Osaka", duration: "1h30", price: 6 },
+      { id: "dotonbori", name: "Osaka — Dotonbori (balade + street food)", duration: "2h", price: 0 },
+      { id: "umeda", name: "Osaka — Umeda Sky Building (observatoire)", duration: "1h", price: 13, vertige: true, alt: "Rester au niveau du sol à Dotonbori / Shinsekai" }
+    ]
+  },
+  {
+    id: "hiroshima", name: "Hiroshima & Miyajima", nights: 2, lodging: { individual: 42, shared: { 2: 58, 3: 76 } },
+    meta: "J13–J14 · Parc de la Paix, musée, excursion Miyajima",
+    activities: [
+      { id: "peace-museum", name: "Musée du mémorial de la paix", duration: "1h30", price: 2 },
+      { id: "peace-park", name: "Parc de la Paix (extérieur)", duration: "1h", price: 0 },
+      { id: "ferry", name: "Ferry pour Miyajima (A/R)", duration: "10min", price: 2 },
+      { id: "itsukushima", name: "Itsukushima-jinja (sanctuaire flottant)", duration: "1h", price: 2 },
+      { id: "misen", name: "Téléphérique mont Misen (A/R)", duration: "2h avec rando", price: 16, vertige: true, alt: "Rester au niveau du sanctuaire et du village, sans monter au sommet" }
+    ]
+  },
+  {
+    id: "kanazawa", name: "Kanazawa", nights: 2, lodging: { individual: 45, shared: { 2: 60, 3: 80 } },
+    meta: "J15–J16 · Kenrokuen, Higashi Chaya, Nagamachi, marché Omicho",
+    activities: [
+      { id: "kenrokuen", name: "Jardin Kenrokuen", duration: "1h30", price: 3 },
+      { id: "higashi-chaya", name: "Quartier Higashi Chaya (balade)", duration: "1h", price: 0 },
+      { id: "museum21", name: "Musée d'art contemporain du 21e siècle", duration: "1h30", price: 10 },
+      { id: "omicho", name: "Marché Omicho (street food)", duration: "1h", price: 0 }
+    ]
+  },
+  {
+    id: "takayama", name: "Takayama & Shirakawa-go", nights: 1, lodging: { individual: 75, shared: { 2: 110, 3: 145 } },
+    meta: "J17–J18 · vieille ville, marché du matin, Shirakawa-go",
+    activities: [
+      { id: "old-town", name: "Vieille ville de Takayama (balade)", duration: "2h", price: 0 },
+      { id: "morning-market", name: "Marché du matin", duration: "1h", price: 0 },
+      { id: "shirakawa-bus", name: "Bus A/R Shirakawa-go depuis Takayama", duration: "demi-journée", price: 24 },
+      { id: "shirakawa-entry", name: "Village de Shirakawa-go (entrée sites)", duration: "2h", price: 3 },
+      { id: "gokayama", name: "Gokayama (gassho-zukuri, moins fréquenté)", duration: "1h30", price: 0, requiresCar: true },
+      { id: "hida-furukawa", name: "Hida Furukawa (vieille ville, canaux)", duration: "1h", price: 0, requiresCar: true }
+    ]
+  }
+];
+
+const FOOD_PER_DAY = 40;
+const MISC_PER_PERSON = 300;
+const SHINKANSEN_PER_PERSON = 351;
+const TRANSPORT_LOCAL_PER_DAY = 7;
+const BUS_COST_PER_PERSON = 24;
+const CAR_RENTAL_FLAT = 230;
+const TOTAL_ACTIVITIES = CITIES.reduce((n, c) => n + c.activities.length, 0);
+
+const fmt = n => Math.round(n).toLocaleString("fr-FR") + " €";
+
+function renderCities() {
+  const root = document.getElementById("cities");
+  root.innerHTML = CITIES.map(city => `
+    <section class="card city-card" data-city="${city.id}">
+      <div class="card-head">
+        <h3>${city.name}</h3>
+        <label class="nights-field">Nuits
+          <input type="number" id="nights-${city.id}" min="0" max="14" value="${city.nights}" data-default="${city.nights}">
+        </label>
+      </div>
+      <p class="meta">${city.meta}</p>
+      ${city.activities.map(a => `
+        <div class="activity-row${a.requiresCar ? ' car-dependent' : ''}" data-activity="${a.id}">
+          <input type="checkbox" id="act-${a.id}" checked data-price="${a.price}" data-requires-car="${!!a.requiresCar}">
+          <label for="act-${a.id}">
+            <span class="activity-name">${a.name}</span>
+            ${a.vertige ? '<span class="badge">⚠ hauteur</span>' : ''}
+            <br><span class="activity-duration">${a.duration}</span>
+          </label>
+          <span class="activity-price">${a.price === 0 ? "gratuit" : a.price + " €/pers"}</span>
+          ${a.alt ? `<div class="alt-note"><b>Alternative sans vertige :</b> ${a.alt}</div>` : ""}
+          ${a.requiresCar ? `<div class="car-note">Nécessite l'option voiture de location (ci-dessus) — inclus dans son coût, pas de supplément.</div>` : ""}
+        </div>
+      `).join("")}
+    </section>
+  `).join("");
+  root.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener("change", update));
+  root.querySelectorAll('input[type="number"]').forEach(inp => inp.addEventListener("input", update));
+}
+
+function getNights(cityId) {
+  const el = document.getElementById("nights-" + cityId);
+  return Math.max(0, parseInt(el.value, 10) || 0);
+}
+
+function getTravelers() {
+  return parseInt(document.querySelector('input[name="travelers"]:checked').value, 10);
+}
+
+function getLodgingFormula() {
+  return document.querySelector('input[name="lodging"]:checked').value;
+}
+
+function syncCarDependentCheckboxes() {
+  const carOn = document.getElementById("car-toggle").checked;
+  document.querySelectorAll('.activity-row.car-dependent').forEach(row => {
+    const cb = row.querySelector('input[type="checkbox"]');
+    cb.disabled = !carOn;
+    row.classList.toggle("disabled", !carOn);
+    if (!carOn) cb.checked = false;
+  });
+}
+
+function update() {
+  syncCarDependentCheckboxes();
+  const travelers = getTravelers();
+  const flightPerPerson = Math.max(0, parseFloat(document.getElementById("flight-price").value) || 0);
+  const carOn = document.getElementById("car-toggle").checked;
+  const lodgingFormula = getLodgingFormula();
+
+  const flight = flightPerPerson * travelers;
+
+  const nightsByCity = {};
+  let totalNights = 0;
+  CITIES.forEach(c => { const n = getNights(c.id); nightsByCity[c.id] = n; totalNights += n; });
+  const totalDays = totalNights + 1;
+
+  const lodging = CITIES.reduce((sum, c) => {
+    const perNight = lodgingFormula === "individual" ? c.lodging.individual * travelers : c.lodging.shared[travelers];
+    return sum + nightsByCity[c.id] * perNight;
+  }, 0);
+
+  let transport = SHINKANSEN_PER_PERSON * travelers + TRANSPORT_LOCAL_PER_DAY * totalDays * travelers;
+  if (carOn) transport = transport - (BUS_COST_PER_PERSON * travelers) + CAR_RENTAL_FLAT;
+
+  let activitiesChecked = 0;
+  let activitiesCost = 0;
+  document.querySelectorAll('#cities input[type="checkbox"]').forEach(cb => {
+    if (cb.checked) {
+      activitiesChecked++;
+      activitiesCost += parseFloat(cb.dataset.price) * travelers;
+    }
+  });
+
+  const food = FOOD_PER_DAY * totalDays * travelers;
+  const misc = MISC_PER_PERSON * travelers;
+
+  const total = flight + lodging + transport + activitiesCost + food + misc;
+
+  document.getElementById("total-value").textContent = fmt(total);
+  document.getElementById("total-sub").textContent = `pour ${travelers} personne${travelers > 1 ? "s" : ""}, ${totalNights} nuit${totalNights > 1 ? "s" : ""} (${totalDays} jours sur place)`;
+  document.getElementById("per-person-value").textContent = fmt(total / travelers);
+  document.getElementById("nights-total").textContent = totalNights;
+  document.getElementById("activities-count").textContent = `${activitiesChecked} / ${TOTAL_ACTIVITIES}`;
+  document.getElementById("flight-total").textContent = fmt(flight);
+
+  renderChart([
+    { label: "Vol", value: flight },
+    { label: "Hébergement", value: lodging },
+    { label: "Transport", value: transport },
+    { label: "Activités", value: activitiesCost },
+    { label: "Nourriture", value: food },
+    { label: "Divers", value: misc }
+  ]);
+}
+
+function renderChart(rows) {
+  const max = Math.max(...rows.map(r => r.value), 1);
+  document.getElementById("chart").innerHTML = rows.map(r => `
+    <div class="bar-row">
+      <span class="bar-label">${r.label}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${Math.max(2, (r.value / max) * 100)}%"></span></span>
+      <span class="bar-value">${fmt(r.value)}</span>
+    </div>
+  `).join("");
+}
+
+document.getElementById("travelers-group").addEventListener("change", update);
+document.getElementById("lodging-group").addEventListener("change", update);
+document.getElementById("flight-price").addEventListener("input", update);
+document.getElementById("car-toggle").addEventListener("change", update);
+document.getElementById("check-all").addEventListener("click", () => {
+  document.querySelectorAll('#cities input[type="checkbox"]:not([disabled])').forEach(cb => cb.checked = true);
+  update();
+});
+document.getElementById("uncheck-all").addEventListener("click", () => {
+  document.querySelectorAll('#cities input[type="checkbox"]').forEach(cb => cb.checked = false);
+  update();
+});
+document.getElementById("uncheck-vertige").addEventListener("click", () => {
+  CITIES.forEach(city => city.activities.filter(a => a.vertige).forEach(a => {
+    const cb = document.getElementById("act-" + a.id);
+    if (cb) cb.checked = false;
+  }));
+  update();
+});
+document.getElementById("reset-nights").addEventListener("click", () => {
+  CITIES.forEach(city => {
+    const el = document.getElementById("nights-" + city.id);
+    if (el) el.value = el.dataset.default;
+  });
+  update();
+});
+
+renderCities();
+syncCarDependentCheckboxes();
+update();
+</script>

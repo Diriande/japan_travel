@@ -1,0 +1,84 @@
+{
+  "principe": "Un lit par personne garanti, en visant du business hotel économique (type Toyoko Inn / R&B Hotel / APA Hotel) plutôt que du 3-4 étoiles, pour limiter le budget.",
+  "devise_reference": "1 EUR ~= 160-165 JPY (hypothèse, à vérifier au moment de la réservation)",
+  "deux_formules": {
+    "individuelle": {
+      "description": "1 chambre individuelle par personne (chambre 'single' classique de business hotel), référence : R&B Hotel Ueno-Hirokoji à Tokyo. Plus de confort/intimité, coût total plus élevé car pas de mutualisation.",
+      "calcul": "prix_chambre_individuelle x nombre de voyageurs x nuits"
+    },
+    "partagee": {
+      "description": "1 chambre partagée avec un lit/futon par personne (chambre familiale ou triple), référence : Riverside Shinjuku (3 lits dans la même pièce). Moins cher au total grâce à la mutualisation, moins d'intimité.",
+      "calcul": "prix_chambre_partagee[nb_voyageurs] x nuits"
+    }
+  },
+  "etapes": [
+    {
+      "ville": "Tokyo (1er séjour + retour, cumulé)",
+      "nuits": 8,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 55,
+        "partagee_2pers": 70,
+        "partagee_3pers": 92
+      },
+      "exemples": ["R&B Hotel Ueno-Hirokoji (individuelle)", "Riverside Shinjuku (partagée, type guesthouse/hostel)", "Toyoko Inn", "APA Hotel"]
+    },
+    {
+      "ville": "Hakone",
+      "nuits": 1,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 130,
+        "partagee_2pers": 190,
+        "partagee_3pers": 250
+      },
+      "note": "Ryokan simple avec onsen, demi-pension (dîner + petit-déj inclus) - le tarif ryokan reste plus élevé qu'un business hotel classique même en formule économique, car les repas sont inclus",
+      "exemples": ["Ryokans du secteur Hakone-Yumoto Onsen, gamme simple/moyenne"]
+    },
+    {
+      "ville": "Kyoto",
+      "nuits": 5,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 55,
+        "partagee_2pers": 75,
+        "partagee_3pers": 100
+      },
+      "exemples": ["Piece Hostel Sanjo (chambres triples/familiales)", "Toyoko Inn Kyoto", "APA Hotel Kyoto"]
+    },
+    {
+      "ville": "Hiroshima",
+      "nuits": 2,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 42,
+        "partagee_2pers": 58,
+        "partagee_3pers": 76
+      },
+      "exemples": ["Toyoko Inn Hiroshima", "Route Inn Hiroshima"]
+    },
+    {
+      "ville": "Kanazawa",
+      "nuits": 2,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 45,
+        "partagee_2pers": 60,
+        "partagee_3pers": 80
+      },
+      "exemples": ["Toyoko Inn Kanazawa", "APA Hotel Kanazawa"]
+    },
+    {
+      "ville": "Takayama",
+      "nuits": 1,
+      "prix_nuit_eur": {
+        "individuelle_par_pers": 75,
+        "partagee_2pers": 110,
+        "partagee_3pers": 145
+      },
+      "note": "Minshuku/ryokan simple, souvent en demi-pension",
+      "exemples": ["Rickshaw Inn", "minshuku de la vieille ville"]
+    }
+  ],
+  "totaux_indicatifs_eur": {
+    "total_nuits": 19,
+    "formule_partagee": { "total_2_personnes": 1471, "total_3_personnes": 1943 },
+    "formule_individuelle": { "total_2_personnes": 2188, "total_3_personnes": 3282 },
+    "note_calcul": "Somme des (prix_nuit x nuits) par étape. La formule partagée est nettement moins chère grâce à la mutualisation. Le dashboard recalcule ce total selon la formule et le nombre de voyageurs choisis."
+  }
+}

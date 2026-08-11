@@ -1,0 +1,29 @@
+{
+  "compagnie": "Finnair",
+  "route": "Paris CDG - Helsinki HEL - Tokyo HND/NRT (aller-retour)",
+  "escale": "Helsinki, ~2h-3h de correspondance",
+  "duree_totale_approx": "15h-16h par trajet, escale incluse",
+  "bagages_inclus": "2 x 23kg en soute + 1 bagage cabine (tarif Classic)",
+  "prix_par_personne_eur": {
+    "hypothese_retenue": 1000,
+    "basse_saison": 800,
+    "haute_saison_sakura_momiji": 1300,
+    "tres_haute_saison_fetes": 1600,
+    "note": "Hypothèse utilisateur : ~1000€ A/R avec 2 bagages 23kg. Fourchette réaliste 800-1600€ selon la saison et la date d'achat (idéalement 4-6 mois à l'avance)."
+  },
+  "alternatives_comparaison": [
+    {"compagnie": "Air France", "type": "vol direct CDG-HND", "prix_indicatif_eur": "950-1400", "bagages": "souvent 2x23kg en classe Premium/Business seulement, 1x23kg en Economy standard"},
+    {"compagnie": "ANA / JAL", "type": "vol direct ou via partenaire", "prix_indicatif_eur": "1000-1600", "bagages": "généralement 2x23kg inclus en Economy"},
+    {"compagnie": "KLM/Air France via Amsterdam", "type": "1 escale", "prix_indicatif_eur": "850-1300", "bagages": "variable selon tarif"}
+  ],
+  "vols_interieurs_japon": {
+    "recommandation": "Non nécessaires pour cet itinéraire : le réseau Shinkansen couvre tout le tracé (Tokyo-Kyoto-Hiroshima-Kanazawa) de façon plus pratique que l'avion, sans les contraintes d'aéroport.",
+    "exception_possible": "Si extension vers Hokkaido (Sapporo) ou Okinawa envisagée, vol intérieur JAL/ANA/Peach recommandé (~80-150€ par trajet)."
+  },
+  "conseils_reservation": [
+    "Réserver 4 à 6 mois à l'avance pour un vol en avril (sakura) ou novembre (momiji), périodes très demandées",
+    "Vérifier la franchise bagage exacte du tarif choisi (Light/Classic/Comfort) avant paiement",
+    "Prévoir la correspondance à Helsinki avec une marge d'au moins 1h30-2h",
+    "Departure/retour Haneda (HND) plus proche du centre de Tokyo que Narita (NRT) - à privilégier si le choix est possible"
+  ]
+}
