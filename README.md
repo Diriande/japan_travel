@@ -15,7 +15,7 @@ Compilation de préparation pour un voyage au Japon, pour **2 ou 3 personnes**, 
 - **Voyageurs** : 2 ou 3 personnes (l'incertitude porte sur la participation d'un des deux parents)
 - **Saison de référence** : mi-saison type avril (sakura) ou novembre (momiji) — haute saison, donc tarifs plutôt hauts. Hors de ces périodes, compter 15-25% de moins sur vols et hébergement.
 - **Vols** : Finnair, Paris-Helsinki-Tokyo, 2x23kg en soute inclus, ~1000€ A/R par personne (hypothèse utilisateur)
-- **Devise** : 1 EUR ≈ 160-165 JPY (à vérifier au moment de la réservation)
+- **Devise** : 1 EUR ≈ 180 JPY (à vérifier au moment de la réservation)
 
 ⚠️ Tous les tarifs sont des **estimations 2025/2026 à vérifier** avant réservation.
 

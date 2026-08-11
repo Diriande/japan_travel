@@ -1,5 +1,5 @@
 {
-  "devise_reference": "1 EUR ~= 160-165 JPY (hypothèse)",
+  "devise_reference": "1 EUR ~= 180 JPY (hypothèse utilisateur)",
   "villes": [
     {
       "ville": "Tokyo",

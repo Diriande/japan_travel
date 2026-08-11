@@ -1,6 +1,6 @@
 {
   "principe": "Un lit par personne garanti, en visant du business hotel économique (type Toyoko Inn / R&B Hotel / APA Hotel) plutôt que du 3-4 étoiles, pour limiter le budget.",
-  "devise_reference": "1 EUR ~= 160-165 JPY (hypothèse, à vérifier au moment de la réservation)",
+  "devise_reference": "1 EUR ~= 180 JPY (hypothèse utilisateur, à vérifier au moment de la réservation)",
   "deux_formules": {
     "individuelle": {
       "description": "1 chambre individuelle par personne (chambre 'single' classique de business hotel), référence : R&B Hotel Ueno-Hirokoji à Tokyo. Plus de confort/intimité, coût total plus élevé car pas de mutualisation.",
