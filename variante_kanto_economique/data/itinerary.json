@@ -7,15 +7,18 @@
   "route": "Tokyo (base) -> Kamakura & Enoshima -> Yokohama (excursion) -> Kawaguchiko/Fuji -> Hakone -> Chichibu (excursion) -> Nokogiriyama/Chiba (excursion) -> Narita (avant le vol retour)",
   "priorites": ["temples", "randonnée", "découverte", "nourriture"],
   "etapes": [
-    { "id": "tokyo", "ville": "Tokyo (base)", "jours": "J2-J6, J9-J11, J15, J17-J19", "nuits": 13, "resume": "Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza" },
+    { "id": "tokyo", "ville": "Tokyo (base)", "jours": "J2-J6, J9-J11, J14-J19", "nuits": 14, "resume": "Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza" },
     { "id": "kamakura", "ville": "Kamakura & Enoshima", "jours": "J7-J8", "nuits": 2, "resume": "Grand Bouddha, Hase-dera, Hokoku-ji, sentier de randonnée Daibutsu, île d'Enoshima" },
     { "id": "yokohama", "ville": "Yokohama", "jours": "J10", "nuits": 0, "resume": "Excursion depuis Tokyo : Chinatown, jardin Sankeien, quartier Yamate" },
-    { "id": "kawaguchiko", "ville": "Kawaguchiko (Fuji Five Lakes)", "jours": "J12-J13", "nuits": 2, "resume": "Pagode Chureito, Oshino Hakkai, randonnée Mont Tenjo, croisière sur le lac" },
-    { "id": "hakone", "ville": "Hakone", "jours": "J14", "nuits": 1, "resume": "Owakudani, lac Ashi, ancienne route du Tokaido, sanctuaire Hakone-jinja" },
+    { "id": "kawaguchiko", "ville": "Kawaguchiko (Fuji Five Lakes)", "jours": "J12-J13", "nuits": 1, "resume": "1 nuit, pass 2 jours Fujikyu (Mt. Fuji and Fuji Five Lakes Passport) utilisé à plein : Chureito à l'arrivée, Oshino Hakkai + rando/ropeway le lendemain" },
+    { "id": "hakone", "ville": "Hakone", "jours": "J13", "nuits": 1, "resume": "Owakudani, lac Ashi, ancienne route du Tokaido, sanctuaire Hakone-jinja" },
     { "id": "chichibu", "ville": "Chichibu", "jours": "J16", "nuits": 0, "resume": "Excursion depuis Tokyo : Nagatoro (gorges + bateau), Hodosan, Chichibu-jinja - Mitsumineyama écarté car trop excentré pour une journée combinée" },
     { "id": "chiba", "ville": "Nokogiriyama (Chiba)", "jours": "J18", "nuits": 0, "resume": "Excursion depuis Tokyo : temple Nihon-ji, point de vue Jigoku Nozoki, randonnée" },
     { "id": "narita", "ville": "Narita", "jours": "J20", "nuits": 1, "resume": "Temple Naritasan Shinshoji, rue de l'anguille (Unagi-dori), dernière nuit avant le vol" }
   ],
+  "notes": {
+    "kawaguchiko_pass": "Mt. Fuji and Fuji Five Lakes Passport (Fujikyu) : pass 2 jours, ~3300-4700¥/pers selon la version, bus touristique local illimité autour des lacs. Choisi ici avec 1 nuit sur place pour l'utiliser à plein sur 2 journées sans excès de temps sur place."
+  },
   "jours_detail": [
     {"jour": "J1", "titre": "Vol Paris -> Helsinki -> Tokyo", "detail": "Nuit dans l'avion"},
     {"jour": "J2", "titre": "Arrivée Tokyo (Haneda)", "detail": "Transfert hôtel Asakusa, Senso-ji au coucher du soleil"},
@@ -28,10 +31,10 @@
     {"jour": "J9", "titre": "Tokyo libre", "detail": "Rattrapage, TeamLab si souhaité"},
     {"jour": "J10", "titre": "Excursion Yokohama", "detail": "Chinatown, jardin Sankeien, Yamate"},
     {"jour": "J11", "titre": "Tokyo libre", "detail": "Tsukiji/Ginza"},
-    {"jour": "J12", "titre": "Tokyo -> Kawaguchiko", "detail": "Bus, installation, Chureito si le temps le permet"},
-    {"jour": "J13", "titre": "Kawaguchiko", "detail": "Oshino Hakkai, croisière, randonnée Mont Tenjo"},
-    {"jour": "J14", "titre": "Kawaguchiko -> Hakone", "detail": "Owakudani, lac Ashi, ancienne route du Tokaido, nuit en ryokan avec onsen"},
-    {"jour": "J15", "titre": "Hakone -> Tokyo", "detail": "Retour à Tokyo, après-midi libre"},
+    {"jour": "J12", "titre": "Tokyo -> Kawaguchiko", "detail": "Bus, achat du pass 2 jours, Chureito si le temps le permet, nuit sur place"},
+    {"jour": "J13", "titre": "Kawaguchiko -> Hakone", "detail": "Matin : Oshino Hakkai, croisière/rando Mont Tenjo (jour 2 du pass). Après-midi : bus vers Hakone, Owakudani, lac Ashi, ancienne route du Tokaido, nuit en ryokan avec onsen"},
+    {"jour": "J14", "titre": "Hakone -> Tokyo", "detail": "Retour à Tokyo, après-midi libre"},
+    {"jour": "J15", "titre": "Tokyo libre", "detail": "Journée tampon"},
     {"jour": "J16", "titre": "Excursion Chichibu", "detail": "Nagatoro (gorges + bateau), Hodosan, Chichibu-jinja - retour Tokyo le soir"},
     {"jour": "J17", "titre": "Tokyo libre", "detail": "Journée tampon"},
     {"jour": "J18", "titre": "Excursion Nokogiriyama (Chiba)", "detail": "Temple Nihon-ji, Jigoku Nozoki, randonnée"},

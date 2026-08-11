@@ -4,7 +4,7 @@
   "etapes": [
     {
       "ville": "Tokyo (base)",
-      "nuits": 13,
+      "nuits": 14,
       "prix_nuit_eur": { "individuelle_par_pers": 55, "partagee_2pers": 70, "partagee_3pers": 92 },
       "exemples": ["R&B Hotel Ueno-Hirokoji (individuelle)", "Riverside Shinjuku (partagée)", "Toyoko Inn", "APA Hotel"]
     },
@@ -16,8 +16,9 @@
     },
     {
       "ville": "Kawaguchiko (Fuji Five Lakes)",
-      "nuits": 2,
+      "nuits": 1,
       "prix_nuit_eur": { "individuelle_par_pers": 50, "partagee_2pers": 68, "partagee_3pers": 90 },
+      "note": "1 nuit, pour utiliser à plein le Mt. Fuji and Fuji Five Lakes Passport (Fujikyu), pass 2 jours à ~3300-4700¥/pers couvrant le bus touristique local autour des lacs",
       "exemples": ["Guesthouses et petits hôtels économiques autour du lac"]
     },
     {
@@ -42,8 +43,8 @@
   ],
   "totaux_indicatifs_eur": {
     "total_nuits": 19,
-    "formule_partagee": { "total_2_personnes": 1428, "total_3_personnes": 1878 },
-    "formule_individuelle": { "total_2_personnes": 2172, "total_3_personnes": 3258 },
+    "formule_partagee": { "total_2_personnes": 1430, "total_3_personnes": 1880 },
+    "formule_individuelle": { "total_2_personnes": 2182, "total_3_personnes": 3273 },
     "note_calcul": "Le dashboard recalcule ce total selon la formule, le nombre de voyageurs et la durée choisie."
   }
 }
