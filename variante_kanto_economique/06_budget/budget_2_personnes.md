@@ -9,10 +9,10 @@ Chiffres pour la version 3 semaines (19 nuits). Chichibu est traitée en excursi
 | Vol Finnair A/R | 1000€ | 2000€ |
 | Hébergement (19 nuits) | 715€ | 1430€ |
 | Transport de base | 252€ | 504€ |
-| Activités/visites | 217€ | 434€ |
+| Activités/visites (dont pass Fuji Five Lakes) | 237€ | 474€ |
 | Nourriture (20 jours, ~40€/jour) | 800€ | 1600€ |
 | Divers | 300€ | 600€ |
-| **TOTAL** | **~3284€** | **~6568€** |
+| **TOTAL** | **~3304€** | **~6608€** |
 
 ## Formule individuelle
 
@@ -21,9 +21,9 @@ Chiffres pour la version 3 semaines (19 nuits). Chichibu est traitée en excursi
 | Vol Finnair A/R | 1000€ | 2000€ |
 | Hébergement (19 nuits, chambre individuelle) | 1091€ | 2182€ |
 | Transport de base | 252€ | 504€ |
-| Activités/visites | 217€ | 434€ |
+| Activités/visites (dont pass Fuji Five Lakes) | 237€ | 474€ |
 | Nourriture | 800€ | 1600€ |
 | Divers | 300€ | 600€ |
-| **TOTAL** | **~3660€** | **~7320€** |
+| **TOTAL** | **~3680€** | **~7360€** |
 
 Ces montants sont recalculables en direct dans `dashboard/index.html` (sélecteur de variante en haut des réglages).

@@ -44,7 +44,7 @@ Ouvrir `dashboard/index.html` dans un navigateur (aucune connexion internet requ
 | | 2 personnes | 3 personnes |
 |---|---|---|
 | **Alpes japonaises** — total / par pers. | ~7078€ / ~3539€ | ~10347€ / ~3449€ |
-| **Kanto économique** — total / par pers. | ~6568€ / ~3284€ | ~9587€ / ~3196€ |
+| **Kanto économique** — total / par pers. | ~6608€ / ~3304€ | ~9647€ / ~3216€ |
 
 La variante Kanto économise ~500-760€ au total, principalement grâce à l'absence de Shinkansen et à moins de nuits hors de Tokyo. Détail dans `06_budget/` et `variante_kanto_economique/06_budget/`.
 

@@ -39,6 +39,7 @@
     {
       "ville": "Kawaguchiko (Fuji Five Lakes)",
       "activites": [
+        {"nom": "Mt. Fuji and Fuji Five Lakes Passport (2 jours, bus touristique local illimité)", "prix_pers_eur": 20, "duree": "2 jours"},
         {"nom": "Pagode Chureito (point de vue Fuji)", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Oshino Hakkai (village des sources)", "prix_pers_eur": 0, "duree": "1h30"},
         {"nom": "Kachi Kachi Yama Ropeway", "prix_pers_eur": 15, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée du Mont Tenjo (~1h de montée) plutôt que le téléphérique"},

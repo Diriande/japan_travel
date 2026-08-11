@@ -22,8 +22,8 @@ Détail jour par jour dans `04_itineraire/`.
 
 | | 2 personnes | 3 personnes |
 |---|---|---|
-| Total | ~6568€ | ~9587€ |
-| Par personne | ~3284€ | ~3196€ |
+| Total | ~6608€ | ~9647€ |
+| Par personne | ~3304€ | ~3216€ |
 
 Environ 500-760€ de moins que la version Alpes japonaises, principalement grâce à des trajets longue distance beaucoup moins chers (pas de Shinkansen) et moins de nuits en ryokan. Détail dans `06_budget/`.
 
