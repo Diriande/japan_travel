@@ -12,7 +12,14 @@
         {"nom": "Tsukiji (marché extérieur) + Ginza", "prix_pers_eur": 0, "duree": "2h"},
         {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"},
         {"nom": "TeamLab Planets ou Borderless", "prix_pers_eur": 26, "duree": "2h30"},
-        {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Observatoire gratuit Tocho à Shinjuku"}
+        {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Observatoire gratuit Tocho à Shinjuku"},
+        {"nom": "Zoo d'Ueno (pandas)", "prix_pers_eur": 3, "duree": "2h", "bonus": true},
+        {"nom": "Musée Ghibli (Mitaka)", "prix_pers_eur": 6, "duree": "2h", "bonus": true, "note": "Billets datés à réserver plusieurs mois à l'avance"},
+        {"nom": "Jardins Est du Palais Impérial", "prix_pers_eur": 0, "duree": "1h30", "bonus": true},
+        {"nom": "Aquarium de Sumida (proche Skytree)", "prix_pers_eur": 14, "duree": "1h30", "bonus": true},
+        {"nom": "Musée Nezu (art + jardin japonais)", "prix_pers_eur": 8, "duree": "1h30", "bonus": true},
+        {"nom": "Roppongi Hills - observatoire Mori Tower", "prix_pers_eur": 15, "duree": "1h", "bonus": true, "attention_vertige": true, "alternative_sans_hauteur": "Base de Roppongi Hills sans monter à l'observatoire"},
+        {"nom": "Musée du sumo (Ryogoku Kokugikan, hors tournoi)", "prix_pers_eur": 0, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -24,7 +31,10 @@
         {"nom": "Sentier de randonnée Daibutsu (temples reliés en forêt)", "prix_pers_eur": 0, "duree": "1h30-2h"},
         {"nom": "Zeniarai Benten (sanctuaire dans une grotte)", "prix_pers_eur": 0, "duree": "30min"},
         {"nom": "Enoshima - sanctuaire et grottes Iwaya", "prix_pers_eur": 5, "duree": "2h"},
-        {"nom": "Enoshima Sea Candle (tour d'observation)", "prix_pers_eur": 5, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Balade dans les jardins de l'île sans monter dans la tour"}
+        {"nom": "Enoshima Sea Candle (tour d'observation)", "prix_pers_eur": 5, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Balade dans les jardins de l'île sans monter dans la tour"},
+        {"nom": "Engaku-ji (grand temple zen)", "prix_pers_eur": 3, "duree": "45min", "bonus": true},
+        {"nom": "Kencho-ji (plus ancien temple zen du Japon)", "prix_pers_eur": 3, "duree": "45min", "bonus": true},
+        {"nom": "Meigetsu-in (temple des hortensias)", "prix_pers_eur": 3, "duree": "30min", "bonus": true, "note": "Saisonnier : hortensias en fleur mi-juin"}
       ]
     },
     {
@@ -33,7 +43,10 @@
         {"nom": "Chinatown (balade, street food)", "prix_pers_eur": 0, "duree": "2h"},
         {"nom": "Sankeien Garden (jardin historique, pagode)", "prix_pers_eur": 5, "duree": "1h30"},
         {"nom": "Quartier Yamate (maisons occidentales)", "prix_pers_eur": 0, "duree": "1h"},
-        {"nom": "Grande roue Cosmo World (Minato Mirai)", "prix_pers_eur": 5, "duree": "15min", "attention_vertige": true, "alternative_sans_hauteur": "Balade sur les quais de Minato Mirai"}
+        {"nom": "Grande roue Cosmo World (Minato Mirai)", "prix_pers_eur": 5, "duree": "15min", "attention_vertige": true, "alternative_sans_hauteur": "Balade sur les quais de Minato Mirai"},
+        {"nom": "Musée Cup Noodles (atelier création)", "prix_pers_eur": 3, "duree": "1h30", "bonus": true},
+        {"nom": "Yokohama Landmark Tower - Sky Garden", "prix_pers_eur": 6, "duree": "45min", "bonus": true, "attention_vertige": true, "alternative_sans_hauteur": "Balade sur les quais de Minato Mirai"},
+        {"nom": "Entrepôts de brique rouge (Akarenga)", "prix_pers_eur": 0, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -43,7 +56,9 @@
         {"nom": "Pagode Chureito (point de vue Fuji)", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Oshino Hakkai (village des sources)", "prix_pers_eur": 0, "duree": "1h30"},
         {"nom": "Kachi Kachi Yama Ropeway", "prix_pers_eur": 15, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée du Mont Tenjo (~1h de montée) plutôt que le téléphérique"},
-        {"nom": "Croisière sur le lac Kawaguchiko", "prix_pers_eur": 9, "duree": "30min"}
+        {"nom": "Croisière sur le lac Kawaguchiko", "prix_pers_eur": 9, "duree": "30min"},
+        {"nom": "Fuji-Q Highland (parc à sensations)", "prix_pers_eur": 40, "duree": "demi-journée", "bonus": true, "attention_vertige": true, "alternative_sans_hauteur": "Skipper cette étape (montagnes russes et attractions à sensations fortes)", "note": "Entrée gratuite, pass journée attractions illimitées ~40€/pers"},
+        {"nom": "Musée d'art Itchiku Kubota", "prix_pers_eur": 7, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -51,7 +66,9 @@
       "activites": [
         {"nom": "Hakone Free Pass (ropeway + bateau + bus + train)", "prix_pers_eur": 50, "duree": "journée", "attention_vertige": true, "alternative_sans_hauteur": "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani"},
         {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"},
-        {"nom": "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", "prix_pers_eur": 0, "duree": "2h"}
+        {"nom": "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", "prix_pers_eur": 0, "duree": "2h"},
+        {"nom": "Hakone Sekisho (poste de contrôle d'époque Edo)", "prix_pers_eur": 3, "duree": "45min", "bonus": true},
+        {"nom": "Pola Museum of Art", "prix_pers_eur": 12, "duree": "1h30", "bonus": true}
       ]
     },
     {
@@ -60,7 +77,8 @@
         {"nom": "Chichibu-jinja (sanctuaire en ville)", "prix_pers_eur": 0, "duree": "30min"},
         {"nom": "Nagatoro - gorges rocheuses Iwadatami (balade)", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Nagatoro - descente en bateau (funakudari)", "prix_pers_eur": 25, "duree": "30min"},
-        {"nom": "Hodosan - sanctuaire + ropeway", "prix_pers_eur": 10, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~1h)"}
+        {"nom": "Hodosan - sanctuaire + ropeway", "prix_pers_eur": 10, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~1h)"},
+        {"nom": "Chichibu Muse Park - colline de Shibazakura", "prix_pers_eur": 3, "duree": "1h", "bonus": true, "note": "Saisonnier : moss phlox en fleur mi-avril à début mai"}
       ],
       "note": "Nagatoro et Hodosan sont sur la même ligne de train (Chichibu Railway), combinables en une journée depuis Tokyo (~1h20 de train). Mitsumineyama a été écarté : plus excentré (bus + ropeway en plus), difficile à combiner avec Nagatoro dans la même journée."
     },

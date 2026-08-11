@@ -11,3 +11,10 @@
 **Total activités payantes indicatif/pers** : ~44€
 
 Le pass est un vrai pass 2 jours (pas 1 jour) - c'est ce qui justifie de passer 1 nuit sur place plutôt que de faire un aller-retour dans la journée, pour en profiter pleinement sur ses deux journées calendaires. Voir `03_hebergement/kawaguchiko.md`.
+
+## Bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Fuji-Q Highland (parc à sensations) | ~40€ | demi-journée | ⚠️ Vertige (montagnes russes) - entrée gratuite, pass journée attractions illimitées ~40€/pers |
+| Musée d'art Itchiku Kubota | ~7€ | 1h | |

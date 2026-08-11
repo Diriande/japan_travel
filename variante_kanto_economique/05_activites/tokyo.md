@@ -13,3 +13,15 @@
 | Tokyo Skytree (observatoire) | ~20€ | 1h30 | ⚠️ Vertige - alt. : observatoire gratuit Tocho à Shinjuku |
 
 **Total activités payantes indicatif/pers** : ~49€ (la plupart des activités sont gratuites)
+
+## Bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Zoo d'Ueno (pandas) | ~3€ | 2h | |
+| Musée Ghibli (Mitaka) | ~6€ | 2h | Billets datés à réserver plusieurs mois à l'avance |
+| Jardins Est du Palais Impérial | Gratuit | 1h30 | |
+| Aquarium de Sumida (proche Skytree) | ~14€ | 1h30 | |
+| Musée Nezu (art + jardin japonais) | ~8€ | 1h30 | |
+| Roppongi Hills - observatoire Mori Tower | ~15€ | 1h | ⚠️ Vertige - alt. : base de Roppongi Hills sans monter |
+| Musée du sumo (Ryogoku Kokugikan, hors tournoi) | Gratuit | 1h | |

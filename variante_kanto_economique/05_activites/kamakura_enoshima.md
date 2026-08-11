@@ -11,3 +11,11 @@
 | Enoshima Sea Candle (tour d'observation) | ~5€ | 45min | ⚠️ Vertige - alt. : jardins de l'île au niveau du sol |
 
 **Total activités payantes indicatif/pers** : ~18€
+
+## Bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Engaku-ji (grand temple zen) | ~3€ | 45min | |
+| Kencho-ji (plus ancien temple zen du Japon) | ~3€ | 45min | |
+| Meigetsu-in (temple des hortensias) | ~3€ | 30min | Saisonnier : hortensias en fleur mi-juin |

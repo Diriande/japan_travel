@@ -35,7 +35,7 @@ Ouvrir `dashboard/index.html` dans un navigateur (aucune connexion internet requ
 - choisir la durée (preset 2 ou 3 semaines, ou ajuster le nombre de nuits ville par ville)
 - choisir la formule d'hébergement (chambre partagée ou individuelle)
 - activer/désactiver l'option voiture de location (variante Alpes uniquement : Takayama → Kanazawa, via Gokayama/Hida Furukawa)
-- cocher/décocher les activités par ville pour ajuster le budget
+- cocher/décocher les activités par ville pour ajuster le budget (dont de nombreuses activités "bonus" décochées par défaut, ex. zoo d'Ueno, musée Ghibli, aquarium de Sumida, temples supplémentaires de Kamakura, Fuji-Q Highland...)
 - modifier les hypothèses de coût (nourriture, transport local, trajets longue distance, divers) dans la section dédiée
 - voir le budget total et par personne se recalculer en direct, avec la répartition par poste
 

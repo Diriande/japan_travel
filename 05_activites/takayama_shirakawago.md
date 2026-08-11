@@ -17,3 +17,10 @@ Aucune activité à hauteur significative sur cette étape.
 |---|---|---|
 | Gokayama (village gassho-zukuri, moins fréquenté que Shirakawa-go) | Inclus dans le coût voiture (~230€ pour le groupe, trajet Takayama-Kanazawa) | 1h30 sur place |
 | Hida Furukawa (vieille ville, canaux et carpes) | Inclus dans le coût voiture | 1h |
+
+## Autres bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée |
+|---|---|---|
+| Hida no Sato (village-musée en plein air) | ~4€ | 1h30 |
+| Takayama Jinya (ancien siège administratif Edo) | ~2€ | 1h |

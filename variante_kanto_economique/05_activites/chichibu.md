@@ -10,3 +10,9 @@
 **Total activités payantes indicatif/pers** : ~35€
 
 Nagatoro et Hodosan sont sur la même ligne (Chichibu Railway), combinables en une journée depuis Tokyo (~1h20 de train). **Mitsumineyama a été écarté** : accessible seulement par bus + ropeway depuis la gare de Chichibu, il rend la combinaison avec Nagatoro trop serrée pour une journée depuis Tokyo sans nuit sur place.
+
+## Bonus (en option, décoché par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Chichibu Muse Park - colline de Shibazakura | ~3€ | 1h | Saisonnier : moss phlox en fleur mi-avril à début mai |

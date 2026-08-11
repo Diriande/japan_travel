@@ -9,3 +9,9 @@
 **Total activités payantes indicatif/pers** : ~6€
 
 Aucune activité en hauteur - étape détente sans vertige.
+
+## Bonus (en option, décoché par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée |
+|---|---|---|
+| Balade le long de la rivière Hida (pont Nakase) | Gratuit | 45min |

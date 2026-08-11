@@ -8,3 +8,11 @@
 | Grande roue Cosmo World (Minato Mirai) | ~5€ | 15min | ⚠️ Vertige - alt. : balade sur les quais de Minato Mirai |
 
 **Total activités payantes indicatif/pers** : ~10€
+
+## Bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Musée Cup Noodles (atelier création) | ~3€ | 1h30 | |
+| Yokohama Landmark Tower - Sky Garden | ~6€ | 45min | ⚠️ Vertige - alt. : balade sur les quais de Minato Mirai |
+| Entrepôts de brique rouge (Akarenga) | Gratuit | 1h | |

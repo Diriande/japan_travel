@@ -173,6 +173,7 @@
     display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600;
     background: var(--attention-soft); color: var(--attention); border-radius: 999px; padding: 2px 8px; margin-left: 8px;
   }
+  .badge.bonus { background: var(--accent-soft); color: var(--accent-strong); }
   .alt-note {
     grid-column: 2 / -1; font-size: 0.82rem; color: var(--ink-secondary);
     background: var(--attention-soft); border-radius: 8px; padding: 6px 10px; margin-top: 2px;
@@ -352,7 +353,14 @@ const ALPS_CITIES = [
       { id: "skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku, ou étage bas (150m) de la Tokyo Tower" },
       { id: "tocho", name: "Observatoire gratuit Tocho (Shinjuku)", duration: "45min", price: 0 },
       { id: "teamlab", name: "TeamLab Planets / Borderless", duration: "2h30", price: 26 },
-      { id: "gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 }
+      { id: "gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 },
+      { id: "ueno-zoo", name: "Zoo d'Ueno (pandas)", duration: "2h", price: 3, bonus: true },
+      { id: "ghibli-museum", name: "Musée Ghibli (Mitaka)", duration: "2h", price: 6, bonus: true, note: "Billets datés à réserver plusieurs mois à l'avance, se vendent très vite" },
+      { id: "imperial-gardens", name: "Jardins Est du Palais Impérial", duration: "1h30", price: 0, bonus: true },
+      { id: "sumida-aquarium", name: "Aquarium de Sumida (proche Skytree)", duration: "1h30", price: 14, bonus: true },
+      { id: "nezu-museum", name: "Musée Nezu (art + jardin japonais)", duration: "1h30", price: 8, bonus: true },
+      { id: "roppongi-mori", name: "Roppongi Hills - observatoire Mori Tower", duration: "1h", price: 15, bonus: true, vertige: true, alt: "Base de Roppongi Hills (boutiques, jardin) sans monter à l'observatoire" },
+      { id: "ryogoku-sumo", name: "Musée du sumo (Ryogoku Kokugikan, hors tournoi)", duration: "1h", price: 0, bonus: true }
     ]
   },
   {
@@ -380,7 +388,10 @@ const ALPS_CITIES = [
     meta: "J9 · Owakudani, lac Ashi, vue Mont Fuji, ryokan avec onsen",
     activities: [
       { id: "hakone-pass", name: "Hakone Free Pass (ropeway + bateau + bus + train)", duration: "journée", price: 50, vertige: true, alt: "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani" },
-      { id: "openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 }
+      { id: "openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 },
+      { id: "hakone-jinja", name: "Sanctuaire Hakone-jinja + ancienne route du Tokaido", duration: "2h", price: 0, bonus: true },
+      { id: "hakone-checkpoint", name: "Hakone Sekisho (poste de contrôle d'époque Edo)", duration: "45min", price: 3, bonus: true },
+      { id: "pola-museum", name: "Pola Museum of Art", duration: "1h30", price: 12, bonus: true }
     ]
   },
   {
@@ -390,7 +401,9 @@ const ALPS_CITIES = [
       { id: "nagoya-castle", name: "Château de Nagoya (étape en chemin)", duration: "1h30", price: 6 },
       { id: "gifu-castle", name: "Château de Gifu + ropeway (mont Kinka)", duration: "2h", price: 7, vertige: true, alt: "Sentier de randonnée jusqu'au château (30-40min à pied) sans téléphérique, ou balade au parc Gifu au pied de la montagne" },
       { id: "ukai", name: "Pêche au cormoran (ukai, bateau, saisonnier mai-oct)", duration: "2h, soirée", price: 25 },
-      { id: "yanagase", name: "Arcade Yanagase (balade)", duration: "1h", price: 0 }
+      { id: "yanagase", name: "Arcade Yanagase (balade)", duration: "1h", price: 0 },
+      { id: "ghibli-park", name: "Ghibli Park (Nagakute, près de Nagoya)", duration: "3h", price: 15, bonus: true, note: "Billet horodaté à réserver à l'avance" },
+      { id: "osu-kannon", name: "Osu Kannon (temple + rue commerçante, Nagoya)", duration: "1h", price: 0, bonus: true }
     ]
   },
   {
@@ -399,7 +412,8 @@ const ALPS_CITIES = [
     activities: [
       { id: "ashiyu", name: "Bains de pieds publics (ashiyu)", duration: "libre", price: 0 },
       { id: "gassho-gero", name: "Gero Gassho Village (musée en plein air)", duration: "1h", price: 3 },
-      { id: "public-bath", name: "Bain public (si pas d'onsen privé au ryokan)", duration: "1h", price: 3 }
+      { id: "public-bath", name: "Bain public (si pas d'onsen privé au ryokan)", duration: "1h", price: 3 },
+      { id: "nakase-bridge", name: "Balade le long de la rivière Hida (pont Nakase)", duration: "45min", price: 0, bonus: true }
     ]
   },
   {
@@ -411,7 +425,9 @@ const ALPS_CITIES = [
       { id: "shirakawa-bus", name: "Bus A/R Shirakawa-go depuis Takayama", duration: "demi-journée", price: 24 },
       { id: "shirakawa-entry", name: "Village de Shirakawa-go (entrée sites)", duration: "2h", price: 3 },
       { id: "gokayama", name: "Gokayama (gassho-zukuri, moins fréquenté)", duration: "1h30", price: 0, requiresCar: true },
-      { id: "hida-furukawa", name: "Hida Furukawa (vieille ville, canaux)", duration: "1h", price: 0, requiresCar: true }
+      { id: "hida-furukawa", name: "Hida Furukawa (vieille ville, canaux)", duration: "1h", price: 0, requiresCar: true },
+      { id: "hida-no-sato", name: "Hida no Sato (village-musée en plein air)", duration: "1h30", price: 4, bonus: true },
+      { id: "takayama-jinya", name: "Takayama Jinya (ancien siège administratif Edo)", duration: "1h", price: 2, bonus: true }
     ]
   },
   {
@@ -421,7 +437,10 @@ const ALPS_CITIES = [
       { id: "kenrokuen", name: "Jardin Kenrokuen", duration: "1h30", price: 3 },
       { id: "higashi-chaya", name: "Quartier Higashi Chaya (balade)", duration: "1h", price: 0 },
       { id: "museum21", name: "Musée d'art contemporain du 21e siècle", duration: "1h30", price: 10 },
-      { id: "omicho", name: "Marché Omicho (street food)", duration: "1h", price: 0 }
+      { id: "omicho", name: "Marché Omicho (street food)", duration: "1h", price: 0 },
+      { id: "kanazawa-castle", name: "Parc du château de Kanazawa", duration: "1h", price: 2, bonus: true },
+      { id: "nomura-house", name: "Maison de samouraï Nomura", duration: "45min", price: 3, bonus: true },
+      { id: "suzuki-museum", name: "Musée D.T. Suzuki", duration: "45min", price: 2, bonus: true }
     ]
   }
 ];
@@ -439,7 +458,14 @@ const KANTO_CITIES = [
       { id: "k-tsukiji", name: "Tsukiji (marché extérieur) + Ginza", duration: "2h", price: 0 },
       { id: "k-gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 },
       { id: "k-teamlab", name: "TeamLab Planets / Borderless", duration: "2h30", price: 26 },
-      { id: "k-skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku" }
+      { id: "k-skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku" },
+      { id: "k-ueno-zoo", name: "Zoo d'Ueno (pandas)", duration: "2h", price: 3, bonus: true },
+      { id: "k-ghibli-museum", name: "Musée Ghibli (Mitaka)", duration: "2h", price: 6, bonus: true, note: "Billets datés à réserver plusieurs mois à l'avance, se vendent très vite" },
+      { id: "k-imperial-gardens", name: "Jardins Est du Palais Impérial", duration: "1h30", price: 0, bonus: true },
+      { id: "k-sumida-aquarium", name: "Aquarium de Sumida (proche Skytree)", duration: "1h30", price: 14, bonus: true },
+      { id: "k-nezu-museum", name: "Musée Nezu (art + jardin japonais)", duration: "1h30", price: 8, bonus: true },
+      { id: "k-roppongi-mori", name: "Roppongi Hills - observatoire Mori Tower", duration: "1h", price: 15, bonus: true, vertige: true, alt: "Base de Roppongi Hills (boutiques, jardin) sans monter à l'observatoire" },
+      { id: "k-ryogoku-sumo", name: "Musée du sumo (Ryogoku Kokugikan, hors tournoi)", duration: "1h", price: 0, bonus: true }
     ]
   },
   {
@@ -452,7 +478,10 @@ const KANTO_CITIES = [
       { id: "k-daibutsu-trail", name: "Sentier de randonnée Daibutsu (temples reliés en forêt)", duration: "1h30-2h", price: 0 },
       { id: "k-zeniarai", name: "Zeniarai Benten (sanctuaire dans une grotte)", duration: "30min", price: 0 },
       { id: "k-enoshima-iwaya", name: "Enoshima - sanctuaire et grottes Iwaya", duration: "2h", price: 5 },
-      { id: "k-seacandle", name: "Enoshima Sea Candle (tour d'observation)", duration: "45min", price: 5, vertige: true, alt: "Balade dans les jardins de l'île sans monter dans la tour" }
+      { id: "k-seacandle", name: "Enoshima Sea Candle (tour d'observation)", duration: "45min", price: 5, vertige: true, alt: "Balade dans les jardins de l'île sans monter dans la tour" },
+      { id: "k-engakuji", name: "Engaku-ji (grand temple zen)", duration: "45min", price: 3, bonus: true },
+      { id: "k-kenchoji", name: "Kencho-ji (plus ancien temple zen du Japon)", duration: "45min", price: 3, bonus: true },
+      { id: "k-meigetsuin", name: "Meigetsu-in (temple des hortensias)", duration: "30min", price: 3, bonus: true, note: "Saisonnier : hortensias en fleur mi-juin" }
     ]
   },
   {
@@ -462,7 +491,10 @@ const KANTO_CITIES = [
       { id: "k-chinatown", name: "Chinatown (balade, street food)", duration: "2h", price: 0 },
       { id: "k-sankeien", name: "Sankeien Garden (jardin historique, pagode)", duration: "1h30", price: 5 },
       { id: "k-yamate", name: "Quartier Yamate (maisons occidentales)", duration: "1h", price: 0 },
-      { id: "k-cosmoworld", name: "Grande roue Cosmo World (Minato Mirai)", duration: "15min", price: 5, vertige: true, alt: "Balade sur les quais de Minato Mirai" }
+      { id: "k-cosmoworld", name: "Grande roue Cosmo World (Minato Mirai)", duration: "15min", price: 5, vertige: true, alt: "Balade sur les quais de Minato Mirai" },
+      { id: "k-cupnoodles", name: "Musée Cup Noodles (atelier création)", duration: "1h30", price: 3, bonus: true },
+      { id: "k-landmark", name: "Yokohama Landmark Tower - Sky Garden", duration: "45min", price: 6, bonus: true, vertige: true, alt: "Balade sur les quais de Minato Mirai" },
+      { id: "k-akarenga", name: "Entrepôts de brique rouge (Akarenga)", duration: "1h", price: 0, bonus: true }
     ]
   },
   {
@@ -473,7 +505,9 @@ const KANTO_CITIES = [
       { id: "k-chureito", name: "Pagode Chureito (point de vue Fuji)", duration: "1h", price: 0 },
       { id: "k-oshino", name: "Oshino Hakkai (village des sources)", duration: "1h30", price: 0 },
       { id: "k-kachikachi", name: "Kachi Kachi Yama Ropeway", duration: "45min", price: 15, vertige: true, alt: "Sentier de randonnée du Mont Tenjo (~1h de montée) plutôt que le téléphérique" },
-      { id: "k-cruise", name: "Croisière sur le lac Kawaguchiko", duration: "30min", price: 9 }
+      { id: "k-cruise", name: "Croisière sur le lac Kawaguchiko", duration: "30min", price: 9 },
+      { id: "k-fujiq", name: "Fuji-Q Highland (parc à sensations)", duration: "demi-journée", price: 40, bonus: true, vertige: true, alt: "Skipper cette étape (montagnes russes et attractions à sensations fortes)", note: "Entrée gratuite, pass journée attractions illimitées ~40€/pers" },
+      { id: "k-itchiku", name: "Musée d'art Itchiku Kubota", duration: "1h", price: 7, bonus: true }
     ]
   },
   {
@@ -482,7 +516,9 @@ const KANTO_CITIES = [
     activities: [
       { id: "k-hakone-pass", name: "Hakone Free Pass (ropeway + bateau + bus + train)", duration: "journée", price: 50, vertige: true, alt: "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani" },
       { id: "k-openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 },
-      { id: "k-tokaido", name: "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", duration: "2h", price: 0 }
+      { id: "k-tokaido", name: "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", duration: "2h", price: 0 },
+      { id: "k-hakone-checkpoint", name: "Hakone Sekisho (poste de contrôle d'époque Edo)", duration: "45min", price: 3, bonus: true },
+      { id: "k-pola", name: "Pola Museum of Art", duration: "1h30", price: 12, bonus: true }
     ]
   },
   {
@@ -492,7 +528,8 @@ const KANTO_CITIES = [
       { id: "k-chichibu-jinja", name: "Chichibu-jinja (sanctuaire en ville)", duration: "30min", price: 0 },
       { id: "k-nagatoro-gorge", name: "Nagatoro - gorges rocheuses Iwadatami (balade)", duration: "1h", price: 0 },
       { id: "k-nagatoro-boat", name: "Nagatoro - descente en bateau (funakudari)", duration: "30min", price: 25 },
-      { id: "k-hodosan", name: "Hodosan - sanctuaire + ropeway", duration: "1h30", price: 10, vertige: true, alt: "Sentier de randonnée (~1h)" }
+      { id: "k-hodosan", name: "Hodosan - sanctuaire + ropeway", duration: "1h30", price: 10, vertige: true, alt: "Sentier de randonnée (~1h)" },
+      { id: "k-shibazakura", name: "Chichibu Muse Park - colline de Shibazakura", duration: "1h", price: 3, bonus: true, note: "Saisonnier : moss phlox en fleur mi-avril à début mai" }
     ]
   },
   {
@@ -559,14 +596,16 @@ function renderCities() {
       <p class="meta">${city.meta}</p>
       ${city.activities.map(a => `
         <div class="activity-row${a.requiresCar ? ' car-dependent' : ''}" data-activity="${a.id}">
-          <input type="checkbox" id="act-${a.id}" checked data-price="${a.price}" data-requires-car="${!!a.requiresCar}">
+          <input type="checkbox" id="act-${a.id}" ${a.bonus ? '' : 'checked'} data-price="${a.price}" data-requires-car="${!!a.requiresCar}">
           <label for="act-${a.id}">
             <span class="activity-name">${a.name}</span>
             ${a.vertige ? '<span class="badge">⚠ hauteur</span>' : ''}
+            ${a.bonus ? '<span class="badge bonus">+ en option</span>' : ''}
             <br><span class="activity-duration">${a.duration}</span>
           </label>
           <span class="activity-price">${a.price === 0 ? "gratuit" : a.price + " €/pers"}</span>
           ${a.alt ? `<div class="alt-note"><b>Alternative sans vertige :</b> ${a.alt}</div>` : ""}
+          ${a.note ? `<div class="car-note">${a.note}</div>` : ""}
           ${a.requiresCar ? `<div class="car-note">Nécessite l'option voiture de location (ci-dessus) — inclus dans son coût, pas de supplément.</div>` : ""}
         </div>
       `).join("")}

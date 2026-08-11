@@ -8,3 +8,10 @@
 | Arcade Yanagase (balade) | Gratuit | 1h | |
 
 **Total activités payantes indicatif/pers** : ~38€ (hors ukai, saisonnier)
+
+## Bonus (en option, décochées par défaut dans le dashboard)
+
+| Activité | Prix/pers | Durée | Remarque |
+|---|---|---|---|
+| Ghibli Park (Nagakute, près de Nagoya) | ~15€ | 3h | Billet horodaté à réserver à l'avance |
+| Osu Kannon (temple + rue commerçante, Nagoya) | Gratuit | 1h | |

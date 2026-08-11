@@ -10,7 +10,14 @@
         {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Observatoire gratuit Tocho à Shinjuku ou étage bas de la Tokyo Tower"},
         {"nom": "Observatoire gratuit Tocho (Shinjuku)", "prix_pers_eur": 0, "duree": "45min"},
         {"nom": "TeamLab Planets ou Borderless", "prix_pers_eur": 26, "duree": "2h30"},
-        {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"}
+        {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"},
+        {"nom": "Zoo d'Ueno (pandas)", "prix_pers_eur": 3, "duree": "2h", "bonus": true},
+        {"nom": "Musée Ghibli (Mitaka)", "prix_pers_eur": 6, "duree": "2h", "bonus": true, "note": "Billets datés à réserver plusieurs mois à l'avance"},
+        {"nom": "Jardins Est du Palais Impérial", "prix_pers_eur": 0, "duree": "1h30", "bonus": true},
+        {"nom": "Aquarium de Sumida (proche Skytree)", "prix_pers_eur": 14, "duree": "1h30", "bonus": true},
+        {"nom": "Musée Nezu (art + jardin japonais)", "prix_pers_eur": 8, "duree": "1h30", "bonus": true},
+        {"nom": "Roppongi Hills - observatoire Mori Tower", "prix_pers_eur": 15, "duree": "1h", "bonus": true, "attention_vertige": true, "alternative_sans_hauteur": "Base de Roppongi Hills sans monter à l'observatoire"},
+        {"nom": "Musée du sumo (Ryogoku Kokugikan, hors tournoi)", "prix_pers_eur": 0, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -35,7 +42,10 @@
       "ville": "Hakone",
       "activites": [
         {"nom": "Hakone Free Pass (ropeway + bateau + bus + train)", "prix_pers_eur": 50, "duree": "journée", "attention_vertige": true, "alternative_sans_hauteur": "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani"},
-        {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"}
+        {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"},
+        {"nom": "Sanctuaire Hakone-jinja + ancienne route du Tokaido", "prix_pers_eur": 0, "duree": "2h", "bonus": true},
+        {"nom": "Hakone Sekisho (poste de contrôle d'époque Edo)", "prix_pers_eur": 3, "duree": "45min", "bonus": true},
+        {"nom": "Pola Museum of Art", "prix_pers_eur": 12, "duree": "1h30", "bonus": true}
       ]
     },
     {
@@ -44,7 +54,9 @@
         {"nom": "Château de Nagoya (étape en chemin)", "prix_pers_eur": 6, "duree": "1h30"},
         {"nom": "Château de Gifu + ropeway (mont Kinka)", "prix_pers_eur": 7, "duree": "2h", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée jusqu'au château (30-40min à pied) sans téléphérique, ou balade au parc Gifu au pied de la montagne"},
         {"nom": "Pêche au cormoran (ukai, bateau, saisonnier mai-oct)", "prix_pers_eur": 25, "duree": "2h, soirée"},
-        {"nom": "Arcade Yanagase (balade)", "prix_pers_eur": 0, "duree": "1h"}
+        {"nom": "Arcade Yanagase (balade)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Ghibli Park (Nagakute, près de Nagoya)", "prix_pers_eur": 15, "duree": "3h", "bonus": true, "note": "Billet horodaté à réserver à l'avance"},
+        {"nom": "Osu Kannon (temple + rue commerçante, Nagoya)", "prix_pers_eur": 0, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -52,7 +64,8 @@
       "activites": [
         {"nom": "Bains de pieds publics (ashiyu)", "prix_pers_eur": 0, "duree": "libre"},
         {"nom": "Gero Gassho Village (musée en plein air)", "prix_pers_eur": 3, "duree": "1h"},
-        {"nom": "Bain public (si pas d'onsen privé au ryokan)", "prix_pers_eur": 3, "duree": "1h"}
+        {"nom": "Bain public (si pas d'onsen privé au ryokan)", "prix_pers_eur": 3, "duree": "1h"},
+        {"nom": "Balade le long de la rivière Hida (pont Nakase)", "prix_pers_eur": 0, "duree": "45min", "bonus": true}
       ]
     },
     {
@@ -63,7 +76,9 @@
         {"nom": "Bus A/R Shirakawa-go depuis Takayama", "prix_pers_eur": 24, "duree": "demi-journée"},
         {"nom": "Village de Shirakawa-go (entrée sites)", "prix_pers_eur": 3, "duree": "2h"},
         {"nom": "Gokayama (gassho-zukuri, moins fréquenté)", "prix_pers_eur": 0, "duree": "1h30", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture Takayama-Kanazawa, pas de supplément séparé"},
-        {"nom": "Hida Furukawa (vieille ville, canaux)", "prix_pers_eur": 0, "duree": "1h", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture Takayama-Kanazawa, pas de supplément séparé"}
+        {"nom": "Hida Furukawa (vieille ville, canaux)", "prix_pers_eur": 0, "duree": "1h", "requiert_voiture": true, "note": "Coût inclus dans la location de voiture Takayama-Kanazawa, pas de supplément séparé"},
+        {"nom": "Hida no Sato (village-musée en plein air)", "prix_pers_eur": 4, "duree": "1h30", "bonus": true},
+        {"nom": "Takayama Jinya (ancien siège administratif Edo)", "prix_pers_eur": 2, "duree": "1h", "bonus": true}
       ]
     },
     {
@@ -72,7 +87,10 @@
         {"nom": "Jardin Kenrokuen", "prix_pers_eur": 3, "duree": "1h30"},
         {"nom": "Quartier Higashi Chaya (balade)", "prix_pers_eur": 0, "duree": "1h"},
         {"nom": "Musée d'art contemporain du 21e siècle", "prix_pers_eur": 10, "duree": "1h30"},
-        {"nom": "Marché Omicho (street food)", "prix_pers_eur": 0, "duree": "1h"}
+        {"nom": "Marché Omicho (street food)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Parc du château de Kanazawa", "prix_pers_eur": 2, "duree": "1h", "bonus": true},
+        {"nom": "Maison de samouraï Nomura", "prix_pers_eur": 3, "duree": "45min", "bonus": true},
+        {"nom": "Musée D.T. Suzuki", "prix_pers_eur": 2, "duree": "45min", "bonus": true}
       ]
     }
   ]
