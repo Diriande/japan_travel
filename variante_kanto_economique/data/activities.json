@@ -1,0 +1,82 @@
+{
+  "devise_reference": "1 EUR ~= 160-165 JPY (hypothèse)",
+  "villes": [
+    {
+      "ville": "Tokyo",
+      "activites": [
+        {"nom": "Senso-ji (Asakusa)", "prix_pers_eur": 0, "duree": "1h30"},
+        {"nom": "Meiji Jingu", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Yanaka (vieux Tokyo, temples, balade)", "prix_pers_eur": 0, "duree": "2h"},
+        {"nom": "Zojo-ji (temple + vue Tokyo Tower)", "prix_pers_eur": 0, "duree": "45min"},
+        {"nom": "Shimokitazawa (friperies, balade)", "prix_pers_eur": 0, "duree": "2h"},
+        {"nom": "Tsukiji (marché extérieur) + Ginza", "prix_pers_eur": 0, "duree": "2h"},
+        {"nom": "Shinjuku Gyoen (jardin)", "prix_pers_eur": 3, "duree": "1h30"},
+        {"nom": "TeamLab Planets ou Borderless", "prix_pers_eur": 26, "duree": "2h30"},
+        {"nom": "Tokyo Skytree (observatoire)", "prix_pers_eur": 20, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Observatoire gratuit Tocho à Shinjuku"}
+      ]
+    },
+    {
+      "ville": "Kamakura & Enoshima",
+      "activites": [
+        {"nom": "Kotoku-in (Grand Bouddha)", "prix_pers_eur": 2, "duree": "1h"},
+        {"nom": "Hase-dera", "prix_pers_eur": 3, "duree": "1h"},
+        {"nom": "Hokoku-ji (temple des bambous)", "prix_pers_eur": 3, "duree": "45min"},
+        {"nom": "Sentier de randonnée Daibutsu (temples reliés en forêt)", "prix_pers_eur": 0, "duree": "1h30-2h"},
+        {"nom": "Zeniarai Benten (sanctuaire dans une grotte)", "prix_pers_eur": 0, "duree": "30min"},
+        {"nom": "Enoshima - sanctuaire et grottes Iwaya", "prix_pers_eur": 5, "duree": "2h"},
+        {"nom": "Enoshima Sea Candle (tour d'observation)", "prix_pers_eur": 5, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Balade dans les jardins de l'île sans monter dans la tour"}
+      ]
+    },
+    {
+      "ville": "Yokohama",
+      "activites": [
+        {"nom": "Chinatown (balade, street food)", "prix_pers_eur": 0, "duree": "2h"},
+        {"nom": "Sankeien Garden (jardin historique, pagode)", "prix_pers_eur": 5, "duree": "1h30"},
+        {"nom": "Quartier Yamate (maisons occidentales)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Grande roue Cosmo World (Minato Mirai)", "prix_pers_eur": 5, "duree": "15min", "attention_vertige": true, "alternative_sans_hauteur": "Balade sur les quais de Minato Mirai"}
+      ]
+    },
+    {
+      "ville": "Kawaguchiko (Fuji Five Lakes)",
+      "activites": [
+        {"nom": "Pagode Chureito (point de vue Fuji)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Oshino Hakkai (village des sources)", "prix_pers_eur": 0, "duree": "1h30"},
+        {"nom": "Kachi Kachi Yama Ropeway", "prix_pers_eur": 15, "duree": "45min", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée du Mont Tenjo (~1h de montée) plutôt que le téléphérique"},
+        {"nom": "Croisière sur le lac Kawaguchiko", "prix_pers_eur": 9, "duree": "30min"}
+      ]
+    },
+    {
+      "ville": "Hakone",
+      "activites": [
+        {"nom": "Hakone Free Pass (ropeway + bateau + bus + train)", "prix_pers_eur": 50, "duree": "journée", "attention_vertige": true, "alternative_sans_hauteur": "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani"},
+        {"nom": "Musée Hakone en plein air", "prix_pers_eur": 17, "duree": "2h"},
+        {"nom": "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", "prix_pers_eur": 0, "duree": "2h"}
+      ]
+    },
+    {
+      "ville": "Chichibu",
+      "activites": [
+        {"nom": "Mitsumineyama - sanctuaire + ropeway", "prix_pers_eur": 11, "duree": "2h", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée jusqu'au sanctuaire (~2h30), pour les amateurs de marche"},
+        {"nom": "Chichibu-jinja (sanctuaire en ville)", "prix_pers_eur": 0, "duree": "30min"},
+        {"nom": "Nagatoro - gorges rocheuses Iwadatami (balade)", "prix_pers_eur": 0, "duree": "1h"},
+        {"nom": "Nagatoro - descente en bateau (funakudari)", "prix_pers_eur": 25, "duree": "30min"},
+        {"nom": "Hodosan - sanctuaire + ropeway (alternative à Mitsumine)", "prix_pers_eur": 10, "duree": "1h30", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~1h)"}
+      ]
+    },
+    {
+      "ville": "Nokogiriyama (Chiba)",
+      "activites": [
+        {"nom": "Temple Nihon-ji + grand Bouddha (Hyaku-shaku Kannon)", "prix_pers_eur": 5, "duree": "2h"},
+        {"nom": "Point de vue Jigoku Nozoki", "prix_pers_eur": 0, "duree": "15min", "attention_vertige": true, "alternative_sans_hauteur": "Rester au niveau des statues sans s'avancer sur la plateforme en surplomb"},
+        {"nom": "Ropeway (aller-retour)", "prix_pers_eur": 9, "duree": "10min", "attention_vertige": true, "alternative_sans_hauteur": "Sentier de randonnée (~45min de montée)"}
+      ]
+    },
+    {
+      "ville": "Narita",
+      "activites": [
+        {"nom": "Naritasan Shinshoji (temple + parc)", "prix_pers_eur": 0, "duree": "1h30"},
+        {"nom": "Rue Omotesando / Unagi-dori (spécialité anguille)", "prix_pers_eur": 0, "duree": "1h"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "principe": "Pas de Shinkansen nécessaire sur cette variante : tout se fait en trains régionaux/express (JR, Odakyu, Seibu, Keisei) et bus autoroutiers, avec l'IC card (Suica/Pasmo) utilisable sur la quasi-totalité des trajets, y compris Kamakura, Enoshima, Yokohama et Chichibu.",
+  "trajets_longue_distance_hors_ic_card": [
+    {"trajet": "Tokyo <-> Kawaguchiko (bus autoroutier, aller simple)", "prix_pers_eur": 13},
+    {"trajet": "Kawaguchiko -> Hakone (bus via Gotemba)", "prix_pers_eur": 25},
+    {"trajet": "Hakone -> Tokyo (retour, Odakyu Romancecar ou équivalent)", "prix_pers_eur": 20},
+    {"trajet": "Tokyo <-> Nokogiriyama, Chiba (train + ferry, A/R)", "prix_pers_eur": 26},
+    {"trajet": "Tokyo -> Narita (aller simple, dernier trajet)", "prix_pers_eur": 8},
+    {"total_pers_eur": 92, "note": "Les trajets Kamakura, Enoshima, Yokohama et Chichibu sont couverts par l'IC card (Suica/Pasmo), inclus dans le budget transport local ci-dessous plutôt que listés ici séparément"}
+  ],
+  "transport_local_quotidien": {
+    "moyen": "IC card (Suica/Pasmo, ou Welcome Suica mobile), couvre la quasi-totalité des trajets régionaux de cette variante",
+    "budget_jour_pers_eur": 8,
+    "note": "Légèrement plus élevé que sur la variante Alpes (7€/jour) car inclut les excursions régionales (Kamakura, Enoshima, Yokohama, Chichibu) en plus des trajets urbains"
+  },
+  "resume_transport_pers_eur": {
+    "trajets_longue_distance_fixes": 92,
+    "transport_local_20j": 160,
+    "total": 252,
+    "note": "Pas d'option voiture de location sur cette variante - tous les sites sont bien desservis en transport en commun"
+  }
+}

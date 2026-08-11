@@ -1,0 +1,49 @@
+{
+  "principe": "Un lit par personne garanti, business hotel économique ou guesthouse (Tokyo/Yokohama-adjacent), minshuku/ryokan simple pour les étapes montagne/onsen.",
+  "devise_reference": "1 EUR ~= 160-165 JPY (hypothèse)",
+  "etapes": [
+    {
+      "ville": "Tokyo (base)",
+      "nuits": 11,
+      "prix_nuit_eur": { "individuelle_par_pers": 55, "partagee_2pers": 70, "partagee_3pers": 92 },
+      "exemples": ["R&B Hotel Ueno-Hirokoji (individuelle)", "Riverside Shinjuku (partagée)", "Toyoko Inn", "APA Hotel"]
+    },
+    {
+      "ville": "Kamakura & Enoshima",
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 48, "partagee_2pers": 65, "partagee_3pers": 85 },
+      "exemples": ["Guesthouses proches de la gare de Kamakura ou du front de mer d'Enoshima"]
+    },
+    {
+      "ville": "Kawaguchiko (Fuji Five Lakes)",
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 50, "partagee_2pers": 68, "partagee_3pers": 90 },
+      "exemples": ["Guesthouses et petits hôtels économiques autour du lac"]
+    },
+    {
+      "ville": "Hakone",
+      "nuits": 1,
+      "prix_nuit_eur": { "individuelle_par_pers": 130, "partagee_2pers": 190, "partagee_3pers": 250 },
+      "note": "Ryokan simple avec onsen, demi-pension - reste plus cher qu'un business hotel car les repas sont inclus",
+      "exemples": ["Ryokans du secteur Hakone-Yumoto Onsen, gamme simple/moyenne"]
+    },
+    {
+      "ville": "Chichibu",
+      "nuits": 2,
+      "prix_nuit_eur": { "individuelle_par_pers": 60, "partagee_2pers": 85, "partagee_3pers": 112 },
+      "exemples": ["Minshuku et ryokans simples de la région de Chichibu/Nagatoro"]
+    },
+    {
+      "ville": "Narita",
+      "nuits": 1,
+      "prix_nuit_eur": { "individuelle_par_pers": 45, "partagee_2pers": 62, "partagee_3pers": 82 },
+      "exemples": ["Business hotels proches de la gare de Narita ou de l'aéroport"]
+    }
+  ],
+  "totaux_indicatifs_eur": {
+    "total_nuits": 19,
+    "formule_partagee": { "total_2_personnes": 1458, "total_3_personnes": 1918 },
+    "formule_individuelle": { "total_2_personnes": 2192, "total_3_personnes": 3288 },
+    "note_calcul": "Le dashboard recalcule ce total selon la formule, le nombre de voyageurs et la durée choisie."
+  }
+}

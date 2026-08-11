@@ -205,8 +205,8 @@
 
   <header class="top">
     <h1>Japon — dashboard de préparation</h1>
-    <p>Choisis la durée, les voyageurs, l'hébergement et les activités : le budget se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée. Toutes les hypothèses de coût (nourriture, transport, etc.) sont modifiables en bas de la colonne de gauche.</p>
-    <div class="route-strip">Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo (retour direct)</div>
+    <p>Choisis la variante, la durée, les voyageurs, l'hébergement et les activités : le budget se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée. Toutes les hypothèses de coût (nourriture, transport, etc.) sont modifiables en bas de la colonne de gauche.</p>
+    <div class="route-strip" id="route-strip">—</div>
   </header>
 
   <div class="layout">
@@ -215,6 +215,16 @@
 
       <section class="card controls">
         <h2>Réglages</h2>
+
+        <div class="field">
+          <span class="field-label">Variante d'itinéraire</span>
+          <div class="segmented" id="variant-group">
+            <input type="radio" name="variant" id="v-alps" value="alps" checked>
+            <label for="v-alps">Alpes japonaises</label>
+            <input type="radio" name="variant" id="v-kanto" value="kanto">
+            <label for="v-kanto">Kanto économique</label>
+          </div>
+        </div>
 
         <div class="field">
           <span class="field-label">Voyageurs</span>
@@ -251,7 +261,7 @@
           </div>
         </div>
 
-        <div class="switch-row">
+        <div class="switch-row" id="car-toggle-row">
           <label class="switch">
             <input type="checkbox" id="car-toggle">
             <span class="track"></span><span class="thumb"></span>
@@ -285,14 +295,14 @@
             <div class="hf-row"><input type="number" id="hyp-local" value="7" min="0" step="1"><span class="hf-unit">€ / pers / jour</span></div>
           </div>
           <div class="hyp-field">
-            <span class="hf-label">Trajets longue distance (trains/bus fixes)</span>
+            <span class="hf-label" id="hyp-longdist-label">Trajets longue distance (trains/bus fixes)</span>
             <div class="hf-row"><input type="number" id="hyp-longdist" value="288" min="0" step="10"><span class="hf-unit">€ / pers, forfait</span></div>
           </div>
-          <div class="hyp-field">
+          <div class="hyp-field" id="hyp-alpstransit-field">
             <span class="hf-label">Takayama → Kanazawa en bus/train (si pas de voiture)</span>
             <div class="hf-row"><input type="number" id="hyp-alpstransit" value="24" min="0" step="1"><span class="hf-unit">€ / pers, forfait</span></div>
           </div>
-          <div class="hyp-field">
+          <div class="hyp-field" id="hyp-car-field">
             <span class="hf-label">Location voiture Takayama → Kanazawa</span>
             <div class="hf-row"><input type="number" id="hyp-car" value="230" min="0" step="10"><span class="hf-unit">€ / groupe, forfait</span></div>
           </div>
@@ -327,11 +337,11 @@
 
   </div>
 
-  <footer class="foot">Estimations de préparation — à confronter aux prix réels au moment de la réservation. Itinéraire : Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo.</footer>
+  <footer class="foot" id="footer-note">Estimations de préparation — à confronter aux prix réels au moment de la réservation.</footer>
 </div>
 
 <script>
-const CITIES = [
+const ALPS_CITIES = [
   {
     id: "tokyo", name: "Tokyo", nights: 8, nights2w: 5, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
     meta: "J2–J6 puis J18–J20 · Asakusa, Ueno, Akihabara, Shibuya, Harajuku, Shinjuku, Ginza",
@@ -416,16 +426,129 @@ const CITIES = [
   }
 ];
 
-const DEFAULTS = {
-  food: 40, local: 7, longdist: 288, alpstransit: 24, car: 230, misc: 300
+const KANTO_CITIES = [
+  {
+    id: "k-tokyo", name: "Tokyo (base)", nights: 11, nights2w: 7, lodging: { individual: 55, shared: { 2: 70, 3: 92 } },
+    meta: "Base du séjour · Asakusa, Ueno/Ameyoko, Yanaka, Shibuya/Harajuku, Meiji Jingu, Shinjuku, Akihabara, Shimokitazawa, Tsukiji/Ginza",
+    activities: [
+      { id: "k-senso-ji", name: "Senso-ji (Asakusa)", duration: "1h30", price: 0 },
+      { id: "k-meiji", name: "Meiji Jingu", duration: "1h", price: 0 },
+      { id: "k-yanaka", name: "Yanaka (vieux Tokyo, temples, balade)", duration: "2h", price: 0 },
+      { id: "k-zojoji", name: "Zojo-ji (temple + vue Tokyo Tower)", duration: "45min", price: 0 },
+      { id: "k-shimokita", name: "Shimokitazawa (friperies, balade)", duration: "2h", price: 0 },
+      { id: "k-tsukiji", name: "Tsukiji (marché extérieur) + Ginza", duration: "2h", price: 0 },
+      { id: "k-gyoen", name: "Shinjuku Gyoen (jardin)", duration: "1h30", price: 3 },
+      { id: "k-teamlab", name: "TeamLab Planets / Borderless", duration: "2h30", price: 26 },
+      { id: "k-skytree", name: "Tokyo Skytree (observatoire)", duration: "1h30", price: 20, vertige: true, alt: "Observatoire gratuit Tocho à Shinjuku" }
+    ]
+  },
+  {
+    id: "k-kamakura", name: "Kamakura & Enoshima", nights: 2, nights2w: 2, lodging: { individual: 48, shared: { 2: 65, 3: 85 } },
+    meta: "Grand Bouddha, Hase-dera, Hokoku-ji, randonnée Daibutsu, île d'Enoshima",
+    activities: [
+      { id: "k-kotokuin", name: "Kotoku-in (Grand Bouddha)", duration: "1h", price: 2 },
+      { id: "k-hasedera", name: "Hase-dera", duration: "1h", price: 3 },
+      { id: "k-hokokuji", name: "Hokoku-ji (temple des bambous)", duration: "45min", price: 3 },
+      { id: "k-daibutsu-trail", name: "Sentier de randonnée Daibutsu (temples reliés en forêt)", duration: "1h30-2h", price: 0 },
+      { id: "k-zeniarai", name: "Zeniarai Benten (sanctuaire dans une grotte)", duration: "30min", price: 0 },
+      { id: "k-enoshima-iwaya", name: "Enoshima - sanctuaire et grottes Iwaya", duration: "2h", price: 5 },
+      { id: "k-seacandle", name: "Enoshima Sea Candle (tour d'observation)", duration: "45min", price: 5, vertige: true, alt: "Balade dans les jardins de l'île sans monter dans la tour" }
+    ]
+  },
+  {
+    id: "k-yokohama", name: "Yokohama", nights: 0, nights2w: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
+    meta: "Excursion d'une journée depuis Tokyo (~30min de train) · Chinatown, jardin Sankeien, Yamate",
+    activities: [
+      { id: "k-chinatown", name: "Chinatown (balade, street food)", duration: "2h", price: 0 },
+      { id: "k-sankeien", name: "Sankeien Garden (jardin historique, pagode)", duration: "1h30", price: 5 },
+      { id: "k-yamate", name: "Quartier Yamate (maisons occidentales)", duration: "1h", price: 0 },
+      { id: "k-cosmoworld", name: "Grande roue Cosmo World (Minato Mirai)", duration: "15min", price: 5, vertige: true, alt: "Balade sur les quais de Minato Mirai" }
+    ]
+  },
+  {
+    id: "k-fuji", name: "Kawaguchiko (Fuji Five Lakes)", nights: 2, nights2w: 1, lodging: { individual: 50, shared: { 2: 68, 3: 90 } },
+    meta: "Pagode Chureito, Oshino Hakkai, randonnée Mont Tenjo, croisière sur le lac",
+    activities: [
+      { id: "k-chureito", name: "Pagode Chureito (point de vue Fuji)", duration: "1h", price: 0 },
+      { id: "k-oshino", name: "Oshino Hakkai (village des sources)", duration: "1h30", price: 0 },
+      { id: "k-kachikachi", name: "Kachi Kachi Yama Ropeway", duration: "45min", price: 15, vertige: true, alt: "Sentier de randonnée du Mont Tenjo (~1h de montée) plutôt que le téléphérique" },
+      { id: "k-cruise", name: "Croisière sur le lac Kawaguchiko", duration: "30min", price: 9 }
+    ]
+  },
+  {
+    id: "k-hakone", name: "Hakone", nights: 1, nights2w: 1, lodging: { individual: 130, shared: { 2: 190, 3: 250 } },
+    meta: "Owakudani, lac Ashi, ancienne route du Tokaido, sanctuaire Hakone-jinja",
+    activities: [
+      { id: "k-hakone-pass", name: "Hakone Free Pass (ropeway + bateau + bus + train)", duration: "journée", price: 50, vertige: true, alt: "Bus Hakone Tozan (au sol) jusqu'au lac Ashi, en sautant le tronçon en cabine suspendue d'Owakudani" },
+      { id: "k-openair", name: "Musée Hakone en plein air", duration: "2h", price: 17 },
+      { id: "k-tokaido", name: "Ancienne route du Tokaido (Hakone Hachiri) + sanctuaire Hakone-jinja", duration: "2h", price: 0 }
+    ]
+  },
+  {
+    id: "k-chichibu", name: "Chichibu", nights: 2, nights2w: 1, lodging: { individual: 60, shared: { 2: 85, 3: 112 } },
+    meta: "Mitsumineyama, gorges de Nagatoro, descente en bateau",
+    activities: [
+      { id: "k-mitsumine", name: "Mitsumineyama - sanctuaire + ropeway", duration: "2h", price: 11, vertige: true, alt: "Sentier de randonnée jusqu'au sanctuaire (~2h30), pour les amateurs de marche" },
+      { id: "k-chichibu-jinja", name: "Chichibu-jinja (sanctuaire en ville)", duration: "30min", price: 0 },
+      { id: "k-nagatoro-gorge", name: "Nagatoro - gorges rocheuses Iwadatami (balade)", duration: "1h", price: 0 },
+      { id: "k-nagatoro-boat", name: "Nagatoro - descente en bateau (funakudari)", duration: "30min", price: 25 },
+      { id: "k-hodosan", name: "Hodosan - sanctuaire + ropeway (alternative à Mitsumine)", duration: "1h30", price: 10, vertige: true, alt: "Sentier de randonnée (~1h)" }
+    ]
+  },
+  {
+    id: "k-chiba", name: "Nokogiriyama (Chiba)", nights: 0, nights2w: 0, lodging: { individual: 0, shared: { 2: 0, 3: 0 } },
+    meta: "Excursion d'une journée depuis Tokyo · Temple Nihon-ji, point de vue Jigoku Nozoki",
+    activities: [
+      { id: "k-nihonji", name: "Temple Nihon-ji + grand Bouddha (Hyaku-shaku Kannon)", duration: "2h", price: 5 },
+      { id: "k-jigoku", name: "Point de vue Jigoku Nozoki", duration: "15min", price: 0, vertige: true, alt: "Rester au niveau des statues sans s'avancer sur la plateforme en surplomb" },
+      { id: "k-nokogiri-ropeway", name: "Ropeway (aller-retour)", duration: "10min", price: 9, vertige: true, alt: "Sentier de randonnée (~45min de montée)" }
+    ]
+  },
+  {
+    id: "k-narita", name: "Narita", nights: 1, nights2w: 0, lodging: { individual: 45, shared: { 2: 62, 3: 82 } },
+    meta: "Dernière nuit avant le vol · Naritasan Shinshoji, rue de l'anguille (Unagi-dori)",
+    activities: [
+      { id: "k-naritasan", name: "Naritasan Shinshoji (temple + parc)", duration: "1h30", price: 0 },
+      { id: "k-unagidori", name: "Rue Omotesando / Unagi-dori (spécialité anguille)", duration: "1h", price: 0 }
+    ]
+  }
+];
+
+const VARIANTS = {
+  alps: {
+    label: "Alpes japonaises",
+    cities: ALPS_CITIES,
+    hasCar: true,
+    route: "Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo (retour direct)",
+    footer: "Itinéraire : Tokyo → Kamakura → Kawaguchiko/Fuji → Hakone → Nagoya/Gifu → Gero Onsen → Takayama/Shirakawa-go → Kanazawa → Tokyo.",
+    defaults: { food: 40, local: 7, longdist: 288, alpstransit: 24, car: 230, misc: 300 },
+    longdistLabel: "Trajets longue distance (trains/bus fixes)"
+  },
+  kanto: {
+    label: "Kanto économique",
+    cities: KANTO_CITIES,
+    hasCar: false,
+    route: "Tokyo (base) → Kamakura/Enoshima → Yokohama → Kawaguchiko/Fuji → Hakone → Chichibu → Nokogiriyama/Chiba → Narita (retour)",
+    footer: "Itinéraire : Tokyo (base) → Kamakura & Enoshima → Yokohama → Kawaguchiko/Fuji → Hakone → Chichibu → Nokogiriyama (Chiba) → Narita.",
+    defaults: { food: 40, local: 8, longdist: 92, misc: 300 },
+    longdistLabel: "Trajets longue distance (bus Fuji/Hakone, ferry Chiba, Narita)"
+  }
 };
-const TOTAL_ACTIVITIES = CITIES.reduce((n, c) => n + c.activities.length, 0);
+
+let currentVariant = "alps";
+let TOTAL_ACTIVITIES = 0;
 
 const fmt = n => Math.round(n).toLocaleString("fr-FR") + " €";
 
+function getCities() {
+  return VARIANTS[currentVariant].cities;
+}
+
 function renderCities() {
+  const cities = getCities();
+  TOTAL_ACTIVITIES = cities.reduce((n, c) => n + c.activities.length, 0);
   const root = document.getElementById("cities");
-  root.innerHTML = CITIES.map(city => `
+  root.innerHTML = cities.map(city => `
     <section class="card city-card" data-city="${city.id}">
       <div class="card-head">
         <h3>${city.name}</h3>
@@ -481,33 +604,37 @@ function syncCarDependentCheckboxes() {
 }
 
 function update() {
+  const variant = VARIANTS[currentVariant];
   syncCarDependentCheckboxes();
   const travelers = getTravelers();
   const flightPerPerson = Math.max(0, parseFloat(document.getElementById("flight-price").value) || 0);
-  const carOn = document.getElementById("car-toggle").checked;
+  const carOn = variant.hasCar && document.getElementById("car-toggle").checked;
   const lodgingFormula = getLodgingFormula();
 
   const foodPerDay = getHyp("food");
   const localPerDay = getHyp("local");
   const longDist = getHyp("longdist");
-  const alpsTransit = getHyp("alpstransit");
-  const carFlat = getHyp("car");
   const misc = getHyp("misc") * travelers;
 
   const flight = flightPerPerson * travelers;
 
+  const cities = getCities();
   const nightsByCity = {};
   let totalNights = 0;
-  CITIES.forEach(c => { const n = getNights(c.id); nightsByCity[c.id] = n; totalNights += n; });
+  cities.forEach(c => { const n = getNights(c.id); nightsByCity[c.id] = n; totalNights += n; });
   const totalDays = totalNights + 1;
 
-  const lodging = CITIES.reduce((sum, c) => {
+  const lodging = cities.reduce((sum, c) => {
     const perNight = lodgingFormula === "individual" ? c.lodging.individual * travelers : c.lodging.shared[travelers];
     return sum + nightsByCity[c.id] * perNight;
   }, 0);
 
   let transport = longDist * travelers + localPerDay * totalDays * travelers;
-  transport += carOn ? carFlat : alpsTransit * travelers;
+  if (variant.hasCar) {
+    const alpsTransit = getHyp("alpstransit");
+    const carFlat = getHyp("car");
+    transport += carOn ? carFlat : alpsTransit * travelers;
+  }
 
   let activitiesChecked = 0;
   let activitiesCost = 0;
@@ -551,10 +678,35 @@ function renderChart(rows) {
 }
 
 function applyDurationPreset(mode) {
-  CITIES.forEach(city => {
+  getCities().forEach(city => {
     const el = document.getElementById("nights-" + city.id);
     if (el) el.value = mode === "2w" ? city.nights2w : city.nights;
   });
+  update();
+}
+
+function applyVariantUI() {
+  const variant = VARIANTS[currentVariant];
+  document.getElementById("route-strip").textContent = variant.route;
+  document.getElementById("footer-note").textContent = "Estimations de préparation — à confronter aux prix réels au moment de la réservation. " + variant.footer;
+  document.getElementById("car-toggle-row").style.display = variant.hasCar ? "" : "none";
+  document.getElementById("hyp-alpstransit-field").style.display = variant.hasCar ? "" : "none";
+  document.getElementById("hyp-car-field").style.display = variant.hasCar ? "" : "none";
+  document.getElementById("hyp-longdist-label").textContent = variant.longdistLabel;
+  document.getElementById("car-toggle").checked = false;
+  Object.keys(variant.defaults).forEach(key => {
+    const el = document.getElementById("hyp-" + key);
+    if (el) el.value = variant.defaults[key];
+  });
+}
+
+function switchVariant(key) {
+  currentVariant = key;
+  applyVariantUI();
+  renderCities();
+  const mode = document.querySelector('input[name="duration"]:checked').value;
+  applyDurationPreset(mode);
+  syncCarDependentCheckboxes();
   update();
 }
 
@@ -577,7 +729,7 @@ document.getElementById("uncheck-all").addEventListener("click", () => {
   update();
 });
 document.getElementById("uncheck-vertige").addEventListener("click", () => {
-  CITIES.forEach(city => city.activities.filter(a => a.vertige).forEach(a => {
+  getCities().forEach(city => city.activities.filter(a => a.vertige).forEach(a => {
     const cb = document.getElementById("act-" + a.id);
     if (cb) cb.checked = false;
   }));
@@ -587,7 +739,11 @@ document.getElementById("reset-nights").addEventListener("click", () => {
   const mode = document.querySelector('input[name="duration"]:checked').value;
   applyDurationPreset(mode);
 });
+document.getElementById("variant-group").addEventListener("change", () => {
+  switchVariant(document.querySelector('input[name="variant"]:checked').value);
+});
 
+applyVariantUI();
 renderCities();
 syncCarDependentCheckboxes();
 update();
