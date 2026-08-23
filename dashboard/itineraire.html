@@ -72,6 +72,9 @@ h2 .h2note { font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; te
 svg.map { display:block; width:100%; height:auto; background:var(--sea-1); touch-action:manipulation; }
 svg.map text { font-family:var(--f-body); pointer-events:none; }
 .pin { cursor:pointer; }
+.pin.hi circle:nth-of-type(2) { stroke:var(--accent-ink); stroke-width:2; }
+.pin.hi text { opacity:1 !important; font-weight:600; fill:var(--ink); }
+#spot { transition:cx .18s ease, cy .18s ease, opacity .18s ease; pointer-events:none; }
 .pin .hit { fill:transparent; }
 .pin:focus { outline:none; }
 .pin:focus-visible .halo { stroke:var(--accent-ink); stroke-width:3; opacity:1; }
@@ -128,8 +131,9 @@ input:focus-visible,select:focus-visible { outline:2px solid var(--accent); outl
 .poolbox { border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:10px; }
 .poolhead { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between; }
 .poolhead .flabel { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.poolhead .pl2 { font-size:12px; color:var(--muted); flex:1 1 100%; order:3; line-height:1.4; }
 .poolbtns { display:flex; gap:6px; }
-.pool { display:flex; flex-wrap:wrap; gap:7px; max-height:172px; overflow-y:auto; }
+.pool { display:flex; flex-wrap:wrap; gap:7px; max-height:210px; overflow-y:auto; }
 .exc { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--muted); cursor:pointer; }
 .exc input { accent-color:var(--accent); margin:0; }
 .hop .rt { color:var(--accent-ink); font-weight:500; }
@@ -139,6 +143,8 @@ input:focus-visible,select:focus-visible { outline:2px solid var(--accent); outl
 .pool button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
 .pool button .rg { font-family:var(--f-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
 .pool button:hover .rg { color:var(--accent-ink); }
+.pool button.again { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); }
+.pool button.again .rg { color:var(--accent-ink); }
 
 .presets { display:flex; flex-direction:column; gap:7px; }
 .presets .pl { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
@@ -220,6 +226,7 @@ footer { border-top:1px solid var(--line); padding-top:17px; font-size:12.5px; c
         <span class="li"><span class="d" style="background:var(--accent)"></span> étape retenue</span>
         <span class="li"><span class="d" style="background:var(--muted);opacity:.45"></span> disponible, cliquer pour ajouter</span>
         <span class="li"><span class="d" style="background:var(--maybe)"></span> nuitée sur place</span>
+        <span class="li"><span class="d" style="background:var(--maybe);border-radius:1px;height:3px;width:16px"></span> excursion, aller-retour depuis la base</span>
         <span class="li">Le tracé suit l'ordre des étapes, pas le tracé exact des voies.</span>
       </div>
     </div>
@@ -227,6 +234,7 @@ footer { border-top:1px solid var(--line); padding-top:17px; font-size:12.5px; c
       <div class="pad poolbox">
         <div class="poolhead">
           <span class="flabel">Ajouter une étape</span>
+          <span class="pl2">Une ville peut revenir plusieurs fois : Tokyo au début et à la fin, par exemple.</span>
           <span class="poolbtns">
             <button class="chip-btn" id="add-all" type="button">Tout ajouter</button>
             <button class="chip-btn" id="clear2" type="button">Tout retirer</button>
@@ -648,16 +656,31 @@ function renderMap() {
   const water = WATER.rivers.map(d => `<path d="${d}" fill="none" stroke="var(--sea-2)" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>`).join("")
     + WATER.lakes.map(d => `<path d="${d}" fill="var(--sea-2)" stroke="var(--coast)" stroke-width=".7" opacity=".95"/>`).join("");
 
-  // tracé du parcours, en courbes douces
+  // tracé : même logique que le calcul des trajets — les excursions repartent de la base
   const pts = trip.map(s => proj(byId(s.id).lon, byId(s.id).lat));
-  let path = "";
-  for (let i = 0; i < pts.length - 1; i++) {
-    const [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
-    if (x1 === x2 && y1 === y2) continue;
+  const arc = (i, j, bow) => {
+    const [x1, y1] = pts[i], [x2, y2] = pts[j];
     const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
     const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1;
-    const bow = Math.min(len * 0.16, 46);
-    path += `M${x1.toFixed(1)},${y1.toFixed(1)}Q${(mx - dy / len * bow).toFixed(1)},${(my + dx / len * bow).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
+    return `M${x1.toFixed(1)},${y1.toFixed(1)}Q${(mx - dy / len * bow).toFixed(1)},${(my + dx / len * bow).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
+  };
+  const dist = (i, j) => Math.hypot(pts[j][0] - pts[i][0], pts[j][1] - pts[i][1]) || 1;
+  let mainPath = "", excPath = "";
+  {
+    let base = 0;
+    for (let i = 0; i < trip.length - 1; i++) {
+      const to = trip[i + 1], rt = isExc(to);
+      if (trip[base].id !== to.id) {
+        const len = dist(base, i + 1);
+        if (rt) {                                   // boucle : aller bombé d'un côté, retour de l'autre
+          const bow = Math.max(len * 0.20, 13);
+          excPath += arc(base, i + 1, bow) + arc(i + 1, base, bow);
+        } else {
+          mainPath += arc(base, i + 1, Math.min(len * 0.16, 46));
+        }
+      }
+      if (!rt) base = i + 1;
+    }
   }
 
   // décalage des étiquettes là où les villes se chevauchent
@@ -676,7 +699,7 @@ function renderMap() {
     const fill = on ? (sleeps ? "var(--maybe)" : "var(--accent)") : "var(--muted)";
     const label = nums.length ? nums.join("·") : "";
     return `<g class="pin" data-id="${p.id}" role="button" tabindex="0"
-              aria-label="${p.n}${on ? ", étape " + label + ", cliquer pour retirer" : ", cliquer pour ajouter"}">
+              aria-label="${p.n}${on ? ", étape " + label + ", cliquer pour retirer la dernière occurrence" : ", cliquer pour ajouter"}">
       <circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r + 4}" fill="none" stroke="var(--surface)" stroke-width="2.5" opacity="${on ? .95 : .5}"/>
       <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${fill}" opacity="${on ? 1 : .45}"/>
       ${on && label ? `<text x="${x.toFixed(1)}" y="${(y + 3.2).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#fff">${label}</text>` : ""}
@@ -713,7 +736,10 @@ function renderMap() {
       <text x="${fx.toFixed(1)}" y="${(fy + 19).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="var(--muted)"
             stroke="var(--surface)" stroke-width="2.6" paint-order="stroke">Fuji</text>
     </g>
-    <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"
+    <circle id="spot" cx="0" cy="0" r="15" fill="none" stroke="var(--accent-ink)" stroke-width="2.5" opacity="0"/>
+    <path d="${excPath}" fill="none" stroke="var(--maybe)" stroke-width="1.7" stroke-linecap="round"
+          stroke-dasharray="4 4" opacity=".85"/>
+    <path d="${mainPath}" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"
           stroke-dasharray="7 6" opacity=".78"/>
     ${pins}`;
 
@@ -731,6 +757,19 @@ function renderMap() {
   });
 }
 
+function highlight(id) {
+  const spot = $("spot");
+  $("map").querySelectorAll(".pin.hi").forEach(g => g.classList.remove("hi"));
+  if (!id || !spot) { if (spot) spot.setAttribute("opacity", "0"); return; }
+  const p = byId(id); if (!p) return;
+  const [x, y] = proj(p.lon, p.lat);
+  spot.setAttribute("cx", x.toFixed(1));
+  spot.setAttribute("cy", y.toFixed(1));
+  spot.setAttribute("opacity", "1");
+  const g = $("map").querySelector(`.pin[data-id="${id}"]`);
+  if (g) g.classList.add("hi");
+}
+
 /* ---------- Étapes ---------- */
 function renderStops(c) {
   if (!trip.length) {
@@ -743,7 +782,7 @@ function renderStops(c) {
     const p = byId(s.id);
     const perNight = form === "individual" ? p.lodge[0] * tr : (tr === 1 ? p.lodge[0] : p.lodge[tr - 1]);
     const cost = perNight * s.nights;
-    html += `<div class="stop">
+    html += `<div class="stop" data-pid="${s.id}">
       <div class="stop-head">
         <span class="stop-num">${i + 1}</span>
         <span class="stop-name">${p.n}<small>${p.tag}</small></span>
@@ -789,6 +828,11 @@ function renderStops(c) {
   });
   $("stops").innerHTML = html;
 
+  $("stops").querySelectorAll(".stop").forEach(el => {
+    const id = el.dataset.pid;
+    el.onmouseenter = () => highlight(id);
+    el.onmouseleave = () => highlight(null);
+  });
   $("stops").querySelectorAll("[data-up]").forEach(b => b.onclick = () => move(b.dataset.up, -1));
   $("stops").querySelectorAll("[data-down]").forEach(b => b.onclick = () => move(b.dataset.down, 1));
   $("stops").querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
@@ -826,13 +870,24 @@ function move(key, dir) {
 }
 
 function renderPool() {
-  const sel = SEL();
   const R = { kanto:"Kanto", fuji:"Fuji", chubu:"Chubu", kansai:"Kansai" };
-  $("pool").innerHTML = PLACES.filter(p => !sel.has(p.id))
-    .map(p => `<button type="button" data-add="${p.id}" title="${p.why}">
-      ${p.n} <span class="rg">${R[p.r]}</span></button>`).join("")
-    || `<span class="lede">Toutes les villes disponibles sont déjà dans le voyage.</span>`;
-  $("pool").querySelectorAll("[data-add]").forEach(b => b.onclick = () => { addStop(b.dataset.add); render(); });
+  const count = {};
+  trip.forEach(s => { count[s.id] = (count[s.id] || 0) + 1; });
+  $("pool").innerHTML = PLACES.map(p => {
+    const c = count[p.id] || 0;
+    const tip = c
+      ? `Déjà ${c} fois dans le voyage. Cliquer ajoute un séjour de plus, à la fin.`
+      : p.why;
+    return `<button type="button" data-add="${p.id}" class="${c ? "again" : ""}" title="${tip}">
+      ${p.n} <span class="rg">${c ? "déjà ×" + c : R[p.r]}</span></button>`;
+  }).join("");
+  $("pool").querySelectorAll("[data-add]").forEach(b => {
+    b.onclick = () => { addStop(b.dataset.add); render(); };
+    b.onmouseenter = () => highlight(b.dataset.add);
+    b.onfocus = () => highlight(b.dataset.add);
+    b.onmouseleave = () => highlight(null);
+    b.onblur = () => highlight(null);
+  });
 }
 
 /* ---------- Budget et bandeau ---------- */
@@ -909,7 +964,9 @@ $("clear").onclick = () => { trip = []; currentPresetNote = ""; render(); };
 $("share").onclick = shareLink;
 $("add-all").onclick = () => {
   const sel = SEL();
-  PLACES.filter(p => !sel.has(p.id)).forEach(p => addStop(p.id));
+  const missing = PLACES.filter(p => !sel.has(p.id));
+  if (!missing.length) { flash("Toutes les villes sont déjà dans le voyage"); return; }
+  missing.forEach(p => addStop(p.id));
   currentPresetNote = ""; render();
 };
 $("clear2").onclick = () => { trip = []; currentPresetNote = ""; render(); };
