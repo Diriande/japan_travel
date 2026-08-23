@@ -24,11 +24,17 @@ prendre Light et ajouter des bagages ensuite.
 (tous tarifs éco), **EVA Air** (hors tarif Economy Discount) et les chinoises **China Southern** et
 **Air China** — mais aucune n'est moins chère que Finnair en basse saison. Voir `01_vols/finnair.md`.
 
-Ces franchises-là viennent de recherches web, pas des tunnels de réservation : **à confirmer** avant de
-changer de compagnie pour un motif de bagages.
+**Vérifiés sur les sites officiels le 23/08/2026 :** JAL (2 pièces de 23kg, exemple européen à l'appui) et
+EVA Air (2 pièces sur l'Europe pour les tarifs Up, Standard et Basic — mais **1 seule pièce** au tarif
+Discount, classe A).
 
-À noter : **ANA** n'inclut plus qu'une pièce sur l'Europe depuis le 1er novembre 2024 ; il faut monter au
-tarif Standard pour retrouver les deux valises.
+**Non vérifiés :** China Southern, Air China, Korean Air, Turkish et Air France reposent sur des recherches
+web. À confirmer avant de changer de compagnie pour un motif de bagages.
+
+À noter pour **ANA** : la page officielle annonce **« 0 à 2 pièces »** en économie, « selon les règles
+tarifaires ». La franchise est donc variable et doit être vérifiée sur le billet. Le passage à une pièce sur
+l'Europe au 1er novembre 2024 est rapporté par la presse spécialisée mais n'est pas confirmé par ANA
+directement.
 
 ## Poids du bagage cabine
 
