@@ -125,7 +125,14 @@ input:focus-visible,select:focus-visible { outline:2px solid var(--accent); outl
 .hop .via { font-family:var(--f-mono); font-size:11px; color:var(--muted); }
 
 /* --- réserve de lieux --- */
-.pool { display:flex; flex-wrap:wrap; gap:7px; }
+.poolbox { border-bottom:1px solid var(--line); display:flex; flex-direction:column; gap:10px; }
+.poolhead { display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between; }
+.poolhead .flabel { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.poolbtns { display:flex; gap:6px; }
+.pool { display:flex; flex-wrap:wrap; gap:7px; max-height:172px; overflow-y:auto; }
+.exc { display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--muted); cursor:pointer; }
+.exc input { accent-color:var(--accent); margin:0; }
+.hop .rt { color:var(--accent-ink); font-weight:500; }
 .pool button { font-family:var(--f-body); font-size:13px; padding:6px 11px; border-radius:14px;
   border:1px solid var(--line); background:var(--surface-2); color:var(--ink); cursor:pointer; display:inline-flex; gap:7px; align-items:center; }
 .pool button:hover { border-color:var(--accent); color:var(--accent-ink); background:var(--accent-soft); }
@@ -217,11 +224,18 @@ footer { border-top:1px solid var(--line); padding-top:17px; font-size:12.5px; c
       </div>
     </div>
     <div class="panel" style="display:flex;flex-direction:column;">
-      <div class="stops" id="stops"></div>
-      <div class="pad" style="border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px;">
-        <span class="flabel" style="font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Ajouter une étape</span>
+      <div class="pad poolbox">
+        <div class="poolhead">
+          <span class="flabel">Ajouter une étape</span>
+          <span class="poolbtns">
+            <button class="chip-btn" id="add-all" type="button">Tout ajouter</button>
+            <button class="chip-btn" id="clear2" type="button">Tout retirer</button>
+          </span>
+        </div>
         <div class="pool" id="pool"></div>
       </div>
+      <div class="stops" id="stops"></div>
+
     </div>
   </div>
   <div class="presets">
@@ -503,7 +517,7 @@ function addStop(id, nights) {
   const p = byId(id); if (!p) return;
   const n = nights !== undefined ? nights : (DEFAULT_NIGHTS[id] ?? p.d);
   const acts = new Set(p.acts.map((_, i) => i).filter(i => !p.acts[i][2]));  // tout sauf ce qui expose au vide
-  trip.push({ key: "s" + (seq++), id, nights: n, acts, modes: {} });
+  trip.push({ key: "s" + (seq++), id, nights: n, acts, modes: {}, exc: n === 0 });
 }
 function setPreset(name) {
   const pre = PRESETS[name]; if (!pre) return;
@@ -522,7 +536,7 @@ const STORE = "atelier-japon-v1";
 function snapshot() {
   return {
     v: 1,
-    t: trip.map(s => [s.id, s.nights, [...s.acts], s.modes]),
+    t: trip.map(s => [s.id, s.nights, [...s.acts], s.modes, s.exc ? 1 : 0]),
     tr: travelers(), lg: formula(),
     n: ["flight","food","local","misc"].map(id => numv(id))
   };
@@ -530,9 +544,9 @@ function snapshot() {
 function restore(d) {
   if (!d || d.v !== 1 || !Array.isArray(d.t)) return false;
   trip = []; seq = 0;
-  for (const [id, nights, acts, modes] of d.t) {
+  for (const [id, nights, acts, modes, exc] of d.t) {
     if (!byId(id)) continue;
-    trip.push({ key: "s" + (seq++), id, nights: nights | 0, acts: new Set(acts || []), modes: modes || {} });
+    trip.push({ key: "s" + (seq++), id, nights: nights | 0, acts: new Set(acts || []), modes: modes || {}, exc: !!exc });
   }
   const tr = document.querySelector(`input[name="tr"][value="${d.tr}"]`); if (tr) tr.checked = true;
   const lg = document.querySelector(`input[name="lg"][value="${d.lg}"]`); if (lg) lg.checked = true;
@@ -573,21 +587,29 @@ function loadInitial() {
 }
 
 /* ---------- Calcul ---------- */
+const isExc = s => s.exc && s.nights === 0;   // excursion : on repart de la base, pas de l'étape
+
 function computeHops() {
   const hops = [];
+  let base = 0;                                // index de la dernière étape où l'on dort
   for (let i = 0; i < trip.length - 1; i++) {
-    const a = trip[i], b = trip[i + 1];
-    if (a.id === b.id) { hops.push({ same: true }); continue; }
-    const r = route(a.id, b.id);
-    if (!r) { hops.push({ none: true, a: a.id, b: b.id }); continue; }
+    const to = trip[i + 1], from = trip[base];
+    const rt = isExc(to);                      // aller-retour depuis la base
+    const detour = base !== i;                 // on ne part pas de l'étape précédente
+    const advance = () => { if (!rt) base = i + 1; };
+    if (from.id === to.id) { hops.push({ same: true }); advance(); continue; }
+    const r = route(from.id, to.id);
+    if (!r) { hops.push({ none: true, a: from.id, b: to.id }); advance(); continue; }
     let min = 0, eur = 0;
     const chosen = r.legs.map((leg, li) => {
-      const mi = a.modes[li] ?? 0;
+      const mi = trip[i + 1].modes[li] ?? 0;
       const m = leg.modes[Math.min(mi, leg.modes.length - 1)];
       min += m[1]; eur += m[2];
       return { leg, m, mi };
     });
-    hops.push({ r, chosen, min, eur, stopIndex: i });
+    const f = rt ? 2 : 1;
+    hops.push({ r, chosen, min: min * f, eur: eur * f, rt, detour, fromId: from.id, stopIndex: i });
+    advance();
   }
   return hops;
 }
@@ -735,6 +757,8 @@ function renderStops(c) {
         <div class="nights-row">
           <label for="n-${s.key}">nuits</label>
           <input type="number" id="n-${s.key}" data-nights="${s.key}" min="0" max="21" value="${s.nights}">
+          ${s.nights === 0 && i > 0 ? `<label class="exc" title="Retour à l'étape précédente le soir : le trajet est compté aller-retour, et l'étape suivante repart de là.">
+            <input type="checkbox" data-exc="${s.key}" ${s.exc ? "checked" : ""}> excursion, retour au point de départ</label>` : ""}
           <span class="stop-cost">${s.nights ? fmt(cost) + " d'hébergement" : "sans nuitée"}</span>
         </div>
         <div class="acts-mini">${p.acts.map((a, ai) => `
@@ -752,6 +776,8 @@ function renderStops(c) {
         const via = h.r.path.slice(1, -1).map(id => byId(id).n);
         html += `<div class="hop"><span class="rail"><i></i></span><div class="hb">
           <span class="hl"><b>${hm(h.min)}</b> · ${fmt(h.eur)} par personne
+          ${h.rt ? `<span class="rt">aller-retour depuis ${byId(h.fromId).n}</span>` : ""}
+          ${!h.rt && h.detour ? `<span class="rt">au départ de ${byId(h.fromId).n}</span>` : ""}
           ${via.length ? `<span class="via">via ${via.join(", ")}</span>` : ""}</span>
           ${h.chosen.map((ch, li) => ch.leg.modes.length > 1
             ? `<select data-mode="${s.key}" data-li="${li}">${ch.leg.modes.map((m, mi) =>
@@ -770,7 +796,15 @@ function renderStops(c) {
   });
   $("stops").querySelectorAll("[data-nights]").forEach(inp => inp.oninput = () => {
     const s = trip.find(x => x.key === inp.dataset.nights);
-    if (s) { s.nights = Math.max(0, parseInt(inp.value, 10) || 0); render(false); }
+    if (!s) return;
+    const was = s.nights;
+    s.nights = Math.max(0, parseInt(inp.value, 10) || 0);
+    if (was > 0 && s.nights === 0) s.exc = true;      // devient une excursion par défaut
+    render();
+  });
+  $("stops").querySelectorAll("[data-exc]").forEach(cb => cb.onchange = () => {
+    const s = trip.find(x => x.key === cb.dataset.exc);
+    if (s) { s.exc = cb.checked; render(false); }
   });
   $("stops").querySelectorAll("[data-act]").forEach(cb => cb.onchange = () => {
     const s = trip.find(x => x.key === cb.dataset.act);
@@ -836,7 +870,7 @@ function renderNotices(c) {
   const out = [];
   const longHop = c.hops.find(h => h.min >= 210);
   if (longHop) out.push(`Le trajet ${byId(longHop.r.path[0]).n} → ${byId(longHop.r.path.at(-1)).n} dure ${hm(longHop.min)} : il occupe une journée entière, prévois-la comme telle.`);
-  const noSleep = trip.filter((s, i) => s.nights === 0 && i > 0 && i < trip.length - 1 && c.hops[i - 1] && c.hops[i - 1].min >= 90);
+  const noSleep = trip.filter((s, i) => s.nights === 0 && !s.exc && i > 0 && i < trip.length - 1 && c.hops[i - 1] && c.hops[i - 1].min >= 90);
   if (noSleep.length) out.push(`${noSleep.map(s => byId(s.id).n).join(", ")} : étape sans nuitée après plus d'1 h 30 de trajet. Vérifie que la journée tient debout.`);
   if (c.nights > 21) out.push(`${c.nights} nuits dépassent la durée visée de 2 à 3 semaines.`);
   const kw = trip.findIndex(s => s.id === "kawaguchiko"), hk = trip.findIndex(s => s.id === "hakone");
@@ -873,6 +907,12 @@ document.querySelectorAll("[data-preset]").forEach(b => b.onclick = () => setPre
 $("reverse").onclick = () => { trip.reverse(); currentPresetNote = ""; render(); };
 $("clear").onclick = () => { trip = []; currentPresetNote = ""; render(); };
 $("share").onclick = shareLink;
+$("add-all").onclick = () => {
+  const sel = SEL();
+  PLACES.filter(p => !sel.has(p.id)).forEach(p => addStop(p.id));
+  currentPresetNote = ""; render();
+};
+$("clear2").onclick = () => { trip = []; currentPresetNote = ""; render(); };
 $("drop-vertige").onclick = () => {
   trip.forEach(s => byId(s.id).acts.forEach((a, i) => { if (a[2]) s.acts.delete(i); }));
   render();
