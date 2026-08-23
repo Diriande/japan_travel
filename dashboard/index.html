@@ -1,344 +1,428 @@
-<title>Japon — Dashboard de voyage</title>
+<title>Cockpit Japon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
 <style>
-  :root {
-    color-scheme: light;
-    --bg-page:        #eef0f1;
-    --card:           #ffffff;
-    --card-border:    rgba(23,27,33,0.09);
-    --ink-primary:    #171b21;
-    --ink-secondary:  #545b66;
-    --ink-muted:      #8b909b;
-    --accent:         #24425f;
-    --accent-strong:  #16293a;
-    --accent-soft:    #e3e9ee;
-    --attention:      #b14d3a;
-    --attention-soft: #f5e4df;
-    --divider:        #dde1df;
-    --focus-ring:      #1c5cab;
-    --shadow: 0 1px 2px rgba(23,27,33,0.04), 0 8px 24px -12px rgba(23,27,33,0.18);
+:root {
+  --ground: #EDF0F1; --surface: #FFFFFF; --surface-2: #F5F8F9; --surface-3: #E8EDEF;
+  --ink: #0F171C; --muted: #59676F; --line: #D3DBDF; --line-soft: #E3E9EC;
+  --accent: #15586F; --accent-ink: #0E4256; --accent-soft: #E0EDF1;
+  --yes: #2C6A50; --yes-bg: #E1EFE7;
+  --maybe: #856012; --maybe-bg: #F5EBD6;
+  --no: #8E4130; --no-bg: #F4E3DE;
+  --c-flight: #15586F; --c-lodging: #2C6A50; --c-transport: #856012;
+  --c-acts: #7A4A73; --c-food: #A05A2C; --c-misc: #5C6B74;
+  --shadow: 0 1px 2px rgba(15,23,28,.05), 0 8px 24px -16px rgba(15,23,28,.28);
+  --f-display: "Newsreader", Georgia, serif;
+  --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0D1317; --surface: #141C21; --surface-2: #182228; --surface-3: #1E2A31;
+    --ink: #E6EDF0; --muted: #93A3AC; --line: #26333B; --line-soft: #1E2A31;
+    --accent: #5FAEC8; --accent-ink: #8DC9DD; --accent-soft: #16303C;
+    --yes: #74B996; --yes-bg: #163025;
+    --maybe: #D5A853; --maybe-bg: #322715;
+    --no: #DE8E7A; --no-bg: #34201B;
+    --c-flight: #5FAEC8; --c-lodging: #74B996; --c-transport: #D5A853;
+    --c-acts: #C89BC0; --c-food: #DFA271; --c-misc: #8FA0AA;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      color-scheme: dark;
-      --bg-page:        #12151a;
-      --card:           #1b2027;
-      --card-border:    rgba(255,255,255,0.08);
-      --ink-primary:    #eceeec;
-      --ink-secondary:  #adb3bd;
-      --ink-muted:      #7a808b;
-      --accent:         #86b0d1;
-      --accent-strong:  #b4d1e8;
-      --accent-soft:    #223140;
-      --attention:      #e08a6f;
-      --attention-soft: #3a2721;
-      --divider:        #2a3038;
-      --focus-ring:      #86b0d1;
-      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
-    }
-  }
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --bg-page:        #12151a;
-    --card:           #1b2027;
-    --card-border:    rgba(255,255,255,0.08);
-    --ink-primary:    #eceeec;
-    --ink-secondary:  #adb3bd;
-    --ink-muted:      #7a808b;
-    --accent:         #86b0d1;
-    --accent-strong:  #b4d1e8;
-    --accent-soft:    #223140;
-    --attention:      #e08a6f;
-    --attention-soft: #3a2721;
-    --divider:        #2a3038;
-    --focus-ring:      #86b0d1;
-    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -12px rgba(0,0,0,0.6);
-  }
+}
+:root[data-theme="dark"] {
+  --ground: #0D1317; --surface: #141C21; --surface-2: #182228; --surface-3: #1E2A31;
+  --ink: #E6EDF0; --muted: #93A3AC; --line: #26333B; --line-soft: #1E2A31;
+  --accent: #5FAEC8; --accent-ink: #8DC9DD; --accent-soft: #16303C;
+  --yes: #74B996; --yes-bg: #163025;
+  --maybe: #D5A853; --maybe-bg: #322715;
+  --no: #DE8E7A; --no-bg: #34201B;
+  --c-flight: #5FAEC8; --c-lodging: #74B996; --c-transport: #D5A853;
+  --c-acts: #C89BC0; --c-food: #DFA271; --c-misc: #8FA0AA;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--ground); color: var(--ink); font-family: var(--f-body);
+  font-size: 15px; line-height: 1.55; margin: 0; padding: 0 18px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 34px; }
 
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--bg-page);
-    color: var(--ink-primary);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-    line-height: 1.45;
-  }
-  h1, h2, h3 {
-    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
-    font-weight: 600;
-    text-wrap: balance;
-    margin: 0;
-    color: var(--ink-primary);
-  }
-  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 20px 80px; }
+/* header */
+.masthead { padding-top: 44px; display: flex; flex-direction: column; gap: 12px; }
+.eyebrow {
+  font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .13em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; flex-wrap: wrap; gap: 9px; align-items: center;
+}
+.eyebrow .dot { color: var(--line); }
+h1 {
+  font-family: var(--f-display); font-size: clamp(32px, 5vw, 46px); font-weight: 500;
+  line-height: 1.05; letter-spacing: -.018em; margin: 0; text-wrap: balance;
+}
+.sub { color: var(--muted); max-width: 66ch; margin: 0; font-size: 15.5px; }
 
-  header.top { margin-bottom: 24px; }
-  header.top h1 { font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.15rem); }
-  header.top p { margin: 8px 0 0; color: var(--ink-secondary); max-width: 68ch; font-size: 0.97rem; }
-  .route-strip {
-    margin-top: 12px; font-size: 0.84rem; color: var(--accent-strong); background: var(--accent-soft);
-    display: inline-block; padding: 7px 14px; border-radius: 999px;
-  }
+/* totals bar */
+.totals {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
+  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  border-radius: 3px; overflow: hidden; box-shadow: var(--shadow);
+  position: sticky; top: 0; z-index: 20;
+}
+.tot { background: var(--surface); padding: 15px 18px; display: flex; flex-direction: column; gap: 2px; }
+.tot .k {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.tot .v {
+  font-family: var(--f-mono); font-variant-numeric: tabular-nums;
+  font-size: 24px; font-weight: 600; letter-spacing: -.01em; line-height: 1.15;
+}
+.tot.hero { background: var(--accent-soft); }
+.tot.hero .v, .tot.hero .k { color: var(--accent-ink); }
+.tot .note { font-size: 12px; color: var(--muted); }
 
-  .layout { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start; }
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
-    aside.summary { order: -1; position: static; }
-  }
+section { display: flex; flex-direction: column; gap: 16px; }
+h2 {
+  font-family: var(--f-display); font-size: clamp(22px, 3vw, 27px); font-weight: 500;
+  letter-spacing: -.014em; line-height: 1.15; margin: 0;
+  padding-bottom: 11px; border-bottom: 2px solid var(--ink); text-wrap: balance;
+}
+h2 .h2note {
+  font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); margin-left: 10px;
+  vertical-align: middle; font-weight: 400;
+}
+.lede { color: var(--muted); max-width: 74ch; margin: 0; font-size: 14.5px; line-height: 1.6; }
+.lede strong { color: var(--ink); font-weight: 600; }
 
-  .card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 14px;
-    box-shadow: var(--shadow);
-    padding: 20px 22px;
-  }
-  main.content { display: flex; flex-direction: column; gap: 18px; }
-  aside.summary { position: sticky; top: 20px; display: flex; flex-direction: column; gap: 16px; }
+/* panels */
+.panel {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 3px; box-shadow: var(--shadow);
+}
+.panel-pad { padding: 20px 22px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
 
-  .controls h2, .city-card h3, .hyp h2 { font-size: 1.05rem; }
-  .controls { display: flex; flex-direction: column; gap: 16px; }
-  .field { display: flex; flex-direction: column; gap: 6px; }
-  .field label.field-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; }
+/* controls */
+.ctrl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 18px 22px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field > label, .field > .flabel {
+  font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+}
+.seg { display: flex; border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.seg label {
+  flex: 1; text-align: center; padding: 8px 6px; font-size: 13.5px; cursor: pointer;
+  background: var(--surface-2); border-right: 1px solid var(--line); transition: background .12s, color .12s;
+  user-select: none;
+}
+.seg label:last-child { border-right: 0; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg input:checked + span { color: #fff; }
+.seg label:has(input:checked) { background: var(--accent); color: #fff; font-weight: 500; }
+.seg label:has(input:focus-visible) { outline: 2px solid var(--accent-ink); outline-offset: -2px; }
+select, input[type="number"] {
+  font-family: var(--f-body); font-size: 14px; color: var(--ink); background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: 3px; padding: 8px 10px; width: 100%;
+}
+input[type="number"] { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.check {
+  display: flex; align-items: flex-start; gap: 9px; font-size: 14px; cursor: pointer;
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px; background: var(--surface-2);
+}
+.check input { margin-top: 3px; flex: none; accent-color: var(--accent); }
+.check .ct { display: flex; flex-direction: column; gap: 1px; }
+.check .cs { font-size: 12px; color: var(--muted); }
 
-  .segmented { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--divider); border-radius: 10px; overflow: hidden; width: fit-content; }
-  .segmented input { position: absolute; opacity: 0; pointer-events: none; }
-  .segmented label {
-    padding: 9px 14px; font-size: 0.9rem; cursor: pointer; color: var(--ink-secondary);
-    border-right: 1px solid var(--divider); transition: background .12s, color .12s;
-  }
-  .segmented label:last-child { border-right: none; }
-  .segmented input:checked + label { background: var(--accent); color: #fff; }
-  .segmented input:focus-visible + label { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+/* flight table */
+.scroller { overflow-x: auto; border: 1px solid var(--line); border-radius: 3px; background: var(--surface); box-shadow: var(--shadow); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+table.min { min-width: 720px; }
+thead th {
+  text-align: left; font-family: var(--f-mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+  padding: 12px 14px; border-bottom: 1px solid var(--line); background: var(--surface-2);
+  white-space: nowrap;
+}
+tbody td { padding: 12px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr.sel { background: var(--accent-soft); }
+tbody tr.pick { cursor: pointer; }
+tbody tr.pick:hover { background: var(--surface-2); }
+tbody tr.sel.pick:hover { background: var(--accent-soft); }
+.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.num b { font-weight: 600; }
+.cname { font-weight: 600; }
+.chip {
+  display: inline-block; font-family: var(--f-mono); font-size: 10.5px; font-weight: 500;
+  letter-spacing: .03em; padding: 2px 7px; border-radius: 2px; white-space: nowrap;
+}
+.chip.yes { background: var(--yes-bg); color: var(--yes); }
+.chip.maybe { background: var(--maybe-bg); color: var(--maybe); }
+.chip.no { background: var(--no-bg); color: var(--no); }
+.mono-sm { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); }
 
-  input[type="number"] {
-    font: inherit; font-variant-numeric: tabular-nums; width: 110px;
-    padding: 8px 10px; border-radius: 8px; border: 1px solid var(--divider);
-    background: var(--bg-page); color: var(--ink-primary);
-  }
-  input[type="number"]:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
+/* budget bar */
+.stack { display: flex; height: 30px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+.stack i { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.lg { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.lg .sw { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+.lg .lv { font-family: var(--f-mono); font-variant-numeric: tabular-nums; margin-left: auto; font-weight: 500; }
+.brk { display: flex; flex-direction: column; gap: 9px; }
+.brk-row { display: grid; grid-template-columns: 13px 1fr auto auto; gap: 11px; align-items: center; font-size: 13.5px; }
+.brk-row .sw { width: 11px; height: 11px; border-radius: 2px; }
+.brk-row .pc { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); width: 42px; text-align: right; }
+.brk-row .amt { font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-weight: 600; width: 74px; text-align: right; }
 
-  .switch-row { display: flex; align-items: flex-start; gap: 12px; }
-  .switch { position: relative; width: 42px; height: 24px; flex: none; margin-top: 2px; }
-  .switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
-  .switch .track {
-    position: absolute; inset: 0; background: var(--divider); border-radius: 999px; transition: background .15s;
-  }
-  .switch .thumb {
-    position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%;
-    background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.3); transition: transform .15s;
-  }
-  .switch input:checked ~ .track { background: var(--accent); }
-  .switch input:checked ~ .thumb { transform: translateX(18px); }
-  .switch input:focus-visible ~ .track { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-  .switch-text strong { display: block; font-size: 0.92rem; }
-  .switch-text span { font-size: 0.83rem; color: var(--ink-secondary); }
+/* itinerary */
+.timeline { display: flex; flex-direction: column; }
+.leg {
+  display: grid; grid-template-columns: 60px 1fr; gap: 16px; align-items: start;
+  padding: 13px 18px; border-bottom: 1px solid var(--line-soft); background: var(--surface);
+}
+.leg:last-child { border-bottom: 0; }
+.leg.stay { background: var(--surface); }
+.leg.move { background: var(--surface-2); }
+.leg .day {
+  font-family: var(--f-mono); font-size: 12px; font-weight: 600; color: var(--accent-ink);
+  padding-top: 1px; letter-spacing: .02em;
+}
+.leg .body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.leg .t { font-weight: 600; font-size: 14.5px; }
+.leg.move .t { font-weight: 500; font-size: 13.5px; color: var(--muted); }
+.leg .d { font-size: 13px; color: var(--muted); }
+.leg .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; margin-top: 2px; }
+.leg .seg-line { font-family: var(--f-mono); font-size: 12px; letter-spacing: .02em; }
+.leg .seg-line .ar { color: var(--muted); padding: 0 3px; }
+.flag {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 12px;
+  padding: 2px 8px; border-radius: 2px; background: var(--maybe-bg); color: var(--maybe); font-weight: 500;
+}
+.flag.ok { background: var(--yes-bg); color: var(--yes); }
+.flag.bad { background: var(--no-bg); color: var(--no); }
 
-  .util-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
-  button.chip {
-    font: inherit; font-size: 0.82rem; background: var(--accent-soft); color: var(--accent-strong);
-    border: 1px solid transparent; border-radius: 999px; padding: 7px 13px; cursor: pointer;
-  }
-  button.chip:hover { border-color: var(--accent); }
-  button.chip:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-  button.chip.attn { background: var(--attention-soft); color: var(--attention); }
+/* cities / activities */
+.city { border-bottom: 1px solid var(--line); background: var(--surface); }
+.city:last-child { border-bottom: 0; }
+.city-head {
+  display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center;
+  padding: 14px 18px; background: var(--surface-2); border-bottom: 1px solid var(--line-soft);
+}
+.city-head h3 { margin: 0; font-family: var(--f-display); font-size: 19px; font-weight: 600; letter-spacing: -.008em; }
+.city-head .nights { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.city-head .nights label { font-size: 12px; color: var(--muted); }
+.city-head .nights input { width: 62px; padding: 5px 7px; text-align: center; }
+.acts { display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 2px 20px; padding: 12px 18px 16px; }
+.act { display: flex; align-items: flex-start; gap: 9px; padding: 5px 0; font-size: 13.5px; }
+.act input { margin-top: 3px; flex: none; accent-color: var(--accent); }
+.act .an { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.act .am { font-family: var(--f-mono); font-size: 11px; color: var(--muted); }
+.act .alt { font-size: 12px; color: var(--maybe); line-height: 1.4; }
+.act .bonus-tag { font-family: var(--f-mono); font-size: 10px; color: var(--muted); }
+.act.dim { opacity: .45; }
+.act-price { margin-left: auto; font-family: var(--f-mono); font-variant-numeric: tabular-nums; font-size: 12.5px; color: var(--muted); padding-left: 10px; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+button.chip-btn {
+  font-family: var(--f-body); font-size: 12.5px; padding: 5px 11px; border-radius: 3px;
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--ink); cursor: pointer;
+}
+button.chip-btn:hover { background: var(--surface-3); }
+button.chip-btn.attn { border-color: var(--maybe); color: var(--maybe); }
+button.chip-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-  .hyp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
-  @media (max-width: 520px) { .hyp-grid { grid-template-columns: 1fr; } }
-  .hyp-field { display: flex; flex-direction: column; gap: 5px; }
-  .hyp-field .hf-label { font-size: 0.82rem; color: var(--ink-secondary); }
-  .hyp-field .hf-row { display: flex; align-items: center; gap: 6px; }
-  .hyp-field .hf-unit { font-size: 0.8rem; color: var(--ink-muted); white-space: nowrap; }
-  .hyp-field input { width: 90px; }
-  .hyp-note { font-size: 0.78rem; color: var(--ink-muted); margin-top: 2px; }
+/* checks / corrections */
+.fixes { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+.fix { background: var(--surface); padding: 15px 18px; display: grid; grid-template-columns: 92px 1fr; gap: 16px; align-items: start; }
+.fix .sev {
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 7px; border-radius: 2px; text-align: center; font-weight: 500;
+}
+.fix .sev.err { background: var(--no-bg); color: var(--no); }
+.fix .sev.warn { background: var(--maybe-bg); color: var(--maybe); }
+.fix .sev.ok { background: var(--yes-bg); color: var(--yes); }
+.fix .fb { display: flex; flex-direction: column; gap: 3px; }
+.fix .fb b { font-size: 14px; font-weight: 600; }
+.fix .fb p { margin: 0; font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+.fix .fb code { font-family: var(--f-mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 2px; }
 
-  .city-card .card-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .city-card .meta { color: var(--ink-secondary); font-size: 0.86rem; margin: 4px 0 14px; }
-  .nights-field { display: flex; align-items: center; gap: 6px; font-size: 0.82rem; color: var(--ink-secondary); flex: none; }
-  .nights-field input {
-    width: 52px; font: inherit; font-variant-numeric: tabular-nums; text-align: center;
-    padding: 5px 4px; border-radius: 7px; border: 1px solid var(--divider); background: var(--bg-page); color: var(--ink-primary);
-  }
-  .nights-field input:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
-  .activity-row {
-    display: grid; grid-template-columns: 22px 1fr auto; gap: 10px 12px; align-items: start;
-    padding: 9px 0; border-top: 1px solid var(--divider);
-  }
-  .activity-row:first-of-type { border-top: none; }
-  .activity-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); }
-  .activity-row input[type="checkbox"]:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
-  .activity-name { font-size: 0.94rem; }
-  .activity-duration { color: var(--ink-muted); font-size: 0.8rem; }
-  .activity-price { font-variant-numeric: tabular-nums; font-size: 0.92rem; white-space: nowrap; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 600;
-    background: var(--attention-soft); color: var(--attention); border-radius: 999px; padding: 2px 8px; margin-left: 8px;
-  }
-  .badge.bonus { background: var(--accent-soft); color: var(--accent-strong); }
-  .alt-note {
-    grid-column: 2 / -1; font-size: 0.82rem; color: var(--ink-secondary);
-    background: var(--attention-soft); border-radius: 8px; padding: 6px 10px; margin-top: 2px;
-  }
-  .alt-note b { color: var(--attention); }
-  .car-note { grid-column: 2 / -1; font-size: 0.8rem; color: var(--ink-muted); font-style: italic; }
-  .activity-row.disabled .activity-name, .activity-row.disabled .activity-price { color: var(--ink-muted); }
+footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 12.5px; color: var(--muted); line-height: 1.6; max-width: 80ch; }
 
-  .stat-hero { text-align: left; }
-  .stat-hero .label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; }
-  .stat-hero .value { font-size: 2.4rem; font-weight: 700; margin-top: 2px; font-family: Georgia, "Iowan Old Style", serif; }
-  .stat-hero .sub { color: var(--ink-secondary); font-size: 0.9rem; margin-top: 2px; }
-  .stat-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
-  .stat-tile { background: var(--accent-soft); border-radius: 10px; padding: 10px 12px; }
-  .stat-tile .t-label { font-size: 0.74rem; color: var(--ink-secondary); }
-  .stat-tile .t-value { font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 700; color: var(--accent-strong); }
-
-  .chart-title { font-size: 0.85rem; color: var(--ink-secondary); margin-bottom: 10px; }
-  .bar-row { display: grid; grid-template-columns: 92px 1fr auto; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .bar-row .bar-label { font-size: 0.82rem; color: var(--ink-secondary); }
-  .bar-track { position: relative; height: 12px; background: var(--divider); border-radius: 6px; overflow: hidden; }
-  .bar-fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 6px; transition: width .25s ease; }
-  .bar-value { font-variant-numeric: tabular-nums; font-size: 0.82rem; min-width: 62px; text-align: right; }
-  .chart-baseline { border-top: 1px solid var(--divider); margin-top: 4px; padding-top: 8px; font-size: 0.76rem; color: var(--ink-muted); }
-
-  footer.foot { margin-top: 34px; color: var(--ink-muted); font-size: 0.8rem; text-align: center; }
+@media (max-width: 640px) {
+  .totals { position: static; }
+  .leg { grid-template-columns: 44px 1fr; gap: 11px; padding: 12px 14px; }
+  .fix { grid-template-columns: 1fr; gap: 7px; }
+  .fix .sev { justify-self: start; }
+  .masthead { padding-top: 30px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
 <div class="wrap">
 
-  <header class="top">
-    <h1>Japon — dashboard de préparation</h1>
-    <p>Choisis la variante, la durée, les voyageurs, l'hébergement et les activités : le budget se recalcule en direct. Les activités marquées <span class="badge">⚠ hauteur</span> ont une alternative sans vertige proposée. Toutes les hypothèses de coût (nourriture, transport, etc.) sont modifiables en bas de la colonne de gauche.</p>
-    <div class="route-strip" id="route-strip">—</div>
-  </header>
-
-  <div class="layout">
-
-    <main class="content">
-
-      <section class="card controls">
-        <h2>Réglages</h2>
-
-        <div class="field">
-          <span class="field-label">Variante d'itinéraire</span>
-          <div class="segmented" id="variant-group">
-            <input type="radio" name="variant" id="v-alps" value="alps" checked>
-            <label for="v-alps">Alpes japonaises</label>
-            <input type="radio" name="variant" id="v-kanto" value="kanto">
-            <label for="v-kanto">Kanto économique</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="field-label">Voyageurs</span>
-          <div class="segmented" id="travelers-group">
-            <input type="radio" name="travelers" id="t2" value="2" checked>
-            <label for="t2">2 — toi + un parent</label>
-            <input type="radio" name="travelers" id="t3" value="3">
-            <label for="t3">3 — toi + tes deux parents</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="field-label">Durée du voyage</span>
-          <div class="segmented" id="duration-group">
-            <input type="radio" name="duration" id="d3" value="3w" checked>
-            <label for="d3">3 semaines (défaut, 19 nuits)</label>
-            <input type="radio" name="duration" id="d2" value="2w">
-            <label for="d2">2 semaines (condensé, 12 nuits)</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <span class="field-label">Vol Finnair, par personne (A/R, 2×23kg)</span>
-          <input type="number" id="flight-price" value="1000" min="600" max="2500" step="25"> €
-        </div>
-
-        <div class="field">
-          <span class="field-label">Formule d'hébergement</span>
-          <div class="segmented" id="lodging-group">
-            <input type="radio" name="lodging" id="l-shared" value="shared" checked>
-            <label for="l-shared">Partagée — 1 chambre à plusieurs lits (type Riverside Shinjuku)</label>
-            <input type="radio" name="lodging" id="l-individual" value="individual">
-            <label for="l-individual">Individuelle — 1 chambre par personne (type R&amp;B Hotel)</label>
-          </div>
-        </div>
-
-        <div class="switch-row" id="car-toggle-row">
-          <label class="switch">
-            <input type="checkbox" id="car-toggle">
-            <span class="track"></span><span class="thumb"></span>
-          </label>
-          <div class="switch-text">
-            <strong>Voiture de location Takayama → Kanazawa</strong>
-            <span>Remplace le trajet en bus/train (~24€/pers) par ~230€ pour le groupe, avec accès à Gokayama et Hida Furukawa en chemin. Voir <code>02_transport/location_voiture.md</code>.</span>
-          </div>
-        </div>
-
-        <div class="util-buttons">
-          <button class="chip" id="check-all">Tout cocher</button>
-          <button class="chip" id="uncheck-all">Tout décocher</button>
-          <button class="chip attn" id="uncheck-vertige">Décocher les activités en hauteur ⚠</button>
-          <button class="chip" id="reset-nights">Réinitialiser les durées</button>
-        </div>
-      </section>
-
-      <div id="cities"></div>
-
-      <section class="card hyp">
-        <h2>Hypothèses budgétaires (modifiables)</h2>
-        <p class="hyp-note">Valeurs par défaut estimées pour 2025/2026, 1 EUR ≈ 180 JPY. Ajuste-les si tu as de meilleures estimations.</p>
-        <div class="hyp-grid">
-          <div class="hyp-field">
-            <span class="hf-label">Nourriture</span>
-            <div class="hf-row"><input type="number" id="hyp-food" value="40" min="0" step="5"><span class="hf-unit">€ / pers / jour</span></div>
-          </div>
-          <div class="hyp-field">
-            <span class="hf-label">Transport local (IC card)</span>
-            <div class="hf-row"><input type="number" id="hyp-local" value="7" min="0" step="1"><span class="hf-unit">€ / pers / jour</span></div>
-          </div>
-          <div class="hyp-field">
-            <span class="hf-label" id="hyp-longdist-label">Trajets longue distance (trains/bus fixes)</span>
-            <div class="hf-row"><input type="number" id="hyp-longdist" value="288" min="0" step="10"><span class="hf-unit">€ / pers, forfait</span></div>
-          </div>
-          <div class="hyp-field" id="hyp-alpstransit-field">
-            <span class="hf-label">Takayama → Kanazawa en bus/train (si pas de voiture)</span>
-            <div class="hf-row"><input type="number" id="hyp-alpstransit" value="24" min="0" step="1"><span class="hf-unit">€ / pers, forfait</span></div>
-          </div>
-          <div class="hyp-field" id="hyp-car-field">
-            <span class="hf-label">Location voiture Takayama → Kanazawa</span>
-            <div class="hf-row"><input type="number" id="hyp-car" value="230" min="0" step="10"><span class="hf-unit">€ / groupe, forfait</span></div>
-          </div>
-          <div class="hyp-field">
-            <span class="hf-label">Divers (eSIM, assurance, souvenirs)</span>
-            <div class="hf-row"><input type="number" id="hyp-misc" value="300" min="0" step="10"><span class="hf-unit">€ / pers, forfait</span></div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <aside class="summary">
-      <div class="card stat-hero">
-        <div class="label">Budget total du groupe</div>
-        <div class="value" id="total-value">—</div>
-        <div class="sub" id="total-sub">—</div>
-        <div class="stat-tiles">
-          <div class="stat-tile"><div class="t-label">Par personne</div><div class="t-value" id="per-person-value">—</div></div>
-          <div class="stat-tile"><div class="t-label">Nuits sur place</div><div class="t-value" id="nights-total">—</div></div>
-          <div class="stat-tile"><div class="t-label">Activités cochées</div><div class="t-value" id="activities-count">—</div></div>
-          <div class="stat-tile"><div class="t-label">Vol A/R (groupe)</div><div class="t-value" id="flight-total">—</div></div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="chart-title">Répartition du budget par poste</div>
-        <div id="chart"></div>
-        <div class="chart-baseline">Postes fixes (vol, hébergement, transport, nourriture, divers) + activités sélectionnées, pour le nombre de voyageurs choisi.</div>
-      </div>
-    </aside>
-
+<header class="masthead">
+  <div class="eyebrow">
+    <span>Voyage Japon</span><span class="dot">/</span>
+    <span>2 à 3 semaines</span><span class="dot">/</span>
+    <span>budget, itinéraire, vols</span><span class="dot">/</span>
+    <span>données du 23 août 2026</span>
   </div>
+  <h1>Cockpit Japon</h1>
+  <p class="sub">Le budget se recalcule à chaque réglage. Le choix de la compagnie et de la saison alimente directement le poste « vol », et l'itinéraire affiche les durées de trajet vérifiées, y compris là où le plan initial était optimiste.</p>
+</header>
 
-  <footer class="foot" id="footer-note">Estimations de préparation — à confronter aux prix réels au moment de la réservation.</footer>
+<div class="totals">
+  <div class="tot hero">
+    <span class="k">Par personne</span>
+    <span class="v" id="t-pp">—</span>
+    <span class="note" id="t-pp-note">—</span>
+  </div>
+  <div class="tot">
+    <span class="k">Total groupe</span>
+    <span class="v" id="t-total">—</span>
+    <span class="note" id="t-total-note">—</span>
+  </div>
+  <div class="tot">
+    <span class="k">Vol retenu</span>
+    <span class="v" id="t-flight">—</span>
+    <span class="note" id="t-flight-note">—</span>
+  </div>
+  <div class="tot">
+    <span class="k">Durée</span>
+    <span class="v" id="t-days">—</span>
+    <span class="note" id="t-days-note">—</span>
+  </div>
+</div>
+
+<section>
+  <h2>Réglages</h2>
+  <div class="panel panel-pad">
+    <div class="ctrl-grid">
+      <div class="field">
+        <span class="flabel">Itinéraire</span>
+        <div class="seg">
+          <label><input type="radio" name="variant" value="alps" checked><span>Alpes</span></label>
+          <label><input type="radio" name="variant" value="kanto"><span>Kanto éco</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="flabel">Voyageurs</span>
+        <div class="seg">
+          <label><input type="radio" name="travelers" value="2" checked><span>2</span></label>
+          <label><input type="radio" name="travelers" value="3"><span>3</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="flabel">Durée</span>
+        <div class="seg">
+          <label><input type="radio" name="duration" value="3w" checked><span>3 sem.</span></label>
+          <label><input type="radio" name="duration" value="2w"><span>2 sem.</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <span class="flabel">Chambres</span>
+        <div class="seg">
+          <label><input type="radio" name="lodging" value="shared" checked><span>Partagée</span></label>
+          <label><input type="radio" name="lodging" value="individual"><span>Individuelle</span></label>
+        </div>
+      </div>
+      <div class="field" id="car-field">
+        <span class="flabel">Segment Takayama → Kanazawa</span>
+        <label class="check">
+          <input type="checkbox" id="car-toggle">
+          <span class="ct"><span>Voiture de location</span><span class="cs">Ouvre Gokayama et Hida Furukawa. Forfait groupe, remplace le bus.</span></span>
+        </label>
+      </div>
+      <div class="field">
+        <span class="flabel">Bagages</span>
+        <label class="check">
+          <input type="checkbox" id="bags2" checked>
+          <span class="ct"><span>Deux valises de 23 kg</span><span class="cs">Ajoute le supplément quand la compagnie ne les inclut pas.</span></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Vol <span class="h2note">prix relevés le 23 août 2026</span></h2>
+  <p class="lede">Choisis une saison, puis une compagnie : le tableau applique l'écart saisonnier constaté et le supplément bagages, et reporte le résultat dans le budget. Les prix sont des ordres de grandeur pour comparer, pas des tarifs fermes — et <strong>Finnair se réserve sur son propre site</strong>, où le même vol ressortait 274 € moins cher que chez un revendeur.</p>
+  <div class="panel panel-pad">
+    <div class="ctrl-grid">
+      <div class="field">
+        <label for="season">Saison de départ</label>
+        <select id="season"></select>
+      </div>
+      <div class="field">
+        <span class="flabel">Contexte de la saison</span>
+        <p class="lede" id="season-note" style="font-size:13px; margin:0;">—</p>
+      </div>
+    </div>
+  </div>
+  <div class="scroller">
+    <table class="min">
+      <thead>
+        <tr>
+          <th>Compagnie</th><th>Trajet</th><th>Soute incluse</th>
+          <th>Place</th><th>Prix estimé</th><th>Dont bagages</th>
+        </tr>
+      </thead>
+      <tbody id="flight-rows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Budget</h2>
+  <div class="grid2">
+    <div class="panel panel-pad" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="stack" id="stack"></div>
+      <div class="brk" id="breakdown"></div>
+    </div>
+    <div class="panel panel-pad">
+      <div class="field" style="gap:14px;">
+        <span class="flabel">Hypothèses modifiables</span>
+        <div class="ctrl-grid" style="gap:14px 18px;">
+          <div class="field"><label for="hyp-food">Nourriture € / jour / pers.</label><input type="number" id="hyp-food" value="40" min="0" step="5"></div>
+          <div class="field"><label for="hyp-local">Transport local € / jour</label><input type="number" id="hyp-local" value="7" min="0" step="1"></div>
+          <div class="field"><label for="hyp-longdist">Trajets longue distance € / pers.</label><input type="number" id="hyp-longdist" value="288" min="0" step="10"></div>
+          <div class="field" id="alpstransit-field"><label for="hyp-alpstransit">Bus Takayama–Kanazawa € / pers.</label><input type="number" id="hyp-alpstransit" value="24" min="0" step="1"></div>
+          <div class="field" id="carcost-field"><label for="hyp-car">Voiture, forfait groupe €</label><input type="number" id="hyp-car" value="230" min="0" step="10"></div>
+          <div class="field"><label for="hyp-misc">Divers € / pers.</label><input type="number" id="hyp-misc" value="300" min="0" step="10"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Itinéraire <span class="h2note" id="route-label">—</span></h2>
+  <p class="lede">Les durées de trajet ont été revérifiées une à une. Celles marquées en ambre sont plus longues que ce que prévoyait le plan initial — le détail est dans « Ce qu'il faut corriger », plus bas.</p>
+  <div class="panel"><div class="timeline" id="timeline"></div></div>
+</section>
+
+<section>
+  <h2>Étapes et activités</h2>
+  <div class="chips">
+    <button class="chip-btn" id="check-all" type="button">Tout cocher</button>
+    <button class="chip-btn" id="uncheck-all" type="button">Tout décocher</button>
+    <button class="chip-btn attn" id="uncheck-vertige" type="button">Retirer ce qui expose au vide</button>
+    <button class="chip-btn" id="reset-nights" type="button">Réinitialiser les nuits</button>
+  </div>
+  <div class="panel" id="cities"></div>
+</section>
+
+<section>
+  <h2>Ce qu'il faut corriger</h2>
+  <p class="lede">Écarts relevés entre le contenu du dépôt et ce que j'ai pu vérifier. Les erreurs changent le budget ou le plan de journée ; les points de vigilance méritent d'être confirmés avant de réserver.</p>
+  <div class="fixes" id="fixes"></div>
+</section>
+
+<footer id="foot">—</footer>
 </div>
 
 <script>
@@ -572,218 +656,407 @@ const VARIANTS = {
   }
 };
 
+/* ---------- Vols : relevés du 23 août 2026 (Kiwi + sites compagnies) ---------- */
+
+const SEASONS = [
+  { id: "sep26", label: "Septembre 2026", mult: 1.00, note: "Réservable dès maintenant, au prix du creux. Première quinzaine chaude et moite, pic de la saison des typhons. Silver Week du 19 au 23 charge trains et hôtels." },
+  { id: "jan27", label: "Janvier–février 2027", mult: 1.01, note: "Hors Nouvel An japonais. Air sec, ciel dégagé, Fuji très visible. Les prix les plus bas de l'année avec mai-juin." },
+  { id: "mai27", label: "Mi-mai à mi-juin 2027", mult: 0.97, note: "Le creux tarifaire. Avant la saison des pluies, températures douces, affluence faible. Le meilleur compromis météo-prix." },
+  { id: "oct26", label: "Octobre–novembre 2026", mult: 1.13, note: "Momiji. Très belle saison, mais départ proche et places qui partent vite. Réserver sans attendre." },
+  { id: "jul27", label: "Juillet à mi-août 2027", mult: 1.15, note: "35 °C et 80 % d'humidité à Tokyo et Kyoto. Obon vers le 13-16 août sature les Shinkansen. Cher pour la pire météo de marche." },
+  { id: "avr27", label: "Mars–avril 2027", mult: 1.30, note: "Hanami. La saison la plus chère et la plus remplie, avec en prime l'incertitude sur la date de floraison. Réserver 4 à 6 mois avant." }
+];
+
+const FLIGHTS = [
+  { id: "cz", name: "China Southern", route: ["CDG","CAN","HND"], base: 759, bags: 2, extraBag: 0,
+    pitch: "32″", stops: 1, eu261: false, note: "2 × 23 kg inclus et arrivée à Haneda. Le meilleur croisement prix / bagages du relevé." },
+  { id: "ca", name: "Air China", route: ["CDG","PEK","HND"], base: 765, bags: 2, extraBag: 0,
+    pitch: "31–32″", stops: 1, eu261: false, note: "Franchise 2 pièces à confirmer sur le tarif exact au moment de payer." },
+  { id: "mu", name: "China Eastern", route: ["CDG","PVG","NRT"], base: 738, bags: 1, extraBag: 70,
+    pitch: "31–32″", stops: 1, eu261: false, note: "Le billet le moins cher, mais une seule valise et des retours parfois très longs." },
+  { id: "mf", name: "Xiamen Airlines", route: ["CDG","XMN","NRT"], base: 734, bags: 1, extraBag: 60,
+    pitch: "31″", stops: 1, eu261: false, note: "Escales de nuit longues à l'aller comme au retour." },
+  { id: "ke", name: "Korean Air", route: ["CDG","ICN","HND"], base: 985, bags: 1, extraBag: 100,
+    pitch: "33–34″", stops: 1, eu261: false, note: "Economy Saver réduit à 1 pièce depuis le 30 juin 2025. Arrivée tardive à Haneda, 22 h 50." },
+  { id: "ay", name: "Finnair", route: ["CDG","HEL","HND"], base: 916, bags: 1, extraBag: 79,
+    pitch: "31″", stops: 1, eu261: true, note: "Ton repère actuel. Le supplément 2 valises est de 79 € à la réservation, 110 € ajouté après coup. À acheter sur finnair.com." },
+  { id: "br", name: "EVA Air", route: ["CDG","TPE","NRT"], base: 1099, bags: 2, extraBag: 0,
+    pitch: "32–33″", stops: 1, eu261: false, note: "2 × 23 kg dès l'Economy Basic sur l'Europe. Attention au tarif Economy Discount, limité à 1 pièce." },
+  { id: "nh", name: "ANA", route: ["CDG","HND"], base: 1093, bags: 1, extraBag: 120,
+    pitch: "34″", stops: 0, eu261: false, note: "La cabine la plus spacieuse. Depuis novembre 2024, il faut le tarif Standard pour retrouver 2 valises." },
+  { id: "jl", name: "Japan Airlines", route: ["CDG","HND"], base: 1150, bags: 2, extraBag: 0,
+    pitch: "33–34″", stops: 0, eu261: false, estimate: true,
+    note: "Prix estimé : JAL n'apparaît pas dans les comparateurs testés, à vérifier sur jal.co.jp. Seule compagnie à donner 2 × 23 kg sur tous ses tarifs éco." },
+  { id: "tk", name: "Turkish Airlines", route: ["CDG","IST","HND"], base: 1138, bags: 1, extraBag: 150,
+    pitch: "31–32″", stops: 1, eu261: false, note: "EcoFly n'inclut aucune soute, ExtraFly une pièce, FlexFly deux. L'écart entre tarifs est large." },
+  { id: "af", name: "Air France", route: ["CDG","HND"], base: 1200, bags: 1, extraBag: 100,
+    pitch: "31–32″", stops: 0, eu261: true, estimate: true,
+    note: "Prix estimé, non relevé. Couverte par l'indemnisation européenne y compris au retour du Japon." }
+];
+
+/* ---------- Itinéraire Alpes : jours et trajets revérifiés ---------- */
+
+const ALPS_LEGS = [
+  { d: "J1", type: "move", t: "Paris → Helsinki → Tokyo", seg: ["CDG","HEL","HND"],
+    dur: "≈ 19 h porte à porte", note: "3 h jusqu'à Helsinki, 2 à 3 h d'escale, 13 h 25 jusqu'à Haneda.",
+    flag: "warn", flagTxt: "le dépôt annonce 15-16 h par segment" },
+  { d: "J2", type: "stay", t: "Arrivée Tokyo (Haneda)", d2: "Transfert vers Asakusa, Senso-ji au coucher du soleil." },
+  { d: "J3", type: "stay", t: "Ueno et Akihabara", d2: "Parc d'Ueno, musée national, quartier électronique." },
+  { d: "J4", type: "stay", t: "Shibuya, Harajuku, Omotesando", d2: "Croisement, Takeshita-dori, Meiji Jingu." },
+  { d: "J5", type: "stay", t: "Shinjuku et TeamLab", d2: "Shinjuku Gyoen le matin, TeamLab l'après-midi (réservation obligatoire), Golden Gai le soir." },
+  { d: "J6", type: "move", t: "Excursion à Kamakura", seg: ["Tokyo","Kamakura"],
+    dur: "55 min depuis Tokyo Station", note: "Ligne JR Yokosuka. Depuis Asakusa, compter 1 h 20 porte à porte.",
+    flag: "warn", flagTxt: "+25 min depuis Asakusa" },
+  { d: "J7", type: "move", t: "Tokyo → Kawaguchiko", seg: ["Shinjuku","Kawaguchiko"],
+    dur: "1 h 45 hors trafic", note: "Bus autoroutier Fujikyu depuis Busta Shinjuku, ¥2 200, départs toutes les 30 min. Retards de 60 à 90 min fréquents les vendredis et dimanches en fin de journée.",
+    flag: "warn", flagTxt: "part de Shinjuku, pas d'Asakusa" },
+  { d: "J8", type: "stay", t: "Kawaguchiko", d2: "Oshino Hakkai, croisière sur le lac, pagode Chureito." },
+  { d: "J9", type: "move", t: "Kawaguchiko → Hakone", seg: ["Kawaguchiko","Gotemba","Hakone"],
+    dur: "2 h 30 à 3 h", note: "Bus Fujikyu jusqu'à Gotemba (53 min), puis correspondance vers Hakone. Le bus Kawaguchiko–Gotemba ne circule que deux à trois fois par jour : c'est ce trajet qui structure la journée, pas les visites.",
+    flag: "bad", flagTxt: "le dépôt annonce 2 h" },
+  { d: "J10", type: "move", t: "Hakone → Nagoya → Gifu", seg: ["Hakone","Odawara","Nagoya","Gifu"],
+    dur: "≈ 3 h 30 cumulées", note: "Le plan oublie Hakone → Odawara : 40 min à 1 h en Hakone Tozan. Puis Hikari Odawara → Nagoya 1 h 40, et Nagoya → Gifu 20 min. Avec le château de Nagoya au milieu, la journée est pleine.",
+    flag: "warn", flagTxt: "transfert vers Odawara non compté" },
+  { d: "J11", type: "stay", t: "Gifu", d2: "Château de Gifu sur le mont Kinka, rivière Nagara, arcade Yanagase." },
+  { d: "J12", type: "move", t: "Gifu → Gero Onsen", seg: ["Gifu","Gero"],
+    dur: "1 h 35", note: "Limited express Hida, l'une des plus belles lignes du pays. Réservation conseillée, les voitures sont courtes.",
+    flag: "ok", flagTxt: "conforme" },
+  { d: "J13", type: "move", t: "Gero Onsen → Takayama", seg: ["Gero","Takayama"],
+    dur: "45 min à 1 h", note: "Toujours le Hida, le long de la vallée. Vieille ville l'après-midi.",
+    flag: "ok", flagTxt: "conforme" },
+  { d: "J14", type: "move", t: "Takayama et Shirakawa-go", seg: ["Takayama","Shirakawa-go"],
+    dur: "50 min l'aller", note: "Bus Nohi, réservation obligatoire en haute saison. Marché du matin avant de partir.",
+    flag: "ok", flagTxt: "conforme" },
+  { d: "J15", type: "move", t: "Takayama → Kanazawa", seg: ["Takayama","Kanazawa"],
+    dur: "2 h 15 en bus", note: "Bus Nohi / Hokutetsu, arrêt possible à Shirakawa-go. En voiture, le détour par Gokayama et Hida Furukawa ajoute une demi-journée.",
+    flag: "warn", flagTxt: "le dépôt annonce 2 h" },
+  { d: "J16", type: "stay", t: "Kanazawa", d2: "Higashi Chaya, quartier des samouraïs de Nagamachi." },
+  { d: "J17", type: "stay", t: "Kanazawa", d2: "Marché Omicho, musée d'art contemporain du 21e siècle." },
+  { d: "J18", type: "move", t: "Kanazawa → Tokyo", seg: ["Kanazawa","Tokyo"],
+    dur: "2 h 30", note: "Shinkansen Hokuriku Kagayaki, direct. Ginza en soirée.",
+    flag: "ok", flagTxt: "conforme" },
+  { d: "J19", type: "stay", t: "Tsukiji et Ginza", d2: "Marché extérieur au petit-déjeuner, puis shopping." },
+  { d: "J20", type: "stay", t: "Journée tampon", d2: "Rattrapage d'un site manqué, derniers achats, dîner de fin de voyage." },
+  { d: "J21", type: "move", t: "Tokyo → Helsinki → Paris", seg: ["HND","HEL","CDG"],
+    dur: "≈ 18 h", note: "Transfert vers Haneda. Le retour part de Tokyo en soirée et arrive à Paris le matin.",
+    flag: "ok", flagTxt: "conforme" }
+];
+
+/* ---------- Écarts relevés ---------- */
+
+const FIXES = [
+  { sev: "err", t: "Finnair Classic n'inclut pas deux valises",
+    p: "<code>01_vols/finnair.md</code> et <code>data/flights.json</code> annoncent « 2 × 23 kg en soute (tarif Classic) ». En réalité, Economy Classic vers le Japon inclut <b>une</b> pièce de 23 kg. Tes propres relevés le confirment : 916 € sans soute, 995 € avec les deux valises. Le budget vol est donc minoré de 79 € par personne, et le tarif Light n'inclut rien du tout." },
+  { sev: "err", t: "La durée de vol annoncée est fausse",
+    p: "<code>flights.json</code> indique « 15h-16h par trajet, escale incluse ». Le vrai découpage est 3 h jusqu'à Helsinki, 2 à 3 h d'escale et 13 h 25 jusqu'à Haneda, soit environ 19 h porte à porte à l'aller. L'écart change la logistique du J1 et du J2." },
+  { sev: "err", t: "Le prix du JR Pass diffère selon les fichiers",
+    p: "<code>transport.json</code> retient 620 €, <code>jr_pass_vs_billets.md</code> retient 556 €. Le tarif réel est de 100 000 ¥ pour 21 jours en ordinaire, soit environ 552 € au taux actuel. Aucune conséquence sur la décision, mais les deux fichiers doivent s'accorder." },
+  { sev: "warn", t: "Kawaguchiko → Hakone est le maillon faible",
+    p: "Annoncé à 2 h, ce trajet prend en réalité <b>2 h 30 à 3 h</b> : il impose une correspondance à Gotemba, et le bus Kawaguchiko–Gotemba ne circule que deux à trois fois par jour. C'est le seul segment de l'itinéraire où rater un bus coûte une demi-journée. À caler avant de réserver le ryokan." },
+  { sev: "warn", t: "Le J10 oublie Hakone → Odawara",
+    p: "Le plan enchaîne « Shinkansen d'Odawara à Nagoya » sans compter les 40 min à 1 h nécessaires pour rejoindre Odawara depuis le ryokan. Avec le château de Nagoya inséré au milieu, la journée atteint 3 h 30 de trajet effectif." },
+  { sev: "warn", t: "Le bus du J7 part de Shinjuku",
+    p: "L'hébergement est à Asakusa, mais le bus pour Kawaguchiko part de Busta Shinjuku : ajoute 30 à 40 min de métro et des valises à traîner aux heures de pointe. Des départs existent aussi depuis Tokyo Station, côté Yaesu." },
+  { sev: "warn", t: "Rien n'est prévu pour déplacer les valises",
+    p: "Deux valises de 23 kg par personne sur sept hébergements, avec des bus autoroutiers et des minshuku aux couloirs étroits, c'est le point de friction le plus prévisible du voyage. Le <i>takkyubin</i> (Yamato) transfère une valise d'un hôtel au suivant pour environ 2 000 ¥ en 24 h : c'est la réponse standard au Japon, et elle manque au dépôt." },
+  { sev: "warn", t: "La saison retenue est la plus chère",
+    p: "Le dépôt pose « avril (sakura) ou novembre (momiji) » comme hypothèse. Ce sont précisément les deux fenêtres les plus coûteuses : avril ressort 30 % au-dessus du creux de mai-juin, novembre 13 %. Un décalage de trois semaines vers mi-mai ou mi-septembre économise 200 à 250 € par personne sur le seul billet." },
+  { sev: "ok", t: "Les calculs d'hébergement sont exacts",
+    p: "J'ai recalculé les trois formules à partir des prix par nuit et des durées : 1 502 €, 1 983 € et 2 218 € tombent juste, et le total de 19 nuits est cohérent avec le découpage des étapes." },
+  { sev: "ok", t: "La conclusion sur le JR Pass tient, même face aux pass régionaux",
+    p: "J'ai testé l'alternative que le dépôt ne mentionne pas : le Takayama-Hokuriku Area Tourist Pass, à 19 800 ¥ pour 5 jours, couvre Nagoya–Gifu–Gero–Takayama–Kanazawa <i>et</i> le bus de Shirakawa-go. Sur ton tracé, ces segments coûtent environ 15 800 ¥ à l'unité, et ils s'étalent sur 6 jours au lieu de 5. Le pass n'est donc pas rentable non plus : acheter à l'unité reste le bon choix." },
+  { sev: "ok", t: "Le taux de change retenu est prudent",
+    p: "L'hypothèse de 180 ¥ pour 1 € est légèrement conservatrice face aux 181 à 186 ¥ constatés en août 2026. Elle majore donc très légèrement le budget, ce qui est le bon sens de l'erreur." }
+];
+
+/* ---------- État et rendu ---------- */
+
 let currentVariant = "alps";
-let TOTAL_ACTIVITIES = 0;
+let currentFlight = "cz";
+let currentSeason = "sep26";
 
 const fmt = n => Math.round(n).toLocaleString("fr-FR") + " €";
+const $ = id => document.getElementById(id);
 
-function getCities() {
-  return VARIANTS[currentVariant].cities;
+const getCities = () => VARIANTS[currentVariant].cities;
+const getTravelers = () => parseInt(document.querySelector('input[name="travelers"]:checked').value, 10);
+const getLodgingFormula = () => document.querySelector('input[name="lodging"]:checked').value;
+const getDuration = () => document.querySelector('input[name="duration"]:checked').value;
+const getHyp = id => Math.max(0, parseFloat($("hyp-" + id).value) || 0);
+const getNights = cityId => {
+  const el = $("nights-" + cityId);
+  return el ? Math.max(0, parseInt(el.value, 10) || 0) : 0;
+};
+
+function season() { return SEASONS.find(s => s.id === currentSeason); }
+function flightPrice(f, s, wantTwoBags) {
+  const bag = wantTwoBags && f.bags < 2 ? f.extraBag : 0;
+  return Math.round(f.base * s.mult) + bag;
+}
+
+function renderSeasons() {
+  $("season").innerHTML = SEASONS.map(s => `<option value="${s.id}">${s.label}</option>`).join("");
+  $("season").value = currentSeason;
+}
+
+function renderFlights() {
+  const s = season();
+  const two = $("bags2").checked;
+  $("season-note").textContent = s.note;
+  $("flight-rows").innerHTML = FLIGHTS
+    .map(f => ({ f, p: flightPrice(f, s, two) }))
+    .sort((a, b) => a.p - b.p)
+    .map(({ f, p }) => {
+      const bagChip = f.bags >= 2
+        ? '<span class="chip yes">2 × 23 kg</span>'
+        : `<span class="chip maybe">1 × 23 kg</span>`;
+      const supp = two && f.bags < 2 ? `+ ${f.extraBag} €` : "compris";
+      const route = f.route.map((c, i) =>
+        i === 0 || i === f.route.length - 1
+          ? `<span style="color:var(--accent-ink);font-weight:500">${c}</span>` : c
+      ).join('<span class="ar" style="color:var(--muted);padding:0 3px">→</span>');
+      return `<tr class="pick ${f.id === currentFlight ? "sel" : ""}" data-flight="${f.id}" tabindex="0">
+        <td><div class="cname">${f.name}${f.estimate ? ' <span class="mono-sm">est.</span>' : ""}</div>
+            <div class="mono-sm">${f.stops === 0 ? "direct" : "1 escale"}${f.eu261 ? " · EU261 au retour" : ""}</div></td>
+        <td class="num" style="font-size:12px">${route}</td>
+        <td>${bagChip}</td>
+        <td class="num">${f.pitch}</td>
+        <td class="num"><b>${fmt(p)}</b></td>
+        <td class="num mono-sm">${supp}</td>
+      </tr>`;
+    }).join("");
+
+  $("flight-rows").querySelectorAll("tr.pick").forEach(tr => {
+    const pick = () => { currentFlight = tr.dataset.flight; renderFlights(); update(); };
+    tr.addEventListener("click", pick);
+    tr.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+  });
 }
 
 function renderCities() {
   const cities = getCities();
-  TOTAL_ACTIVITIES = cities.reduce((n, c) => n + c.activities.length, 0);
-  const root = document.getElementById("cities");
-  root.innerHTML = cities.map(city => `
-    <section class="card city-card" data-city="${city.id}">
-      <div class="card-head">
-        <h3>${city.name}</h3>
-        <label class="nights-field">Nuits
-          <input type="number" id="nights-${city.id}" min="0" max="14" value="${city.nights}" data-default3w="${city.nights}" data-default2w="${city.nights2w}">
-        </label>
-      </div>
-      <p class="meta">${city.meta}</p>
-      ${city.activities.map(a => `
-        <div class="activity-row${a.requiresCar ? ' car-dependent' : ''}" data-activity="${a.id}">
-          <input type="checkbox" id="act-${a.id}" ${a.bonus ? '' : 'checked'} data-price="${a.price}" data-requires-car="${!!a.requiresCar}">
-          <label for="act-${a.id}">
-            <span class="activity-name">${a.name}</span>
-            ${a.vertige ? '<span class="badge">⚠ hauteur</span>' : ''}
-            ${a.bonus ? '<span class="badge bonus">+ en option</span>' : ''}
-            <br><span class="activity-duration">${a.duration}</span>
-          </label>
-          <span class="activity-price">${a.price === 0 ? "gratuit" : a.price + " €/pers"}</span>
-          ${a.alt ? `<div class="alt-note"><b>Alternative sans vertige :</b> ${a.alt}</div>` : ""}
-          ${a.note ? `<div class="car-note">${a.note}</div>` : ""}
-          ${a.requiresCar ? `<div class="car-note">Nécessite l'option voiture de location (ci-dessus) — inclus dans son coût, pas de supplément.</div>` : ""}
+  const is2w = getDuration() === "2w";
+  $("cities").innerHTML = cities.map(c => {
+    const n = is2w ? c.nights2w : c.nights;
+    const acts = c.activities.map(a => {
+      const bits = [a.duration, a.price > 0 ? fmt(a.price) : "gratuit"].filter(Boolean).join(" · ");
+      return `<label class="act" data-requires-car="${!!a.requiresCar}">
+        <input type="checkbox" id="act-${a.id}" ${a.bonus ? "" : "checked"} data-price="${a.price}" data-requires-car="${!!a.requiresCar}">
+        <span class="an">
+          <span>${a.name}${a.bonus ? ' <span class="bonus-tag">bonus</span>' : ""}</span>
+          <span class="am">${bits}</span>
+          ${a.vertige ? `<span class="alt">Expose au vide — sans hauteur : ${a.alt}</span>` : ""}
+          ${a.note ? `<span class="alt" style="color:var(--muted)">${a.note}</span>` : ""}
+        </span>
+      </label>`;
+    }).join("");
+    return `<div class="city">
+      <div class="city-head">
+        <h3>${c.name}</h3>
+        <div class="nights">
+          <label for="nights-${c.id}">nuits</label>
+          <input type="number" id="nights-${c.id}" min="0" max="14" value="${n}" data-d3="${c.nights}" data-d2="${c.nights2w}">
         </div>
-      `).join("")}
-    </section>
-  `).join("");
-  root.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener("change", update));
-  root.querySelectorAll('input[type="number"]').forEach(inp => inp.addEventListener("input", update));
+      </div>
+      <div class="acts">${acts}</div>
+    </div>`;
+  }).join("");
+
+  $("cities").querySelectorAll('input[type="checkbox"], input[type="number"]')
+    .forEach(el => el.addEventListener("input", update));
 }
 
-function getNights(cityId) {
-  const el = document.getElementById("nights-" + cityId);
-  return Math.max(0, parseInt(el.value, 10) || 0);
+function renderTimeline() {
+  if (currentVariant !== "alps") {
+    const cities = getCities();
+    const is2w = getDuration() === "2w";
+    $("timeline").innerHTML = cities.filter(c => (is2w ? c.nights2w : c.nights) > 0 || c.nights === 0)
+      .map(c => `<div class="leg stay">
+        <div class="day">${is2w ? c.nights2w : c.nights} n.</div>
+        <div class="body"><div class="t">${c.name}</div>
+        <div class="d">${c.activities.length} activités répertoriées</div></div></div>`).join("")
+      + `<div class="leg move"><div class="day">note</div><div class="body">
+         <div class="t">Le détail jour par jour n'existe que pour la variante Alpes</div>
+         <div class="d">La variante Kanto est décrite par étapes dans le dépôt, sans découpage quotidien ni durées de trajet vérifiées.</div>
+         </div></div>`;
+    return;
+  }
+  $("timeline").innerHTML = ALPS_LEGS.map(l => {
+    if (l.type === "stay") {
+      return `<div class="leg stay"><div class="day">${l.d}</div>
+        <div class="body"><div class="t">${l.t}</div><div class="d">${l.d2}</div></div></div>`;
+    }
+    const seg = l.seg.map((c, i) =>
+      i === 0 || i === l.seg.length - 1 ? `<b>${c}</b>` : c
+    ).join('<span class="ar">→</span>');
+    return `<div class="leg move"><div class="day">${l.d}</div>
+      <div class="body">
+        <div class="t">${l.t}</div>
+        <div class="seg-line">${seg}</div>
+        <div class="d">${l.note}</div>
+        <div class="meta">
+          <span class="flag ${l.flag === "ok" ? "ok" : l.flag === "bad" ? "bad" : ""}">${l.dur}</span>
+          <span class="mono-sm">${l.flagTxt}</span>
+        </div>
+      </div></div>`;
+  }).join("");
 }
 
-function getTravelers() {
-  return parseInt(document.querySelector('input[name="travelers"]:checked').value, 10);
+function renderFixes() {
+  const label = { err: "erreur", warn: "vigilance", ok: "vérifié" };
+  $("fixes").innerHTML = FIXES.map(f => `<div class="fix">
+    <span class="sev ${f.sev}">${label[f.sev]}</span>
+    <div class="fb"><b>${f.t}</b><p>${f.p}</p></div>
+  </div>`).join("");
 }
 
-function getLodgingFormula() {
-  return document.querySelector('input[name="lodging"]:checked').value;
-}
-
-function getHyp(id) {
-  return Math.max(0, parseFloat(document.getElementById("hyp-" + id).value) || 0);
-}
-
-function syncCarDependentCheckboxes() {
-  const carOn = document.getElementById("car-toggle").checked;
-  document.querySelectorAll('.activity-row.car-dependent').forEach(row => {
+function syncCarDependent() {
+  const variant = VARIANTS[currentVariant];
+  const carOn = variant.hasCar && $("car-toggle").checked;
+  $("car-field").style.display = variant.hasCar ? "" : "none";
+  $("alpstransit-field").style.display = variant.hasCar ? "" : "none";
+  $("carcost-field").style.display = variant.hasCar ? "" : "none";
+  document.querySelectorAll('.act[data-requires-car="true"]').forEach(row => {
     const cb = row.querySelector('input[type="checkbox"]');
+    row.classList.toggle("dim", !carOn);
     cb.disabled = !carOn;
-    row.classList.toggle("disabled", !carOn);
     if (!carOn) cb.checked = false;
   });
 }
 
+function applyDefaults() {
+  const d = VARIANTS[currentVariant].defaults;
+  ["food", "local", "longdist", "misc"].forEach(k => { if (d[k] != null) $("hyp-" + k).value = d[k]; });
+  if (d.alpstransit != null) $("hyp-alpstransit").value = d.alpstransit;
+  if (d.car != null) $("hyp-car").value = d.car;
+}
+
 function update() {
   const variant = VARIANTS[currentVariant];
-  syncCarDependentCheckboxes();
   const travelers = getTravelers();
-  const flightPerPerson = Math.max(0, parseFloat(document.getElementById("flight-price").value) || 0);
-  const carOn = variant.hasCar && document.getElementById("car-toggle").checked;
-  const lodgingFormula = getLodgingFormula();
+  const formula = getLodgingFormula();
+  const carOn = variant.hasCar && $("car-toggle").checked;
+  const s = season();
+  const f = FLIGHTS.find(x => x.id === currentFlight);
+  const two = $("bags2").checked;
+  const perPersonFlight = flightPrice(f, s, two);
 
-  const foodPerDay = getHyp("food");
-  const localPerDay = getHyp("local");
-  const longDist = getHyp("longdist");
-  const misc = getHyp("misc") * travelers;
-
-  const flight = flightPerPerson * travelers;
+  syncCarDependent();
 
   const cities = getCities();
-  const nightsByCity = {};
   let totalNights = 0;
-  cities.forEach(c => { const n = getNights(c.id); nightsByCity[c.id] = n; totalNights += n; });
+  const lodging = cities.reduce((sum, c) => {
+    const n = getNights(c.id);
+    totalNights += n;
+    const perNight = formula === "individual"
+      ? c.lodging.individual * travelers
+      : (c.lodging.shared[travelers] ?? c.lodging.individual * travelers);
+    return sum + perNight * n;
+  }, 0);
   const totalDays = totalNights + 1;
 
-  const lodging = cities.reduce((sum, c) => {
-    const perNight = lodgingFormula === "individual" ? c.lodging.individual * travelers : c.lodging.shared[travelers];
-    return sum + nightsByCity[c.id] * perNight;
-  }, 0);
-
-  let transport = longDist * travelers + localPerDay * totalDays * travelers;
+  const flight = perPersonFlight * travelers;
+  let transport = getHyp("longdist") * travelers + getHyp("local") * totalDays * travelers;
   if (variant.hasCar) {
-    const alpsTransit = getHyp("alpstransit");
-    const carFlat = getHyp("car");
-    transport += carOn ? carFlat : alpsTransit * travelers;
+    transport += carOn ? getHyp("car") : getHyp("alpstransit") * travelers;
   }
+  const food = getHyp("food") * totalDays * travelers;
+  const misc = getHyp("misc") * travelers;
 
-  let activitiesChecked = 0;
-  let activitiesCost = 0;
-  document.querySelectorAll('#cities input[type="checkbox"]').forEach(cb => {
-    if (cb.checked) {
-      activitiesChecked++;
-      activitiesCost += parseFloat(cb.dataset.price) * travelers;
-    }
+  let acts = 0, actsOn = 0, actsTotal = 0;
+  document.querySelectorAll('.acts input[type="checkbox"]').forEach(cb => {
+    actsTotal++;
+    if (cb.checked && !cb.disabled) { actsOn++; acts += parseFloat(cb.dataset.price || 0); }
   });
+  acts *= travelers;
 
-  const food = foodPerDay * totalDays * travelers;
+  const total = flight + lodging + transport + acts + food + misc;
+  const pp = total / travelers;
 
-  const total = flight + lodging + transport + activitiesCost + food + misc;
+  $("t-pp").textContent = fmt(pp);
+  $("t-pp-note").textContent = `${travelers} voyageurs · chambre ${formula === "individual" ? "individuelle" : "partagée"}`;
+  $("t-total").textContent = fmt(total);
+  $("t-total-note").textContent = `${actsOn} activités sur ${actsTotal}`;
+  $("t-flight").textContent = fmt(perPersonFlight);
+  $("t-flight-note").textContent = `${f.name} · ${two && f.bags < 2 ? "2 valises, supplément inclus" : f.bags >= 2 ? "2 valises comprises" : "1 valise"}`;
+  $("t-days").textContent = `${totalDays} j`;
+  $("t-days-note").textContent = `${totalNights} nuits · ${s.label.toLowerCase()}`;
 
-  document.getElementById("total-value").textContent = fmt(total);
-  document.getElementById("total-sub").textContent = `pour ${travelers} personne${travelers > 1 ? "s" : ""}, ${totalNights} nuit${totalNights > 1 ? "s" : ""} (${totalDays} jours sur place)`;
-  document.getElementById("per-person-value").textContent = fmt(total / travelers);
-  document.getElementById("nights-total").textContent = totalNights;
-  document.getElementById("activities-count").textContent = `${activitiesChecked} / ${TOTAL_ACTIVITIES}`;
-  document.getElementById("flight-total").textContent = fmt(flight);
+  const parts = [
+    { k: "Vol", v: flight, c: "var(--c-flight)" },
+    { k: "Hébergement", v: lodging, c: "var(--c-lodging)" },
+    { k: "Transport", v: transport, c: "var(--c-transport)" },
+    { k: "Activités", v: acts, c: "var(--c-acts)" },
+    { k: "Nourriture", v: food, c: "var(--c-food)" },
+    { k: "Divers", v: misc, c: "var(--c-misc)" }
+  ];
+  $("stack").innerHTML = parts.map(p =>
+    `<i style="width:${total ? (p.v / total) * 100 : 0}%;background:${p.c}" title="${p.k} : ${fmt(p.v)}"></i>`).join("");
+  $("breakdown").innerHTML = parts.map(p => `<div class="brk-row">
+      <span class="sw" style="background:${p.c}"></span>
+      <span>${p.k}</span>
+      <span class="pc">${total ? Math.round((p.v / total) * 100) : 0} %</span>
+      <span class="amt">${fmt(p.v)}</span>
+    </div>`).join("")
+    + `<div class="brk-row" style="border-top:1px solid var(--line);padding-top:9px;margin-top:3px">
+        <span></span><span style="font-weight:600">Par personne</span><span class="pc"></span>
+        <span class="amt" style="color:var(--accent-ink)">${fmt(pp)}</span></div>`;
 
-  renderChart([
-    { label: "Vol", value: flight },
-    { label: "Hébergement", value: lodging },
-    { label: "Transport", value: transport },
-    { label: "Activités", value: activitiesCost },
-    { label: "Nourriture", value: food },
-    { label: "Divers", value: misc }
-  ]);
+  $("route-label").textContent = variant.label;
+  $("foot").innerHTML = `${variant.footer} Prix des vols relevés le 23 août 2026 pour un aller-retour de 14 à 21 nuits ; les lignes marquées « est. » ne proviennent pas d'un relevé et sont à confirmer. Hébergement, activités et transport terrestre repris des fichiers du dépôt, taux de référence 1 € ≈ 180 ¥. Tous les montants sont des estimations à revérifier au moment de réserver.`;
 }
 
-function renderChart(rows) {
-  const max = Math.max(...rows.map(r => r.value), 1);
-  document.getElementById("chart").innerHTML = rows.map(r => `
-    <div class="bar-row">
-      <span class="bar-label">${r.label}</span>
-      <span class="bar-track"><span class="bar-fill" style="width:${Math.max(2, (r.value / max) * 100)}%"></span></span>
-      <span class="bar-value">${fmt(r.value)}</span>
-    </div>
-  `).join("");
-}
+/* ---------- Câblage ---------- */
 
-function applyDurationPreset(mode) {
-  getCities().forEach(city => {
-    const el = document.getElementById("nights-" + city.id);
-    if (el) el.value = mode === "2w" ? city.nights2w : city.nights;
-  });
-  update();
-}
-
-function applyVariantUI() {
-  const variant = VARIANTS[currentVariant];
-  document.getElementById("route-strip").textContent = variant.route;
-  document.getElementById("footer-note").textContent = "Estimations de préparation — à confronter aux prix réels au moment de la réservation. " + variant.footer;
-  document.getElementById("car-toggle-row").style.display = variant.hasCar ? "" : "none";
-  document.getElementById("hyp-alpstransit-field").style.display = variant.hasCar ? "" : "none";
-  document.getElementById("hyp-car-field").style.display = variant.hasCar ? "" : "none";
-  document.getElementById("hyp-longdist-label").textContent = variant.longdistLabel;
-  document.getElementById("car-toggle").checked = false;
-  Object.keys(variant.defaults).forEach(key => {
-    const el = document.getElementById("hyp-" + key);
-    if (el) el.value = variant.defaults[key];
-  });
-}
-
-function switchVariant(key) {
-  currentVariant = key;
-  applyVariantUI();
+function rebuildVariant() {
+  applyDefaults();
   renderCities();
-  const mode = document.querySelector('input[name="duration"]:checked').value;
-  applyDurationPreset(mode);
-  syncCarDependentCheckboxes();
+  renderTimeline();
   update();
 }
 
-document.getElementById("travelers-group").addEventListener("change", update);
-document.getElementById("lodging-group").addEventListener("change", update);
-document.getElementById("flight-price").addEventListener("input", update);
-document.getElementById("car-toggle").addEventListener("change", update);
-["food", "local", "longdist", "alpstransit", "car", "misc"].forEach(id => {
-  document.getElementById("hyp-" + id).addEventListener("input", update);
-});
-document.getElementById("duration-group").addEventListener("change", (e) => {
-  applyDurationPreset(document.querySelector('input[name="duration"]:checked').value);
-});
-document.getElementById("check-all").addEventListener("click", () => {
-  document.querySelectorAll('#cities input[type="checkbox"]:not([disabled])').forEach(cb => cb.checked = true);
+document.querySelectorAll('input[name="variant"]').forEach(r =>
+  r.addEventListener("change", e => { currentVariant = e.target.value; rebuildVariant(); }));
+document.querySelectorAll('input[name="duration"]').forEach(r =>
+  r.addEventListener("change", () => {
+    const is2w = getDuration() === "2w";
+    document.querySelectorAll('.city-head input[type="number"]').forEach(el => {
+      el.value = is2w ? el.dataset.d2 : el.dataset.d3;
+    });
+    renderTimeline(); update();
+  }));
+["travelers", "lodging"].forEach(name =>
+  document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.addEventListener("change", update)));
+$("car-toggle").addEventListener("change", update);
+$("bags2").addEventListener("change", () => { renderFlights(); update(); });
+$("season").addEventListener("change", e => { currentSeason = e.target.value; renderFlights(); update(); });
+["food", "local", "longdist", "alpstransit", "car", "misc"].forEach(k =>
+  $("hyp-" + k).addEventListener("input", update));
+
+$("check-all").addEventListener("click", () => {
+  document.querySelectorAll('.acts input[type="checkbox"]').forEach(cb => { if (!cb.disabled) cb.checked = true; });
   update();
 });
-document.getElementById("uncheck-all").addEventListener("click", () => {
-  document.querySelectorAll('#cities input[type="checkbox"]').forEach(cb => cb.checked = false);
+$("uncheck-all").addEventListener("click", () => {
+  document.querySelectorAll('.acts input[type="checkbox"]').forEach(cb => cb.checked = false);
   update();
 });
-document.getElementById("uncheck-vertige").addEventListener("click", () => {
-  getCities().forEach(city => city.activities.filter(a => a.vertige).forEach(a => {
-    const cb = document.getElementById("act-" + a.id);
-    if (cb) cb.checked = false;
+$("uncheck-vertige").addEventListener("click", () => {
+  getCities().forEach(c => c.activities.forEach(a => {
+    if (a.vertige) { const cb = $("act-" + a.id); if (cb) cb.checked = false; }
   }));
   update();
 });
-document.getElementById("reset-nights").addEventListener("click", () => {
-  const mode = document.querySelector('input[name="duration"]:checked').value;
-  applyDurationPreset(mode);
-});
-document.getElementById("variant-group").addEventListener("change", () => {
-  switchVariant(document.querySelector('input[name="variant"]:checked').value);
+$("reset-nights").addEventListener("click", () => {
+  const is2w = getDuration() === "2w";
+  document.querySelectorAll('.city-head input[type="number"]').forEach(el => {
+    el.value = is2w ? el.dataset.d2 : el.dataset.d3;
+  });
+  update();
 });
 
-applyVariantUI();
-renderCities();
-syncCarDependentCheckboxes();
-update();
+renderSeasons();
+renderFlights();
+renderFixes();
+rebuildVariant();
 </script>
