@@ -8,25 +8,34 @@
 | Trajet | Paris CDG → Helsinki (HEL) → Tokyo (HND/NRT) A/R |
 | Escale | Helsinki, ~2h-3h de correspondance |
 | Durée réelle | ~19h porte à porte à l'aller : 3h jusqu'à Helsinki, 2-3h d'escale, 13h25 jusqu'à Haneda |
-| Bagages inclus | **1 x 23kg en soute + 1 bagage cabine 8kg** (tarif Economy Classic) |
-| 2e bagage 23kg | **+79€** à la réservation, **110€** si ajouté après coup |
-| **Prix par personne A/R** | **916€** sans 2e bagage, **995€** avec — relevé le 23/08/2026 sur finnair.com |
-| Fourchette réaliste | 800€ (basse saison) à 1600€ (très haute saison / fêtes) |
+| Bagages inclus | **2 x 23kg en soute + 1 bagage cabine 8kg** (tarif Economy Classic) |
+| Tarif Light | **aucune** soute — la structure est binaire, 0 ou 2, jamais 1 |
+| Écart Light → Classic | **38 à 79€** selon les dates |
+| **Prix par personne A/R** | **515€** en Classic sur un départ du 1er décembre ; 995€ sur d'autres dates |
+| Fourchette réaliste | 500€ (basse saison, achat en direct) à 1600€ (fêtes) |
 
-> **Corrigé le 23/08/2026.** Ce fichier annonçait « 2 x 23kg inclus en tarif Classic ».
-> C'est faux : Economy Classic vers le Japon n'inclut **qu'une** pièce de 23kg.
-> L'écart 916€ / 995€ relevé sur le site Finnair confirme que le 2e bagage est une option payante.
-> Le tarif **Light** n'inclut aucun bagage en soute.
+> **Vérifié le 23/08/2026 sur le tunnel de réservation Finnair.** Economy Classic inclut bien
+> **2 bagages de 23 kg**. La structure est binaire : *Light* n'inclut aucune soute, *Classic* et *Flex*
+> en incluent deux. Il n'existe pas de tarif à une seule pièce, ni d'option « 2e bagage » à acheter.
+>
+> Relevé Paris–Haneda, 1er au 16 décembre : Light 477,24€ / **Classic 515,24€** / Flex 612,24€.
+> Passer de zéro à deux valises coûte donc **38€** sur ces dates, et 79€ sur d'autres —
+> c'est l'écart entre deux tarifs, pas le prix d'un bagage supplémentaire.
 
 ## Réserver en direct, pas via un comparateur
 
 Le même vol CDG–HEL–HND en janvier 2027 ressortait à **1 190€ chez un revendeur contre 916€ sur finnair.com**,
-soit 274€ d'écart. Les comparateurs servent à repérer les vols et les dates ; l'achat se fait chez la compagnie,
-où les options bagages sont aussi moins chères.
+soit 274€ d'écart. Et sur un départ du 1er décembre, le tunnel Finnair affiche **515€ en Classic, deux valises
+comprises** — moins cher que tout ce que les comparateurs ont remonté, toutes compagnies confondues.
+
+**Conséquence directe :** les prix par saison du tableau ci-dessous, issus de comparateurs, sont des plafonds
+plutôt que des planchers. Vérifier systématiquement sur finnair.com avant de conclure qu'une autre compagnie
+est moins chère.
 
 ## Prix relevés par saison
 
-Aller-retour Paris–Tokyo, 14 à 21 nuits, 1 bagage en soute, toutes compagnies confondues (relevé du 23/08/2026) :
+Aller-retour Paris–Tokyo, 14 à 21 nuits, 1 bagage en soute, **relevés sur comparateur** (23/08/2026).
+À lire comme un ordre de grandeur relatif entre saisons, pas comme les meilleurs prix atteignables :
 
 | Fenêtre | Prix plancher | Remarque |
 |---|---|---|
@@ -55,7 +64,7 @@ Prix relevés en basse saison, économie, aller-retour depuis Paris.
 | China Southern | CDG–Canton–HND | **2 x 23kg** | inclus | 32″ | 759€ |
 | Air China | CDG–Pékin–HND | **2 x 23kg** | inclus | 31-32″ | 765€ |
 | Korean Air | CDG–Séoul–HND | 1 x 23kg | 2e payant (~100€) | 33-34″ | 985€ |
-| **Finnair** | CDG–HEL–HND | 1 x 23kg | +79€ | 31″ | 916€ / 995€ |
+| **Finnair** | CDG–HEL–HND | **2 x 23kg** (Classic) | inclus | 31″ | 515€ à 995€ selon dates |
 | EVA Air | CDG–Taipei–NRT | **2 x 23kg** | inclus (sauf tarif Economy Discount) | 32-33″ | 1099€ |
 | ANA | CDG–HND direct | **1 x 23kg** | tarif Standard requis (~+120€) | **34″** | 1093€ |
 | Japan Airlines | CDG–HND direct | **2 x 23kg** | inclus, tous tarifs éco | 33-34″ | à vérifier sur jal.co.jp |
@@ -67,9 +76,17 @@ Prix relevés en basse saison, économie, aller-retour depuis Paris.
 > il faut passer en Standard pour retrouver les 2 x 23kg. Ce fichier annonçait « généralement 2x23kg inclus
 > en Economy » pour ANA et JAL : ce n'est désormais vrai que pour JAL.
 
-**Les trois seules compagnies donnant 2 x 23kg sans supplément** sur cette route sont JAL, EVA Air (hors tarif
-Economy Discount) et les chinoises China Southern / Air China. Sur un critère bagages strict, EVA et JAL sont
-les meilleurs compromis prix-confort ; China Southern est le meilleur prix absolu.
+**Compagnies donnant 2 x 23kg sans supplément** sur cette route : **Finnair** (tarif Classic), **JAL** (tous
+tarifs éco), **EVA Air** (hors tarif Economy Discount) et les chinoises **China Southern** / **Air China**.
+
+Sur un critère bagages strict, Finnair reste le meilleur rapport qualité-prix : deux valises incluses dès
+515€ en basse saison, contre 759€ pour la première alternative à deux valises.
+
+> **Fiabilité de ce tableau.** La ligne Finnair est vérifiée sur le tunnel de réservation (capture du
+> 23/08/2026). Les autres lignes viennent de recherches web et de relevés de comparateurs : **elles sont à
+> confirmer sur le site de chaque compagnie avant de conclure**. Une première version de ce fichier annonçait
+> à tort que Finnair n'incluait qu'une pièce, sur la foi de sites agrégateurs — la même prudence s'impose
+> pour ANA, EVA et les chinoises.
 
 ## Indemnisation en cas de retard
 

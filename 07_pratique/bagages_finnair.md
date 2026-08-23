@@ -2,20 +2,30 @@
 
 ## Franchise Finnair
 
-- **Tarif Economy Classic** : **1 bagage de 23kg** en soute + 1 bagage cabine de 8kg par personne
-- **2e bagage de 23kg** : **+79€** ajouté à la réservation, **110€** si ajouté après coup
-- **Tarif Light** : aucun bagage en soute
-- **Vérifier avant paiement** : la franchise dépend de la classe de réservation exacte, pas seulement du nom du tarif
+La structure est **binaire** : zéro ou deux valises, il n'existe pas de tarif à une seule pièce.
 
-> **Corrigé le 23/08/2026.** Ce fichier annonçait « 2 bagages de 23kg inclus en tarif Classic ».
-> Economy Classic vers le Japon n'inclut qu'**une** pièce. L'écart relevé sur finnair.com — 916€ sans,
-> 995€ avec les deux valises — confirme que le 2e bagage est une option payante.
+| Tarif | Soute | Cabine | Relevé Paris–Haneda, 1er–16 déc. |
+|---|---|---|---|
+| Economy Light | **aucune** | 8kg + petit sac | 477,24€ |
+| **Economy Classic** | **2 x 23kg** | 8kg + petit sac | **515,24€** |
+| Economy Flex | **2 x 23kg** | 8kg + petit sac | 612,24€ (+ réservation de siège, modifiable) |
+
+Passer de zéro à deux valises coûte donc **38€** sur ces dates, et 79€ sur d'autres : c'est l'écart entre
+deux tarifs, pas le prix d'un bagage supplémentaire. **Réserver directement en Classic** plutôt que
+prendre Light et ajouter des bagages ensuite.
+
+> **Vérifié le 23/08/2026** sur le tunnel de réservation Finnair (capture d'écran). Une version précédente
+> de ce fichier affirmait, à tort, que Classic n'incluait qu'une pièce — information tirée de sites
+> agrégateurs et non du site de la compagnie.
 
 ## Si les deux valises sont un critère ferme
 
-Trois compagnies donnent **2 x 23kg sans supplément** sur Paris–Japon : **Japan Airlines** (tous tarifs éco),
-**EVA Air** (dès l'Economy Basic, sauf le tarif Economy Discount) et les chinoises **China Southern** et
-**Air China**. Voir `01_vols/finnair.md` pour le comparatif complet.
+**Finnair Classic couvre déjà le besoin.** Les alternatives à deux valises incluses sont **Japan Airlines**
+(tous tarifs éco), **EVA Air** (hors tarif Economy Discount) et les chinoises **China Southern** et
+**Air China** — mais aucune n'est moins chère que Finnair en basse saison. Voir `01_vols/finnair.md`.
+
+Ces franchises-là viennent de recherches web, pas des tunnels de réservation : **à confirmer** avant de
+changer de compagnie pour un motif de bagages.
 
 À noter : **ANA** n'inclut plus qu'une pièce sur l'Europe depuis le 1er novembre 2024 ; il faut monter au
 tarif Standard pour retrouver les deux valises.
