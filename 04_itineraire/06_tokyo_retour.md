@@ -12,4 +12,4 @@ Jour tampon pour rattraper un site manqué (utile en cas d'aléa météo ou de f
 ## J21 (Jeu) - Retour
 Transfert vers Haneda, vol retour Tokyo → Helsinki → Paris.
 
-**Astuce bagages** : prévoir de la marge dans les valises à l'aller (ou un sac pliable supplémentaire) pour les achats du retour, en restant dans la limite des 2x23kg Finnair.
+**Astuce bagages** : prévoir de la marge dans les valises à l'aller (ou un sac pliable supplémentaire) pour les achats du retour, en restant dans la limite des 2x23kg du tarif Finnair Economy Classic.

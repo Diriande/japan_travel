@@ -14,7 +14,7 @@ Compilation de préparation pour un voyage au Japon, pour **2 ou 3 personnes**, 
 - **Durée** : 3 semaines par défaut (21 jours / 19 nuits sur place), avec une version condensée à 2 semaines (12 nuits) — sélectionnables dans le dashboard
 - **Voyageurs** : 2 ou 3 personnes (l'incertitude porte sur la participation d'un des deux parents)
 - **Saison de référence** : mi-saison type avril (sakura) ou novembre (momiji) — haute saison, donc tarifs plutôt hauts. Hors de ces périodes, compter 15-25% de moins sur vols et hébergement.
-- **Vols** : Finnair, Paris-Helsinki-Tokyo, 2x23kg en soute inclus, ~1000€ A/R par personne (hypothèse utilisateur)
+- **Vols** : Finnair, Paris-Helsinki-Tokyo, ~1000€ A/R par personne (hypothèse). Le tarif **Economy Classic inclut 2x23kg en soute** ; le tarif Light n'en inclut aucun. Relevé du 23/08/2026 : 515€ en Classic sur un départ du 1er décembre
 - **Devise** : 1 EUR ≈ 180 JPY (à vérifier au moment de la réservation)
 
 ⚠️ Tous les tarifs sont des **estimations 2025/2026 à vérifier** avant réservation.

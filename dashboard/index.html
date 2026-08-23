@@ -678,8 +678,8 @@ const FLIGHTS = [
     pitch: "31″", stops: 1, eu261: false, note: "Escales de nuit longues à l'aller comme au retour." },
   { id: "ke", name: "Korean Air", route: ["CDG","ICN","HND"], base: 985, bags: 1, extraBag: 100,
     pitch: "33–34″", stops: 1, eu261: false, note: "Economy Saver réduit à 1 pièce depuis le 30 juin 2025. Arrivée tardive à Haneda, 22 h 50." },
-  { id: "ay", name: "Finnair", route: ["CDG","HEL","HND"], base: 916, bags: 1, extraBag: 79,
-    pitch: "31″", stops: 1, eu261: true, note: "Ton repère actuel. Le supplément 2 valises est de 79 € à la réservation, 110 € ajouté après coup. À acheter sur finnair.com." },
+  { id: "ay", name: "Finnair", route: ["CDG","HEL","HND"], base: 515, bags: 2, extraBag: 0,
+    pitch: "31″", stops: 1, eu261: true, note: "2 × 23 kg inclus en Economy Classic, vérifié sur le tunnel de réservation. 515 € sur un départ du 1er décembre — le moins cher à deux valises. Le tarif Light n'inclut aucune soute." },
   { id: "br", name: "EVA Air", route: ["CDG","TPE","NRT"], base: 1099, bags: 2, extraBag: 0,
     pitch: "32–33″", stops: 1, eu261: false, note: "2 × 23 kg dès l'Economy Basic sur l'Europe. Attention au tarif Economy Discount, limité à 1 pièce." },
   { id: "nh", name: "ANA", route: ["CDG","HND"], base: 1093, bags: 1, extraBag: 120,
@@ -745,8 +745,10 @@ const ALPS_LEGS = [
 /* ---------- Écarts relevés ---------- */
 
 const FIXES = [
-  { sev: "err", t: "Finnair Classic n'inclut pas deux valises",
-    p: "<code>01_vols/finnair.md</code> et <code>data/flights.json</code> annoncent « 2 × 23 kg en soute (tarif Classic) ». En réalité, Economy Classic vers le Japon inclut <b>une</b> pièce de 23 kg. Tes propres relevés le confirment : 916 € sans soute, 995 € avec les deux valises. Le budget vol est donc minoré de 79 € par personne, et le tarif Light n'inclut rien du tout." },
+  { sev: "ok", t: "Finnair Classic inclut bien deux valises",
+    p: "Vérifié sur le tunnel de réservation le 23/08/2026, Paris–Haneda du 1er au 16 décembre : Light 477,24 € sans soute, <b>Classic 515,24 € avec 2 × 23 kg</b>, Flex 612,24 €. La structure est binaire — 0 ou 2, jamais 1 — et les 79 € relevés ailleurs correspondent à l'écart Light → Classic, pas au prix d'un bagage isolé. Le dépôt avait raison ; une version antérieure de ce dashboard affirmait le contraire sur la foi de sites agrégateurs." },
+  { sev: "warn", t: "Les prix de comparateur sont des plafonds",
+    p: "515 € en Classic, deux valises comprises, est <b>inférieur à toute la colonne « prix relevé »</b> de ce tableau, toutes compagnies confondues. Les relevés de comparateurs servent à situer les saisons les unes par rapport aux autres, pas à trouver le meilleur tarif : celui-ci se cherche sur le site de la compagnie." },
   { sev: "err", t: "La durée de vol annoncée est fausse",
     p: "<code>flights.json</code> indique « 15h-16h par trajet, escale incluse ». Le vrai découpage est 3 h jusqu'à Helsinki, 2 à 3 h d'escale et 13 h 25 jusqu'à Haneda, soit environ 19 h porte à porte à l'aller. L'écart change la logistique du J1 et du J2." },
   { sev: "err", t: "Le prix du JR Pass diffère selon les fichiers",
