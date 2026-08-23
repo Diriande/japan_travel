@@ -165,7 +165,7 @@ button.chip-btn.warn { border-color:var(--maybe); color:var(--maybe); }
 .seg label:has(input:focus-visible) { outline:2px solid var(--accent-ink); outline-offset:-2px; }
 
 .empty { padding:26px 18px; text-align:center; color:var(--muted); font-size:14px; }
-.warnbox { display:flex; gap:10px; padding:12px 14px; background:var(--maybe-bg); color:var(--maybe);
+.warnbox { display:block; padding:12px 14px; background:var(--maybe-bg); color:var(--maybe);
   border-radius:3px; font-size:13.5px; line-height:1.5; }
 footer { border-top:1px solid var(--line); padding-top:17px; font-size:12.5px; color:var(--muted); line-height:1.6; max-width:82ch; }
 
@@ -638,8 +638,14 @@ function renderMap() {
     path += `M${x1.toFixed(1)},${y1.toFixed(1)}Q${(mx - dy / len * bow).toFixed(1)},${(my + dx / len * bow).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
   }
 
+  // décalage des étiquettes là où les villes se chevauchent
+  const LABEL = { enoshima:["e",0], yokohama:["e",0], kamakura:["s",0], nokogiri:["s",0],
+    kamikochi:["s",0], nagano:["w",0], toyama:["e",0], shirakawago:["w",0], magome:["s",0],
+    kobe:["s",0], nara:["e",0], narita:["e",0], gero:["w",0], kusatsu:["e",0],
+    hakone:["w",0], matsumoto:["e",0], chichibu:["e",0] };
   const pins = PLACES.map(p => {
     const [x, y] = proj(p.lon, p.lat);
+    const anchor = (LABEL[p.id] || ["n"])[0];
     const on = sel.has(p.id);
     const nums = order[p.id] || [];
     const stopsHere = trip.filter(s => s.id === p.id);
@@ -651,8 +657,10 @@ function renderMap() {
               aria-label="${p.n}${on ? ", étape " + label + ", cliquer pour retirer" : ", cliquer pour ajouter"}">
       <circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r + 4}" fill="none" stroke="var(--surface)" stroke-width="2.5" opacity="${on ? .95 : .5}"/>
       <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${fill}" opacity="${on ? 1 : .45}"/>
-      ${on && label ? `<text x="${x.toFixed(1)}" y="${(y + 3.2).toFixed(1)}" text-anchor="middle" font-size="9.5" font-weight="600" fill="#fff">${label}</text>` : ""}
-      <text x="${x.toFixed(1)}" y="${(y - r - 7).toFixed(1)}" text-anchor="middle" font-size="13"
+      ${on && label ? `<text x="${x.toFixed(1)}" y="${(y + 3.2).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#fff">${label}</text>` : ""}
+      <text x="${(anchor === "w" ? x - r - 6 : anchor === "e" ? x + r + 6 : x).toFixed(1)}"
+            y="${(anchor === "s" ? y + r + 14 : anchor === "n" ? y - r - 7 : y + 4.5).toFixed(1)}"
+            text-anchor="${anchor === "w" ? "end" : anchor === "e" ? "start" : "middle"}" font-size="13"
             font-weight="${on ? 600 : 400}" fill="${on ? "var(--ink)" : "var(--muted)"}"
             stroke="var(--surface)" stroke-width="3.2" paint-order="stroke" opacity="${on ? 1 : .78}">${p.n}</text>
       <circle class="hit" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="17"/>
@@ -785,7 +793,7 @@ function move(key, dir) {
 
 function renderPool() {
   const sel = SEL();
-  const R = { kanto:"Kanto", fuji:"Fuji", chubu:"Alpes", kansai:"Kansai" };
+  const R = { kanto:"Kanto", fuji:"Fuji", chubu:"Chubu", kansai:"Kansai" };
   $("pool").innerHTML = PLACES.filter(p => !sel.has(p.id))
     .map(p => `<button type="button" data-add="${p.id}" title="${p.why}">
       ${p.n} <span class="rg">${R[p.r]}</span></button>`).join("")
