@@ -1,0 +1,882 @@
+<title>Atelier d'itinéraire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --ground:#EDF0F1; --surface:#FFFFFF; --surface-2:#F5F8F9; --surface-3:#E8EDEF;
+  --ink:#0F171C; --muted:#59676F; --line:#D3DBDF; --line-soft:#E3E9EC;
+  --accent:#15586F; --accent-ink:#0E4256; --accent-soft:#E0EDF1;
+  --yes:#2C6A50; --yes-bg:#E1EFE7; --maybe:#856012; --maybe-bg:#F5EBD6; --no:#8E4130; --no-bg:#F4E3DE;
+  --sea-1:#DCE9EE; --sea-2:#C8DCE4; --land-1:#F7F5F0; --land-2:#E9E6DD; --coast:#A9BCC4;
+  --c-flight:#15586F; --c-lodging:#2C6A50; --c-transport:#856012; --c-acts:#7A4A73; --c-food:#A05A2C; --c-misc:#5C6B74;
+  --shadow:0 1px 2px rgba(15,23,28,.05), 0 8px 24px -16px rgba(15,23,28,.28);
+  --f-display:"Newsreader",Georgia,serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --sea-1:#0F1B22; --sea-2:#132530; --land-1:#26333B; --land-2:#1D2830; --coast:#4A6470;
+  --c-flight:#5FAEC8; --c-lodging:#74B996; --c-transport:#D5A853; --c-acts:#C89BC0; --c-food:#DFA271; --c-misc:#8FA0AA;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+} }
+:root[data-theme="dark"] {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --sea-1:#0F1B22; --sea-2:#132530; --land-1:#26333B; --land-2:#1D2830; --coast:#4A6470;
+  --c-flight:#5FAEC8; --c-lodging:#74B996; --c-transport:#D5A853; --c-acts:#C89BC0; --c-food:#DFA271; --c-misc:#8FA0AA;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+* { box-sizing:border-box; }
+body { background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:15px;
+  line-height:1.55; margin:0; padding:0 18px 80px; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1180px; margin:0 auto; display:flex; flex-direction:column; gap:30px; }
+
+.masthead { padding-top:42px; display:flex; flex-direction:column; gap:11px; }
+.eyebrow { font-family:var(--f-mono); font-size:11.5px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--muted); display:flex; flex-wrap:wrap; gap:9px; align-items:center; }
+.eyebrow .dot { color:var(--line); }
+h1 { font-family:var(--f-display); font-size:clamp(31px,5vw,45px); font-weight:500; line-height:1.05;
+  letter-spacing:-.018em; margin:0; text-wrap:balance; }
+.sub { color:var(--muted); max-width:66ch; margin:0; font-size:15.5px; }
+
+.totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden; box-shadow:var(--shadow); }
+.tot { background:var(--surface); padding:14px 17px; display:flex; flex-direction:column; gap:2px; }
+.tot .k { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.tot .v { font-family:var(--f-mono); font-variant-numeric:tabular-nums; font-size:23px; font-weight:600; line-height:1.15; }
+.tot .note { font-size:12px; color:var(--muted); }
+.tot.hero { background:var(--accent-soft); } .tot.hero .v,.tot.hero .k { color:var(--accent-ink); }
+
+section { display:flex; flex-direction:column; gap:15px; }
+h2 { font-family:var(--f-display); font-size:clamp(21px,3vw,26px); font-weight:500; letter-spacing:-.014em;
+  line-height:1.15; margin:0; padding-bottom:10px; border-bottom:2px solid var(--ink); text-wrap:balance; }
+h2 .h2note { font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--muted); margin-left:10px; vertical-align:middle; font-weight:400; }
+.lede { color:var(--muted); max-width:76ch; margin:0; font-size:14.5px; line-height:1.6; }
+.lede strong { color:var(--ink); font-weight:600; }
+
+.panel { background:var(--surface); border:1px solid var(--line); border-radius:3px; box-shadow:var(--shadow); }
+.pad { padding:18px 20px; }
+
+/* --- carte --- */
+.maplayout { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(310px,1fr); gap:16px; align-items:start; }
+.mapbox { position:relative; overflow:hidden; border-radius:3px; }
+svg.map { display:block; width:100%; height:auto; background:var(--sea-1); touch-action:manipulation; }
+svg.map text { font-family:var(--f-body); pointer-events:none; }
+.pin { cursor:pointer; }
+.pin .hit { fill:transparent; }
+.pin:focus { outline:none; }
+.pin:focus-visible .halo { stroke:var(--accent-ink); stroke-width:3; opacity:1; }
+.legend-map { display:flex; flex-wrap:wrap; gap:8px 18px; padding:11px 14px; border-top:1px solid var(--line);
+  background:var(--surface-2); font-size:12.5px; color:var(--muted); }
+.legend-map .li { display:flex; align-items:center; gap:7px; }
+.legend-map .d { width:11px; height:11px; border-radius:50%; flex:none; }
+
+/* --- panneau étapes --- */
+.stops { display:flex; flex-direction:column; }
+.stop { border-bottom:1px solid var(--line-soft); background:var(--surface); }
+.stop:last-child { border-bottom:0; }
+.stop-head { display:flex; align-items:center; gap:11px; padding:11px 14px; }
+.stop-num { width:23px; height:23px; border-radius:50%; background:var(--accent); color:#fff; flex:none;
+  display:grid; place-items:center; font-family:var(--f-mono); font-size:11.5px; font-weight:600; }
+.stop-name { font-weight:600; font-size:15px; flex:1; min-width:0; }
+.stop-name small { display:block; font-weight:400; font-size:12px; color:var(--muted); }
+.stop-ctl { display:flex; gap:3px; flex:none; }
+.iconbtn { width:26px; height:26px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink);
+  border-radius:3px; cursor:pointer; display:grid; place-items:center; font-size:13px; line-height:1; padding:0; }
+.iconbtn:hover:not(:disabled) { background:var(--surface-3); }
+.iconbtn:disabled { opacity:.3; cursor:default; }
+.iconbtn.del:hover { border-color:var(--no); color:var(--no); }
+.iconbtn:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+.stop-body { padding:0 14px 13px 48px; display:flex; flex-direction:column; gap:9px; }
+.nights-row { display:flex; align-items:center; gap:9px; flex-wrap:wrap; }
+.nights-row label { font-size:12.5px; color:var(--muted); }
+.nights-row input { width:56px; padding:4px 6px; text-align:center; font-family:var(--f-mono); }
+input[type="number"],select { font-family:var(--f-body); font-size:13.5px; color:var(--ink);
+  background:var(--surface-2); border:1px solid var(--line); border-radius:3px; padding:6px 8px; }
+select { width:100%; }
+input:focus-visible,select:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+.stop-cost { margin-left:auto; font-family:var(--f-mono); font-size:12px; color:var(--muted); }
+.acts-mini { display:flex; flex-wrap:wrap; gap:5px; }
+.acts-mini label { display:inline-flex; align-items:center; gap:5px; font-size:12px; padding:3px 8px;
+  border:1px solid var(--line); border-radius:12px; background:var(--surface-2); cursor:pointer; }
+.acts-mini label:has(input:checked) { border-color:var(--accent); background:var(--accent-soft); color:var(--accent-ink); }
+.acts-mini input { accent-color:var(--accent); margin:0; }
+.acts-mini .vert { color:var(--maybe); font-size:10px; }
+
+/* --- segment de trajet --- */
+.hop { display:grid; grid-template-columns:23px 1fr; gap:11px; padding:9px 14px; background:var(--surface-2);
+  border-bottom:1px solid var(--line-soft); align-items:center; }
+.hop .rail { display:flex; justify-content:center; }
+.hop .rail i { width:2px; height:100%; min-height:26px; background:var(--line); display:block; }
+.hop .hb { display:flex; flex-direction:column; gap:4px; min-width:0; }
+.hop .hl { font-size:12.5px; color:var(--muted); display:flex; flex-wrap:wrap; gap:5px 10px; align-items:center; }
+.hop .hl b { color:var(--ink); font-weight:500; }
+.hop select { font-size:12.5px; padding:4px 7px; max-width:100%; }
+.hop .warn { color:var(--maybe); font-size:12px; }
+.hop .via { font-family:var(--f-mono); font-size:11px; color:var(--muted); }
+
+/* --- réserve de lieux --- */
+.pool { display:flex; flex-wrap:wrap; gap:7px; }
+.pool button { font-family:var(--f-body); font-size:13px; padding:6px 11px; border-radius:14px;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink); cursor:pointer; display:inline-flex; gap:7px; align-items:center; }
+.pool button:hover { border-color:var(--accent); color:var(--accent-ink); background:var(--accent-soft); }
+.pool button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+.pool button .rg { font-family:var(--f-mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+.pool button:hover .rg { color:var(--accent-ink); }
+
+.presets { display:flex; flex-direction:column; gap:7px; }
+.presets .pl { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.chips { display:flex; flex-wrap:wrap; gap:7px; }
+.flash { padding:9px 13px; background:var(--accent-soft); color:var(--accent-ink); border-radius:3px;
+  font-size:13.5px; border:1px solid var(--accent); }
+button.chip-btn { font-family:var(--f-body); font-size:12.5px; padding:5px 11px; border-radius:3px;
+  border:1px solid var(--line); background:var(--surface-2); color:var(--ink); cursor:pointer; }
+button.chip-btn:hover { background:var(--surface-3); }
+button.chip-btn:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+button.chip-btn.warn { border-color:var(--maybe); color:var(--maybe); }
+
+/* --- budget --- */
+.stack { display:flex; height:28px; border-radius:3px; overflow:hidden; border:1px solid var(--line); }
+.stack i { display:block; height:100%; }
+.brk { display:flex; flex-direction:column; gap:8px; }
+.brk-row { display:grid; grid-template-columns:12px 1fr auto auto; gap:11px; align-items:center; font-size:13.5px; }
+.brk-row .sw { width:11px; height:11px; border-radius:2px; }
+.brk-row .pc { font-family:var(--f-mono); font-size:11.5px; color:var(--muted); width:40px; text-align:right; }
+.brk-row .amt { font-family:var(--f-mono); font-variant-numeric:tabular-nums; font-weight:600; width:74px; text-align:right; }
+.ctrl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:15px 18px; }
+.field { display:flex; flex-direction:column; gap:6px; }
+.field > label,.field > .flabel { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); }
+.seg { display:flex; border:1px solid var(--line); border-radius:3px; overflow:hidden; }
+.seg label { flex:1; text-align:center; padding:7px 5px; font-size:13px; cursor:pointer; background:var(--surface-2);
+  border-right:1px solid var(--line); user-select:none; }
+.seg label:last-child { border-right:0; }
+.seg input { position:absolute; opacity:0; pointer-events:none; }
+.seg label:has(input:checked) { background:var(--accent); color:#fff; font-weight:500; }
+.seg label:has(input:focus-visible) { outline:2px solid var(--accent-ink); outline-offset:-2px; }
+
+.empty { padding:26px 18px; text-align:center; color:var(--muted); font-size:14px; }
+.warnbox { display:block; padding:12px 14px; background:var(--maybe-bg); color:var(--maybe);
+  border-radius:3px; font-size:13.5px; line-height:1.5; }
+footer { border-top:1px solid var(--line); padding-top:17px; font-size:12.5px; color:var(--muted); line-height:1.6; max-width:82ch; }
+
+@media (max-width:900px) { .maplayout { grid-template-columns:1fr; } }
+@media (max-width:600px) { .masthead { padding-top:28px; } .stop-body { padding-left:14px; } }
+@media (prefers-reduced-motion:reduce) { * { transition:none!important; animation:none!important; } }
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">
+    <span>Voyage Japon</span><span class="dot">/</span><span>planificateur</span><span class="dot">/</span>
+    <span>trait de côte Natural Earth</span><span class="dot">/</span><span>prix août 2026</span>
+  </div>
+  <h1>Atelier d'itinéraire</h1>
+  <p class="sub">Clique une ville sur la carte pour l'ajouter au voyage ou l'en retirer. Réordonne les étapes, choisis le nombre de nuits et le mode de transport : les trajets se recalculent par le rail et la route réels, et le budget suit. Ton travail est <strong>sauvegardé automatiquement</strong> et peut se partager par lien.</p>
+</header>
+
+<div class="totals">
+  <div class="tot hero"><span class="k">Par personne</span><span class="v" id="t-pp">—</span><span class="note" id="t-pp-note">—</span></div>
+  <div class="tot"><span class="k">Total groupe</span><span class="v" id="t-total">—</span><span class="note" id="t-total-note">—</span></div>
+  <div class="tot"><span class="k">Durée</span><span class="v" id="t-days">—</span><span class="note" id="t-days-note">—</span></div>
+  <div class="tot"><span class="k">Temps de trajet</span><span class="v" id="t-travel">—</span><span class="note" id="t-travel-note">—</span></div>
+</div>
+
+<section>
+  <h2>Carte et étapes <span class="h2note" id="route-summary">—</span></h2>
+  <div class="maplayout">
+    <div class="panel mapbox">
+      <svg class="map" id="map" viewBox="0 0 1000 668" role="img" aria-label="Carte du centre du Japon avec les étapes du voyage"></svg>
+      <div class="legend-map">
+        <span class="li"><span class="d" style="background:var(--accent)"></span> étape retenue</span>
+        <span class="li"><span class="d" style="background:var(--muted);opacity:.45"></span> disponible, cliquer pour ajouter</span>
+        <span class="li"><span class="d" style="background:var(--maybe)"></span> nuitée sur place</span>
+        <span class="li">Le tracé suit l'ordre des étapes, pas le tracé exact des voies.</span>
+      </div>
+    </div>
+    <div class="panel" style="display:flex;flex-direction:column;">
+      <div class="stops" id="stops"></div>
+      <div class="pad" style="border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px;">
+        <span class="flabel" style="font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Ajouter une étape</span>
+        <div class="pool" id="pool"></div>
+      </div>
+    </div>
+  </div>
+  <div class="presets">
+    <span class="pl">Partir d'un itinéraire</span>
+    <div class="chips">
+      <button class="chip-btn" data-preset="alps" type="button">Alpes japonaises</button>
+      <button class="chip-btn" data-preset="kanto" type="button">Kanto économique</button>
+      <button class="chip-btn" data-preset="golden" type="button">Golden Route</button>
+      <button class="chip-btn" data-preset="openjaw" type="button">Tokyo / Osaka</button>
+      <button class="chip-btn" data-preset="onsen" type="button">Onsen et montagne</button>
+      <button class="chip-btn" data-preset="nakasendo" type="button">Nakasendo</button>
+      <button class="chip-btn" data-preset="lent" type="button">Lent, 2 semaines</button>
+    </div>
+  </div>
+  <div class="presets">
+    <span class="pl">Agir sur l'itinéraire</span>
+    <div class="chips">
+      <button class="chip-btn" id="reverse" type="button">Inverser l'ordre</button>
+      <button class="chip-btn warn" id="drop-vertige" type="button">Retirer ce qui expose au vide</button>
+      <button class="chip-btn" id="share" type="button">Copier le lien de partage</button>
+      <button class="chip-btn" id="clear" type="button">Tout effacer</button>
+    </div>
+  </div>
+  <div class="flash" id="flash" hidden role="status"></div>
+  <div id="notices"></div>
+</section>
+
+<section>
+  <h2>Budget</h2>
+  <div class="panel pad">
+    <div class="ctrl-grid">
+      <div class="field"><span class="flabel">Voyageurs</span>
+        <div class="seg">
+          <label><input type="radio" name="tr" value="1"><span>1</span></label>
+          <label><input type="radio" name="tr" value="2" checked><span>2</span></label>
+          <label><input type="radio" name="tr" value="3"><span>3</span></label>
+        </div></div>
+      <div class="field"><span class="flabel">Chambres</span>
+        <div class="seg">
+          <label><input type="radio" name="lg" value="shared" checked><span>Partagée</span></label>
+          <label><input type="radio" name="lg" value="individual"><span>Individuelle</span></label>
+        </div></div>
+      <div class="field"><label for="flight">Vol A/R € / pers.</label><input type="number" id="flight" value="995" min="0" step="25"></div>
+      <div class="field"><label for="food">Nourriture € / jour / pers.</label><input type="number" id="food" value="40" min="0" step="5"></div>
+      <div class="field"><label for="local">Transport local € / jour / pers.</label><input type="number" id="local" value="7" min="0" step="1"></div>
+      <div class="field"><label for="misc">Divers € / pers.</label><input type="number" id="misc" value="300" min="0" step="10"></div>
+    </div>
+  </div>
+  <div class="panel pad" style="display:flex;flex-direction:column;gap:15px;">
+    <div class="stack" id="stack"></div>
+    <div class="brk" id="brk"></div>
+  </div>
+</section>
+
+<footer id="foot">—</footer>
+</div>
+
+<script>
+const PROJ={"K":0.8120835268918062,"x0":109.14402601425876,"y0":-37.6,"sc":175.91434640217213};
+const MAPPATHS=["M41.4,663.5L50.2,662.3L25.6,674.8L24.4,679.7L0.6,694.1L-3.4,697.4L-1.6,699.5L-6.7,706.9L-12.5,708.5L-12.3,713.7L-22.2,728.2L-31.9,767.7L-36.9,757.9L-42.0,757.4L-41.7,753.8L-53.5,736.1L-61.6,732.6L-67.8,722.4L-91.0,717.8L-94.4,714.7L-113.2,718.5L-133.4,729.3L-137.2,738.5L-147.9,741.0L-153.8,747.4L-155.4,743.1L-158.3,745.1L-163.6,751.8L-161.3,763.6L-163.8,770.7L-169.2,776.2L-167.8,781.2L-172.8,780.5L-176.4,785.1L-186.1,800.7L-186.0,805.1L-192.5,802.3L-197.4,805.0L-199.8,811.5L-199.6,832.2L-206.4,835.1L-206.4,841.8L-196.1,855.0L-196.0,858.3L-199.7,859.9L-212.1,848.3L-215.3,848.9L-217.0,852.8L-220.2,849.7L-229.8,854.8L-241.2,846.2L-253.2,852.8L-253.8,844.5L-241.5,825.1L-254.5,825.6L-263.0,820.3L-261.1,822.7L-268.0,821.5L-269.0,825.1L-266.0,827.5L-270.8,828.3L-275.4,820.9L-272.3,818.2L-273.9,814.4L-271.2,810.4L-275.5,802.0L-282.9,800.1L-286.2,806.3L-288.2,805.7L-284.6,797.0L-278.3,799.9L-273.8,797.3L-276.8,797.3L-275.9,792.4L-278.7,789.0L-274.9,789.0L-272.8,785.9L-279.9,784.2L-280.3,779.6L-277.3,778.6L-282.3,774.2L-285.9,776.3L-286.5,773.3L-277.2,773.3L-273.5,779.4L-269.5,771.7L-264.5,769.3L-267.9,765.2L-265.5,763.0L-270.3,763.8L-273.6,760.6L-273.6,758.0L-267.8,753.9L-282.8,755.7L-288.8,753.0L-283.5,749.1L-282.7,743.1L-285.4,745.4L-287.0,739.2L-284.6,735.9L-286.0,733.3L-282.7,731.0L-291.0,726.9L-306.6,731.7L-321.4,740.7L-324.2,745.2L-328.3,744.1L-327.1,741.2L-341.4,747.8L-329.4,737.3L-319.1,735.3L-320.7,732.3L-318.4,730.8L-305.1,727.6L-283.9,715.1L-271.3,699.3L-256.9,693.0L-246.2,683.3L-243.3,676.1L-244.3,666.0L-241.1,650.1L-235.0,649.1L-232.9,633.9L-219.7,623.5L-211.6,621.3L-210.5,613.6L-214.6,611.7L-210.2,612.2L-208.2,608.4L-195.5,624.0L-189.0,640.4L-181.9,645.0L-165.2,641.0L-164.4,637.8L-153.9,635.0L-127.0,639.4L-121.6,636.6L-108.4,619.4L-108.4,600.8L-120.2,587.6L-103.9,594.0L-99.8,592.6L-88.3,582.6L-75.1,575.5L-71.5,569.2L-66.1,567.3L-55.4,571.9L-45.5,572.1L-42.7,567.1L-40.4,569.9L-38.9,564.7L-36.6,564.4L-33.4,576.1L-29.9,576.1L-26.2,570.8L-18.4,576.5L-20.3,581.5L-8.1,589.2L-0.5,589.4L5.7,596.6L23.0,594.3L29.6,589.2L27.7,595.7L30.0,595.3L35.3,591.2L32.5,600.2L29.7,600.9L34.6,601.8L29.3,613.8L27.8,628.1L29.3,633.1L33.9,631.4L37.6,638.8L42.3,641.8L43.3,649.8L35.2,659.1L45.3,660.0L41.4,663.5Z","M-139.7,555.0L-151.3,572.1L-159.8,576.7L-161.4,573.6L-155.0,568.9L-163.1,566.0L-160.5,562.6L-164.7,558.3L-167.2,567.1L-174.0,573.2L-170.2,579.1L-173.5,583.9L-177.0,581.5L-186.7,588.9L-189.1,587.6L-189.7,577.4L-183.7,571.4L-183.8,578.0L-181.0,577.3L-178.9,571.5L-175.9,570.8L-180.8,566.0L-186.7,564.7L-188.7,566.0L-187.7,571.5L-191.6,574.8L-212.6,577.9L-221.0,582.7L-223.4,578.6L-234.0,585.7L-232.6,591.9L-242.4,593.6L-249.1,598.2L-253.3,598.5L-255.2,594.9L-263.6,599.5L-265.0,597.4L-262.9,594.9L-270.9,582.7L-270.9,575.5L-267.0,574.3L-268.9,571.2L-271.9,569.5L-279.8,571.7L-284.9,568.5L-293.4,571.9L-311.1,591.3L-308.0,603.9L-308.7,608.2L-314.0,614.2L-312.4,635.1L-323.5,644.1L-319.8,661.1L-336.9,672.6L-331.6,662.3L-327.3,663.1L-328.6,655.8L-346.8,647.9L-351.2,641.9L-364.0,633.6L-369.7,638.3L-367.6,639.4L-374.3,638.6L-374.6,635.8L-368.2,628.6L-379.8,623.4L-395.2,628.6L-401.0,626.7L-400.4,632.8L-403.0,635.8L-416.7,627.7L-422.7,637.0L-425.6,633.4L-429.5,635.8L-427.9,630.3L-430.0,626.3L-438.2,640.0L-448.9,646.5L-454.9,642.0L-460.3,645.5L-462.8,641.6L-462.0,637.3L-471.0,628.0L-480.6,624.9L-497.7,648.4L-502.9,644.2L-498.6,637.9L-498.2,623.9L-503.1,621.4L-505.5,613.5L-498.4,606.1L-496.7,601.0L-504.1,584.2L-500.0,570.8L-494.0,571.5L-480.9,566.1L-492.1,562.3L-495.2,563.6L-493.2,559.6L-489.1,556.1L-484.3,561.1L-475.0,558.6L-466.6,560.9L-465.6,566.7L-461.0,568.6L-458.3,564.0L-461.2,557.7L-449.6,556.3L-445.5,561.5L-452.9,559.8L-455.9,568.3L-439.6,564.2L-437.9,560.1L-426.5,558.7L-426.7,553.4L-419.7,545.5L-420.7,542.0L-409.1,533.8L-406.1,525.1L-400.6,524.8L-400.4,517.3L-391.9,518.3L-388.5,514.6L-379.1,514.5L-363.1,507.6L-360.9,499.7L-357.7,499.1L-337.9,479.1L-335.2,479.8L-333.8,473.7L-309.1,451.3L-297.6,446.4L-296.2,441.2L-288.6,435.4L-284.6,426.6L-266.9,412.0L-251.6,405.5L-248.1,399.4L-246.6,389.6L-252.7,383.5L-252.1,379.8L-235.9,377.9L-239.2,374.6L-223.2,368.3L-204.3,366.4L-203.8,362.1L-195.2,361.3L-192.6,356.4L-188.4,356.2L-187.0,351.6L-177.6,358.4L-167.9,354.8L-165.8,358.2L-155.9,355.8L-153.4,357.4L-163.6,363.5L-162.2,370.1L-152.9,375.5L-142.8,377.5L-137.0,371.0L-117.1,363.5L-95.6,368.9L-69.8,366.9L-55.9,362.9L-52.2,366.0L-23.2,361.2L-16.9,358.0L-15.2,354.3L-5.5,352.6L19.6,339.1L27.2,341.4L56.9,340.3L63.2,343.8L66.2,341.6L75.3,344.6L84.0,336.0L89.9,335.5L98.0,329.7L97.7,327.4L118.1,321.5L127.5,332.2L129.5,339.2L128.5,341.6L125.6,339.8L122.7,341.8L112.6,358.0L112.6,361.5L115.2,362.1L115.4,359.0L121.2,353.3L124.4,358.4L120.0,359.2L119.8,362.0L128.8,367.1L132.1,365.1L133.6,368.0L131.3,378.7L136.1,371.7L143.2,372.6L143.2,368.2L135.7,367.6L134.0,362.8L145.1,358.6L151.9,351.2L150.3,356.8L154.7,359.0L154.1,365.5L158.9,361.0L158.7,369.7L166.8,370.7L178.4,361.9L181.4,363.4L177.4,365.6L174.6,371.8L189.2,371.1L192.6,363.5L188.7,365.5L184.5,361.3L186.6,358.5L191.2,357.0L199.1,363.9L204.9,363.4L200.6,356.2L207.8,355.5L201.7,344.2L217.1,350.4L225.8,346.5L223.4,342.1L224.9,335.8L222.3,334.1L222.3,329.3L231.4,322.7L235.3,333.6L232.4,337.6L235.4,341.5L238.4,340.9L242.8,320.9L238.6,312.3L227.6,301.7L227.8,292.7L222.5,286.2L223.3,281.5L228.6,277.2L234.8,262.0L245.7,246.3L247.8,242.0L246.3,236.9L256.7,235.0L271.2,220.4L283.2,212.7L327.1,152.9L337.9,125.0L335.8,118.6L338.2,108.9L331.5,95.9L332.4,83.3L329.8,79.2L328.0,81.6L324.3,79.2L329.4,65.4L328.3,63.4L333.3,55.4L331.6,48.3L335.6,42.6L348.9,35.3L362.1,35.3L381.6,25.9L387.7,19.7L413.7,12.1L420.1,14.6L420.8,22.0L422.7,23.5L421.6,27.1L412.5,27.6L406.6,32.8L405.3,38.7L407.0,42.7L409.6,43.1L408.0,50.1L404.3,54.2L395.1,52.6L387.0,55.7L381.5,67.1L373.5,73.0L363.7,67.3L364.4,64.3L356.1,75.1L354.3,80.2L356.5,81.1L356.2,84.9L352.7,86.0L351.6,92.0L361.9,91.5L368.6,97.3L372.0,95.8L374.9,88.8L378.2,88.2L379.2,111.4L369.7,128.2L372.2,134.4L393.9,147.6L414.1,148.3L419.0,147.3L426.2,140.7L431.4,127.1L430.5,123.7L435.4,117.2L469.0,107.7L499.5,95.4L521.9,82.7L528.2,75.5L537.8,77.1L549.3,73.2L576.8,48.9L592.9,39.1L608.5,13.3L620.9,0.6L629.9,-28.3L636.8,-40.1L666.9,-62.5L676.1,-63.1L688.0,-68.6L700.6,-77.7L717.9,-97.0L723.2,-136.3L727.5,-150.3L742.7,-184.4L759.5,-201.5L767.7,-214.1L784.6,-269.7L788.1,-292.5L799.3,-303.9L806.9,-335.1L808.5,-374.3L803.9,-391.3L795.2,-401.1L788.8,-404.3L782.5,-403.3L777.7,-397.9L765.7,-397.2L758.4,-408.9L757.7,-412.5L759.9,-413.8L757.3,-415.3L757.2,-423.2L774.6,-415.3L786.3,-425.3L796.9,-444.3L801.6,-463.6L803.5,-484.6L792.3,-495.9L791.8,-518.0L789.8,-522.6L787.9,-525.3L779.5,-526.0L780.1,-529.3L789.4,-536.0L799.7,-552.7L806.6,-557.3L817.5,-553.2L828.3,-560.5L834.4,-560.0L838.7,-565.1L845.2,-590.1L846.0,-602.9L852.8,-595.7L854.6,-596.0L852.8,-601.9L858.3,-602.6L857.0,-605.0L846.7,-605.4L846.0,-612.7L842.9,-617.7L835.4,-619.8L836.6,-622.5L843.4,-622.2L845.8,-624.5L848.9,-644.9L866.0,-630.5L878.4,-637.9L884.8,-636.8L890.4,-632.3L891.6,-605.4L896.1,-579.7L900.4,-572.3L907.5,-569.1L914.2,-569.8L921.7,-577.7L924.4,-588.4L920.1,-589.8L923.1,-590.6L927.0,-600.0L935.5,-596.5L940.2,-591.0L939.3,-587.2L951.2,-583.4L954.8,-578.1L960.9,-575.8L969.3,-582.5L975.2,-595.9L978.1,-616.9L982.6,-625.4L979.4,-635.3L972.3,-644.7L965.9,-647.1L962.4,-641.5L965.6,-643.3L963.8,-639.7L951.2,-630.3L939.7,-632.7L935.2,-628.6L923.2,-627.0L916.4,-620.7L909.4,-623.6L909.4,-632.6L914.7,-656.1L919.6,-671.7L928.7,-682.7L929.6,-692.8L930.5,-694.3L943.3,-683.8L958.3,-679.7L970.7,-666.2L982.3,-660.2L997.5,-663.7L1008.7,-673.8L1008.2,-664.5L1003.4,-653.1L998.7,-626.4L998.0,-603.4L1000.8,-565.9L1005.3,-540.1L1013.1,-521.1L1018.9,-515.7L1025.1,-517.6L1032.0,-510.4L1049.1,-489.7L1057.6,-473.2L1063.1,-461.9L1059.0,-454.5L1068.2,-446.7L1063.9,-442.4L1063.2,-434.6L1078.5,-421.6L1080.2,-414.0L1077.5,-408.9L1081.7,-401.6L1086.4,-382.2L1080.1,-353.9L1080.9,-351.6L1090.9,-358.7L1090.1,-349.0L1095.8,-343.1L1087.9,-332.3L1079.0,-327.3L1081.6,-324.3L1085.2,-324.6L1090.9,-331.4L1094.1,-328.3L1091.4,-326.2L1090.2,-319.7L1083.0,-318.8L1077.0,-314.0L1080.6,-312.3L1072.2,-304.4L1078.1,-304.4L1083.0,-308.0L1083.4,-303.8L1073.6,-298.2L1076.1,-294.7L1071.3,-294.7L1071.3,-290.0L1078.1,-290.2L1078.5,-286.4L1075.7,-283.6L1068.4,-282.8L1070.5,-279.1L1075.2,-279.2L1073.7,-276.2L1063.4,-273.1L1073.3,-263.5L1070.1,-262.0L1062.2,-264.6L1059.6,-262.3L1067.4,-257.4L1060.5,-256.3L1063.9,-250.1L1046.8,-252.7L1049.7,-244.1L1044.8,-241.7L1047.2,-237.7L1043.4,-237.6L1040.0,-241.1L1039.0,-242.9L1041.9,-245.5L1034.1,-243.7L1039.1,-220.2L1033.8,-227.1L1026.9,-225.6L1026.7,-214.5L1017.4,-205.5L1023.9,-198.6L1023.8,-194.1L1020.4,-194.8L1009.0,-186.7L1010.6,-183.9L1019.3,-181.5L1009.6,-170.6L1016.4,-164.4L1018.4,-166.9L1021.1,-161.6L1020.4,-155.0L1016.4,-159.7L1013.6,-151.4L1015.4,-148.9L1010.1,-145.9L1012.5,-139.3L1016.9,-141.1L1021.3,-138.1L1017.2,-139.1L1014.5,-135.7L1017.9,-133.7L1020.4,-123.6L1017.9,-117.5L1009.1,-123.0L1009.6,-127.2L1003.6,-130.8L1005.7,-135.7L1004.0,-137.3L986.4,-142.1L971.8,-138.2L968.7,-135.7L967.1,-127.2L964.6,-127.2L961.7,-135.7L954.2,-133.9L949.8,-124.8L954.2,-125.2L954.4,-122.2L945.3,-113.4L938.1,-100.4L932.3,-79.1L931.4,-64.2L933.3,-50.9L946.0,-22.3L944.0,-13.9L946.9,-8.5L948.8,39.2L944.0,65.7L944.0,82.0L937.2,111.5L914.9,125.6L913.3,134.1L906.0,146.3L899.1,172.8L889.1,192.4L887.2,205.1L888.1,222.0L880.6,231.7L882.6,253.1L892.3,279.1L920.2,326.8L925.6,330.6L923.0,336.4L918.3,331.8L903.0,337.3L902.3,334.4L894.4,336.2L869.1,357.8L860.5,371.1L855.1,390.4L859.0,404.4L856.3,422.8L853.9,426.4L849.8,425.6L845.9,434.4L842.1,431.6L836.2,433.7L833.9,437.6L819.2,435.8L814.4,444.1L798.7,453.8L794.9,461.6L794.6,467.8L789.5,473.7L777.6,475.0L773.0,467.3L765.3,465.1L764.7,461.6L772.6,461.6L781.4,457.5L776.5,452.6L778.5,447.2L776.6,433.6L774.1,429.6L774.9,422.4L780.7,418.0L780.9,414.1L778.5,405.7L768.7,401.4L774.9,399.6L777.8,391.2L784.7,393.3L786.8,390.8L785.7,382.9L800.8,374.1L810.3,361.9L812.9,362.2L814.6,357.6L812.3,357.7L811.4,351.2L801.3,341.3L792.9,339.1L788.6,340.9L791.4,345.3L785.3,349.3L778.6,345.2L776.8,349.3L772.4,345.1L769.9,351.3L766.5,342.4L765.5,346.3L771.3,362.4L769.7,367.1L759.2,375.6L748.9,377.5L755.3,381.4L755.3,386.9L748.0,386.7L751.0,391.1L749.8,405.0L763.6,413.6L760.8,416.3L761.1,420.9L755.5,420.6L752.4,423.3L751.5,426.0L755.0,432.7L745.2,433.8L743.1,421.9L746.3,420.2L734.9,403.2L726.7,404.5L716.4,401.3L697.4,405.3L683.4,411.1L678.0,416.0L679.7,433.4L674.4,430.9L669.8,438.0L668.0,448.0L672.3,448.7L669.5,457.9L677.5,467.5L677.3,480.1L671.3,482.7L664.5,496.5L657.0,504.3L655.1,513.1L656.2,519.0L648.7,517.0L633.6,528.5L624.5,519.4L624.8,515.3L620.9,511.7L620.6,505.1L624.9,501.1L621.2,490.2L623.2,484.4L622.0,478.6L627.1,473.8L623.1,460.9L626.6,452.7L642.0,453.9L643.9,452.0L629.0,435.9L613.7,432.9L593.4,440.5L589.7,448.4L585.4,451.6L586.7,458.9L586.7,455.3L590.2,454.4L587.8,460.9L566.7,471.9L561.2,482.8L563.0,487.9L556.2,498.6L545.1,508.0L541.9,520.4L543.0,523.9L548.6,527.3L547.6,528.7L509.7,516.0L499.0,515.8L484.6,520.8L469.1,515.3L449.6,514.1L432.5,515.8L391.5,529.6L373.7,531.5L381.8,516.4L387.3,523.3L408.5,509.4L411.8,504.7L414.0,505.2L414.8,512.0L415.6,505.6L420.1,505.5L416.0,503.7L417.4,497.2L411.4,491.1L399.2,491.3L398.4,497.8L395.8,498.9L395.9,495.4L374.0,495.5L365.5,486.9L368.4,470.7L361.6,484.4L359.4,496.8L366.1,504.0L367.4,510.8L350.9,503.1L349.0,498.0L352.0,486.1L349.1,480.0L346.8,479.9L346.2,465.3L354.3,449.7L355.1,441.7L353.1,440.9L349.8,450.4L349.0,444.2L347.2,443.5L348.5,451.7L344.7,452.6L342.8,448.8L342.6,453.1L332.2,452.6L322.7,460.2L320.3,466.5L323.1,467.8L320.8,469.7L319.9,476.9L305.0,498.6L302.8,513.5L306.6,518.7L307.3,527.4L319.0,529.3L336.0,543.0L350.3,547.9L354.8,556.3L359.4,556.9L359.5,567.1L353.6,568.3L358.6,570.8L354.8,575.5L356.5,586.3L347.9,589.9L342.0,588.8L339.3,587.2L341.1,584.5L348.8,587.6L347.9,583.9L349.8,585.2L350.9,581.5L349.5,579.2L343.9,579.1L343.9,582.7L339.1,579.1L328.9,581.4L331.9,575.0L329.5,574.5L321.4,578.0L323.9,580.9L315.4,586.7L310.6,583.9L308.7,587.6L303.3,585.2L300.8,589.9L302.1,592.9L296.0,591.3L288.1,597.4L276.7,600.9L271.3,606.2L271.0,611.2L274.1,614.1L272.6,617.5L269.1,619.0L264.7,614.2L259.8,620.1L268.5,630.2L267.6,638.3L263.9,638.3L261.7,634.5L257.8,638.3L261.1,640.0L261.2,644.1L258.7,643.0L257.0,647.2L252.1,648.0L248.1,652.5L243.5,652.4L238.5,660.2L225.8,694.3L219.6,700.6L222.8,704.9L212.1,716.1L201.3,720.4L197.6,726.0L198.5,731.6L194.3,733.0L195.1,724.5L176.8,722.2L149.3,712.3L141.0,704.7L141.8,700.3L139.3,696.1L132.5,691.1L134.7,687.1L143.2,685.9L141.7,683.7L130.3,674.5L118.9,671.6L107.5,655.1L102.7,652.1L94.1,654.4L93.9,650.7L97.0,649.8L95.7,645.5L100.2,641.3L96.8,640.5L96.5,637.3L108.8,628.9L107.6,624.7L99.2,621.4L104.1,614.2L103.3,609.2L112.4,609.4L112.9,607.0L109.4,600.4L107.0,600.6L102.8,590.7L94.4,586.3L100.7,577.3L115.6,573.1L138.9,548.1L139.0,542.0L144.9,535.1L144.7,511.5L140.2,513.4L134.5,508.7L126.7,509.2L126.8,513.7L121.9,514.2L122.1,510.0L117.2,511.8L120.3,518.8L112.3,514.6L112.0,518.7L92.3,523.4L88.1,520.3L80.0,520.1L49.2,498.4L21.3,497.3L17.0,499.6L13.7,498.8L13.0,494.8L3.3,505.7L-4.5,503.8L-6.6,509.2L-27.3,505.2L-26.2,508.1L-17.3,510.5L-35.0,521.3L-30.1,521.3L-36.0,528.3L-45.2,531.0L-50.4,526.9L-57.9,526.2L-66.2,530.0L-67.8,531.6L-65.3,535.6L-57.0,528.7L-50.5,531.0L-50.6,534.1L-56.4,539.4L-55.4,541.8L-59.5,540.3L-66.2,553.9L-82.6,552.0L-81.9,556.3L-86.5,555.4L-96.7,540.5L-132.8,558.7L-125.4,548.3L-128.4,546.7L-138.5,550.1L-139.7,555.0Z","M726.7,622.6L727.8,617.0L731.9,613.5L736.6,613.3L739.3,617.5L733.5,626.7L729.4,627.0L726.7,622.6Z","M695.8,563.6L700.1,559.8L697.6,574.0L695.4,576.5L693.4,573.2L695.8,563.6Z","M86.1,526.3L90.0,531.5L71.9,559.6L70.8,567.7L79.8,585.7L62.0,593.4L57.1,598.0L47.0,599.7L46.7,596.4L43.2,594.4L46.3,588.9L41.2,590.4L36.7,582.6L40.5,575.6L45.8,575.3L57.0,554.7L64.3,549.6L69.1,540.1L76.9,536.4L86.1,526.3Z","M716.9,495.9L722.4,503.6L722.6,511.9L720.4,514.2L708.5,509.7L707.3,506.6L708.1,493.0L716.9,495.9Z","M746.1,653.4L746.1,658.5L740.2,657.5L741.8,651.6L746.1,653.4Z","M115.0,557.6L120.1,553.3L122.4,556.6L117.8,560.1L115.0,557.6Z","M356.0,545.9L358.4,544.9L355.9,548.9L353.2,546.9L356.0,545.9Z","M355.7,539.8L358.6,538.3L355.6,541.4L349.9,542.7L355.7,539.8Z","M378.3,78.8L377.0,84.4L363.9,88.5L357.9,80.3L359.9,79.6L361.2,81.3L367.7,78.6L371.3,81.0L378.3,78.8Z"];
+const WATER={"lakes":["M260.1,389.6L268.4,393.2L268.1,398.1L262.8,409.7L239.7,423.9L237.2,428.4L239.8,429.5L239.1,431.1L224.4,437.0L223.5,435.7L220.7,447.4L217.0,450.5L215.6,461.1L212.1,459.1L209.8,453.2L218.3,436.4L218.9,427.2L222.5,418.8L239.2,400.8L234.7,389.4L238.7,377.5L242.1,379.2L246.1,371.8L247.8,379.4L250.4,380.3L251.9,369.5L254.0,370.3L256.7,373.9L257.9,385.9L260.1,389.6Z"],"rivers":["M666.7,122.0L666.4,131.4L652.7,144.3L652.6,151.3L663.1,174.2L660.1,196.4L667.4,218.2L685.5,236.7L716.1,244.2L724.7,250.1L730.6,247.6L744.2,249.9L767.0,262.1L790.3,292.3L818.1,307.1L845.7,307.7L856.1,301.7L878.7,301.1L898.9,310.9L914.1,326.5L922.4,328.5","M805.5,-29.2L807.9,-48.5L817.9,-72.2L808.6,-81.7L808.6,-96.0L813.6,-103.5L816.2,-115.6L829.0,-132.0L840.2,-129.0L845.0,-133.8L849.7,-149.3L848.8,-158.3L854.1,-168.2L848.9,-184.2L840.0,-185.8L831.0,-194.8L799.8,-208.2L773.7,-231.1"]};
+/* ---------- Lieux : coordonnées réelles, hébergement, activités ---------- */
+/* prix hébergement en € par nuit : [individuelle/pers, partagée 2 pers, partagée 3 pers] */
+
+const PLACES = [
+  { id:"tokyo", n:"Tokyo", lon:139.767, lat:35.681, r:"kanto", d:2, lodge:[55,70,92],
+    tag:"Base incontournable", why:"Asakusa, Shibuya, Shinjuku, TeamLab. Deux séjours séparés sont courants : un à l'arrivée, un avant le retour.",
+    acts:[["Senso-ji",0],["Musée national d'Ueno",7],["Meiji Jingu",0],["TeamLab",26],["Shinjuku Gyoen",3],["Observatoire Tocho",0],["Skytree",20,1]] },
+  { id:"kamakura", n:"Kamakura", lon:139.550, lat:35.319, r:"kanto", d:0, lodge:[48,65,85],
+    tag:"Excursion depuis Tokyo", why:"Grand Bouddha, Hase-dera, Komachi-dori. Se fait très bien à la journée sans y dormir.",
+    acts:[["Kotoku-in",2],["Hase-dera",3],["Tsurugaoka Hachiman-gu",0],["Komachi-dori",0]] },
+  { id:"enoshima", n:"Enoshima", lon:139.480, lat:35.300, r:"kanto", d:0, lodge:[50,68,88],
+    tag:"Île et couchers de soleil", why:"À 25 min de Kamakura par la ligne Enoden. Sanctuaire, grottes marines, vue sur le Fuji par temps clair.",
+    acts:[["Sanctuaire Enoshima",0],["Grottes Iwaya",3],["Jardin Samuel Cocking",2]] },
+  { id:"yokohama", n:"Yokohama", lon:139.638, lat:35.444, r:"kanto", d:0, lodge:[50,66,86],
+    tag:"Port et Chinatown", why:"30 min de Tokyo. Minato Mirai, le plus grand quartier chinois du Japon, musée du ramen.",
+    acts:[["Chinatown",0],["Minato Mirai",0],["Jardin Sankeien",3],["Musée du ramen",2]] },
+  { id:"chichibu", n:"Chichibu", lon:139.079, lat:35.991, r:"kanto", d:1, lodge:[45,62,80],
+    tag:"Montagne proche de Tokyo", why:"90 min de Tokyo. Sanctuaires, randonnée, mousses de Hitsujiyama au printemps. Peu de touristes étrangers.",
+    acts:[["Chichibu-jinja",0],["Parc Hitsujiyama",2],["Randonnée du mont Bukō",0]] },
+  { id:"nokogiri", n:"Nokogiriyama", lon:139.826, lat:35.157, r:"kanto", d:0, lodge:[45,60,78],
+    tag:"Falaise et grand Bouddha", why:"Traversée de la baie en ferry depuis Kurihama. Bouddha rupestre, « vue de l'enfer » en surplomb.",
+    acts:[["Nihon-ji et le Bouddha",4],["Vue de l'enfer",0,1]] },
+  { id:"narita", n:"Narita", lon:140.386, lat:35.773, r:"kanto", d:0, lodge:[42,58,74],
+    tag:"Étape d'aéroport", why:"Utile seulement pour une dernière nuit avant un vol matinal depuis Narita. La vieille ville et le Naritasan valent la promenade.",
+    acts:[["Naritasan Shinsho-ji",0],["Rue Omotesando",0]] },
+
+  { id:"kawaguchiko", n:"Kawaguchiko", lon:138.762, lat:35.500, r:"fuji", d:2, lodge:[50,68,90],
+    tag:"Face au Fuji", why:"Le meilleur point de vue accessible sur le Mont Fuji. Pagode Chureito, lac, sources d'Oshino Hakkai.",
+    acts:[["Pagode Chureito",0],["Oshino Hakkai",0],["Croisière sur le lac",9],["Ropeway Kachi Kachi",15,1]] },
+  { id:"hakone", n:"Hakone", lon:139.026, lat:35.232, r:"fuji", d:1, lodge:[130,190,250],
+    tag:"Onsen et lac Ashi", why:"Ryokan avec bains, zone volcanique d'Owakudani, croisière sur le lac. L'hébergement y est nettement plus cher, repas inclus.",
+    acts:[["Hakone Free Pass",50,1],["Musée en plein air",17],["Hakone-jinja",0],["Poste de contrôle d'Edo",3]] },
+
+  { id:"nagoya", n:"Nagoya", lon:136.906, lat:35.181, r:"chubu", d:1, lodge:[42,58,76],
+    tag:"Carrefour ferroviaire", why:"Sur la ligne du Shinkansen, porte d'entrée des Alpes. Château, Osu Kannon, Ghibli Park à proximité.",
+    acts:[["Château de Nagoya",6],["Osu Kannon",0],["Ghibli Park",15]] },
+  { id:"gifu", n:"Gifu", lon:136.760, lat:35.423, r:"chubu", d:2, lodge:[42,58,76],
+    tag:"Château perché", why:"20 min de Nagoya. Château sur le mont Kinka, pêche au cormoran de mai à octobre sur la rivière Nagara.",
+    acts:[["Château de Gifu",7,1],["Pêche au cormoran",25],["Arcade Yanagase",0]] },
+  { id:"gero", n:"Gero Onsen", lon:137.244, lat:35.798, r:"chubu", d:1, lodge:[70,100,135],
+    tag:"Ville thermale", why:"Sur la ligne panoramique du Hida. L'une des trois grandes sources chaudes du Japon, bains de pieds gratuits en ville.",
+    acts:[["Bains de pieds",0],["Gero Gassho Village",3],["Bain public",3]] },
+  { id:"takayama", n:"Takayama", lon:137.252, lat:36.146, r:"chubu", d:2, lodge:[75,110,145],
+    tag:"Vieille ville d'Edo", why:"Ruelles de bois, brasseries de saké, marché du matin. Base naturelle pour Shirakawa-go.",
+    acts:[["Vieille ville",0],["Marché du matin",0],["Hida no Sato",4],["Takayama Jinya",2]] },
+  { id:"shirakawago", n:"Shirakawa-go", lon:136.906, lat:36.257, r:"chubu", d:0, lodge:[95,140,180],
+    tag:"Village UNESCO", why:"Maisons à toit de chaume. Se visite en demi-journée depuis Takayama, mais y dormir permet de voir le village sans les cars.",
+    acts:[["Village et maisons",3],["Point de vue Shiroyama",0]] },
+  { id:"kanazawa", n:"Kanazawa", lon:136.648, lat:36.578, r:"chubu", d:3, lodge:[45,60,80],
+    tag:"Jardin et samouraïs", why:"Kenrokuen, quartier des geishas de Higashi Chaya, marché Omicho. Terminus naturel avant le Shinkansen du retour.",
+    acts:[["Jardin Kenrokuen",3],["Higashi Chaya",0],["Musée du 21e siècle",10],["Marché Omicho",0],["Château de Kanazawa",2]] },
+  { id:"matsumoto", n:"Matsumoto", lon:137.972, lat:36.238, r:"chubu", d:1, lodge:[48,64,84],
+    tag:"Château noir", why:"L'un des rares donjons d'origine du Japon, classé trésor national. Porte d'entrée des Alpes du Nord.",
+    acts:[["Château de Matsumoto",5],["Rue Nakamachi",0],["Vallée de Kamikochi",0]] },
+  { id:"nagano", n:"Nagano", lon:138.194, lat:36.649, r:"chubu", d:1, lodge:[45,60,80],
+    tag:"Temple et macaques", why:"Zenko-ji, l'un des temples les plus vénérés du pays, et le parc aux singes de Jigokudani à une heure.",
+    acts:[["Zenko-ji",0],["Parc aux singes de Jigokudani",5]] },
+
+  { id:"kyoto", n:"Kyoto", lon:135.768, lat:35.012, r:"kansai", d:3, lodge:[58,76,98],
+    tag:"L'alternative Kansai", why:"Le dépôt l'écarte au profit des Alpes. À garder en tête : Fushimi Inari, Arashiyama, Gion, et un accès direct depuis Kanazawa.",
+    acts:[["Fushimi Inari",0],["Kinkaku-ji",3],["Arashiyama",0],["Gion et Kiyomizu-dera",3]] },
+  { id:"osaka", n:"Osaka", lon:135.502, lat:34.694, r:"kansai", d:2, lodge:[48,64,84],
+    tag:"Cuisine de rue", why:"Dotonbori, Kuromon, château. 30 min de Kyoto, aéroport international au Kansai pour un vol en boucle ouverte.",
+    acts:[["Dotonbori",0],["Château d'Osaka",4],["Marché Kuromon",0]] },
+  { id:"nara", n:"Nara", lon:135.805, lat:34.685, r:"kansai", d:0, lodge:[48,64,84],
+    tag:"Daims et grand Bouddha", why:"45 min de Kyoto. Todai-ji et son Bouddha de 15 m, parc aux daims en liberté.",
+    acts:[["Todai-ji",4],["Parc de Nara",0],["Kasuga-taisha",3]] },
+
+  { id:"nikko", n:"Nikko", lon:139.617, lat:36.720, r:"kanto", d:2, lodge:[55,75,98],
+    tag:"Sanctuaires UNESCO", why:"2h de Tokyo. Le Tosho-gu et ses sculptures, les cèdres, les chutes de Kegon et le lac Chuzenji en altitude.",
+    acts:[["Tosho-gu",8],["Rinno-ji",3],["Pont Shinkyo",0],["Chutes de Kegon",4],["Lac Chuzenji",0]] },
+  { id:"kusatsu", n:"Kusatsu Onsen", lon:138.596, lat:36.622, r:"kanto", d:2, lodge:[85,120,160],
+    tag:"La source la plus réputée", why:"L'eau la plus abondante du Japon, au cœur d'un village de montagne. Le yubatake fume en pleine rue et le spectacle du yumomi s'y donne chaque jour.",
+    acts:[["Yubatake",0],["Netsu-no-Yu et yumomi",4],["Sainokawara Rotenburo",4]] },
+  { id:"toyama", n:"Toyama", lon:137.212, lat:36.696, r:"chubu", d:1, lodge:[45,60,78],
+    tag:"Porte de la route alpine", why:"23 min de Kanazawa en Shinkansen. Départ de la Tateyama-Kurobe Alpine Route et musée du verre remarquable.",
+    acts:[["Musée d'art de verre",6],["Château de Toyama",2],["Route alpine Tateyama-Kurobe",90,1]] },
+  { id:"ise", n:"Ise", lon:136.709, lat:34.487, r:"kansai", d:1, lodge:[50,68,88],
+    tag:"Le sanctuaire majeur", why:"Le lieu le plus sacré du shintoïsme, reconstruit à l'identique tous les vingt ans. Ruelle marchande d'Okage Yokocho à l'entrée.",
+    acts:[["Ise-jingu Naiku",0],["Okage Yokocho",0],["Rochers mariés Meoto Iwa",0]] },
+  { id:"kobe", n:"Kobe", lon:135.196, lat:34.690, r:"kansai", d:1, lodge:[50,66,86],
+    tag:"Port et collines", why:"25 min d'Osaka. Quartier Kitano et ses maisons occidentales, vue de nuit depuis le mont Rokko, et le bœuf.",
+    acts:[["Quartier Kitano",0],["Port et Harborland",0],["Mont Rokko",12,1]] },
+  { id:"himeji", n:"Himeji", lon:134.694, lat:34.815, r:"kansai", d:0, lodge:[45,60,78],
+    tag:"Le plus beau château", why:"Le seul grand donjon d'origine jamais détruit ni reconstruit, classé UNESCO. Se visite en excursion depuis Kyoto ou Osaka.",
+    acts:[["Château de Himeji",8],["Jardin Koko-en",2]] },
+  { id:"magome", n:"Magome et Tsumago", lon:137.560, lat:35.527, r:"chubu", d:1, lodge:[70,100,130],
+    tag:"Relais du Nakasendo", why:"Deux villages-relais préservés de la route d'Edo, reliés par 8 km de sentier pavé. La plus belle randonnée facile du pays.",
+    acts:[["Sentier Magome-Tsumago",0],["Village de Tsumago",0],["Maison Waki-honjin",3]] },
+  { id:"kamikochi", n:"Kamikochi", lon:137.632, lat:36.251, r:"chubu", d:1, lodge:[110,160,210],
+    tag:"Vallée alpine", why:"Vallée fermée aux voitures au pied des Alpes du Nord. Ouverte de mi-avril à mi-novembre seulement.",
+    acts:[["Pont Kappa",0],["Étang Taisho",0],["Sentier de la Azusa",0]] },
+
+];
+
+/* ---------- Liaisons réelles : minutes, € par personne ---------- */
+/* Le trajet entre deux étapes non reliées directement est calculé par plus court chemin. */
+
+const EDGES = [
+  ["tokyo","kamakura",   [["Ligne JR Yokosuka",55,8]]],
+  ["tokyo","yokohama",   [["Ligne JR Tokaido",30,4]]],
+  ["yokohama","kamakura",[["Ligne JR Yokosuka",25,3]]],
+  ["kamakura","enoshima",[["Ligne Enoden",25,3]]],
+  ["tokyo","narita",     [["Narita Express",60,15],["Bus Access Narita",90,8]]],
+  ["tokyo","chichibu",   [["Seibu Red Arrow",90,12]]],
+  ["tokyo","nokogiri",   [["Train et ferry de la baie",120,20]]],
+  ["tokyo","kawaguchiko",[["Bus autoroutier depuis Shinjuku",105,18],["Train via Otsuki",150,25]]],
+  ["kawaguchiko","hakone",[["Bus avec correspondance à Gotemba",165,25]]],
+  ["tokyo","hakone",     [["Odakyu Romancecar",100,25],["Shinkansen puis Hakone Tozan",90,30]]],
+  ["hakone","nagoya",    [["Tozan jusqu'à Odawara puis Hikari",160,75]]],
+  ["tokyo","nagoya",     [["Shinkansen Hikari",100,70]]],
+  ["nagoya","gifu",      [["Rapide JR Tokaido",20,5]]],
+  ["gifu","gero",        [["Limited express Hida",95,30]]],
+  ["gero","takayama",    [["Limited express Hida",50,25]]],
+  ["nagoya","takayama",  [["Limited express Hida direct",145,40]]],
+  ["takayama","shirakawago",[["Bus Nohi",50,15]]],
+  ["shirakawago","kanazawa",[["Bus Hokutetsu",75,15]]],
+  ["takayama","kanazawa",[["Bus Nohi direct",135,24],["Voiture de location",180,0,"car"]]],
+  ["takayama","matsumoto",[["Bus alpin",150,22]]],
+  ["matsumoto","nagano", [["Ligne JR Shinonoi",50,15]]],
+  ["matsumoto","tokyo",  [["Limited express Azusa",160,45]]],
+  ["nagano","tokyo",     [["Shinkansen Hokuriku",95,55]]],
+  ["kanazawa","tokyo",   [["Shinkansen Kagayaki",150,110]]],
+  ["kanazawa","nagoya",  [["Shirasagi via Maibara",180,70]]],
+  ["kanazawa","kyoto",   [["Thunderbird via Tsuruga",135,55]]],
+  ["kyoto","osaka",      [["Rapide JR Kyoto",30,4]]],
+  ["kyoto","nara",       [["Ligne Kintetsu",45,5]]],
+  ["osaka","nara",       [["Ligne JR Yamatoji",40,5]]],
+  ["kyoto","nagoya",     [["Shinkansen Hikari",35,40]]],
+  ["kyoto","tokyo",      [["Shinkansen Hikari",140,90]]],
+  ["osaka","tokyo",      [["Shinkansen Hikari",150,95]]],
+
+  ["tokyo","nikko",      [["Tobu Spacia depuis Asakusa",110,20]]],
+  ["tokyo","kusatsu",    [["Shinkansen jusqu'à Takasaki puis bus",200,32],["Bus direct depuis Shinjuku",240,25]]],
+  ["nikko","kusatsu",    [["Train et bus via Takasaki",240,45]]],
+  ["kusatsu","nagano",   [["Bus via Karuizawa",180,30]]],
+  ["takayama","kamikochi",[["Bus via Hirayu Onsen",90,20]]],
+  ["kamikochi","matsumoto",[["Bus via Shinshimashima",90,18]]],
+  ["matsumoto","magome", [["Train Chuo puis bus depuis Nakatsugawa",150,25]]],
+  ["magome","nagoya",    [["Bus jusqu'à Nakatsugawa puis rapide JR",120,18]]],
+  ["toyama","kanazawa",  [["Shinkansen Hokuriku",23,18]]],
+  ["toyama","takayama",  [["Limited express Hida",90,25]]],
+  ["toyama","nagano",    [["Shinkansen Hokuriku",60,40]]],
+  ["nagoya","ise",       [["Kintetsu Limited Express",90,18]]],
+  ["ise","osaka",        [["Kintetsu vers Namba",105,22]]],
+  ["ise","kyoto",        [["Kintetsu vers Kyoto",120,25]]],
+  ["osaka","kobe",       [["Rapide JR Kobe",25,4]]],
+  ["kobe","himeji",      [["Rapide JR Sanyo",40,8]]],
+  ["osaka","himeji",     [["Shinkansen depuis Shin-Osaka",60,25]]],
+  ["kyoto","himeji",     [["Shinkansen Hikari",45,30]]]
+];
+
+/* ---------- Projection : équirectangulaire corrigée à 36° N ---------- */
+const proj = (lon, lat) => [ (lon * PROJ.K - PROJ.x0) * PROJ.sc, (-lat - PROJ.y0) * PROJ.sc ];
+const P = Object.fromEntries(PLACES.map(p => [p.id, p]));
+const byId = id => P[id];
+
+/* ---------- Graphe : plus court chemin en durée ---------- */
+const ADJ = {};
+for (const [a, b, modes] of EDGES) {
+  (ADJ[a] ||= []).push({ to: b, modes });
+  (ADJ[b] ||= []).push({ to: a, modes });
+}
+const bestMode = modes => modes.reduce((m, x) => (x[1] < m[1] ? x : m), modes[0]);
+
+function route(from, to) {
+  if (from === to) return null;
+  const direct = (ADJ[from] || []).find(e => e.to === to);   // une liaison directe prime sur un détour plus rapide
+  if (direct) return { path: [from, to], legs: [{ a: from, b: to, modes: direct.modes }], direct: true };
+  const dist = { [from]: 0 }, prev = {}, seen = new Set();
+  const q = [from];
+  while (q.length) {
+    q.sort((a, b) => dist[a] - dist[b]);
+    const u = q.shift();
+    if (seen.has(u)) continue;
+    seen.add(u);
+    if (u === to) break;
+    for (const e of (ADJ[u] || [])) {
+      const w = bestMode(e.modes)[1];
+      const nd = dist[u] + w;
+      if (dist[e.to] === undefined || nd < dist[e.to]) {
+        dist[e.to] = nd; prev[e.to] = u;
+        if (!seen.has(e.to)) q.push(e.to);
+      }
+    }
+  }
+  if (dist[to] === undefined) return null;
+  const path = [to];
+  while (prev[path[0]] !== undefined) path.unshift(prev[path[0]]);
+  const legs = [];
+  for (let i = 0; i < path.length - 1; i++) {
+    const e = ADJ[path[i]].find(x => x.to === path[i + 1]);
+    legs.push({ a: path[i], b: path[i + 1], modes: e.modes });
+  }
+  return { path, legs, direct: legs.length === 1 };
+}
+
+/* ---------- État ---------- */
+const PRESETS = {
+  alps:      { label:"Alpes japonaises", ids:["tokyo","kamakura","kawaguchiko","hakone","gifu","gero","takayama","kanazawa","tokyo"],
+               note:"L'itinéraire du dépôt. Boucle par Tokyo, sans le Kansai." },
+  kanto:     { label:"Kanto économique", ids:["tokyo","kamakura","enoshima","yokohama","kawaguchiko","hakone","chichibu","tokyo"],
+               note:"Tokyo comme base, excursions courtes, aucun Shinkansen longue distance." },
+  golden:    { label:"Golden Route", ids:["tokyo","hakone","kyoto","nara","osaka"],
+               note:"Le classique d'un premier voyage. Se termine à Osaka : billet multi-destination conseillé." },
+  openjaw:   { label:"Tokyo / Osaka", ids:["tokyo","kawaguchiko","takayama","kanazawa","kyoto","osaka"],
+               note:"Arrivée à Tokyo, retour depuis le Kansai, sans jamais revenir en arrière." },
+  onsen:     { label:"Onsen et montagne", ids:["tokyo","nikko","kusatsu","takayama","gero","kanazawa","tokyo"],
+               note:"Quatre sources chaudes et deux massifs. Rythme lent, hébergement plus cher car en demi-pension." },
+  nakasendo: { label:"Nakasendo", ids:["tokyo","matsumoto","magome","nagoya","kyoto"],
+               note:"La route historique d'Edo à Kyoto, avec la randonnée entre les relais de Magome et Tsumago." },
+  lent:      { label:"Lent, 2 semaines", ids:["tokyo","kyoto","kanazawa"],
+               note:"Trois bases seulement, beaucoup de nuits sur place. Le moins de transport possible." }
+};
+const DEFAULT_NIGHTS = { tokyo:5, kamakura:0, kawaguchiko:2, hakone:1, gifu:2, gero:1, takayama:2,
+  kanazawa:3, kyoto:4, osaka:3, nara:0, nikko:2, kusatsu:2, magome:1, kamikochi:1, matsumoto:2,
+  himeji:0, kobe:1, ise:1, toyama:1 };
+
+let trip = [];          // [{ key, id, nights, acts:Set<number>, modes:{legIndex:modeIndex} }]
+let seq = 0;
+
+const $ = id => document.getElementById(id);
+const fmt = n => Math.round(n).toLocaleString("fr-FR") + " €";
+const hm = m => (m >= 60 ? Math.floor(m / 60) + " h" + (m % 60 ? " " + String(m % 60).padStart(2, "0") : "") : m + " min");
+const travelers = () => parseInt(document.querySelector('input[name="tr"]:checked').value, 10);
+const formula = () => document.querySelector('input[name="lg"]:checked').value;
+const numv = id => Math.max(0, parseFloat($(id).value) || 0);
+
+function addStop(id, nights) {
+  const p = byId(id); if (!p) return;
+  const n = nights !== undefined ? nights : (DEFAULT_NIGHTS[id] ?? p.d);
+  const acts = new Set(p.acts.map((_, i) => i).filter(i => !p.acts[i][2]));  // tout sauf ce qui expose au vide
+  trip.push({ key: "s" + (seq++), id, nights: n, acts, modes: {} });
+}
+function setPreset(name) {
+  const pre = PRESETS[name]; if (!pre) return;
+  trip = []; pre.ids.forEach(id => addStop(id));
+  const t = trip.filter(s => s.id === "tokyo");
+  if (t.length === 2) { t[0].nights = 5; t[1].nights = 3; }   // Tokyo en deux temps
+  if (name === "lent") { trip.forEach(s => s.nights = 4); }
+  currentPresetNote = pre.note;
+  render();
+}
+let currentPresetNote = "";
+
+/* ---------- Sauvegarde locale et partage ---------- */
+const STORE = "atelier-japon-v1";
+
+function snapshot() {
+  return {
+    v: 1,
+    t: trip.map(s => [s.id, s.nights, [...s.acts], s.modes]),
+    tr: travelers(), lg: formula(),
+    n: ["flight","food","local","misc"].map(id => numv(id))
+  };
+}
+function restore(d) {
+  if (!d || d.v !== 1 || !Array.isArray(d.t)) return false;
+  trip = []; seq = 0;
+  for (const [id, nights, acts, modes] of d.t) {
+    if (!byId(id)) continue;
+    trip.push({ key: "s" + (seq++), id, nights: nights | 0, acts: new Set(acts || []), modes: modes || {} });
+  }
+  const tr = document.querySelector(`input[name="tr"][value="${d.tr}"]`); if (tr) tr.checked = true;
+  const lg = document.querySelector(`input[name="lg"][value="${d.lg}"]`); if (lg) lg.checked = true;
+  if (Array.isArray(d.n)) ["flight","food","local","misc"].forEach((id, i) => {
+    if (d.n[i] != null) $(id).value = d.n[i];
+  });
+  return trip.length > 0;
+}
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify(snapshot())); } catch (e) {}
+}
+const b64 = {
+  enc: o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,""),
+  dec: s => JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,"+").replace(/_/g,"/")))))
+};
+function shareLink() {
+  const url = location.origin + location.pathname + "#i=" + b64.enc(snapshot());
+  navigator.clipboard?.writeText(url).then(
+    () => flash("Lien copié dans le presse-papier"),
+    () => flash("Copie impossible — le lien est dans la barre d'adresse")
+  );
+  location.hash = "i=" + b64.enc(snapshot());
+}
+function flash(msg) {
+  const el = $("flash"); if (!el) return;
+  el.textContent = msg; el.hidden = false;
+  clearTimeout(flash._t); flash._t = setTimeout(() => { el.hidden = true; }, 3200);
+}
+function loadInitial() {
+  if (location.hash.startsWith("#i=")) {
+    try { if (restore(b64.dec(location.hash.slice(3)))) { render(); flash("Itinéraire chargé depuis le lien partagé"); return; } } catch (e) {}
+  }
+  try {
+    const raw = localStorage.getItem(STORE);
+    if (raw && restore(JSON.parse(raw))) { render(); flash("Itinéraire précédent restauré"); return; }
+  } catch (e) {}
+  setPreset("alps");
+}
+
+/* ---------- Calcul ---------- */
+function computeHops() {
+  const hops = [];
+  for (let i = 0; i < trip.length - 1; i++) {
+    const a = trip[i], b = trip[i + 1];
+    if (a.id === b.id) { hops.push({ same: true }); continue; }
+    const r = route(a.id, b.id);
+    if (!r) { hops.push({ none: true, a: a.id, b: b.id }); continue; }
+    let min = 0, eur = 0;
+    const chosen = r.legs.map((leg, li) => {
+      const mi = a.modes[li] ?? 0;
+      const m = leg.modes[Math.min(mi, leg.modes.length - 1)];
+      min += m[1]; eur += m[2];
+      return { leg, m, mi };
+    });
+    hops.push({ r, chosen, min, eur, stopIndex: i });
+  }
+  return hops;
+}
+
+function compute() {
+  const tr = travelers(), form = formula();
+  const hops = computeHops();
+  let nights = 0, lodging = 0, acts = 0, transport = 0, travelMin = 0;
+  for (const s of trip) {
+    const p = byId(s.id);
+    nights += s.nights;
+    const perNight = form === "individual" ? p.lodge[0] * tr : (tr === 1 ? p.lodge[0] : p.lodge[tr - 1]);
+    lodging += perNight * s.nights;
+    s.acts.forEach(i => { if (p.acts[i]) acts += p.acts[i][1]; });
+  }
+  acts *= tr;
+  for (const h of hops) { if (h.eur !== undefined) { transport += h.eur * tr; travelMin += h.min; } }
+  const days = nights + 1;
+  const flight = numv("flight") * tr;
+  const local = numv("local") * days * tr;
+  const food = numv("food") * days * tr;
+  const misc = numv("misc") * tr;
+  const total = flight + lodging + transport + local + acts + food + misc;
+  return { hops, nights, days, lodging, transport, local, acts, food, misc, flight, total, tr, travelMin };
+}
+
+/* ---------- Carte ---------- */
+const SEL = () => new Set(trip.map(s => s.id));
+
+function renderMap() {
+  const sel = SEL();
+  const order = {};
+  trip.forEach((s, i) => { (order[s.id] ||= []).push(i + 1); });
+
+  const land = MAPPATHS.map(d => `<path d="${d}" fill="url(#gLand)" stroke="var(--coast)" stroke-width="1.1" stroke-linejoin="round"/>`).join("");
+  const water = WATER.rivers.map(d => `<path d="${d}" fill="none" stroke="var(--sea-2)" stroke-width="1.5" stroke-linecap="round" opacity=".9"/>`).join("")
+    + WATER.lakes.map(d => `<path d="${d}" fill="var(--sea-2)" stroke="var(--coast)" stroke-width=".7" opacity=".95"/>`).join("");
+
+  // tracé du parcours, en courbes douces
+  const pts = trip.map(s => proj(byId(s.id).lon, byId(s.id).lat));
+  let path = "";
+  for (let i = 0; i < pts.length - 1; i++) {
+    const [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
+    if (x1 === x2 && y1 === y2) continue;
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    const dx = x2 - x1, dy = y2 - y1, len = Math.hypot(dx, dy) || 1;
+    const bow = Math.min(len * 0.16, 46);
+    path += `M${x1.toFixed(1)},${y1.toFixed(1)}Q${(mx - dy / len * bow).toFixed(1)},${(my + dx / len * bow).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
+  }
+
+  // décalage des étiquettes là où les villes se chevauchent
+  const LABEL = { enoshima:["e",0], yokohama:["e",0], kamakura:["s",0], nokogiri:["s",0],
+    kamikochi:["s",0], nagano:["w",0], toyama:["e",0], shirakawago:["w",0], magome:["s",0],
+    kobe:["s",0], nara:["e",0], narita:["e",0], gero:["w",0], kusatsu:["e",0],
+    hakone:["w",0], matsumoto:["e",0], chichibu:["e",0] };
+  const pins = PLACES.map(p => {
+    const [x, y] = proj(p.lon, p.lat);
+    const anchor = (LABEL[p.id] || ["n"])[0];
+    const on = sel.has(p.id);
+    const nums = order[p.id] || [];
+    const stopsHere = trip.filter(s => s.id === p.id);
+    const sleeps = stopsHere.some(s => s.nights > 0);
+    const r = on ? 8 : 4.4;
+    const fill = on ? (sleeps ? "var(--maybe)" : "var(--accent)") : "var(--muted)";
+    const label = nums.length ? nums.join("·") : "";
+    return `<g class="pin" data-id="${p.id}" role="button" tabindex="0"
+              aria-label="${p.n}${on ? ", étape " + label + ", cliquer pour retirer" : ", cliquer pour ajouter"}">
+      <circle class="halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r + 4}" fill="none" stroke="var(--surface)" stroke-width="2.5" opacity="${on ? .95 : .5}"/>
+      <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="${fill}" opacity="${on ? 1 : .45}"/>
+      ${on && label ? `<text x="${x.toFixed(1)}" y="${(y + 3.2).toFixed(1)}" text-anchor="middle" font-size="10.5" font-weight="600" fill="#fff">${label}</text>` : ""}
+      <text x="${(anchor === "w" ? x - r - 6 : anchor === "e" ? x + r + 6 : x).toFixed(1)}"
+            y="${(anchor === "s" ? y + r + 14 : anchor === "n" ? y - r - 7 : y + 4.5).toFixed(1)}"
+            text-anchor="${anchor === "w" ? "end" : anchor === "e" ? "start" : "middle"}" font-size="13"
+            font-weight="${on ? 600 : 400}" fill="${on ? "var(--ink)" : "var(--muted)"}"
+            stroke="var(--surface)" stroke-width="3.2" paint-order="stroke" opacity="${on ? 1 : .78}">${p.n}</text>
+      <circle class="hit" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="17"/>
+    </g>`;
+  }).join("");
+
+  // Mont Fuji, repère de lecture
+  const [fx, fy] = proj(138.727, 35.361);
+
+  $("map").innerHTML = `
+    <defs>
+      <linearGradient id="gSea" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="var(--sea-1)"/><stop offset="1" stop-color="var(--sea-2)"/>
+      </linearGradient>
+      <linearGradient id="gLand" x1="0" y1="0" x2="0.4" y2="1">
+        <stop offset="0" stop-color="var(--land-1)"/><stop offset="1" stop-color="var(--land-2)"/>
+      </linearGradient>
+      <filter id="fShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="2.5" stdDeviation="4" flood-color="#0F171C" flood-opacity="0.13"/>
+      </filter>
+    </defs>
+    <rect x="0" y="0" width="1000" height="790" fill="url(#gSea)"/>
+    <g filter="url(#fShadow)">${land}</g>
+    <g>${water}</g>
+    <g opacity=".85">
+      <path d="M${(fx - 11).toFixed(1)},${(fy + 6).toFixed(1)}L${fx.toFixed(1)},${(fy - 9).toFixed(1)}L${(fx + 11).toFixed(1)},${(fy + 6).toFixed(1)}Z"
+            fill="none" stroke="var(--coast)" stroke-width="1.4" stroke-linejoin="round"/>
+      <text x="${fx.toFixed(1)}" y="${(fy + 19).toFixed(1)}" text-anchor="middle" font-size="10.5" fill="var(--muted)"
+            stroke="var(--surface)" stroke-width="2.6" paint-order="stroke">Fuji</text>
+    </g>
+    <path d="${path}" fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round"
+          stroke-dasharray="7 6" opacity=".78"/>
+    ${pins}`;
+
+  $("map").querySelectorAll(".pin").forEach(g => {
+    const id = g.dataset.id;
+    const toggle = () => {
+      const idx = trip.findIndex(s => s.id === id);
+      if (idx >= 0 && trip.filter(s => s.id === id).length === 1) trip.splice(idx, 1);
+      else if (idx >= 0) trip.splice(trip.map(s => s.id).lastIndexOf(id), 1);
+      else addStop(id);
+      render();
+    };
+    g.addEventListener("click", toggle);
+    g.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+  });
+}
+
+/* ---------- Étapes ---------- */
+function renderStops(c) {
+  if (!trip.length) {
+    $("stops").innerHTML = `<div class="empty">Aucune étape. Clique une ville sur la carte, ou pars d'un itinéraire tout fait ci-dessous.</div>`;
+    return;
+  }
+  const form = formula(), tr = travelers();
+  let html = "";
+  trip.forEach((s, i) => {
+    const p = byId(s.id);
+    const perNight = form === "individual" ? p.lodge[0] * tr : (tr === 1 ? p.lodge[0] : p.lodge[tr - 1]);
+    const cost = perNight * s.nights;
+    html += `<div class="stop">
+      <div class="stop-head">
+        <span class="stop-num">${i + 1}</span>
+        <span class="stop-name">${p.n}<small>${p.tag}</small></span>
+        <span class="stop-ctl">
+          <button class="iconbtn" data-up="${s.key}" ${i === 0 ? "disabled" : ""} title="Monter" aria-label="Monter ${p.n}">↑</button>
+          <button class="iconbtn" data-down="${s.key}" ${i === trip.length - 1 ? "disabled" : ""} title="Descendre" aria-label="Descendre ${p.n}">↓</button>
+          <button class="iconbtn del" data-del="${s.key}" title="Retirer" aria-label="Retirer ${p.n}">×</button>
+        </span>
+      </div>
+      <div class="stop-body">
+        <div class="nights-row">
+          <label for="n-${s.key}">nuits</label>
+          <input type="number" id="n-${s.key}" data-nights="${s.key}" min="0" max="21" value="${s.nights}">
+          <span class="stop-cost">${s.nights ? fmt(cost) + " d'hébergement" : "sans nuitée"}</span>
+        </div>
+        <div class="acts-mini">${p.acts.map((a, ai) => `
+          <label><input type="checkbox" data-act="${s.key}" data-ai="${ai}" ${s.acts.has(ai) ? "checked" : ""}>
+          ${a[0]}${a[1] ? " · " + a[1] + " €" : ""}${a[2] ? ' <span class="vert" title="expose au vide">▲</span>' : ""}</label>`).join("")}</div>
+      </div>
+    </div>`;
+
+    const h = c.hops[i];
+    if (h && !h.same) {
+      if (h.none) {
+        html += `<div class="hop"><span class="rail"><i></i></span><div class="hb">
+          <span class="hl warn">Aucune liaison connue entre ces deux étapes</span></div></div>`;
+      } else {
+        const via = h.r.path.slice(1, -1).map(id => byId(id).n);
+        html += `<div class="hop"><span class="rail"><i></i></span><div class="hb">
+          <span class="hl"><b>${hm(h.min)}</b> · ${fmt(h.eur)} par personne
+          ${via.length ? `<span class="via">via ${via.join(", ")}</span>` : ""}</span>
+          ${h.chosen.map((ch, li) => ch.leg.modes.length > 1
+            ? `<select data-mode="${s.key}" data-li="${li}">${ch.leg.modes.map((m, mi) =>
+                `<option value="${mi}" ${mi === ch.mi ? "selected" : ""}>${m[0]} — ${hm(m[1])}, ${m[2] ? m[2] + " €" : "compris"}</option>`).join("")}</select>`
+            : `<span class="hl"><span class="via">${ch.m[0]}</span></span>`).join("")}
+        </div></div>`;
+      }
+    }
+  });
+  $("stops").innerHTML = html;
+
+  $("stops").querySelectorAll("[data-up]").forEach(b => b.onclick = () => move(b.dataset.up, -1));
+  $("stops").querySelectorAll("[data-down]").forEach(b => b.onclick = () => move(b.dataset.down, 1));
+  $("stops").querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
+    trip = trip.filter(s => s.key !== b.dataset.del); render();
+  });
+  $("stops").querySelectorAll("[data-nights]").forEach(inp => inp.oninput = () => {
+    const s = trip.find(x => x.key === inp.dataset.nights);
+    if (s) { s.nights = Math.max(0, parseInt(inp.value, 10) || 0); render(false); }
+  });
+  $("stops").querySelectorAll("[data-act]").forEach(cb => cb.onchange = () => {
+    const s = trip.find(x => x.key === cb.dataset.act);
+    if (!s) return;
+    const ai = +cb.dataset.ai;
+    cb.checked ? s.acts.add(ai) : s.acts.delete(ai);
+    render(false);
+  });
+  $("stops").querySelectorAll("[data-mode]").forEach(sel => sel.onchange = () => {
+    const s = trip.find(x => x.key === sel.dataset.mode);
+    if (s) { s.modes[+sel.dataset.li] = +sel.value; render(false); }
+  });
+}
+function move(key, dir) {
+  const i = trip.findIndex(s => s.key === key), j = i + dir;
+  if (i < 0 || j < 0 || j >= trip.length) return;
+  [trip[i], trip[j]] = [trip[j], trip[i]];
+  render();
+}
+
+function renderPool() {
+  const sel = SEL();
+  const R = { kanto:"Kanto", fuji:"Fuji", chubu:"Chubu", kansai:"Kansai" };
+  $("pool").innerHTML = PLACES.filter(p => !sel.has(p.id))
+    .map(p => `<button type="button" data-add="${p.id}" title="${p.why}">
+      ${p.n} <span class="rg">${R[p.r]}</span></button>`).join("")
+    || `<span class="lede">Toutes les villes disponibles sont déjà dans le voyage.</span>`;
+  $("pool").querySelectorAll("[data-add]").forEach(b => b.onclick = () => { addStop(b.dataset.add); render(); });
+}
+
+/* ---------- Budget et bandeau ---------- */
+function renderBudget(c) {
+  const parts = [
+    { k:"Vol", v:c.flight, c:"var(--c-flight)" },
+    { k:"Hébergement", v:c.lodging, c:"var(--c-lodging)" },
+    { k:"Transport", v:c.transport + c.local, c:"var(--c-transport)" },
+    { k:"Activités", v:c.acts, c:"var(--c-acts)" },
+    { k:"Nourriture", v:c.food, c:"var(--c-food)" },
+    { k:"Divers", v:c.misc, c:"var(--c-misc)" }
+  ];
+  $("stack").innerHTML = parts.map(p =>
+    `<i style="width:${c.total ? p.v / c.total * 100 : 0}%;background:${p.c}" title="${p.k} : ${fmt(p.v)}"></i>`).join("");
+  $("brk").innerHTML = parts.map(p => `<div class="brk-row">
+      <span class="sw" style="background:${p.c}"></span><span>${p.k}</span>
+      <span class="pc">${c.total ? Math.round(p.v / c.total * 100) : 0} %</span>
+      <span class="amt">${fmt(p.v)}</span></div>`).join("")
+    + `<div class="brk-row" style="border-top:1px solid var(--line);padding-top:8px;margin-top:2px">
+        <span></span><span style="font-weight:600">Par personne</span><span class="pc"></span>
+        <span class="amt" style="color:var(--accent-ink)">${fmt(c.total / c.tr)}</span></div>`;
+
+  $("t-pp").textContent = trip.length ? fmt(c.total / c.tr) : "—";
+  $("t-pp-note").textContent = `${c.tr} voyageur${c.tr > 1 ? "s" : ""} · chambre ${formula() === "individual" ? "individuelle" : "partagée"}`;
+  $("t-total").textContent = trip.length ? fmt(c.total) : "—";
+  $("t-total-note").textContent = `${trip.length} étape${trip.length > 1 ? "s" : ""}`;
+  $("t-days").textContent = trip.length ? c.days + " j" : "—";
+  $("t-days-note").textContent = `${c.nights} nuits sur place`;
+  $("t-travel").textContent = c.travelMin ? hm(c.travelMin) : "—";
+  $("t-travel-note").textContent = "trajets entre étapes, hors vols";
+  $("route-summary").textContent = trip.length ? trip.map(s => byId(s.id).n).join(" → ") : "aucune étape";
+}
+
+function renderNotices(c) {
+  const out = [];
+  const longHop = c.hops.find(h => h.min >= 210);
+  if (longHop) out.push(`Le trajet ${byId(longHop.r.path[0]).n} → ${byId(longHop.r.path.at(-1)).n} dure ${hm(longHop.min)} : il occupe une journée entière, prévois-la comme telle.`);
+  const noSleep = trip.filter((s, i) => s.nights === 0 && i > 0 && i < trip.length - 1 && c.hops[i - 1] && c.hops[i - 1].min >= 90);
+  if (noSleep.length) out.push(`${noSleep.map(s => byId(s.id).n).join(", ")} : étape sans nuitée après plus d'1 h 30 de trajet. Vérifie que la journée tient debout.`);
+  if (c.nights > 21) out.push(`${c.nights} nuits dépassent la durée visée de 2 à 3 semaines.`);
+  const kw = trip.findIndex(s => s.id === "kawaguchiko"), hk = trip.findIndex(s => s.id === "hakone");
+  if (kw >= 0 && hk === kw + 1) out.push(`Kawaguchiko → Hakone impose une correspondance à Gotemba, où le bus ne passe que deux à trois fois par jour. C'est le segment le plus fragile de l'itinéraire : cale-le avant de réserver le ryokan.`);
+  if (trip.length > 1) {
+    const a = trip[0].id, b = trip.at(-1).id;
+    if (a !== b) {
+      const back = route(b, a);
+      let mn = 0, eu = 0;
+      if (back) back.legs.forEach(l => { const m = bestMode(l.modes); mn += m[1]; eu += m[2]; });
+      out.push(`<b>Itinéraire ouvert :</b> tu commences à ${byId(a).n} et tu finis à ${byId(b).n}. Prends un <b>billet multi-destination</b> — souvent au même prix qu'un aller-retour${back ? `, et cela t'évite les ${hm(mn)} et ${fmt(eu)} par personne du retour vers ${byId(a).n}` : ""}. Vérifie que la compagnie dessert bien les deux aéroports.`);
+    }
+  }
+  if (currentPresetNote) out.unshift(currentPresetNote);
+  $("notices").innerHTML = out.length
+    ? out.map(t => `<div class="warnbox">${t}</div>`).join("")
+    : "";
+}
+
+/* ---------- Boucle ---------- */
+function render(full = true) {
+  const c = compute();
+  save();
+  renderStops(c);
+  if (full) { renderMap(); renderPool(); }
+  renderBudget(c);
+  renderNotices(c);
+  $("foot").textContent = `Trait de côte : Natural Earth 10 m, simplifié. Positions des villes d'après leurs coordonnées réelles ; le tracé relie les étapes dans l'ordre choisi et ne représente pas le tracé exact des voies. Durées et prix de transport relevés en août 2026 pour un adulte, hors abonnements et pass. Prix d'hébergement par nuit repris du dépôt, gamme business hotel et ryokan simple. Tous les montants sont des estimations à revérifier avant de réserver.`;
+}
+
+document.querySelectorAll('input[name="tr"],input[name="lg"]').forEach(r => r.onchange = () => render());
+["flight","food","local","misc"].forEach(id => $(id).oninput = () => render(false));
+document.querySelectorAll("[data-preset]").forEach(b => b.onclick = () => setPreset(b.dataset.preset));
+$("reverse").onclick = () => { trip.reverse(); currentPresetNote = ""; render(); };
+$("clear").onclick = () => { trip = []; currentPresetNote = ""; render(); };
+$("share").onclick = shareLink;
+$("drop-vertige").onclick = () => {
+  trip.forEach(s => byId(s.id).acts.forEach((a, i) => { if (a[2]) s.acts.delete(i); }));
+  render();
+};
+
+loadInitial();
+</script>
