@@ -59,22 +59,39 @@ Privilégier **Haneda (HND)** à Narita (NRT) si le choix est proposé : ~30-40 
 
 Prix relevés en basse saison, économie, aller-retour depuis Paris.
 
-| Compagnie | Trajet | Soute au tarif de base | Pour 2 x 23kg | Pas de siège | Prix relevé |
-|---|---|---|---|---|---|
-| China Southern | CDG–Canton–HND | **2 x 23kg** | inclus | 32″ | 759€ |
-| Air China | CDG–Pékin–HND | **2 x 23kg** | inclus | 31-32″ | 765€ |
-| Korean Air | CDG–Séoul–HND | 1 x 23kg | 2e payant (~100€) | 33-34″ | 985€ |
-| **Finnair** | CDG–HEL–HND | **2 x 23kg** (Classic) | inclus | 31″ | 515€ à 995€ selon dates |
-| EVA Air | CDG–Taipei–NRT | **2 x 23kg** | inclus (sauf tarif Economy Discount) | 32-33″ | 1099€ |
-| ANA | CDG–HND direct | **1 x 23kg** | tarif Standard requis (~+120€) | **34″** | 1093€ |
-| Japan Airlines | CDG–HND direct | **2 x 23kg** | inclus, tous tarifs éco | 33-34″ | à vérifier sur jal.co.jp |
-| Turkish Airlines | CDG–Istanbul–HND | 0 en EcoFly | tarif FlexFly | 31-32″ | 1138€ |
-| Air France | CDG–HND direct | 1 x 23kg | 2e payant (70-125€) | 31-32″ | non relevé |
-| Qatar / Emirates | CDG–Doha/Dubaï–HND | 25-35kg au poids | impossible tel quel | 31-32″ | écarté |
+| Compagnie | Trajet | Soute au tarif de base | Pour 2 x 23kg | Pas de siège | Prix relevé | Vérifié |
+|---|---|---|---|---|---|---|
+| China Southern | CDG–Canton–HND | **2 x 23kg** | inclus | 32″ | 759€ | ✗ |
+| Air China | CDG–Pékin–HND | **2 x 23kg** | inclus | 31-32″ | 765€ | ✗ |
+| Korean Air | CDG–Séoul–HND | 1 x 23kg | 2e payant (~100€) | 33-34″ | 985€ | ✗ |
+| **Finnair** | CDG–HEL–HND | **2 x 23kg** (Classic) | inclus | 31″ | 515€ à 995€ selon dates | ✓ |
+| EVA Air | CDG–Taipei–NRT | **2 x 23kg** | inclus sauf tarif Discount (classe A) | 32-33″ | 1099€ | ✓ |
+| ANA | CDG–HND direct | **0 à 2 pièces** selon tarif | tarif supérieur requis | **34″** | 1093€ | ~ |
+| Japan Airlines | CDG–HND direct | **2 x 23kg** | inclus, tous tarifs éco | 33-34″ | à vérifier sur jal.co.jp | ✓ |
+| Turkish Airlines | CDG–Istanbul–HND | 0 en EcoFly | tarif FlexFly | 31-32″ | 1138€ | ✗ |
+| Air France | CDG–HND direct | 1 x 23kg | 2e payant (70-125€) | 31-32″ | non relevé | ✗ |
+| Qatar / Emirates | CDG–Doha/Dubaï–HND | 25-35kg au poids | impossible tel quel | 31-32″ | écarté | ✗ |
 
-> **ANA a changé sa politique le 1er novembre 2024.** Le tarif Basic sur l'Europe n'inclut plus qu'une pièce ;
-> il faut passer en Standard pour retrouver les 2 x 23kg. Ce fichier annonçait « généralement 2x23kg inclus
-> en Economy » pour ANA et JAL : ce n'est désormais vrai que pour JAL.
+**Légende de la colonne « Vérifié » :** ✓ source officielle consultée le 23/08/2026 · ~ partiellement
+confirmé · ✗ recherche web uniquement, à confirmer.
+
+### Ce qui a été vérifié sur les sites des compagnies
+
+**Finnair** — tunnel de réservation, Paris–Haneda du 1er au 16 décembre : Light 477,24€ sans soute,
+Classic 515,24€ avec **2 x 23kg**, Flex 612,24€. Structure binaire, 0 ou 2, jamais 1.
+
+**Japan Airlines** — page officielle « Free checked baggage allowance » : **2 pièces de 23kg** en économie,
+avec un exemple explicitement européen (Osaka→Tokyo→Londres). Le 3e bagage coûte 20 000¥.
+
+**EVA Air** — tableau officiel « Baggage Allowance by Routes », long-courrier Europe, économie :
+Up (B/Y), Standard (Q/H/M) et **Basic (V/W/S) : 2 pièces de 23kg**. Seul le tarif **Discount (classe A)**
+est limité à **1 pièce**. La nuance sur le tarif Discount est donc réelle et à surveiller au moment de payer.
+
+**ANA** — page officielle « Weight, Size, and Number of Items Which Can Be Checked in Free of Charge » :
+économie **« Between 0-2 pieces »**, avec la mention *« Free baggage allowance varies depending on fare
+rules »*. La variabilité est confirmée — on ne peut pas compter sur deux valises sans vérifier son tarif —
+mais la page ne détaille pas la règle par route. Le passage à 1 pièce sur l'Europe au 1er novembre 2024
+reste rapporté par la presse spécialisée, non confirmé par ANA directement.
 
 **Compagnies donnant 2 x 23kg sans supplément** sur cette route : **Finnair** (tarif Classic), **JAL** (tous
 tarifs éco), **EVA Air** (hors tarif Economy Discount) et les chinoises **China Southern** / **Air China**.

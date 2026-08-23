@@ -26,7 +26,9 @@
       "prix_releve_eur": 515,
       "bagages": "2 x 23kg en Classic",
       "pas_de_siege": "31 pouces",
-      "note": "Verifie sur le tunnel de reservation. Le moins cher a deux valises."
+      "note": "Verifie sur le tunnel de reservation. Le moins cher a deux valises.",
+      "verification": "verifie",
+      "verification_detail": "Tunnel de reservation, 23/08/2026 : Light 477,24 EUR sans soute, Classic 515,24 EUR avec 2 x 23kg, Flex 612,24 EUR. Structure binaire 0 ou 2."
     },
     {
       "compagnie": "China Southern",
@@ -34,7 +36,9 @@
       "prix_releve_eur": 759,
       "bagages": "2 x 23kg inclus",
       "pas_de_siege": "32 pouces",
-      "arrivee": "Haneda"
+      "arrivee": "Haneda",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     },
     {
       "compagnie": "Air China",
@@ -42,7 +46,9 @@
       "prix_releve_eur": 765,
       "bagages": "2 x 23kg inclus, a confirmer sur le tarif exact",
       "pas_de_siege": "31-32 pouces",
-      "arrivee": "Haneda"
+      "arrivee": "Haneda",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     },
     {
       "compagnie": "Korean Air",
@@ -50,7 +56,9 @@
       "prix_releve_eur": 985,
       "bagages": "1 x 23kg depuis le 30/06/2025",
       "pas_de_siege": "33-34 pouces",
-      "arrivee": "Haneda 22h50"
+      "arrivee": "Haneda 22h50",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     },
     {
       "compagnie": "EVA Air",
@@ -58,7 +66,9 @@
       "prix_releve_eur": 1099,
       "bagages": "2 x 23kg des l Economy Basic, sauf tarif Economy Discount",
       "pas_de_siege": "32-33 pouces",
-      "arrivee": "Narita"
+      "arrivee": "Narita",
+      "verification": "verifie",
+      "verification_detail": "Tableau officiel Baggage Allowance by Routes, long-courrier Europe, economie : Up (B/Y), Standard (Q/H/M) et Basic (V/W/S) = 2 pieces de 23kg. Discount (classe A) = 1 piece seulement."
     },
     {
       "compagnie": "ANA",
@@ -66,7 +76,9 @@
       "prix_releve_eur": 1093,
       "bagages": "1 x 23kg au tarif Basic depuis le 01/11/2024, tarif Standard requis pour 2 pieces",
       "pas_de_siege": "34 pouces, le plus spacieux",
-      "arrivee": "Haneda"
+      "arrivee": "Haneda",
+      "verification": "partiel",
+      "verification_detail": "Page officielle : economie Between 0-2 pieces, variable selon les regles tarifaires. La variabilite est confirmee, la regle par route ne l est pas. Le passage a 1 piece sur l Europe au 01/11/2024 reste rapporte par la presse specialisee."
     },
     {
       "compagnie": "Japan Airlines",
@@ -74,14 +86,18 @@
       "prix_releve_eur": null,
       "bagages": "2 x 23kg sur tous les tarifs eco",
       "pas_de_siege": "33-34 pouces",
-      "note": "Absente des comparateurs testes, prix a verifier sur jal.co.jp"
+      "note": "Absente des comparateurs testes, prix a verifier sur jal.co.jp",
+      "verification": "verifie",
+      "verification_detail": "Page officielle Free checked baggage allowance : 2 pieces de 23kg en economie, exemple Osaka-Tokyo-Londres. 3e bagage 20 000 JPY."
     },
     {
       "compagnie": "Turkish Airlines",
       "type": "1 escale via Istanbul",
       "prix_releve_eur": 1138,
       "bagages": "EcoFly 0, ExtraFly 1, FlexFly 2 pieces",
-      "pas_de_siege": "31-32 pouces"
+      "pas_de_siege": "31-32 pouces",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     },
     {
       "compagnie": "Air France",
@@ -89,14 +105,18 @@
       "prix_releve_eur": null,
       "bagages": "1 x 23kg en Economy standard, 2e bagage 70-125 EUR",
       "pas_de_siege": "31-32 pouces",
-      "note": "Couverte par l indemnisation europeenne y compris au retour"
+      "note": "Couverte par l indemnisation europeenne y compris au retour",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     },
     {
       "compagnie": "Qatar / Emirates",
       "type": "1 escale par le Golfe",
       "prix_releve_eur": null,
       "bagages": "25-35kg au poids total, pas en nombre de pieces",
-      "note": "Ecartees : 2 x 23kg n entrent pas dans le cadre du concept poids"
+      "note": "Ecartees : 2 x 23kg n entrent pas dans le cadre du concept poids",
+      "verification": "non verifie",
+      "verification_detail": "Recherche web uniquement, a confirmer sur le site de la compagnie."
     }
   ],
   "vols_interieurs_japon": {
@@ -150,5 +170,12 @@
     "contexte": "Paris-Haneda AR, 1er au 16 decembre, releve le 23/08/2026 sur le tunnel de reservation Finnair",
     "ecart_light_classic_eur": 38
   },
-  "fiabilite_des_franchises": "Seule la ligne Finnair est verifiee sur un tunnel de reservation (capture du 23/08/2026). Les autres proviennent de recherches web et de comparateurs : a confirmer sur le site de chaque compagnie. Une version precedente de ce fichier annoncait a tort que Finnair n incluait qu une piece, sur la foi de sites agregateurs."
+  "fiabilite_des_franchises": "Verifiees sur les sites officiels le 23/08/2026 : Finnair, Japan Airlines, EVA Air. Partiellement : ANA. Non verifiees : China Southern, Air China, Korean Air, Turkish Airlines, Air France, Qatar, Emirates.",
+  "verifications_23_08_2026": {
+    "finnair": "2 x 23kg en Economy Classic. Confirme sur le tunnel de reservation.",
+    "jal": "2 x 23kg en economie, exemple europeen. Confirme sur jal.co.jp.",
+    "eva": "2 x 23kg sur l Europe pour Up, Standard et Basic. 1 piece au tarif Discount (classe A). Confirme sur evaair.com.",
+    "ana": "Economie 0 a 2 pieces selon le tarif. Variabilite confirmee sur ana.co.jp, regle par route non precisee.",
+    "restantes": "China Southern, Air China, Korean Air, Turkish, Air France : non verifiees."
+  }
 }
