@@ -20,7 +20,7 @@ Sur cet itinéraire, plusieurs trajets clés ne sont pas des trains JR (bus auto
 
 | Option | Prix/pers | Verdict |
 |---|---|---|
-| JR Pass 21 jours ordinaire (~¥100 000) | ~556€ | Bien plus cher que les billets JR à l'unité (~245€), et ne couvre de toute façon pas les bus |
+| JR Pass 21 jours ordinaire (~¥100 000) |  ~552€ | Bien plus cher que les billets JR à l'unité (~245€), et ne couvre de toute façon pas les bus |
 | JR Pass 7 jours (~¥50 000) | ~278€ | Ne couvrirait qu'une fraction du trajet JR, pas rentable non plus |
 
 **Recommandation** : acheter les billets à l'unité - Shinkansen et Hida limited express via le site JR (SmartEX) environ 1 mois avant le départ, bus autoroutiers/Nohi sur place ou en ligne. Réserver les sièges à l'avance en haute saison (avril/novembre).

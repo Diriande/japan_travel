@@ -6,7 +6,7 @@ Scénario si ton père se joint au voyage. Chiffres pour la version 3 semaines (
 
 | Poste | Par personne | Total (3 pers) | Détail |
 |---|---|---|---|
-| Vol Finnair A/R | 1000€ | 3000€ | 2x23kg inclus, hypothèse mi-saison |
+| Vol Finnair A/R | 1000€ | 3000€ | 1x23kg inclus, 2e bagage +79€ (relevé 916€/995€ le 23/08/2026) |
 | Hébergement (19 nuits, business hotel économique) | 661€ | 1983€ | Voir `03_hebergement/` |
 | Transport de base | 452€ | 1356€ | Trajets longue distance + IC card |
 | Activités/visites | 236€ | 708€ | Ajustable selon activités en hauteur retirées (voir note vertige) |

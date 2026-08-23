@@ -6,7 +6,7 @@ Scénario si ton père ne vient pas (ta mère + toi, par exemple). Chiffres pour
 
 | Poste | Par personne | Total (2 pers) | Détail |
 |---|---|---|---|
-| Vol Finnair A/R | 1000€ | 2000€ | 2x23kg inclus, hypothèse mi-saison |
+| Vol Finnair A/R | 1000€ | 2000€ | 1x23kg inclus, 2e bagage +79€ (relevé 916€/995€ le 23/08/2026) |
 | Hébergement (19 nuits, business hotel économique) | 751€ | 1502€ | Voir `03_hebergement/` |
 | Transport de base | 452€ | 904€ | Trajets longue distance + IC card, voir `02_transport/jr_pass_vs_billets.md` |
 | Activités/visites | 236€ | 472€ | Voir `05_activites/` |

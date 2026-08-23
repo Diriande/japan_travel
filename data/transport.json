@@ -1,13 +1,48 @@
 {
   "trajets_longue_distance": [
-    {"trajet": "Tokyo -> Kawaguchiko (bus autoroutier)", "prix_pers_eur": 18, "jr": false},
-    {"trajet": "Kawaguchiko -> Hakone (bus via Gotemba)", "prix_pers_eur": 25, "jr": false},
-    {"trajet": "Hakone (Odawara) -> Nagoya (Shinkansen)", "prix_pers_eur": 75, "jr": true},
-    {"trajet": "Nagoya -> Gifu (train local/rapide)", "prix_pers_eur": 5, "jr": true},
-    {"trajet": "Gifu -> Gero Onsen (Hida limited express)", "prix_pers_eur": 30, "jr": true},
-    {"trajet": "Gero Onsen -> Takayama (Hida limited express)", "prix_pers_eur": 25, "jr": true},
-    {"trajet": "Kanazawa -> Tokyo (Shinkansen Hokuriku, direct)", "prix_pers_eur": 110, "jr": true},
-    {"total_fixe_pers_eur": 288, "note": "Somme des trajets ci-dessus hors segment Takayama-Kanazawa, traité séparément (bus/train vs voiture, voir ci-dessous)"}
+    {
+      "trajet": "Tokyo -> Kawaguchiko (bus autoroutier)",
+      "prix_pers_eur": 18,
+      "jr": false
+    },
+    {
+      "trajet": "Kawaguchiko -> Hakone (bus via Gotemba)",
+      "prix_pers_eur": 25,
+      "jr": false,
+      "duree_min": 165,
+      "alerte": "2h30 a 3h avec correspondance a Gotemba, ou le bus ne passe que 2 a 3 fois par jour. Segment le plus fragile de l itineraire."
+    },
+    {
+      "trajet": "Hakone (Odawara) -> Nagoya (Shinkansen)",
+      "prix_pers_eur": 75,
+      "jr": true,
+      "duree_min": 160,
+      "alerte": "Inclut 40 min a 1h de Hakone Tozan pour rejoindre Odawara, souvent oubliees dans le plan de journee."
+    },
+    {
+      "trajet": "Nagoya -> Gifu (train local/rapide)",
+      "prix_pers_eur": 5,
+      "jr": true
+    },
+    {
+      "trajet": "Gifu -> Gero Onsen (Hida limited express)",
+      "prix_pers_eur": 30,
+      "jr": true
+    },
+    {
+      "trajet": "Gero Onsen -> Takayama (Hida limited express)",
+      "prix_pers_eur": 25,
+      "jr": true
+    },
+    {
+      "trajet": "Kanazawa -> Tokyo (Shinkansen Hokuriku, direct)",
+      "prix_pers_eur": 110,
+      "jr": true
+    },
+    {
+      "total_fixe_pers_eur": 288,
+      "note": "Somme des trajets ci-dessus hors segment Takayama-Kanazawa, traité séparément (bus/train vs voiture, voir ci-dessous)"
+    }
   ],
   "takayama_kanazawa": {
     "bus_train_pers_eur": 24,
@@ -17,8 +52,23 @@
   "jr_pass_options": {
     "segments_couverts_par_jr": "Odawara-Nagoya, Nagoya-Gifu, Gifu-Gero, Gero-Takayama, Kanazawa-Tokyo (~245€/pers de trajets JR sur les ~288€ de trajets longue distance fixes)",
     "segments_non_jr": "Tokyo-Kawaguchiko et Kawaguchiko-Hakone (bus autoroutiers), Takayama-Kanazawa (bus Nohi)",
-    "jr_pass_21_jours_ordinaire": {"prix_pers_eur": 620, "commentaire": "Bien plus cher que les billets à l'unité JR (~245€), d'autant que plusieurs trajets clés de cet itinéraire ne sont pas couverts par le JR Pass"},
-    "recommandation": "Acheter les billets à l'unité (SmartEX pour les Shinkansen/Hida, sur place pour les bus autoroutiers) plutôt qu'un JR Pass sur cet itinéraire"
+    "jr_pass_21_jours_ordinaire": {
+      "prix_pers_eur": 552,
+      "prix_jpy": 100000,
+      "commentaire": "100 000 JPY soit ~552 EUR au taux d aout 2026. Bien plus cher que les billets a l unite (~245 EUR), d autant que plusieurs trajets cles de cet itineraire ne sont pas couverts.",
+      "correction": "Ce champ indiquait 620 EUR, en desaccord avec les 556 EUR de 02_transport/jr_pass_vs_billets.md. Le tarif reel est de 100 000 JPY."
+    },
+    "recommandation": "Acheter les billets à l'unité (SmartEX pour les Shinkansen/Hida, sur place pour les bus autoroutiers) plutôt qu'un JR Pass sur cet itinéraire",
+    "pass_regionaux_testes": {
+      "takayama_hokuriku_area_tourist_pass": {
+        "prix_jpy": 19800,
+        "prix_eur": 110,
+        "validite": "5 jours consecutifs",
+        "couvre": "Nagoya-Gifu-Gero-Takayama-Kanazawa et le bus Nohi vers Shirakawa-go",
+        "rentable": false,
+        "detail": "Les segments couverts coutent ~15 800 JPY a l unite sur ce trace, et ils s etalent sur 6 jours au lieu de 5. Non rentable."
+      }
+    }
   },
   "transport_local_quotidien": {
     "moyen": "IC card (Suica/Pasmo, ou Welcome Suica mobile) pour métro/bus locaux",
@@ -32,5 +82,24 @@
     "total_sans_voiture": 452,
     "total_avec_voiture_groupe_eur_supplementaire": 230,
     "note": "Avec voiture : remplacer les 24€/pers de bus Takayama-Kanazawa par 230€ forfaitaire pour le groupe (location voiture)"
+  },
+  "durees_verifiees_min": {
+    "Tokyo -> Kawaguchiko (bus Shinjuku)": 105,
+    "Kawaguchiko -> Hakone (via Gotemba)": 165,
+    "Hakone -> Odawara (Tozan)": 50,
+    "Odawara -> Nagoya (Hikari)": 100,
+    "Nagoya -> Gifu": 20,
+    "Gifu -> Gero (Hida)": 95,
+    "Gero -> Takayama (Hida)": 50,
+    "Takayama -> Shirakawa-go (bus)": 50,
+    "Takayama -> Kanazawa (bus Nohi)": 135,
+    "Kanazawa -> Tokyo (Kagayaki)": 150,
+    "Tokyo -> Kamakura": 55,
+    "note": "Verifie le 23/08/2026. Le bus Tokyo -> Kawaguchiko part de Busta Shinjuku, pas d Asakusa : ajouter 30-40 min de metro."
+  },
+  "bagages_logistique": {
+    "probleme": "Deux valises de 23kg par personne sur sept hebergements, avec bus autoroutiers et minshuku aux couloirs etroits.",
+    "solution": "Takkyubin (Yamato) : transfert d une valise d un hotel au suivant pour ~2000 JPY en 24h. Reponse standard au Japon, a prevoir sur les etapes Kawaguchiko, Hakone et Takayama.",
+    "cout_estime_eur": "~11 EUR par valise et par transfert"
   }
 }

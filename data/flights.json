@@ -2,28 +2,125 @@
   "compagnie": "Finnair",
   "route": "Paris CDG - Helsinki HEL - Tokyo HND/NRT (aller-retour)",
   "escale": "Helsinki, ~2h-3h de correspondance",
-  "duree_totale_approx": "15h-16h par trajet, escale incluse",
-  "bagages_inclus": "2 x 23kg en soute + 1 bagage cabine (tarif Classic)",
+  "duree_totale_approx": "~19h porte a porte a l aller : 3h CDG-HEL, 2-3h d escale, 13h25 HEL-HND",
+  "bagages_inclus": "1 x 23kg en soute + 1 bagage cabine 8kg (tarif Economy Classic). Le 2e bagage 23kg coute 79 EUR a la reservation, 110 EUR ajoute apres coup. Le tarif Light n inclut aucune soute.",
   "prix_par_personne_eur": {
     "hypothese_retenue": 1000,
     "basse_saison": 800,
     "haute_saison_sakura_momiji": 1300,
     "tres_haute_saison_fetes": 1600,
-    "note": "Hypothèse utilisateur : ~1000€ A/R avec 2 bagages 23kg. Fourchette réaliste 800-1600€ selon la saison et la date d'achat (idéalement 4-6 mois à l'avance)."
+    "note": "Releve du 23/08/2026 : 916 EUR sans 2e bagage, 995 EUR avec. Fourchette realiste 800-1600 EUR selon la saison et la date d achat.",
+    "releve_23_08_2026": {
+      "sans_2e_bagage": 916,
+      "avec_2e_bagage": 995,
+      "source": "finnair.com",
+      "via_revendeur": 1190,
+      "note": "274 EUR d ecart entre le site Finnair et un comparateur pour le meme vol : acheter en direct."
+    }
   },
   "alternatives_comparaison": [
-    {"compagnie": "Air France", "type": "vol direct CDG-HND", "prix_indicatif_eur": "950-1400", "bagages": "souvent 2x23kg en classe Premium/Business seulement, 1x23kg en Economy standard"},
-    {"compagnie": "ANA / JAL", "type": "vol direct ou via partenaire", "prix_indicatif_eur": "1000-1600", "bagages": "généralement 2x23kg inclus en Economy"},
-    {"compagnie": "KLM/Air France via Amsterdam", "type": "1 escale", "prix_indicatif_eur": "850-1300", "bagages": "variable selon tarif"}
+    {
+      "compagnie": "China Southern",
+      "type": "1 escale via Canton",
+      "prix_releve_eur": 759,
+      "bagages": "2 x 23kg inclus",
+      "pas_de_siege": "32 pouces",
+      "arrivee": "Haneda"
+    },
+    {
+      "compagnie": "Air China",
+      "type": "1 escale via Pekin",
+      "prix_releve_eur": 765,
+      "bagages": "2 x 23kg inclus, a confirmer sur le tarif exact",
+      "pas_de_siege": "31-32 pouces",
+      "arrivee": "Haneda"
+    },
+    {
+      "compagnie": "Korean Air",
+      "type": "1 escale via Seoul",
+      "prix_releve_eur": 985,
+      "bagages": "1 x 23kg depuis le 30/06/2025",
+      "pas_de_siege": "33-34 pouces",
+      "arrivee": "Haneda 22h50"
+    },
+    {
+      "compagnie": "EVA Air",
+      "type": "1 escale via Taipei",
+      "prix_releve_eur": 1099,
+      "bagages": "2 x 23kg des l Economy Basic, sauf tarif Economy Discount",
+      "pas_de_siege": "32-33 pouces",
+      "arrivee": "Narita"
+    },
+    {
+      "compagnie": "ANA",
+      "type": "vol direct CDG-HND",
+      "prix_releve_eur": 1093,
+      "bagages": "1 x 23kg au tarif Basic depuis le 01/11/2024, tarif Standard requis pour 2 pieces",
+      "pas_de_siege": "34 pouces, le plus spacieux",
+      "arrivee": "Haneda"
+    },
+    {
+      "compagnie": "Japan Airlines",
+      "type": "vol direct CDG-HND",
+      "prix_releve_eur": null,
+      "bagages": "2 x 23kg sur tous les tarifs eco",
+      "pas_de_siege": "33-34 pouces",
+      "note": "Absente des comparateurs testes, prix a verifier sur jal.co.jp"
+    },
+    {
+      "compagnie": "Turkish Airlines",
+      "type": "1 escale via Istanbul",
+      "prix_releve_eur": 1138,
+      "bagages": "EcoFly 0, ExtraFly 1, FlexFly 2 pieces",
+      "pas_de_siege": "31-32 pouces"
+    },
+    {
+      "compagnie": "Air France",
+      "type": "vol direct CDG-HND",
+      "prix_releve_eur": null,
+      "bagages": "1 x 23kg en Economy standard, 2e bagage 70-125 EUR",
+      "pas_de_siege": "31-32 pouces",
+      "note": "Couverte par l indemnisation europeenne y compris au retour"
+    },
+    {
+      "compagnie": "Qatar / Emirates",
+      "type": "1 escale par le Golfe",
+      "prix_releve_eur": null,
+      "bagages": "25-35kg au poids total, pas en nombre de pieces",
+      "note": "Ecartees : 2 x 23kg n entrent pas dans le cadre du concept poids"
+    }
   ],
   "vols_interieurs_japon": {
     "recommandation": "Non nécessaires pour cet itinéraire : le réseau ferroviaire (Shinkansen, Hida limited express, bus autoroutiers) couvre tout le tracé (Tokyo-Fuji/Hakone-Nagoya/Gifu-Gero-Takayama-Kanazawa) de façon plus pratique que l'avion, sans les contraintes d'aéroport.",
     "exception_possible": "Si extension vers Hokkaido (Sapporo) ou Okinawa envisagée, vol intérieur JAL/ANA/Peach recommandé (~80-150€ par trajet)."
   },
   "conseils_reservation": [
-    "Réserver 4 à 6 mois à l'avance pour un vol en avril (sakura) ou novembre (momiji), périodes très demandées",
-    "Vérifier la franchise bagage exacte du tarif choisi (Light/Classic/Comfort) avant paiement",
-    "Prévoir la correspondance à Helsinki avec une marge d'au moins 1h30-2h",
-    "Departure/retour Haneda (HND) plus proche du centre de Tokyo que Narita (NRT) - à privilégier si le choix est possible"
+    "Reserver 4 a 6 mois a l avance pour un vol en avril ou novembre",
+    "Verifier la ligne bagages sur le billet avant de payer : la franchise depend de la classe de reservation exacte, pas du nom du tarif",
+    "Acheter sur le site de la compagnie et non chez un revendeur : 274 EUR d ecart constate sur Finnair",
+    "Prevoir une marge d au moins 1h30-2h a l escale de Helsinki",
+    "Envisager un billet multi-destination (arrivee Tokyo, retour Osaka) : souvent au meme prix, evite de remonter sur Tokyo et economise une journee plus ~14 000 JPY de Shinkansen",
+    "Privilegier Haneda a Narita : 30-40 min du centre contre 1h-1h30 et ~3000 JPY de plus"
+  ],
+  "prix_plancher_par_saison_eur": {
+    "mi_mai_mi_juin_2027": 734,
+    "septembre_2026": 759,
+    "janvier_fevrier_2027": 765,
+    "octobre_novembre_2026": 860,
+    "juillet_mi_aout_2027": 876,
+    "mars_avril_2027": 985,
+    "note": "Prix plancher toutes compagnies, AR Paris-Tokyo 14-21 nuits, 1 bagage. La saison retenue ailleurs dans ce depot (avril ou novembre) est la plus chere : avril est 30% au-dessus du creux de mai-juin."
+  },
+  "bagages_2x23kg_sans_supplement": [
+    "Japan Airlines",
+    "EVA Air (hors tarif Economy Discount)",
+    "China Southern",
+    "Air China"
+  ],
+  "indemnisation_eu261": "Couvre tous les departs de Paris quelle que soit la compagnie. Au retour du Japon, seules les compagnies europeennes restent couvertes : Air France, Finnair, LOT, Swiss, Lufthansa, Austrian.",
+  "corrections_23_08_2026": [
+    "Le champ bagages_inclus annoncait 2 x 23kg en tarif Classic : c est 1 x 23kg. Budget vol minore de 79 EUR par personne.",
+    "Le champ duree_totale_approx annoncait 15-16h par trajet : le reel est ~19h porte a porte a l aller.",
+    "ANA n inclut plus 2 x 23kg sur l Europe depuis le 01/11/2024 : la mention generalement 2x23kg inclus en Economy ne vaut plus que pour JAL."
   ]
 }
