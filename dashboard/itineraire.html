@@ -80,6 +80,7 @@ svg.map.grabbing { cursor:grabbing; }
 .mbtn:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
 svg.map text { font-family:var(--f-body); pointer-events:none; }
 .pin { cursor:pointer; }
+.pin { transition:transform .14s ease; }
 .pin.hi circle:nth-of-type(2) { stroke:var(--accent-ink); stroke-width:2; }
 .pin.hi text { opacity:1 !important; font-weight:600; fill:var(--ink); }
 #spot { transition:cx .18s ease, cy .18s ease, opacity .18s ease; pointer-events:none; }
@@ -854,29 +855,28 @@ function bindMapGestures() {
   }, { passive: false });
 
   let drag = null;
+  // pas de setPointerCapture : il détournerait le clic des repères vers le SVG
   svg.addEventListener("pointerdown", e => {
     if (e.button !== 0) return;
     drag = { x: e.clientX, y: e.clientY, moved: 0 };
-    svg.setPointerCapture(e.pointerId);
-    svg.classList.add("grabbing");
   });
-  svg.addEventListener("pointermove", e => {
+  window.addEventListener("pointermove", e => {
     if (!drag) return;
     const r = svg.getBoundingClientRect();
     const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
     drag.moved += Math.abs(dx) + Math.abs(dy);
+    if (drag.moved > 6) svg.classList.add("grabbing");
     setView(view.x - dx / r.width * view.w, view.y - dy / r.height * view.h, view.w);
     drag.x = e.clientX; drag.y = e.clientY;
   });
-  const end = e => {
+  const end = () => {
     if (!drag) return;
     svg.classList.remove("grabbing");
-    if (drag.moved > 6) svg.dataset.panned = "1"; else delete svg.dataset.panned;
+    if (drag.moved > 6) svg.dataset.panned = "1";
     drag = null;
-    try { svg.releasePointerCapture(e.pointerId); } catch (_) {}
   };
-  svg.addEventListener("pointerup", end);
-  svg.addEventListener("pointercancel", end);
+  window.addEventListener("pointerup", end);
+  window.addEventListener("pointercancel", end);
 }
 
 /* ---------- Carte ---------- */
@@ -983,7 +983,9 @@ function renderMap() {
   $("map").querySelectorAll(".pin").forEach(g => {
     const id = g.dataset.id;
     const toggle = () => {
-      if ($("map").dataset.panned) { delete $("map").dataset.panned; return; }
+      const panned = $("map").dataset.panned;
+      delete $("map").dataset.panned;
+      if (panned) return;
       const idx = trip.findIndex(s => s.id === id);
       if (idx >= 0 && trip.filter(s => s.id === id).length === 1) trip.splice(idx, 1);
       else if (idx >= 0) trip.splice(trip.map(s => s.id).lastIndexOf(id), 1);
@@ -996,16 +998,21 @@ function renderMap() {
 }
 
 function highlight(id) {
-  const spot = $("spot");
-  $("map").querySelectorAll(".pin.hi").forEach(g => g.classList.remove("hi"));
+  const spot = $("spot"), svg = $("map");
+  if (!svg) return;
+  const k = pinScale();
+  svg.querySelectorAll("#pins .pin").forEach(g => {
+    const hi = g.dataset.id === id;
+    g.classList.toggle("hi", hi);
+    const tr = g.getAttribute("transform") || "";
+    g.setAttribute("transform", tr.replace(/scale\([^)]*\)/, `scale(${(hi ? k * 1.55 : k).toFixed(3)})`));
+  });
   if (!id || !spot) { if (spot) spot.setAttribute("opacity", "0"); return; }
   const p = byId(id); if (!p) return;
   const [x, y] = proj(p.lon, p.lat);
   const sg = $("spotg");
-  if (sg) sg.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${pinScale()})`);
+  if (sg) sg.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${k.toFixed(3)})`);
   spot.setAttribute("opacity", "1");
-  const g = $("map").querySelector(`.pin[data-id="${id}"]`);
-  if (g) g.classList.add("hi");
 }
 
 /* ---------- Étapes ---------- */
