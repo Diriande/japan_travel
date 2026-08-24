@@ -6,7 +6,7 @@ Thèmes : paysages de montagne et cascades, table, artisanat, vie d'autrefois.
 | | Étapes | Nuits | Trajet | Par personne |
 |---|---|---|---|---|
 | [Des cascades et des ateliers](alpes-et-artisanat.html) | 5 | 18 | 7 h 35 | **2 972 €** |
-| [La porcelaine et la mémoire](porcelaine-et-memoire.html) | 4 | 16 | 5 h 15 | **2 592 €** |
+| [La porcelaine et la mémoire](porcelaine-et-memoire.html) | 4 | 16 | 2 h 35 | **2 497 €** |
 | [Trois villes, trois semaines](trois-villes.html) | 3 | 15 | 4 h 45 | **2 537 €** |
 
 ## Ce qui les sépare
@@ -19,6 +19,10 @@ d'hôtel, trois nuits en hébergement de montagne à 145-210 € la chambre.
 montagne n'était qu'une préférence : c'est ce qui permet de descendre sur Kyushu, la seule grande île
 inconnue. Arita où la porcelaine japonaise est née en 1616, Dejima et ses deux siècles de huis clos
 hollandais, la caldeira de l'Aso. Hébergement à 76-80 € la chambre, d'où le prix.
+
+Le retour se fait **depuis Fukuoka** et non Osaka : vérification faite, Fukuoka-Paris existe en aller
+simple dès 356 €, ce qui rend le multi-destination viable et fait tomber le trajet du dernier jour de
+3 h 15 à 35 minutes.
 
 **Trois villes** — Kyoto, Kanazawa, Tokyo, cinq nuits chacune. Tout le reste en excursions à la
 journée : Shirakawa-go, la route alpine, Nara, Nikko, le mont Takao. Deux trains sur tout le voyage.
@@ -51,6 +55,16 @@ antipodes et en ajouter un coûterait Kyoto.
 
 Hiroshima comme étape à part entière — c'est un voyage de mémoire, et Nagasaki le fait déjà dans la
 version Kyushu, avec en plus Dejima et le métissage.
+
+## Cartes
+
+Chaque page porte une carte SVG cadrée sur ses étapes, avec les excursions tracées en boucle depuis
+leur base. Elles sont générées par `outils/genmap.js` à partir du fond de carte du planificateur.
+
+Les activités portent un pictogramme dessiné selon leur nature — cascade, montagne, sanctuaire, maison
+ancienne, poterie, tissage, table, bateau, jardin, musée, onsen. Ce sont des dessins et non des
+photographies : la CSP des Artifacts interdit toute image distante, et embarquer des photographies
+libres de droits demanderait de vérifier licence et attribution une par une.
 
 ## Chiffrage
 
