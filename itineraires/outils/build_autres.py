@@ -34,7 +34,7 @@ COMPARE = """<section>
 </section>"""
 
 def rows(hi):
-    data = [("Des cascades et des ateliers","Kamikochi, la nuit en gassho, les vallées du Hida","5","7 h 35","2 972 €"),
+    data = [("Des cascades et des ateliers","Kamikochi, la nuit en gassho, les vallées du Hida","5","7 h 35","2 955 €"),
             ("La porcelaine et la mémoire","Arita, Dejima, l'Aso — et une île entièrement neuve","4","2 h 35","2 497 €"),
             ("Trois villes, trois semaines","Le rythme le plus doux, deux trains, cinq nuits par base","3","4 h 45","2 537 €")]
     return "".join(
@@ -143,7 +143,7 @@ ALPES = f"""<section>
       <tr><td>Nourriture</td><td>40 € par jour et par personne</td><td class="n">760 €</td><td class="n">2 280 €</td></tr>
       <tr><td>Activités</td><td>Entrées, ateliers, route alpine incluse</td><td class="n">50 €</td><td class="n">150 €</td></tr>
       <tr><td>Divers</td><td>eSIM, assurance, souvenirs</td><td class="n">300 €</td><td class="n">900 €</td></tr>
-      <tr class="sum"><td>Total</td><td>28 € de marge</td><td class="n">2 972 €</td><td class="n">8 916 €</td></tr>
+      <tr class="sum"><td>Total</td><td>45 € de marge</td><td class="n">2 955 €</td><td class="n">8 865 €</td></tr>
     </tbody></table></div>
   <p class="lede" style="margin-top:24px">Si le vol dépasse 800 €, retirer une nuit à Takayama rend
     environ 95 € par personne sans rien sacrifier — il resterait quatre nuits, donc les deux journées de
@@ -178,7 +178,7 @@ ALPES = f"""<section>
   h1="Des cascades<br>et des <em>ateliers</em>",
   deck="Construit sur ce que tu n'as pas encore vu — Kanazawa, Shirakawa-go, la haute montagne — et sur "
        "ce qui compte pour tes parents : l'eau et le relief, la table, les mains qui fabriquent.",
-  tally=[("Par personne","2 972 €",True),("À trois","8 916 €",False),
+  tally=[("Par personne","2 955 €",True),("À trois","8 865 €",False),
          ("Nuits","18",False),("Trajet","7 h 35",False)],
   mapsvg=carte('[{id:"kyoto",nights:5},{id:"takayama",nights:5},{id:"shirakawago",nights:1,anchor:"w"},'
                '{id:"kanazawa",nights:4,anchor:"w"},{id:"tokyo",nights:3,anchor:"e"}]',
@@ -244,7 +244,7 @@ TV = f"""<section>
       <tr><td>Hébergement</td><td>18 nuits, dont 6 en ryokan de montagne</td><td>15 nuits en ville</td><td class="n">−296 €</td></tr>
       <tr><td>Transport</td><td>5 étapes, 7 h 35 de trajet</td><td>2 trains, 4 h 45</td><td class="n">−125 €</td></tr>
       <tr><td>Nourriture</td><td>19 jours</td><td>16 jours</td><td class="n">−120 €</td></tr>
-      <tr class="sum"><td>Par personne</td><td>2 972 €</td><td>2 537 €</td><td class="n">−435 €</td></tr>
+      <tr class="sum"><td>Par personne</td><td>2 955 €</td><td>2 537 €</td><td class="n">−418 €</td></tr>
     </tbody></table></div>
   <p class="lede" style="margin-top:22px">La contrepartie est réelle et il faut la nommer : <strong>vous
     ne dormez plus en gassho à Shirakawa-go</strong>, donc vous voyez le village entre 10 h et 16 h, avec

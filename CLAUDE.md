@@ -21,6 +21,13 @@ Documents en français. Montants en €, toujours datés et sourcés.
 - Hébergement : `lodge[2]` = chambre à trois. Montagne 145-210 €, ville 76-98 € — c'est là que se
   joue l'écart entre deux itinéraires
 
+## Le carnet
+
+- `carnet/index.html` est l'objet principal : un document unique qui porte les trois itinéraires
+  jour par jour, le budget saisissable, la valise et les réservations. Voir `carnet/README.md`
+- Le contenu s'écrit dans `carnet/outils/trames.py`, puis `python3 carnet/outils/build.py`
+- **Le total d'un itinéraire est la somme de ses postes**, jamais un nombre saisi à part
+
 ## Pages HTML
 
 - Les pages du dépôt sont des **documents complets avec `<!doctype html>`** — sans quoi le navigateur
