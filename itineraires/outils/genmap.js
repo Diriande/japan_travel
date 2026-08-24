@@ -3,16 +3,29 @@ const fs = require("fs");
 const { PROJ, MAPPATHS, WATER } = JSON.parse(fs.readFileSync(__dirname + "/mapdata.json", "utf8"));
 const PLACES = JSON.parse(fs.readFileSync(__dirname + "/places-min.json", "utf8"));
 
+const AIRPORTS = {
+  KIX: { n: "Kansai", code: "KIX", lon: 135.244, lat: 34.434 },
+  FUK: { n: "Fukuoka", code: "FUK", lon: 130.451, lat: 33.585 },
+  HND: { n: "Haneda", code: "HND", lon: 139.781, lat: 35.549 },
+  NRT: { n: "Narita", code: "NRT", lon: 140.386, lat: 35.765 }
+};
+
 const proj = (lon, lat) => [(lon * PROJ.K - PROJ.x0) * PROJ.sc, (-lat - PROJ.y0) * PROJ.sc];
 
 // steps : [{id, nights, label}], excursions : [{from, to}] pour les allers-retours
 function buildMap(steps, excursions = [], opts = {}) {
+  const air = opts.flights || {};                     // { in:"KIX", out:"FUK" }
   const pts = steps.map(s => proj(PLACES[s.id].lon, PLACES[s.id].lat));
   const excPts = excursions.map(e => [proj(PLACES[e.from].lon, PLACES[e.from].lat),
                                       proj(PLACES[e.to].lon, PLACES[e.to].lat)]);
 
+  const airPts = ["in", "out"].filter(k => air[k]).map(k => {
+    const a = AIRPORTS[air[k]];
+    return { k, a, p: proj(a.lon, a.lat) };
+  });
+
   // cadrage sur l'ensemble, ratio 4:3
-  const all = [...pts, ...excPts.flat()];
+  const all = [...pts, ...excPts.flat(), ...airPts.map(x => x.p)];
   const minX = Math.min(...all.map(p => p[0])), maxX = Math.max(...all.map(p => p[0]));
   const minY = Math.min(...all.map(p => p[1])), maxY = Math.max(...all.map(p => p[1]));
   const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
@@ -55,6 +68,28 @@ function buildMap(steps, excursions = [], opts = {}) {
     </g>`;
   }).join("");
 
+  // vols : un trait qui sort du cadre, et l'aéroport
+  const planes = airPts.map(({ k, a, p }) => {
+    const [x, y] = p;
+    const arriving = k === "in";
+    const dir = arriving ? -1 : 1;                    // l'aller entre par la gauche, le retour sort par la droite
+    const tail = [x + dir * w * 0.17, y - h * 0.1];
+    return `<g>
+      <path d="M${tail[0].toFixed(1)},${tail[1].toFixed(1)}Q${((x + tail[0]) / 2).toFixed(1)},${((y + tail[1]) / 2 - h * 0.045).toFixed(1)} ${x.toFixed(1)},${y.toFixed(1)}"
+            fill="none" stroke="var(--m-air)" stroke-width="1.4" stroke-dasharray="3 4"
+            stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".85"/>
+      <g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
+        <circle r="${S(3.2)}" fill="var(--m-land)" stroke="var(--m-air)" stroke-width="${S(0.7)}"/>
+        <path d="M${S(-2)},${S(0.3)} L${S(2)},${S(0.3)} M${S(0)},${S(-2)} L${S(0)},${S(2)}"
+              stroke="var(--m-air)" stroke-width="${S(0.75)}" stroke-linecap="round" fill="none"
+              transform="rotate(${arriving ? -35 : 35})"/>
+      </g>
+      <text x="${(x + dir * Number(S(5))).toFixed(1)}" y="${(y - Number(S(5.6))).toFixed(1)}"
+            text-anchor="${arriving ? "end" : "start"}" font-size="${S(4.2)}" font-weight="600"
+            fill="var(--m-air)" stroke="var(--m-land)" stroke-width="${S(1.1)}" paint-order="stroke">${arriving ? "Arrivée" : "Départ"} · ${a.code}</text>
+    </g>`;
+  }).join("");
+
   const marks = steps.map((s, i) => {
     const [x, y] = proj(PLACES[s.id].lon, PLACES[s.id].lat);
     const anchor = s.anchor || "n";
@@ -79,7 +114,7 @@ function buildMap(steps, excursions = [], opts = {}) {
   <g opacity=".85">${water}</g>
   ${exc ? `<path d="${exc}" fill="none" stroke="var(--m-exc)" stroke-width="1.6" stroke-dasharray="4 4" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".9"/>` : ""}
   <path d="${main}" fill="none" stroke="var(--m-route)" stroke-width="2.4" stroke-dasharray="7 6" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
-  ${excMarks}${marks}
+  ${planes}${excMarks}${marks}
 </svg>`;
 }
 
