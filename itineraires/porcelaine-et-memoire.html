@@ -1,0 +1,264 @@
+<title>La porcelaine et la mémoire</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --ground:#EDF0F1; --surface:#FFFFFF; --surface-2:#F5F8F9; --surface-3:#E8EDEF;
+  --ink:#0F171C; --muted:#59676F; --line:#D3DBDF; --line-soft:#E3E9EC;
+  --accent:#15586F; --accent-ink:#0E4256; --accent-soft:#E0EDF1;
+  --yes:#2C6A50; --yes-bg:#E1EFE7; --maybe:#856012; --maybe-bg:#F5EBD6; --no:#8E4130; --no-bg:#F4E3DE;
+  --t-pay:#2C6A50; --t-food:#A05A2C; --t-craft:#7A4A73; --t-past:#15586F;
+  --shadow:0 1px 2px rgba(15,23,28,.05), 0 8px 24px -16px rgba(15,23,28,.28);
+  --f-display:"Newsreader",Georgia,serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --t-pay:#74B996; --t-food:#DFA271; --t-craft:#C89BC0; --t-past:#5FAEC8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+} }
+:root[data-theme="dark"] {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --t-pay:#74B996; --t-food:#DFA271; --t-craft:#C89BC0; --t-past:#5FAEC8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+* { box-sizing:border-box; }
+body { background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:16px;
+  line-height:1.6; margin:0; padding:0 20px 90px; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:48px; }
+
+.masthead { padding-top:60px; display:flex; flex-direction:column; gap:18px; }
+.eyebrow { font-family:var(--f-mono); font-size:12px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--muted); display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.eyebrow .dot { color:var(--line); }
+h1 { font-family:var(--f-display); font-size:clamp(36px,6vw,60px); font-weight:500; line-height:1.04;
+  letter-spacing:-.018em; margin:0; text-wrap:balance; }
+.standfirst { font-family:var(--f-display); font-size:clamp(18px,2.2vw,21px); line-height:1.5;
+  color:var(--muted); max-width:60ch; margin:0; }
+
+.totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden; box-shadow:var(--shadow); }
+.tot { background:var(--surface); padding:16px 18px; display:flex; flex-direction:column; gap:2px; }
+.tot .k { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.tot .v { font-family:var(--f-mono); font-variant-numeric:tabular-nums; font-size:25px; font-weight:600; line-height:1.15; }
+.tot .note { font-size:12.5px; color:var(--muted); }
+.tot.hero { background:var(--accent-soft); } .tot.hero .v,.tot.hero .k { color:var(--accent-ink); }
+
+section { display:flex; flex-direction:column; gap:22px; }
+h2 { font-family:var(--f-display); font-size:clamp(25px,3.4vw,32px); font-weight:500; letter-spacing:-.014em;
+  line-height:1.15; margin:0; padding-bottom:14px; border-bottom:2px solid var(--ink); text-wrap:balance; }
+.lede { color:var(--muted); max-width:68ch; margin:0; font-size:16px; line-height:1.65; }
+.lede strong { color:var(--ink); font-weight:600; }
+
+.callout { display:flex; flex-direction:column; gap:8px; padding:20px 22px; border-radius:3px;
+  background:var(--maybe-bg); border-left:3px solid var(--maybe); }
+.callout b { color:var(--maybe); font-size:15px; }
+.callout p { margin:0; font-size:15px; line-height:1.6; color:var(--ink); opacity:.88; }
+
+/* étapes */
+.stage { background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  box-shadow:var(--shadow); overflow:hidden; }
+.stage-head { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline;
+  padding:20px 24px 16px; border-bottom:1px solid var(--line-soft); background:var(--surface-2); }
+.stage-head .num { font-family:var(--f-mono); font-size:12px; font-weight:600; color:var(--accent-ink);
+  background:var(--accent-soft); padding:3px 8px; border-radius:2px; }
+.stage-head h3 { font-family:var(--f-display); font-size:26px; font-weight:600; letter-spacing:-.012em; margin:0; }
+.stage-head .days { font-family:var(--f-mono); font-size:12px; color:var(--muted); margin-left:auto; }
+.stage-body { padding:18px 24px 22px; display:flex; flex-direction:column; gap:16px; }
+.why { margin:0; font-size:15.5px; line-height:1.6; color:var(--muted); }
+.why strong { color:var(--ink); font-weight:600; }
+
+.acts { display:flex; flex-direction:column; gap:11px; }
+.act { display:grid; grid-template-columns:104px 1fr; gap:14px; align-items:start; font-size:15px; line-height:1.55; }
+.tag { font-family:var(--f-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  padding:3px 7px; border-radius:2px; text-align:center; font-weight:500; white-space:nowrap; }
+.tag.pay { background:var(--yes-bg); color:var(--t-pay); }
+.tag.food { background:#F6EBE1; color:var(--t-food); }
+.tag.craft { background:#F1E8F0; color:var(--t-craft); }
+.tag.past { background:var(--accent-soft); color:var(--t-past); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag.food { background:#2E2119; }
+  :root:not([data-theme="light"]) .tag.craft { background:#2A1F29; } }
+:root[data-theme="dark"] .tag.food { background:#2E2119; }
+:root[data-theme="dark"] .tag.craft { background:#2A1F29; }
+.act b { font-weight:600; }
+.act .n { display:block; font-size:13.5px; color:var(--muted); margin-top:1px; }
+
+.hop { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:12px 24px;
+  background:var(--surface-2); border-top:1px solid var(--line-soft); font-family:var(--f-mono); font-size:12.5px; }
+.hop .d { color:var(--accent-ink); font-weight:600; }
+.hop .m { color:var(--muted); }
+
+table { border-collapse:collapse; width:100%; font-size:14.5px; }
+.scroller { overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--surface); box-shadow:var(--shadow); }
+thead th { text-align:left; font-family:var(--f-mono); font-size:11px; font-weight:500; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:1px solid var(--line);
+  background:var(--surface-2); white-space:nowrap; }
+tbody td { padding:12px 16px; border-bottom:1px solid var(--line-soft); }
+tbody tr:last-child td { border-bottom:0; }
+tbody tr.tot-row td { font-weight:600; background:var(--accent-soft); color:var(--accent-ink); }
+.num { font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; }
+
+.qs { display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);
+  border-radius:3px; overflow:hidden; }
+.q { background:var(--surface); padding:18px 22px; display:flex; flex-direction:column; gap:5px; }
+.q b { font-size:15.5px; }
+.q p { margin:0; font-size:14.5px; color:var(--muted); line-height:1.55; }
+
+footer { border-top:1px solid var(--line); padding-top:20px; font-size:13px; color:var(--muted);
+  line-height:1.65; max-width:78ch; }
+@media (max-width:600px) {
+  .act { grid-template-columns:1fr; gap:4px; }
+  .tag { justify-self:start; }
+  .masthead { padding-top:38px; }
+  .wrap { gap:36px; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">
+    <span>Trois voyageurs</span><span class="dot">/</span><span>17 jours, 16 nuits</span><span class="dot">/</span>
+    <span>mi-mai à mi-juin</span><span class="dot">/</span><span>Kyushu</span>
+  </div>
+  <h1>La porcelaine et la mémoire</h1>
+  <p class="standfirst">Puisque la montagne n'est qu'une préférence, voici l'itinéraire que ses contraintes de prix interdisaient : Kyushu, la seule grande île que tu ne connais pas. Quatre siècles de porcelaine, une ville qui a regardé l'Occident quand tout le pays était fermé, la plus grande caldeira du monde — et des hébergements à 76 € la chambre.</p>
+</header>
+
+<div class="totals">
+  <div class="tot hero"><span class="k">Par personne</span><span class="v">2 592 €</span><span class="note">408 € sous le plafond</span></div>
+  <div class="tot"><span class="k">Total à trois</span><span class="v">7 776 €</span><span class="note">une chambre pour trois</span></div>
+  <div class="tot"><span class="k">Durée</span><span class="v">17 j</span><span class="note">16 nuits, 4 étapes</span></div>
+  <div class="tot"><span class="k">Temps de trajet</span><span class="v">5 h 15</span><span class="note">tout en Shinkansen</span></div>
+</div>
+
+<section>
+  <h2>Pourquoi celui-ci change la donne</h2>
+  <p class="lede">Les deux premières propositions te faisaient revoir des régions que tu connais déjà, à l'exception de Kanazawa. <strong>Kyushu est entièrement neuf pour toi</strong>, et il se trouve que c'est l'île la plus forte du Japon sur trois de tes quatre thèmes.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Thème</th><th>Ce que Kyushu apporte</th></tr></thead>
+      <tbody>
+        <tr><td><b>Artisanat</b></td><td>Arita, où la porcelaine japonaise est née en 1616 et se fabrique sans interruption depuis. Rien d'équivalent ailleurs.</td></tr>
+        <tr><td><b>Vie d'autrefois</b></td><td>Dejima, l'îlot où les Hollandais furent confinés deux siècles durant, seule fenêtre du Japon fermé sur le monde.</td></tr>
+        <tr><td><b>Table</b></td><td>Le ramen tonkotsu est né à Fukuoka, le champon à Nagasaki. Et les <i>yatai</i>, ces stands de rue montés chaque soir, n'existent plus qu'ici.</td></tr>
+        <tr><td><b>Paysage</b></td><td>Moins alpin, mais volcanique : l'Aso et sa caldeira de 25 km, les gorges de Takachiho en barque, les fumerolles de Beppu.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede">Et l'hébergement y coûte <strong>76 à 80 € la chambre à trois</strong>, contre 145 à 210 € dans les vallées du Hida. C'est ce qui permet seize nuits sous les 2 600 €.</p>
+</section>
+
+<section>
+  <h2>L'itinéraire</h2>
+  <p class="lede">Quatre bases, trois trains. On garde Kyoto pour tes parents — ils ne peuvent pas faire leur premier voyage sans — puis on descend vers le sud et on ne remonte qu'à la fin.</p>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">1</span><h3>Kyoto</h3><span class="days">J1-J5 · 4 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">75 minutes du Kansai : vous dormez à Kyoto le soir de l'arrivée. <strong>Quatre nuits, le minimum décent</strong> pour un premier voyage : deux journées en ville tôt le matin, deux en périphérie.</p>
+      <div class="acts">
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Nara, 45 minutes</b><span class="n">Le Todai-ji et son Bouddha de quinze mètres sous la plus grande charpente de bois ancienne du monde, le parc aux daims, les trois mille lanternes du Kasuga-taisha.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Kurama à Kibune, à pied</b><span class="n">Deux heures de sentier forestier entre deux villages, par un col à 400 m. On finit les pieds dans la rivière à Kibune, où les terrasses s'installent au-dessus de l'eau dès juin.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Gojo-zaka et le Fureaikan</b><span class="n">La côte des potiers vers Kiyomizu, et le musée de l'artisanat sous le parc Okazaki — gratuit, avec démonstrations. La bonne mise en bouche avant Arita.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Nishiki et un cours de cuisine</b><span class="n">La halle couverte le matin, puis deux heures d'atelier : dashi, tempura, sushis roulés.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">1 h 40</span><span class="m">Shinkansen Sakura via Shin-Osaka · 74 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">2</span><h3>Fukuoka</h3><span class="days">J5-J10 · 5 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">La grande ville du sud, dont l'aéroport est à dix minutes du centre en métro. <strong>C'est la base des deux journées d'artisanat</strong>, et la ville où l'on mange le mieux du voyage pour le moins cher.</p>
+      <div class="acts">
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Arita et Imari</b><span class="n">Une heure de train. En 1616, un potier coréen déporté après les guerres de Hideyoshi trouve du kaolin dans la montagne d'Izumiyama : c'est l'acte de naissance de la porcelaine japonaise. Quatre siècles plus tard, la ville entière vit encore de ses fours. Ateliers ouverts, musée du Kyushu Ceramic, et le mur de tessons du sanctuaire Tozan, dont les torii sont en porcelaine.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Yanagawa en barque</b><span class="n">Une heure au sud. Les douves d'une ancienne ville de château, transformées en canaux, que l'on descend en barque poussée à la perche pendant une heure — le batelier chante. À l'arrivée, l'anguille cuite à la vapeur sur son riz, spécialité locale depuis trois siècles.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Les yatai de Nakasu</b><span class="n">Une centaine de stands montés chaque soir sur les trottoirs et démontés à l'aube. Huit tabourets, un rideau, du ramen tonkotsu, des brochettes et de la bière. C'est la dernière ville du Japon où cette tradition survit vraiment.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Dazaifu</b><span class="n">Trente minutes. Le sanctuaire des lettrés, son allée de six mille pruniers, et le Musée national de Kyushu, l'un des quatre du pays — celui qui raconte les échanges avec le continent.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">1 h 30</span><span class="m">Limited express Kamome et Shinkansen Nishi-Kyushu · 40 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">3</span><h3>Nagasaki</h3><span class="days">J10-J14 · 4 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">Une ville en amphithéâtre autour de sa baie, escarpée, avec des escaliers partout. <strong>Le seul port ouvert à l'Occident pendant les deux siècles où le Japon s'était fermé</strong> — ce qui en fait la ville la plus métissée du pays, et la plus étrange.</p>
+      <div class="acts">
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Dejima</b><span class="n">Un îlot artificiel en éventail, construit pour y confiner les marchands hollandais de 1641 à 1859. Ils n'avaient pas le droit d'en sortir, les Japonais pas le droit d'y entrer sans autorisation, et tout ce que le Japon a su de l'Occident pendant deux siècles est passé par ce mouchoir de poche. Reconstitué bâtiment par bâtiment, meublé, documenté.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Glover Garden et le quartier chinois</b><span class="n">Les maisons de bois des marchands occidentaux, accrochées à la pente au-dessus du port. Et le plus vieux quartier chinois du Japon, où l'on mange le champon — nouilles au bouillon de porc et fruits de mer, inventé ici pour nourrir les étudiants chinois pauvres.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Gunkanjima</b><span class="n">Trois heures en bateau. Une île-cuirassé de 500 m de long, où cinq mille mineurs vivaient entassés jusqu'à la fermeture du charbon en 1974, abandonnée du jour au lendemain. Béton nu, immeubles éventrés, le tout classé à l'UNESCO. Sorties annulées par gros temps : prévoir une date de repli.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Le parc de la paix</b><span class="n">Le second et dernier bombardement atomique, le 9 août 1945. Le musée est plus intime que celui d'Hiroshima, et la colonne noire qui marque l'hypocentre, plantée dans un parc ordinaire, dit peut-être davantage.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Mont Inasa au crépuscule</b><span class="n">Téléphérique jusqu'à 333 m. La baie, les grues du chantier naval et la ville qui s'allume dans son cirque de collines — l'une des trois grandes vues nocturnes du Japon.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">1 h 55</span><span class="m">Shinkansen via Fukuoka · 55 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">4</span><h3>Kumamoto</h3><span class="days">J14-J17 · 3 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">La base volcanique, et la réponse à la montagne. <strong>L'Aso n'est pas un sommet mais un trou</strong> : une caldeira de 25 km de diamètre, avec des villages, des routes et des rizières au fond, et cinq cônes au milieu dont un fume en permanence.</p>
+      <div class="acts">
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Mont Aso</b><span class="n">Une heure trente de train à travers la caldeira. Le cratère du Nakadake, quand l'activité permet d'approcher, les prairies de Kusasenri où paissent des chevaux, et le point de vue de Daikanbo sur l'ensemble du cirque. Marche facile à modérée, dénivelé au choix.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Takachiho</b><span class="n">Deux heures et demie de bus, à faire en journée longue ou avec une nuit sur place. Une gorge de basalte en orgues verticales que l'on remonte à la rame, sous une cascade de 17 m qui tombe droit dans la barque. Le soir, le <i>kagura</i> — des danses masquées qui racontent la mythologie fondatrice, jouées par les villageois depuis des siècles.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Château de Kumamoto</b><span class="n">L'un des trois plus imposants du Japon, avec ses murs en courbe dite « dos d'abanico » conçus pour être inescaladables. Endommagé par le séisme de 2016 et en restauration depuis : on visite un chantier de charpente traditionnelle, ce qui est presque plus intéressant.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Kurokawa Onsen</b><span class="n">Un village thermal de vingt auberges dans une gorge boisée, qui a interdit les néons et les immeubles. Un laissez-passer donne accès à trois bains en plein air au choix. Se fait à la journée depuis Kumamoto, ou en nuit supplémentaire si la marge le permet.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">3 h 15</span><span class="m">Shinkansen Sakura jusqu'à Shin-Osaka, puis Kansai · 130 € par personne · le jour du vol</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Le budget</h2>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Poste</th><th>Détail</th><th class="num">Par personne</th><th class="num">À trois</th></tr></thead>
+      <tbody>
+        <tr><td>Vol A/R</td><td>Finnair, Osaka aller et retour, 2 × 23 kg</td><td class="num">750 €</td><td class="num">2 250 €</td></tr>
+        <tr><td>Hébergement</td><td>16 nuits en ville, chambre à trois</td><td class="num">449 €</td><td class="num">1 348 €</td></tr>
+        <tr><td>Transport</td><td>299 € de trains + 60 € d'excursions + 7 €/jour de local</td><td class="num">478 €</td><td class="num">1 434 €</td></tr>
+        <tr><td>Nourriture</td><td>40 € par jour et par personne</td><td class="num">680 €</td><td class="num">2 040 €</td></tr>
+        <tr><td>Activités</td><td>Entrées, Gunkanjima, ateliers</td><td class="num">45 €</td><td class="num">135 €</td></tr>
+        <tr><td>Divers</td><td>eSIM, assurance, souvenirs</td><td class="num">300 €</td><td class="num">900 €</td></tr>
+        <tr class="tot-row"><td>Total</td><td>408 € de marge sous le plafond</td><td class="num">2 592 €</td><td class="num">7 776 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout">
+    <b>Un aller simple serait plus malin</b>
+    <p>Le retour Kumamoto-Osaka coûte 130 € et 3 h 15 le jour du vol, ce qui est le seul point faible de cet itinéraire. <strong>Si Finnair propose un retour depuis Fukuoka</strong> — via une correspondance à Haneda ou au Kansai — l'écart de prix sur le billet sera vite compensé, et vous gagnez une demi-journée. À vérifier au moment de réserver : Fukuoka a un aéroport international, mais aucune liaison directe vers l'Europe.</p>
+  </div>
+  <p class="lede">Avec 408 € de marge, deux dépenses valent le coup : <strong>une nuit à Takachiho</strong> pour voir le kagura sans surveiller l'heure du dernier bus, et <strong>une nuit à Kurokawa Onsen</strong>, environ 90 € par personne en ryokan avec les repas. Les deux ensemble tiennent encore sous le plafond.</p>
+</section>
+
+<section>
+  <h2>Les trois propositions, côte à côte</h2>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Itinéraire</th><th>Ce qu'il donne</th><th class="num">Étapes</th><th class="num">Trajet</th><th class="num">Par pers.</th></tr></thead>
+      <tbody>
+        <tr><td><b>Des cascades et des ateliers</b></td><td>Kamikochi, la nuit en gassho, les vallées du Hida</td><td class="num">5</td><td class="num">7 h 35</td><td class="num">2 972 €</td></tr>
+        <tr><td><b>La porcelaine et la mémoire</b></td><td>Arita, Dejima, l'Aso — et une île entièrement neuve pour toi</td><td class="num">4</td><td class="num">5 h 15</td><td class="num">2 592 €</td></tr>
+        <tr><td><b>Trois villes, trois semaines</b></td><td>Le rythme le plus doux, deux trains, cinq nuits par base</td><td class="num">3</td><td class="num">4 h 45</td><td class="num">2 537 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede">Celui-ci est le meilleur compromis des trois si la montagne n'est qu'une préférence : <strong>il coûte 380 € de moins que la version alpine, ne demande qu'une étape de plus que la version économe, et c'est le seul qui t'emmène quelque part que tu ne connais pas.</strong> La contrepartie est qu'il donne moins à tes parents des images qu'ils attendent peut-être — pas de Fuji, pas de village aux toits de chaume.</p>
+</section>
+
+<footer>
+  Budget calculé sur les données du dépôt : prix d'hébergement par nuit en chambre à trois, trajets chiffrés sur le graphe des liaisons réelles, 40 € par jour et par personne de nourriture. Arita, Yanagawa, Takachiho et Kurokawa Onsen sont traités en excursions et chiffrés forfaitairement, n'étant pas dans le graphe. Le prix du vol est une hypothèse de mi-mai fondée sur les relevés Finnair du 23 août 2026, tarif Economy Classic, deux bagages de 23 kg compris. Tous les montants sont des estimations à revérifier au moment de réserver.
+</footer>
+</div>
