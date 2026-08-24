@@ -29,7 +29,7 @@ function buildMap(steps, excursions = [], opts = {}) {
   const minX = Math.min(...all.map(p => p[0])), maxX = Math.max(...all.map(p => p[0]));
   const minY = Math.min(...all.map(p => p[1])), maxY = Math.max(...all.map(p => p[1]));
   const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2;
-  const RATIO = opts.ratio || 0.78;
+  const RATIO = opts.ratio || 0.46;
   const w = Math.max((maxX - minX) * 1.55, ((maxY - minY) * 1.45) / RATIO, 150);
   const h = w * RATIO;
   const vb = [cx - w / 2, cy - h / 2, w, h];
@@ -61,9 +61,13 @@ function buildMap(steps, excursions = [], opts = {}) {
 
   const excMarks = excursions.map(e => {
     const [x, y] = proj(PLACES[e.to].lon, PLACES[e.to].lat);
+    const a = e.anchor || "n";
+    const tx = a === "w" ? S(-4) : a === "e" ? S(4) : 0;
+    const ty = a === "s" ? S(7.4) : a === "n" ? S(-4.4) : S(1.4);
+    const ta = a === "w" ? "end" : a === "e" ? "start" : "middle";
     return `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
       <circle r="${S(2.4)}" fill="var(--m-exc)" opacity=".9"/>
-      <text y="${S(-4.2)}" text-anchor="middle" font-size="${S(4.4)}" fill="var(--m-exc)"
+      <text x="${tx}" y="${ty}" text-anchor="${ta}" font-size="${S(4.2)}" fill="var(--m-exc)"
             stroke="var(--m-land)" stroke-width="${S(1.1)}" paint-order="stroke">${PLACES[e.to].n}</text>
     </g>`;
   }).join("");
@@ -79,12 +83,11 @@ function buildMap(steps, excursions = [], opts = {}) {
             fill="none" stroke="var(--m-air)" stroke-width="1.4" stroke-dasharray="3 4"
             stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".85"/>
       <g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
-        <circle r="${S(3.2)}" fill="var(--m-land)" stroke="var(--m-air)" stroke-width="${S(0.7)}"/>
-        <path d="M${S(-2)},${S(0.3)} L${S(2)},${S(0.3)} M${S(0)},${S(-2)} L${S(0)},${S(2)}"
-              stroke="var(--m-air)" stroke-width="${S(0.75)}" stroke-linecap="round" fill="none"
-              transform="rotate(${arriving ? -35 : 35})"/>
+        <circle r="${S(3.4)}" fill="var(--m-land)" stroke="var(--m-air)" stroke-width="${S(0.7)}"/>
+        <path d="M${S(-2.1)},${S(0.4)} L${S(2.1)},${S(-0.6)} M${S(-0.4)},${S(-1.7)} L${S(1.2)},${S(-0.3)} M${S(-1.5)},${S(1.5)} L${S(-0.3)},${S(0.6)}"
+              stroke="var(--m-air)" stroke-width="${S(0.7)}" stroke-linecap="round" fill="none"/>
       </g>
-      <text x="${(x + dir * Number(S(5))).toFixed(1)}" y="${(y - Number(S(5.6))).toFixed(1)}"
+      <text x="${(x + dir * Number(S(5.4))).toFixed(1)}" y="${(y + Number(S(arriving ? -5.8 : 8.2))).toFixed(1)}"
             text-anchor="${arriving ? "end" : "start"}" font-size="${S(4.2)}" font-weight="600"
             fill="var(--m-air)" stroke="var(--m-land)" stroke-width="${S(1.1)}" paint-order="stroke">${arriving ? "Arrivée" : "Départ"} · ${a.code}</text>
     </g>`;
@@ -94,7 +97,7 @@ function buildMap(steps, excursions = [], opts = {}) {
     const [x, y] = proj(PLACES[s.id].lon, PLACES[s.id].lat);
     const anchor = s.anchor || "n";
     const lx = anchor === "w" ? S(-6.4) : anchor === "e" ? S(6.4) : 0;
-    const ly = anchor === "s" ? S(8.4) : anchor === "n" ? S(-6.4) : S(1.6);
+    const ly = anchor === "s" ? S(8.6) : anchor === "n" ? S(-10.2) : S(1.4);
     const ta = anchor === "w" ? "end" : anchor === "e" ? "start" : "middle";
     return `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)})">
       <circle r="${S(4.6)}" fill="var(--m-land)" opacity=".9"/>
@@ -102,14 +105,14 @@ function buildMap(steps, excursions = [], opts = {}) {
       <text y="${S(1.3)}" text-anchor="middle" font-size="${S(4)}" font-weight="600" fill="var(--m-onstop)">${i + 1}</text>
       <text x="${lx}" y="${ly}" text-anchor="${ta}" font-size="${S(5.2)}" font-weight="600" fill="var(--m-ink)"
             stroke="var(--m-land)" stroke-width="${S(1.3)}" paint-order="stroke">${PLACES[s.id].n}</text>
-      <text x="${lx}" y="${anchor === "s" ? S(13.4) : S(-1.4)}" text-anchor="${ta}" font-size="${S(3.9)}" fill="var(--m-muted)"
+      <text x="${lx}" y="${anchor === "s" ? S(15.2) : anchor === "n" ? S(-4.8) : S(7.4)}" text-anchor="${ta}" font-size="${S(3.7)}" fill="var(--m-muted)"
             stroke="var(--m-land)" stroke-width="${S(1.1)}" paint-order="stroke">${s.nights} nuit${s.nights > 1 ? "s" : ""}</text>
     </g>`;
   }).join("");
 
   return `<svg class="itinmap" viewBox="${vb.map(v => v.toFixed(1)).join(" ")}" role="img"
      aria-label="Carte de l'itinéraire : ${steps.map(s => PLACES[s.id].n).join(", ")}">
-  <rect x="${(vb[0] - w).toFixed(1)}" y="${(vb[1] - h).toFixed(1)}" width="${(w * 3).toFixed(1)}" height="${(h * 3).toFixed(1)}" fill="var(--m-sea)"/>
+  <rect x="${vb[0].toFixed(1)}" y="${vb[1].toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" fill="var(--m-sea)"/>
   <g>${land}</g>
   <g opacity=".85">${water}</g>
   ${exc ? `<path d="${exc}" fill="none" stroke="var(--m-exc)" stroke-width="1.6" stroke-dasharray="4 4" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".9"/>` : ""}

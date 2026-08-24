@@ -1,3 +1,7 @@
 # Captures d'écran de travail
 Capture d'écran*.png
 *.tmp.html
+
+# Python
+__pycache__/
+*.pyc
