@@ -490,7 +490,7 @@ function bloc(t, d) {
   if (d.note) h += '<div class="dnote"><b>À savoir</b>' + d.note + '</div>';
   h += '<div class="dsum"><span>Coût restant, par personne <b>' + yen(cout) + '</b> — soit ' +
        Math.round(cout / YEN) + ' €</span><span>À trois <b>' + yen(cout * 3) + '</b></span></div>';
-  h += '<textarea class="jot" data-note="' + t.id + ":" + d.n + '" placeholder="Notes du jour ' + d.n +
+  h += '<textarea class="jot" aria-label="Notes du jour ' + d.n + '" data-note="' + t.id + ":" + d.n + '" placeholder="Notes du jour ' + d.n +
        ' — réservations, adresses, ce qu\'on a aimé…">' + esc(S.notes[t.id + ":" + d.n] || "") + '</textarea>';
   return h + '</div></article>';
 }
@@ -577,11 +577,11 @@ function vBudget() {
              '<span class="p">' + yen(q[1]) + '</span></button>';
     }).join("") + '</div>';
 
-  h += '<div class="form"><input id="fq" type="text" placeholder="Quoi ?" style="flex:1;min-width:150px">' +
-    '<input id="fm" type="number" min="0" step="1" placeholder="Montant">' +
-    '<select id="fd"><option value="yen">¥</option><option value="eur">€</option></select>' +
-    '<select id="fp">' + t.budget.map(function (b) { return '<option>' + b[0] + '</option>'; }).join("") + '</select>' +
-    '<select id="fe"><option value="">— étape —</option>' +
+  h += '<div class="form"><input id="fq" type="text" placeholder="Quoi ?" aria-label="Libellé de la dépense" style="flex:1;min-width:150px">' +
+    '<input id="fm" type="number" min="0" step="1" placeholder="Montant" aria-label="Montant">' +
+    '<select id="fd" aria-label="Devise"><option value="yen">¥</option><option value="eur">€</option></select>' +
+    '<select id="fp" aria-label="Poste de budget">' + t.budget.map(function (b) { return '<option>' + b[0] + '</option>'; }).join("") + '</select>' +
+    '<select id="fe" aria-label="Étape"><option value="">— étape —</option>' +
     t.etapes.map(function (e) { return '<option value="' + e.id + '">' + e.nom + '</option>'; }).join("") +
     '</select><button class="go" id="fgo">Ajouter</button></div>';
 
@@ -643,7 +643,7 @@ function vCarnet() {
   var h = '<div class="pad"><section><p class="eyebrow">Sur place</p><h2>Le <em>carnet</em></h2>' +
     '<p class="lede">Un bloc libre, gardé dans le navigateur et repris dans l\'export. ' +
     'Les notes rattachées à une journée sont dans « Jour par jour ».</p>' +
-    '<textarea class="jot" id="carnet" style="min-height:340px;font-size:15px" ' +
+    '<textarea class="jot" id="carnet" aria-label="Carnet libre" style="min-height:340px;font-size:15px" ' +
     'placeholder="Adresses, numéros de réservation, ce qu\'on a mangé, ce qu\'il faudra refaire…">' +
     esc(S.carnet) + '</textarea>';
 
@@ -678,7 +678,7 @@ function nav() {
   var h = '<div class="brand"><span class="mk">旅</span><div><div class="bt">Carnet du Japon</div>' +
     '<div class="bs">trois voyageurs</div></div></div>';
 
-  h += '<div class="pick"><label>Itinéraire</label><select id="pick">' +
+  h += '<div class="pick"><label>Itinéraire</label><select id="pick" aria-label="Choisir un itinéraire">' +
     DATA.trames.map(function (x) {
       return '<option value="' + x.id + '"' + (x.id === S.trame ? ' selected' : '') + '>' +
         x.court + ' — ' + eur(x.par_pers) + '</option>';
@@ -811,7 +811,7 @@ function sauvegarde() {
   d.innerHTML = '<div class="box"><h3>Sauvegarde</h3>' +
     '<p class="lede" style="margin:8px 0 12px">Tout ce que vous avez coché, noté et dépensé. ' +
     'Téléchargez le fichier, ou copiez le texte — les deux se rechargent par le même bouton.</p>' +
-    '<textarea class="jot" id="mj" spellcheck="false" style="min-height:190px;font-family:var(--f-num);font-size:11.5px"></textarea>' +
+    '<textarea class="jot" id="mj" spellcheck="false" aria-label="Contenu de la sauvegarde" style="min-height:190px;font-family:var(--f-num);font-size:11.5px"></textarea>' +
     '<div class="form" style="margin:12px 0 0"><button class="go" id="mdl">Télécharger</button>' +
     '<button class="go" id="mld" style="background:var(--moss)">Charger ce texte</button>' +
     '<button class="go" id="mfl" style="background:var(--trait);color:var(--encre)">Depuis un fichier</button>' +
@@ -823,14 +823,26 @@ function sauvegarde() {
   function dit(m) { d.querySelector("#mmsg").textContent = m; }
 
   d.querySelector("#mdl").onclick = function () {
-    try {
-      var blob = new Blob([d.querySelector("#mj").value], { type: "application/json" });
+    var txt = d.querySelector("#mj").value;
+    dit("…");
+    // Publiée en Artifact, la page n'a pas le droit de déclencher un téléchargement
+    // elle-même : elle passe par l'hôte, qui demande au lecteur. En local, lien blob.
+    hote().then(function (dl) {
+      if (dl) {
+        return dl.save({ filename: "carnet-japon.json", data: txt })
+          .then(function () { dit("Sauvegarde enregistrée."); })
+          .catch(function (e) {
+            dit(e && e.code === "declined" ? "Téléchargement refusé — le texte ci-dessus reste copiable."
+                                          : "Téléchargement impossible — copiez le texte ci-dessus.");
+          });
+      }
+      var blob = new Blob([txt], { type: "application/json" });
       var u = URL.createObjectURL(blob), a = document.createElement("a");
       a.href = u; a.download = "carnet-japon.json";
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { URL.revokeObjectURL(u); }, 1000);
-      dit("Si rien ne s'est téléchargé, copiez le texte ci-dessus : certaines pages publiées bloquent les téléchargements.");
-    } catch (e) { dit("Téléchargement impossible ici — copiez le texte ci-dessus."); }
+      dit("Si rien ne s'est téléchargé, copiez le texte ci-dessus.");
+    });
   };
 
   d.querySelector("#mld").onclick = function () {
@@ -856,6 +868,15 @@ function sauvegarde() {
 
   d.querySelector("#mx").onclick = function () { d.remove(); };
   d.onclick = function (ev) { if (ev.target === d) d.remove(); };
+}
+
+function hote() {
+  try {
+    if (typeof claude !== "undefined" && claude && typeof claude.use === "function") {
+      return Promise.resolve(claude.use("downloads")).catch(function () { return null; });
+    }
+  } catch (e) {}
+  return Promise.resolve(null);
 }
 
 function charge(txt) {
