@@ -1,0 +1,284 @@
+<title>Des cascades et des ateliers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root {
+  --ground:#EDF0F1; --surface:#FFFFFF; --surface-2:#F5F8F9; --surface-3:#E8EDEF;
+  --ink:#0F171C; --muted:#59676F; --line:#D3DBDF; --line-soft:#E3E9EC;
+  --accent:#15586F; --accent-ink:#0E4256; --accent-soft:#E0EDF1;
+  --yes:#2C6A50; --yes-bg:#E1EFE7; --maybe:#856012; --maybe-bg:#F5EBD6; --no:#8E4130; --no-bg:#F4E3DE;
+  --t-pay:#2C6A50; --t-food:#A05A2C; --t-craft:#7A4A73; --t-past:#15586F;
+  --shadow:0 1px 2px rgba(15,23,28,.05), 0 8px 24px -16px rgba(15,23,28,.28);
+  --f-display:"Newsreader",Georgia,serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --t-pay:#74B996; --t-food:#DFA271; --t-craft:#C89BC0; --t-past:#5FAEC8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+} }
+:root[data-theme="dark"] {
+  --ground:#0D1317; --surface:#141C21; --surface-2:#182228; --surface-3:#1E2A31;
+  --ink:#E6EDF0; --muted:#93A3AC; --line:#26333B; --line-soft:#1E2A31;
+  --accent:#5FAEC8; --accent-ink:#8DC9DD; --accent-soft:#16303C;
+  --yes:#74B996; --yes-bg:#163025; --maybe:#D5A853; --maybe-bg:#322715; --no:#DE8E7A; --no-bg:#34201B;
+  --t-pay:#74B996; --t-food:#DFA271; --t-craft:#C89BC0; --t-past:#5FAEC8;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+* { box-sizing:border-box; }
+body { background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:16px;
+  line-height:1.6; margin:0; padding:0 20px 90px; -webkit-font-smoothing:antialiased; }
+.wrap { max-width:1000px; margin:0 auto; display:flex; flex-direction:column; gap:48px; }
+
+.masthead { padding-top:60px; display:flex; flex-direction:column; gap:18px; }
+.eyebrow { font-family:var(--f-mono); font-size:12px; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--muted); display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.eyebrow .dot { color:var(--line); }
+h1 { font-family:var(--f-display); font-size:clamp(36px,6vw,60px); font-weight:500; line-height:1.04;
+  letter-spacing:-.018em; margin:0; text-wrap:balance; }
+.standfirst { font-family:var(--f-display); font-size:clamp(18px,2.2vw,21px); line-height:1.5;
+  color:var(--muted); max-width:60ch; margin:0; }
+
+.totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:1px;
+  background:var(--line); border:1px solid var(--line); border-radius:3px; overflow:hidden; box-shadow:var(--shadow); }
+.tot { background:var(--surface); padding:16px 18px; display:flex; flex-direction:column; gap:2px; }
+.tot .k { font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+.tot .v { font-family:var(--f-mono); font-variant-numeric:tabular-nums; font-size:25px; font-weight:600; line-height:1.15; }
+.tot .note { font-size:12.5px; color:var(--muted); }
+.tot.hero { background:var(--accent-soft); } .tot.hero .v,.tot.hero .k { color:var(--accent-ink); }
+
+section { display:flex; flex-direction:column; gap:22px; }
+h2 { font-family:var(--f-display); font-size:clamp(25px,3.4vw,32px); font-weight:500; letter-spacing:-.014em;
+  line-height:1.15; margin:0; padding-bottom:14px; border-bottom:2px solid var(--ink); text-wrap:balance; }
+.lede { color:var(--muted); max-width:68ch; margin:0; font-size:16px; line-height:1.65; }
+.lede strong { color:var(--ink); font-weight:600; }
+
+.callout { display:flex; flex-direction:column; gap:8px; padding:20px 22px; border-radius:3px;
+  background:var(--maybe-bg); border-left:3px solid var(--maybe); }
+.callout b { color:var(--maybe); font-size:15px; }
+.callout p { margin:0; font-size:15px; line-height:1.6; color:var(--ink); opacity:.88; }
+
+/* étapes */
+.stage { background:var(--surface); border:1px solid var(--line); border-radius:3px;
+  box-shadow:var(--shadow); overflow:hidden; }
+.stage-head { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:baseline;
+  padding:20px 24px 16px; border-bottom:1px solid var(--line-soft); background:var(--surface-2); }
+.stage-head .num { font-family:var(--f-mono); font-size:12px; font-weight:600; color:var(--accent-ink);
+  background:var(--accent-soft); padding:3px 8px; border-radius:2px; }
+.stage-head h3 { font-family:var(--f-display); font-size:26px; font-weight:600; letter-spacing:-.012em; margin:0; }
+.stage-head .days { font-family:var(--f-mono); font-size:12px; color:var(--muted); margin-left:auto; }
+.stage-body { padding:18px 24px 22px; display:flex; flex-direction:column; gap:16px; }
+.why { margin:0; font-size:15.5px; line-height:1.6; color:var(--muted); }
+.why strong { color:var(--ink); font-weight:600; }
+
+.acts { display:flex; flex-direction:column; gap:11px; }
+.act { display:grid; grid-template-columns:104px 1fr; gap:14px; align-items:start; font-size:15px; line-height:1.55; }
+.tag { font-family:var(--f-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  padding:3px 7px; border-radius:2px; text-align:center; font-weight:500; white-space:nowrap; }
+.tag.pay { background:var(--yes-bg); color:var(--t-pay); }
+.tag.food { background:#F6EBE1; color:var(--t-food); }
+.tag.craft { background:#F1E8F0; color:var(--t-craft); }
+.tag.past { background:var(--accent-soft); color:var(--t-past); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .tag.food { background:#2E2119; }
+  :root:not([data-theme="light"]) .tag.craft { background:#2A1F29; } }
+:root[data-theme="dark"] .tag.food { background:#2E2119; }
+:root[data-theme="dark"] .tag.craft { background:#2A1F29; }
+.act b { font-weight:600; }
+.act .n { display:block; font-size:13.5px; color:var(--muted); margin-top:1px; }
+
+.hop { display:flex; flex-wrap:wrap; gap:6px 14px; align-items:center; padding:12px 24px;
+  background:var(--surface-2); border-top:1px solid var(--line-soft); font-family:var(--f-mono); font-size:12.5px; }
+.hop .d { color:var(--accent-ink); font-weight:600; }
+.hop .m { color:var(--muted); }
+
+table { border-collapse:collapse; width:100%; font-size:14.5px; }
+.scroller { overflow-x:auto; border:1px solid var(--line); border-radius:3px; background:var(--surface); box-shadow:var(--shadow); }
+thead th { text-align:left; font-family:var(--f-mono); font-size:11px; font-weight:500; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--muted); padding:13px 16px; border-bottom:1px solid var(--line);
+  background:var(--surface-2); white-space:nowrap; }
+tbody td { padding:12px 16px; border-bottom:1px solid var(--line-soft); }
+tbody tr:last-child td { border-bottom:0; }
+tbody tr.tot-row td { font-weight:600; background:var(--accent-soft); color:var(--accent-ink); }
+.num { font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right; white-space:nowrap; }
+
+.qs { display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line);
+  border-radius:3px; overflow:hidden; }
+.q { background:var(--surface); padding:18px 22px; display:flex; flex-direction:column; gap:5px; }
+.q b { font-size:15.5px; }
+.q p { margin:0; font-size:14.5px; color:var(--muted); line-height:1.55; }
+
+footer { border-top:1px solid var(--line); padding-top:20px; font-size:13px; color:var(--muted);
+  line-height:1.65; max-width:78ch; }
+@media (max-width:600px) {
+  .act { grid-template-columns:1fr; gap:4px; }
+  .tag { justify-self:start; }
+  .masthead { padding-top:38px; }
+  .wrap { gap:36px; }
+}
+</style>
+
+<div class="wrap">
+
+<header class="masthead">
+  <div class="eyebrow">
+    <span>Trois voyageurs</span><span class="dot">/</span><span>19 jours, 18 nuits</span><span class="dot">/</span>
+    <span>mi-mai à mi-juin</span><span class="dot">/</span><span>cinq bases</span>
+  </div>
+  <h1>Des cascades et des ateliers</h1>
+  <p class="standfirst">Cinq bases, des excursions depuis chacune, et le temps de s'installer. Construit sur ce que tu n'as pas encore vu — Kanazawa, Shirakawa-go, la haute montagne — et sur ce qui compte pour tes parents : l'eau et le relief, la table, les mains qui fabriquent, et la manière dont on vivait ici avant.</p>
+</header>
+
+<div class="totals">
+  <div class="tot hero"><span class="k">Par personne</span><span class="v">2 972 €</span><span class="note">sous les 3 000 € visés</span></div>
+  <div class="tot"><span class="k">Total à trois</span><span class="v">8 916 €</span><span class="note">une chambre pour trois</span></div>
+  <div class="tot"><span class="k">Durée</span><span class="v">19 j</span><span class="note">18 nuits, 5 étapes</span></div>
+  <div class="tot"><span class="k">Temps de trajet</span><span class="v">7 h 35</span><span class="note">sur 19 jours, hors vols</span></div>
+</div>
+
+<section>
+  <h2>La saison décide de tout</h2>
+  <p class="lede">Tu hésitais entre <strong>mai-juin</strong> et <strong>l'hiver</strong>. Cet itinéraire tranche pour mai-juin, et ce n'est pas qu'une question de prix.</p>
+  <div class="callout">
+    <b>Deux pièces maîtresses ferment en hiver</b>
+    <p><strong>Kamikochi</strong> est fermé de mi-novembre à mi-avril : la vallée n'est pas déneigée et les hôtels sont clos. La <strong>route alpine Tateyama-Kurobe</strong>, elle, n'ouvre que de mi-avril à fin novembre. Ce sont précisément les deux morceaux de montagne du voyage. En mai-juin, la route alpine offre en plus son <strong>mur de neige</strong> — un corridor taillé dans une congère de dix à quinze mètres, praticable à pied.</p>
+  </div>
+  <p class="lede">Mai-juin apporte aussi le reste de ce que tu cherches : les cascades sont au débit de la fonte, les rizières sont en eau et reflètent le ciel, la montagne est accessible sans crampons, et l'affluence retombe après la Golden Week — la première semaine de mai, à éviter absolument. <strong>Viser du 15 mai au 15 juin</strong> : c'est aussi le creux tarifaire de l'année, avant la saison des pluies de fin juin.</p>
+</section>
+
+<section>
+  <h2>L'itinéraire</h2>
+  <p class="lede">Tu avais raison sur Nikko, et puisqu'il n'est pas obligatoire, je l'ai retiré : c'était la seule longue journée de transport du voyage, 4 h 20 avec changement à Tokyo. <strong>Le temps de trajet tombe de quinze heures à sept et demie</strong>, et les trois nuits libérées vont à Kyoto et Takayama. Il reste <strong>cinq bases, dont une seule d'une nuit</strong>, et chacune sert de camp pour trois à cinq journées.</p>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">1</span><h3>Kyoto</h3><span class="days">J1-J6 · 5 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">Le vol arrive au Kansai en fin d'après-midi : <strong>75 minutes de train direct et vous dormez à Kyoto le soir même</strong>, sans nuit d'étape à Osaka. Cinq nuits donnent deux journées en ville et trois en périphérie, là où les cars ne vont pas — et une journée sans rien prévoir, ce qui n'est pas du luxe après le décalage.</p>
+      <div class="acts">
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Journée à Nara</b><span class="n">45 minutes de train. Le Todai-ji et son Bouddha de quinze mètres, la plus grande charpente de bois ancienne du monde. Le parc aux daims et, derrière, les trois mille lanternes de pierre du Kasuga-taisha.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Journée Kurama-Kibune</b><span class="n">Deux heures de sentier forestier entre deux villages, par un col à 400 m. Racines, torii, cèdres centenaires. On finit les pieds dans la rivière à Kibune, où les restaurants montent leurs terrasses au-dessus de l'eau dès juin.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Nishijin, Gojo-zaka et le Fureaikan</b><span class="n">Le quartier des tisserands avec ses métiers en marche, la côte des potiers vers Kiyomizu, et le musée de l'artisanat sous le parc Okazaki — gratuit, avec démonstrations de laque, teinture et feuille d'or. La bonne introduction avant Kanazawa.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Nishiki, puis un cours de cuisine</b><span class="n">La halle couverte le matin, puis deux heures d'atelier : dashi, tempura, sushis roulés. C'est ce que les parents racontent en rentrant.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Journée à Uji</b><span class="n">Vingt minutes de train. La ville du thé vert depuis le XIIe siècle : maisons de thé où l'on apprend à préparer le matcha, le Byodo-in qui figure sur les pièces de dix yens, et une rivière bordée de saules où l'on pêchait au cormoran.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Fushimi Inari à 7 h</b><span class="n">Le seul créneau où les milliers de torii sont à vous. Deux heures pour monter au sommet et redescendre par les sentiers de derrière, déserts toute la journée.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">3 h</span><span class="m">Shinkansen jusqu'à Nagoya, puis limited express Hida · 80 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">2</span><h3>Takayama</h3><span class="days">J6-J11 · 5 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">Le Hida remonte la vallée depuis Nagoya, <strong>une des plus belles lignes du pays</strong> — côté droit en montant. Takayama est une ville de charpentiers : ses artisans étaient réquisitionnés par la cour impériale en guise d'impôt. Cinq nuits en font le camp de base des Alpes, avec deux journées de montagne et de quoi souffler entre les deux.</p>
+      <div class="acts">
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Journée à Kamikochi</b><span class="n">1 h 30 de bus. Une vallée d'altitude fermée aux voitures, au pied des Alpes du Nord. Trois heures de sentier plat le long de l'Azusa, rivière d'un turquoise laiteux : étang de Taisho hérissé d'arbres morts, pont de Kappa, étang sacré de Myojin. Pour les jambes, Dakesawa monte 600 m en deux heures vers un cirque glaciaire.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Hirayu Otaki et les onsen de la vallée</b><span class="n">Sur la route de Kamikochi, une chute de 64 m qu'on approche à quelques mètres, et les bains de Hirayu, à ciel ouvert dans la forêt. La bonne journée de récupération entre deux marches.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Hida no Sato</b><span class="n">Une trentaine de fermes démontées dans les vallées voisines et remontées autour d'un étang. On entre, on voit les foyers noircis, les greniers à vers à soie, les outils. Le meilleur endroit du voyage pour comprendre comment on vivait ici.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Takayama Jinya et Hida-Furukawa</b><span class="n">Le seul bureau de gouvernement d'époque Edo encore debout — salles d'audience, greniers à riz de l'impôt, salle d'interrogatoire. Puis quinze minutes de train jusqu'à Furukawa, village de canaux à carpes que les cars ignorent.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Sculpture sur if et laque de Hida</b><span class="n">L'ichii ittobori se taille d'un seul couteau, sans peinture, en jouant sur les deux teintes du bois. Ateliers ouverts dans les ruelles de Sanmachi.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Marchés du matin et bœuf de Hida</b><span class="n">Deux marchés dès 7 h, l'un le long de la rivière, l'autre devant le Jinya. Le soir, le bœuf de Hida — moins connu que celui de Kobe, souvent meilleur, et bien moins cher ici qu'à Tokyo.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">50 min</span><span class="m">Bus Nohi · 15 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">3</span><h3>Shirakawa-go</h3><span class="days">J9-J10 · 1 nuit</span></div>
+    <div class="stage-body">
+      <p class="why">La seule étape d'une nuit, et elle se justifie : <strong>les cars arrivent à 10 h et repartent à 16 h</strong>. Entre 16 h et 10 h le lendemain, le village est à vous. Vous dormez dans une gassho, sur des futons, dîner servi autour du foyer. Laissez les grosses valises en consigne à Takayama, montez avec un sac.</p>
+      <div class="acts">
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Nuit en gassho-zukuri</b><span class="n">Les maisons à mains jointes, charpentées sans un seul clou, dont les combles abritaient l'élevage des vers à soie. Une quinzaine reçoivent des hôtes : c'est le premier hébergement à réserver, six mois à l'avance.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Shiroyama au crépuscule</b><span class="n">Vingt minutes de montée. En mai-juin, les rizières en eau doublent le village en reflet, et la lumière rasante de 18 h vaut toutes les photos de midi.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Wada-ke et le Minkaen</b><span class="n">La maison du chef de village, et le musée de plein air sur l'autre rive, moins fréquenté, avec des démonstrations de réfection de toiture.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">1 h 15</span><span class="m">Bus Hokutetsu · 15 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">4</span><h3>Kanazawa</h3><span class="days">J11-J15 · 4 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">Le cœur artisanal du voyage, et une ville que tu ne connais pas. Épargnée par les bombardements, elle a gardé ses quartiers entiers. <strong>99 % de la feuille d'or japonaise vient d'ici.</strong> Quatre nuits : deux journées en ville, deux en excursion — dont celle qui donne à la fois la haute montagne et la plus haute cascade du pays.</p>
+      <div class="acts">
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Journée route alpine Tateyama-Kurobe</b><span class="n">23 minutes de Shinkansen jusqu'à Toyama, puis téléphérique, funiculaire et car jusqu'à Murodo, à 2 450 m. Le mur de neige — un corridor taillé dans dix à quinze mètres de congère — tient jusqu'à mi-juin. La plus belle journée de montagne du voyage, sans marcher. Environ 90 € par personne.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Shomyo-daki, sur la même journée</b><span class="n">Au pied de la route alpine, <b>la plus haute cascade du Japon</b> : 350 m en quatre paliers, doublée au printemps par la Hannoki, qui n'existe que le temps de la fonte. Mai-juin est exactement sa saison de plus fort débit. C'est elle qui remplace Kegon, et elle est trois fois plus haute.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Poser la feuille d'or soi-même</b><span class="n">Plusieurs ateliers font décorer une boîte ou des baguettes. La feuille fait un dixième de micron : elle se déchire au moindre souffle, ce qui rend l'exercice inoubliable.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Journée sur la côte de Noto</b><span class="n">En voiture de location : les mille rizières en terrasses de Senmaida dévalant jusqu'à la mer, et les ateliers de laque de Wajima, montée en cent couches. Deux heures de route, et un paysage que presque aucun visiteur étranger ne voit.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Higashi Chaya et Nagamachi</b><span class="n">Le quartier des maisons de thé, dont on visite l'intérieur, et celui des samouraïs avec ses murs de terre protégés par des nattes de paille.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Marché Omicho</b><span class="n">Crabe, crevettes douces, oursins de la mer du Japon. Les kaisendon du premier étage, servis dès 9 h, valent le détour. Kenrokuen juste après, à l'ouverture de 7 h, quand l'entrée est gratuite et le jardin désert.</span></span></div>
+      </div>
+    </div>
+    <div class="hop"><span class="d">2 h 30</span><span class="m">Shinkansen Hokuriku Kagayaki, direct · 110 € par personne</span></div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head"><span class="num">5</span><h3>Tokyo</h3><span class="days">J15-J19 · 3 nuits</span></div>
+    <div class="stage-body">
+      <p class="why">Trois nuits pour finir, <strong>à Yanaka ou Nezu plutôt qu'à Shinjuku</strong> : c'est le vieux Tokyo, ruelles basses, temples et cimetière ombragé, à vingt minutes de tout et infiniment plus calme le soir. Deux journées pleines, puis une demi-journée d'achats avant le vol — et de quoi caser une dernière montagne.</p>
+      <div class="acts">
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Musée en plein air de l'architecture Edo-Tokyo</b><span class="n">À Koganei, trente maisons et boutiques sauvées de la démolition et remontées : bains publics, taverne, échoppe de teinturier, villa moderniste. Le pendant urbain de Hida no Sato, et presque personne n'y va.</span></span></div>
+        <div class="act"><span class="tag past">Autrefois</span><span><b>Yanaka à pied</b><span class="n">Un des rares quartiers épargnés par le séisme de 1923 et les bombardements. Ruelles, artisans, chats, et la rue commerçante de Yanaka Ginza pour le goûter.</span></span></div>
+        <div class="act"><span class="tag craft">Artisanat</span><span><b>Kappabashi</b><span class="n">La rue des fournisseurs de restaurants : couteaux forgés, moules à pâtisserie, vaisselle au kilo. C'est là qu'on achète un couteau qui durera trente ans, et on peut le faire graver devant soi.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Mont Takao</b><span class="n">50 minutes de Shinjuku pour 599 m de montagne, ce qui est absurde et formidable. Prenez le <b>sentier 6</b>, qui remonte un ruisseau en forêt et passe la petite chute de Biwa — 1 h 30, quelques passages où l'on marche dans le lit du cours d'eau. À mi-pente, le Yakuo-in et ses statues de tengu au long nez ; au sommet, le Fuji par temps clair. Tororo soba en redescendant. À faire en semaine : le week-end, c'est la montagne la plus fréquentée du monde.</span></span></div>
+        <div class="act"><span class="tag pay">Paysage</span><span><b>Nikko, si l'envie revient</b><span class="n">1 h 50 de train depuis Asakusa, faisable à la journée. Les chutes de Kegon, le marais de Senjogahara sur caillebotis, et le mausolée de Tokugawa. Ce n'est plus dans la trame, mais l'une de vos journées libres à Tokyo peut y aller — 40 € par personne, décidé la veille selon la météo.</span></span></div>
+        <div class="act"><span class="tag food">Table</span><span><b>Tsukiji le matin, dépachika le soir</b><span class="n">Le marché aux poissons a déménagé mais les échoppes de rue sont restées : oursin, omelette dashi, thé grillé debout. Et les sous-sols alimentaires des grands magasins pour les cadeaux — thés, condiments, saké, tout se transporte.</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Le budget</h2>
+  <p class="lede">Pour trois personnes, une chambre à trois, sur 19 jours. Le vol est l'inconnue : <strong>Finnair Economy Classic ressortait à 515 € en décembre et 916 € en janvier</strong>, deux valises comprises. J'ai retenu 750 €, hypothèse prudente pour le creux de mi-mai.</p>
+  <div class="scroller">
+    <table>
+      <thead><tr><th>Poste</th><th>Détail</th><th class="num">Par personne</th><th class="num">À trois</th></tr></thead>
+      <tbody>
+        <tr><td>Vol A/R</td><td>Finnair, arrivée Osaka, départ Tokyo, 2 × 23 kg</td><td class="num">750 €</td><td class="num">2 250 €</td></tr>
+        <tr><td>Hébergement</td><td>18 nuits, chambre à trois, dont la gassho de Shirakawa-go</td><td class="num">647 €</td><td class="num">1 941 €</td></tr>
+        <tr><td>Transport</td><td>220 € de trajets + 95 € d'excursions + 7 €/jour de local</td><td class="num">448 €</td><td class="num">1 344 €</td></tr>
+        <tr><td>Nourriture</td><td>40 € par jour et par personne, mix konbini, izakaya et deux bons repas</td><td class="num">760 €</td><td class="num">2 280 €</td></tr>
+        <tr><td>Activités</td><td>Entrées, ateliers, musées</td><td class="num">50 €</td><td class="num">150 €</td></tr>
+        <tr><td>Divers</td><td>eSIM, assurance, souvenirs</td><td class="num">300 €</td><td class="num">900 €</td></tr>
+        <tr class="tot-row"><td>Total</td><td>28 € de marge</td><td class="num">2 972 €</td><td class="num">8 916 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede">Si le vol dépasse 800 €, retirer une nuit à Takayama rend environ 95 € par personne sans rien sacrifier — il resterait quatre nuits, donc les deux journées de montagne. À l'inverse, un vol à 650 € libère 300 € par personne : de quoi ajouter deux nuits, monter en gamme sur les ryokan, ou glisser la journée de Nikko depuis Tokyo.</p>
+  <div class="callout">
+    <b>Ce que le passage aux bases a changé</b>
+    <p>La première version comptait dix étapes, 17 nuits et <strong>15 h de trajet</strong>. Celle-ci en compte cinq, 18 nuits et <strong>7 h 35</strong> — la moitié. Kyoto passe de 4 à 5 nuits, Takayama de 2 à 5, Kanazawa de 3 à 4, Tokyo de 1 à 3. Osaka, Toyama, Kamikochi et Nikko disparaissent comme étapes : les deux premières deviennent un transit et une excursion, la troisième une journée depuis Takayama, la dernière une option facultative depuis Tokyo. <strong>Pour 108 € de plus par personne, vous gagnez une journée et sept heures de train.</strong></p>
+  </div>
+</section>
+
+<section>
+  <h2>Ce que j'ai écarté, et pourquoi</h2>
+  <div class="qs">
+    <div class="q"><b>La nuit à Osaka</b><p>Le Kansai est à 75 minutes de train de Kyoto. Dormir une nuit à Osaka pour repartir le lendemain, c'est une valise défaite pour rien. Vous y mangerez en transit, ou en excursion d'une soirée depuis Kyoto si l'envie vient.</p></div>
+    <div class="q"><b>La nuit à Toyama</b><p>Elle n'existait que pour attaquer la route alpine au premier départ. Depuis Kanazawa, 23 minutes de Shinkansen suffisent pour être à Toyama à 7 h 30 : l'étape ne se justifiait plus.</p></div>
+    <div class="q"><b>La nuit à Kamikochi</b><p>Elle donnait la vallée déserte au petit matin, ce qui est réellement beau. Mais elle imposait une septième étape et deux hébergements pour une seule nuit. En partant de Takayama à 7 h, vous êtes dans la vallée à 8 h 30, avant le gros des bus. Si tu tiens à l'aube sur l'Azusa, gardez la chambre de Takayama et montez avec un sac : ce n'est qu'une nuit d'hôtel de plus, pas une étape.</p></div>
+    <div class="q"><b>Kyushu et Tohoku</b><p>Ce sont tes deux régions inconnues, et elles t'iraient très bien — Arita et sa porcelaine, Takachiho et ses gorges, Ouchi-juku et ses toits de chaume. Mais elles sont à l'opposé l'une de l'autre, et en ajouter une reviendrait à sacrifier les Alpes ou Kyoto. <b>À garder pour un voyage sans tes parents.</b></p></div>
+    <div class="q"><b>Le Fuji vu d'en bas, et Hiroshima</b><p>Kawaguchiko impose un détour d'une journée entre le Kansai et les Alpes, pour une montagne moins spectaculaire que la route alpine. Hiroshima est fort et marquant, mais c'est un voyage de mémoire, pas de paysage ni d'artisanat : il déséquilibrerait le propos et ajouterait 200 € de trajets.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Cinq choses à trancher</h2>
+  <div class="qs">
+    <div class="q"><b>La gassho de Shirakawa-go</b><p>Une quinzaine de maisons reçoivent des hôtes, et elles se réservent six mois à l'avance. C'est le premier hébergement à bloquer, avant même le vol.</p></div>
+    <div class="q"><b>La voiture pour la côte de Noto</b><p>Une journée de location depuis Kanazawa ouvre les rizières en terrasses de Senmaida et les ateliers de laque de Wajima. Compter 70 € la journée pour le groupe, plus le permis international à demander en préfecture avant le départ.</p></div>
+    <div class="q"><b>La longue journée Kanazawa-Nikko</b><p>4 h 20 avec un changement à Tokyo, la seule vraie journée de transport du voyage. Elle se coupe volontiers par un déjeuner et deux heures dans un quartier de Tokyo, puisqu'on y change de gare de toute façon.</p></div>
+    <div class="q"><b>L'ordre du vol</b><p>Arrivée Osaka et départ Tokyo, c'est un billet multi-destination. Vérifie que Finnair dessert bien le Kansai à tes dates — sinon on inverse le sens, ce qui marche tout aussi bien : Tokyo, Nikko, Kanazawa, Shirakawa-go, Takayama, Kyoto.</p></div>
+    <div class="q"><b>La Golden Week</b><p>Du 29 avril au 5 mai, tout le Japon est en congés : trains pleins, hôtels doublés. Si tu vises mai, pars après le 10.</p></div>
+  </div>
+</section>
+
+<footer>
+  Budget calculé sur les données du dépôt : prix d'hébergement par nuit en chambre à trois, trajets longue distance chiffrés sur le graphe des liaisons réelles, 40 € par jour et par personne de nourriture. Le prix du vol est une hypothèse de mi-mai fondée sur les relevés Finnair du 23 août 2026, tarif Economy Classic, deux bagages de 23 kg compris. Les durées de trajet proviennent du planificateur d'itinéraire. Tous les montants sont des estimations à revérifier au moment de réserver, et l'hébergement en ryokan comme en gassho se réserve très en avance.
+</footer>
+</div>
