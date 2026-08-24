@@ -186,7 +186,7 @@ BODY = f"""<section>
   <div class="sheet"><table>
     <thead><tr><th>Itinéraire</th><th>Ce qu'il donne</th><th class="n">Stations</th><th class="n">Trajet</th><th class="n">Par pers.</th></tr></thead>
     <tbody>
-      <tr><td><b>Des cascades et des ateliers</b></td><td>Kamikochi, la nuit en gassho, les vallées du Hida</td><td class="n">5</td><td class="n">7 h 35</td><td class="n">2 972 €</td></tr>
+      <tr><td><b>Des cascades et des ateliers</b></td><td>Kamikochi, la nuit en gassho, les vallées du Hida</td><td class="n">5</td><td class="n">7 h 35</td><td class="n">2 955 €</td></tr>
       <tr class="sum"><td><b>La porcelaine et la mémoire</b></td><td>Arita, Dejima, l'Aso — et une île entièrement neuve</td><td class="n">4</td><td class="n">2 h 35</td><td class="n">2 497 €</td></tr>
       <tr><td><b>Trois villes, trois semaines</b></td><td>Le rythme le plus doux, deux trains, cinq nuits par base</td><td class="n">3</td><td class="n">4 h 45</td><td class="n">2 537 €</td></tr>
     </tbody></table></div>
