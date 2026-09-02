@@ -777,6 +777,8 @@ TK_RESA = [
    "Haneda → Fukuoka et Kumamoto → Haneda, à demander <b>dans la même réservation</b>. Les aéroports d'entrée et de sortie peuvent différer : c'est ce qui rend cette trame possible.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
    "Deux compagnies, sièges limités. <b>Annulée si la houle dépasse 50 cm</b>, et l'hiver est la saison la plus agitée — garder le jour 15 en repli.", True),
+ r("L'option second bagage, sur le retour", "à la réservation, ou plus tard",
+   "ANA n'inclut plus qu'<b>une pièce de 23 kg</b> au départ de Paris — vérifié sur un vol effectué en 2025. La seconde coûte un peu plus de 100 € <b>par trajet et par personne</b> : ne la prendre que sur le retour."),
  r("Les hôtels", "3 mois avant", "Quatre réservations seulement. La chambre à trois reste ce qui limite le choix, à Tokyo surtout."),
  r("L'atelier de porcelaine à Arita", "3 semaines avant", "La pièce est cuite après votre départ et expédiée : compter un mois."),
  r("Le shippoku de Nagasaki", "2 semaines avant", "Se commande à l'avance, et pour trois personnes minimum — ce qui tombe bien."),
@@ -785,7 +787,8 @@ TK_RESA = [
 ]
 
 TK_BUDGET = [
- ("Vol A/R", "ANA direct CDG–Haneda, <b>deux vols intérieurs compris</b>", 893),
+ ("Vol A/R", "ANA direct CDG–Haneda, <b>deux vols intérieurs compris</b>. 1 × 23 kg inclus", 893),
+ ("Second bagage", "Option retour seulement, par personne — ANA n'inclut plus qu'une pièce", 105),
  ("Hébergement", "18 nuits en chambre à trois, aucune nuit de montagne", 489),
  ("Transport", "95 € entre les étapes, 164 € d'excursions, 7 €/jour de local", 392),
  ("Nourriture", "40 € par jour et par personne", 760),
@@ -995,6 +998,8 @@ SUD_RESA = [
    "La mise en vente ne dure qu'un mois. Demander les deux vols intérieurs <b>dans la même réservation</b> : Haneda → Kagoshima et Fukuoka → Haneda. Les aéroports d'entrée et de sortie peuvent différer — c'est ce qui rend cette trame possible.", True),
  r("Les deux séjours à Tokyo", "à la réservation",
    "Trois nuits à l'aller et trois au retour : <b>la formule passe</b> — elle a déjà été réservée telle quelle sur cette même offre l'an dernier. C'est la logique du produit : les vols internationaux d'ANA arrivent à Tokyo, et le domestique sert à aller ailleurs. Demander simplement les deux segments dans la même réservation."),
+ r("L'option second bagage, sur le retour", "à la réservation, ou plus tard",
+   "ANA n'inclut plus qu'<b>une pièce de 23 kg</b> au départ de Paris — vérifié sur un vol effectué en 2025. La seconde coûte un peu plus de 100 € <b>par trajet</b> : ne la prendre que sur le retour, quand la valise est pleine d'Arita et de Kappabashi."),
  r("Le ryokan de Kurokawa", "3 mois avant",
    "Une seule nuit, mais c'est la nuit du voyage. Les bonnes maisons partent tôt, et l'hiver est leur haute saison.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
@@ -1006,7 +1011,8 @@ SUD_RESA = [
 ]
 
 SUD_BUDGET = [
- ("Vol A/R", "ANA direct CDG–Haneda, <b>les deux vols intérieurs compris</b>", 893),
+ ("Vol A/R", "ANA direct CDG–Haneda, <b>les deux vols intérieurs compris</b>. 1 × 23 kg inclus", 893),
+ ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
  ("Hébergement", "22 nuits en solo : guesthouses, plus une nuit de ryokan à Kurokawa", 848),
  ("Transport", "131 € entre les étapes, 295 € d'excursions, 7 €/jour de local", 587),
  ("Nourriture", "35 € par jour", 805),

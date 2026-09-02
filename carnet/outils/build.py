@@ -85,7 +85,8 @@ VALISE = [
         ["Un sac plastique pour les déchets", "Il n'y a presque aucune poubelle dans la rue : on rapporte ses déchets."],
         ["Un sac pliable", "Pour les achats, et pour la journée à Shirakawa-go où l'on laisse les valises."],
         ["Serviette de bain fine pour les onsen", "Beaucoup de bains publics la font payer."],
-        ["De la place dans la valise", "Deux fois 23 kg à l'aller, et Kappabashi, Arita et Wajima à la fin."],
+        ["Partir avec un seul sac", "Sur ANA, une seule pièce de 23 kg est incluse au départ de Paris — vérifié sur un vol effectué. La seconde se paie un peu plus de 100 € par trajet, et ne vaut le coup qu'au retour."],
+        ["Un sac pliable dans la valise", "Il devient le second bagage du retour : Kappabashi, Arita, les dépachika. Sur Finnair Classic, les deux pièces sont incluses des deux côtés."],
     ]},
 ]
 
