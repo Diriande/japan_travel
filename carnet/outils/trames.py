@@ -879,12 +879,24 @@ SUD_JOURS = sorted(
    b("22h00", "Se coucher", "Il est 14 h à Paris. Vous vous réveillerez vers 4 h du matin. Tant mieux : les deux premières journées commencent tôt.", 0, "rest"),
  ], note="<b>NH216 se pose à 16 h 10</b> : le premier jour n'est qu'une soirée. La première vraie journée est le J2, et le décalage la fait commencer à Tsukiji avant l'aube — ce qui tombe bien."),
  ]
- + repris(TK_JOURS, [2], decale=0)                       # Tsukiji avant l'aube, le décalage aidant
+ + [
+ j(2, "tokyo", "Avant l'aube", [
+   b("06h00", "Senso-ji, vide", "Le plus vieux temple de Tokyo est ouvert en permanence. À six heures la grande lanterne est éclairée, Nakamise a ses rideaux baissés, et il n'y a personne — c'est le seul créneau où l'endroit tient ses promesses. Le décalage vous réveille à 4 h de toute façon.", 0, "see"),
+   b("07h30", "Un kissaten d'Asakusa", "Les cafés à l'ancienne ouvrent à 7 h : toast épais coupé en deux, œuf dur, café filtre servi au siphon. Un petit déjeuner japonais qui n'a rien de japonais, et des habitués qui lisent le journal.", 900, "eat"),
+   b("09h00", "Hama-rikyu", "Un jardin de daimyo coincé entre les tours, avec <b>un bassin qui monte et descend avec la marée</b> — le seul du pays. En février les pruniers y sont en fleurs, et la maison de thé sur l'île sert le matcha face à l'eau.", 500, "walk"),
+   b("11h00", "Le bateau sur la Sumida", "Quarante minutes de Hama-rikyu à Asakusa, sous douze ponts tous différents. C'est la façon dont on circulait dans Edo, et la ville se lit autrement depuis l'eau.", 1200, "move"),
+   b("13h00", "Déjeuner", "Au hasard d'une rue latérale, loin de Nakamise.", 1400, "eat"),
+   b("15h00", "Kagurazaka", "Une colline de ruelles pavées, d'anciennes maisons de geishas et d'escaliers étroits, devenue le quartier français de Tokyo — on y trouve des boulangeries et des enseignes en français au milieu des ryotei. Le contraste vaut la montée.", 0, "walk"),
+   b("17h30", "Un sento", "Le bain public du quartier, à 550 ¥. Ce n'est pas un onsen de luxe, c'est le bain du coin — et c'est exactement l'intérêt.", 550, "rest"),
+   b("19h30", "Izakaya", "Sans carte en anglais, avec des habitués.", 3000, "eat"),
+ ], note="<b>Tsukiji ne figure pas dans la trame</b> : depuis le départ des grossistes pour Toyosu en 2018, le marché extérieur est devenu une rue à touristes. Senso-ji à six heures rend bien mieux le même service — se lever tôt et voir la ville avant qu'elle s'ouvre."),
+ ]
  + repris(TK_JOURS, [6], decale=-3)                      # le musée en plein air d'Edo-Tokyo
  + [
  j(4, "kagoshima", "Tokyo le matin, le volcan le soir", [
-   b("06h30", "Tsukiji, le marché extérieur", "Le marché aux poissons a déménagé à Toyosu, mais les échoppes de rue sont restées. Oursin, omelette dashi, thé grillé, debout. C'est l'heure où le décalage vous réveille de toute façon.", 2000, "eat"),
-   b("08h30", "Hama-rikyu", "À dix minutes du marché : un jardin de daimyo entre les tours, avec un bassin qui monte et descend avec la marée — le seul du pays. En février, les pruniers y sont en fleurs.", 500, "walk"),
+   b("06h30", "Yanaka au petit jour", "Le cimetière et ses ruelles avant que le quartier s'éveille : c'est à cinq minutes de la guesthouse, c'est gratuit, et le décalage vous a réveillé de toute façon. Les chats sont déjà debout.", 0, "walk"),
+   b("08h00", "Petit déjeuner à Yanaka Ginza", "Les échoppes de la rue en pente ouvrent tôt : croquettes, brochettes, dorayaki tièdes, mangés debout.", 800, "eat"),
+   b("09h00", "Nezu-jinja", "Un sanctuaire de 1705 épargné par les bombes, avec <b>un tunnel de petits torii vermillon</b> — celui de Fushimi Inari en miniature, à dix minutes à pied, et sans la file.", 0, "see"),
    b("11h15", "Récupérer le sac, monorail", "30 minutes depuis Hamamatsucho. Terminal intérieur, pas international.", 500, "move"),
    b("13h10", "Vol Haneda → Kagoshima", "<b>NH2475</b>, 2 h, <b>compris dans le billet international</b>. Dix vols par jour sur cette ligne, de 6 h 35 à 19 h 05 : celui-ci laisse une vraie matinée à Tokyo. Même réservation que l'international, donc ANA réachemine en cas de retard.", 0, "move"),
    b("15h50", "Bus jusqu'au centre", "40 minutes depuis l'aéroport, puis le tram.", 1400, "move"),
