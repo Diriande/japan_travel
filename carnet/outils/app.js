@@ -66,10 +66,12 @@ function vVoyage() {
   var reel = S.depenses.reduce(function (a, d) { return a + d.eur; }, 0);
   h += '<div class="tally">' +
     cell("Par personne", eur(t.par_pers), true) +
-    cell("À trois", eur(t.par_pers * 3)) +
+    (t.solo ? cell("Par jour", eur(t.par_pers / (t.nuits + 1)))
+            : cell("À trois", eur(t.par_pers * 3))) +
     cell("Nuits", String(t.nuits)) +
     cell("Trajet", t.trajet) +
-    cell("Sous le plafond", eur(3000 - t.par_pers)) + '</div>';
+    (t.solo ? cell("Étapes", String(t.etapes.length))
+            : cell("Sous le plafond", eur(3000 - t.par_pers))) + '</div>';
 
   // ce qu'il reste à réserver
   var reste = t.resa.filter(function (r, i) { return !S.resa[t.id + ":" + i]; });
@@ -111,13 +113,14 @@ function vVoyage() {
 
   h += '<section><p class="eyebrow">Ce que ça coûte</p><h2>Le <em>budget</em></h2>' +
     '<div class="sheet scroll"><table><thead><tr><th>Poste</th><th>Détail</th>' +
-    '<th class="n">Par personne</th><th class="n">À trois</th></tr></thead><tbody>' +
+    '<th class="n">Par personne</th>' + (t.solo ? '' : '<th class="n">À trois</th>') + '</tr></thead><tbody>' +
     t.budget.map(function (b) {
       return '<tr><td><b>' + b[0] + '</b></td><td>' + b[1] + '</td><td class="n">' + eur(b[2]) +
-             '</td><td class="n">' + eur(b[2] * 3) + '</td></tr>';
+             '</td>' + (t.solo ? '' : '<td class="n">' + eur(b[2] * 3) + '</td>') + '</tr>';
     }).join("") +
-    '<tr class="sum"><td>Total</td><td>' + eur(3000 - prevu) + ' de marge sous le plafond</td><td class="n">' +
-    eur(prevu) + '</td><td class="n">' + eur(prevu * 3) + '</td></tr></tbody></table></div>';
+    '<tr class="sum"><td>Total</td><td>' + (t.solo ? 'en solo, plafond rouvert'
+        : eur(3000 - prevu) + ' de marge sous le plafond') + '</td><td class="n">' + eur(prevu) +
+    '</td>' + (t.solo ? '' : '<td class="n">' + eur(prevu * 3) + '</td>') + '</tr></tbody></table></div>';
   if (reel > 0) h += '<p class="lede" style="margin-top:14px">Déjà dépensé et saisi : <b>' + eur(reel) +
     '</b>, soit ' + Math.round(reel / prevu * 100) + ' % du prévu.</p>';
   h += '</section>';
@@ -223,7 +226,7 @@ function vBudget() {
 
   h += '<div class="tally">' + cell("Prévu", eur(prevu), true) + cell("Saisi", eur(reel)) +
     cell("Reste", eur(Math.max(0, prevu - reel))) +
-    cell("Plafond", eur(3000)) + '</div>' +
+    (t.solo ? cell("Étapes", String(t.etapes.length)) : cell("Plafond", eur(3000))) + '</div>' +
     '<div class="bar' + (reel > prevu ? ' over' : '') + '"><i style="width:' + pct.toFixed(1) + '%"></i></div>';
 
   // par poste
@@ -364,7 +367,7 @@ function nav() {
   var t = T();
   var reste = t.resa.filter(function (_, i) { return !S.resa[t.id + ":" + i]; }).length;
   var h = '<div class="brand"><span class="mk">旅</span><div><div class="bt">Carnet du Japon</div>' +
-    '<div class="bs">trois voyageurs</div></div></div>';
+    '<div class="bs">' + (T().solo ? 'en solo' : 'trois voyageurs') + '</div></div></div>';
 
   h += '<div class="pick"><label>Itinéraire</label><select id="pick" aria-label="Choisir un itinéraire">' +
     DATA.trames.map(function (x) {
