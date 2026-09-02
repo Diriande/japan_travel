@@ -27,6 +27,8 @@ TITRES = {
                "Trois bases seulement, cinq nuits chacune, et deux trains dans tout le voyage."),
     "tokyo-kyushu": ("Tokyo<br>et <em>Kyushu</em>", "Tokyo et Kyushu",
                "Quatre stations, du Kanto au sud, reliées par deux vols compris dans le billet."),
+    "sud-nord": ("Tokyo, Kyushu,<br>et <em>Tokyo</em>", "Tokyo, Kyushu, Tokyo — en solo",
+               "Six étapes, du sud volcanique au nord de l'île, sans jamais refaire un trajet."),
 }
 
 # Dépenses courantes, enregistrées d'un geste. (libellé, yens, poste)
@@ -108,7 +110,7 @@ def main():
             "id": t["id"], "titre": titre, "court": court, "resume": resume, "deck": t["deck"],
             "nuits": t["nuits"], "trajet": t["trajet"],
             "par_pers": sum(b[2] for b in t["budget"]),
-            "vols": t.get("vols", False),
+            "vols": t.get("vols", False), "solo": t.get("solo", False),
             "etapes": t["etapes"], "jours": t["jours"], "resa": t["resa"],
             "budget": t["budget"],
         })
