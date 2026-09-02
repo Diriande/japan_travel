@@ -1128,15 +1128,16 @@ LANT_RESA = [
    "Haneda → Kagoshima et Fukuoka → Haneda dans la même réservation, par « Rechercher plusieurs villes ».", True),
  r("Les hôtels de Nagasaki", "<b>dès l'ouverture des réservations</b>",
    "Relevé le 02/09/2026 sur quatre nuits : <b>+28 % pendant le festival</b> (146 € contre 114 €), avec des "
-   "écarts de +26 à +57 % selon les maisons. <b>Mais ce relevé est fait à dix-huit mois</b> : la plupart des "
-   "hôteliers japonais n'ont pas encore appliqué leur tarification d'événement. Le vrai écart sera plus élevé — "
-   "à Sapporo pendant le festival de la neige, les prix doublent. <b>Réserver dès l'ouverture, en annulable</b>, et avant tout le reste de Kyushu.", True),
+   "écarts de +26 à +57 % selon les maisons. Le relevé est fait à <b>cinq mois</b> de la date : les tarifs "
+   "d'événement sont donc déjà appliqués, et le chiffre est représentatif. <b>Ce qui rend la réservation "
+   "urgente</b> — à cinq mois d'un festival de dix-sept jours, les bonnes maisons partent. À bloquer avant "
+   "tout le reste de Kyushu, en tarif annulable.", True),
 ] + [x for x in SUD_RESA if "ANA" not in x["quoi"]]
 
 LANT_BUDGET = [
  ("Vol A/R", "ANA direct CDG–Haneda, deux vols intérieurs compris. <b>Tarif du 1er février</b>", 893),
  ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
- ("Hébergement", "23 nuits, dont quatre à Nagasaki <b>en période de festival</b> : +28 % relevé, marge comprise", 1069),
+ ("Hébergement", "23 nuits, dont quatre à Nagasaki <b>en période de festival</b> : +28 %, mesuré à cinq mois", 1056),
  ("Transport", "131 € entre les étapes, 180 € d'excursions, le Hakone Freepass, 7 €/jour de local", 502),
  ("Nourriture", "35 € par jour", 840),
  ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine. <b>Le festival est gratuit</b>", 164),
