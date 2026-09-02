@@ -544,15 +544,15 @@ TROIS_JOURS = (
    b("18h30", "Retour", "", 430, "move"),
  ], note="À faire en semaine — c'est la montagne du dimanche des Tokyoïtes."),
 
- j(13, "tokyo", "Nikko", [
-   b("07h30", "Tobu depuis Asakusa", "1 h 50 en limited express. Le Nikko All Area Pass couvre le train et les bus sur place.", 2900, "move"),
-   b("09h30", "Tosho-gu", "Le mausolée de Tokugawa Ieyasu, qui croule sous les sculptures polychromes — <b>tout l'inverse de la sobriété japonaise</b>, et c'est le sujet. Les trois singes et le chat endormi y sont.", 1600, "see"),
-   b("11h30", "Bus vers le lac Chuzenji", "45 minutes par les vingt-huit lacets de l'Irohazaka, à sens unique.", 1250, "move"),
-   b("12h30", "Les chutes de Kegon", "97 m d'un seul jet. Un ascenseur descend cent mètres dans la roche jusqu'à une plateforme au pied — c'est là qu'on les regarde.", 570, "see"),
-   b("14h00", "Déjeuner au bord du lac", "Truite du lac, ou yuba, la peau de lait de soja dont Nikko a fait sa spécialité.", 1500, "eat"),
-   b("15h00", "Le marais de Senjogahara", "Deux heures de caillebotis <b>parfaitement plats</b> à 1 400 m, à travers un ancien lac comblé. Bouleaux, ruisseaux, et le Nantai en fond.", 0, "walk"),
-   b("18h30", "Retour sur Tokyo", "", 2900, "move"),
- ], note="Journée longue mais sans difficulté. C'est ce qui manquait à la version deux jours : ici Nikko a sa journée entière."),
+ j(13, "tokyo", "Kamakura", [
+   b("08h40", "Ligne JR Yokosuka", "55 minutes depuis Tokyo. L'ancienne capitale militaire du Japon, de 1185 à 1333, coincée entre les collines et la mer.", 950, "move"),
+   b("10h00", "Le Grand Bouddha", "Onze mètres de bronze, en plein air depuis qu'un raz-de-marée a emporté son pavillon en 1498. On entre à l'intérieur pour vingt yens.", 320, "see"),
+   b("11h00", "Hase-dera", "À dix minutes : une Kannon de bois de neuf mètres, un jardin en terrasses qui descend vers la baie, et une grotte de divinités taillées dans la roche.", 400, "see"),
+   b("12h30", "Déjeuner", "Shirasu-don : les alevins de sardine de la baie, crus ou bouillis, sur du riz. On les pêche ici.", 1400, "eat"),
+   b("14h00", "Le sentier de Daibutsu", "Une heure et demie de crête boisée entre les temples, par les collines qui protégeaient la ville. Dénivelé modéré, racines et marches, et des vues sur la baie.", 0, "walk"),
+   b("16h00", "Hokoku-ji", "La bambouseraie, plus petite que celle d'Arashiyama et infiniment plus calme. On boit un matcha assis face aux bambous, compris dans l'entrée.", 900, "rest"),
+   b("18h00", "Retour", "", 950, "move"),
+ ], note="Remplace Nikko : 22 € de transport et d'entrées contre 56 €, pour une journée aussi pleine et deux fois moins loin."),
 
  j(14, "tokyo", "Maisons et couteaux", [
    b("09h00", "Musée en plein air de l'architecture Edo-Tokyo", "À Koganei. Trente maisons et boutiques sauvées de la démolition : bains publics, taverne, échoppe de teinturier, villa moderniste. Le pendant urbain de Hida no Sato, et presque personne n'y va.", 400, "see"),
@@ -591,7 +591,7 @@ TROIS_BUDGET = [
  ("Hébergement", "15 nuits en chambre à trois, aucune nuit de montagne", 450),
  ("Transport", "230 € de trajets et d'excursions, 7 €/jour de local", 342),
  ("Nourriture", "40 € par jour et par personne", 640),
- ("Activités", "Entrées, route alpine, Nikko compris", 155),
+ ("Activités", "Entrées, route alpine, Kamakura compris", 140),
  ("Divers", "eSIM, assurance, souvenirs", 200),
 ]
 
@@ -628,7 +628,7 @@ TRAMES = [
   "vol": {"in": "KIX", "out": "HND"},
   "etapes": TROIS_ETAPES, "jours": TROIS_JOURS, "resa": TROIS_RESA, "budget": TROIS_BUDGET,
   "carte": ('[{id:"kyoto",nights:5},{id:"kanazawa",nights:5,anchor:"w"},{id:"tokyo",nights:5,anchor:"e"}]',
-            '[{from:"kanazawa",to:"shirakawago",anchor:"w"},{from:"tokyo",to:"nikko",anchor:"e"}]',
+            '[{from:"kanazawa",to:"shirakawago",anchor:"w"},{from:"tokyo",to:"kamakura",anchor:"s"}]',
             '{in:"KIX",out:"HND"}')},
 ]
 
@@ -697,15 +697,15 @@ TK_JOURS = sorted(
    b("17h00", "Bain public de quartier", "Un sento de Yanaka, à 550 ¥. Ce n'est pas un onsen de luxe, c'est le bain du coin — et c'est exactement l'intérêt.", 550, "rest"),
  ]),
 
- j(3, "tokyo", "Nikko", [
-   b("07h30", "Tobu depuis Asakusa", "1 h 50 en limited express. Le Nikko All Area Pass couvre le train et les bus sur place.", 2900, "move"),
-   b("09h30", "Tosho-gu sous la neige", "Le mausolée de Tokugawa Ieyasu, qui croule sous les sculptures polychromes — <b>tout l'inverse de la sobriété japonaise</b>, et c'est le sujet. Les trois singes, le chat endormi. En hiver, la neige sur les toits de bronze et l'absence de cars valent le froid.", 1600, "see"),
-   b("11h30", "Bus vers le lac Chuzenji", "45 minutes par les vingt-huit lacets de l'Irohazaka. <b>Vérifier l'état de la route la veille</b> : elle ferme par forte neige, et les bus montent alors avec des chaînes.", 1250, "move"),
-   b("12h30", "Les chutes de Kegon", "97 m d'un seul jet, et un ascenseur qui descend cent mètres dans la roche jusqu'à une plateforme au pied. <b>En février, les embruns gèlent sur les parois</b> et les cascades secondaires du cirque se figent en colonnes de glace — c'est la meilleure saison pour les voir.", 570, "see"),
-   b("14h00", "Déjeuner au bord du lac", "Truite du lac, ou yuba — la peau de lait de soja dont Nikko a fait sa spécialité, servie brûlante.", 1500, "eat"),
-   b("15h30", "Redescente", "Le marais de Senjogahara est sous la neige : ses caillebotis ne se marchent qu'en raquettes de décembre à mars. On le laisse pour une autre saison.", 1250, "move"),
-   b("18h30", "Retour sur Tokyo", "", 2900, "move"),
- ], note="Journée longue et froide : 0 à 6 °C au lac, plusieurs degrés de moins qu'à Tokyo. Prévoir gants et bonnet, et vérifier la météo la veille."),
+ j(3, "tokyo", "Kawagoe, le petit Edo", [
+   b("09h00", "Tobu Tojo depuis Ikebukuro", "30 minutes, et on est dans une ville d'Edo. <b>Un aller-retour coûte moins de 10 €</b> — cinq fois moins que Nikko, pour une journée qui sert mieux le sujet.", 1000, "move"),
+   b("09h45", "La rue des kura", "Une avenue entière de <b>maisons de marchands en argile noire</b>, aux murs épais d'un mètre et aux volets de fer : elles ont survécu au grand incendie de 1893, et le quartier s'est reconstruit à leur image. C'est la rue commerçante d'Edo telle qu'elle était, encore en activité.", 0, "walk"),
+   b("11h00", "Toki no Kane", "La tour des cloches, reconstruite pour la quatrième fois en 1894. Elle sonne encore quatre fois par jour — un des <b>cent paysages sonores à préserver</b> du Japon, selon le ministère de l'Environnement.", 0, "see"),
+   b("12h00", "Kashiya Yokocho", "La ruelle des confiseries : une vingtaine d'échoppes qui font les mêmes bonbons, biscuits de riz soufflé et patates douces confites depuis l'après-guerre. On y goûte debout, tout est à quelques centaines de yens.", 1000, "eat"),
+   b("13h30", "Kita-in", "Le temple qui abrite <b>les seuls bâtiments survivants du château d'Edo</b>, démontés et remontés ici en 1638 après un incendie — le vrai château de Tokyo n'existe plus. À côté, cinq cents statues de rakan, toutes différentes, dont aucune ne répète le même visage.", 400, "see"),
+   b("15h30", "Le musée de la brasserie, ou le retour", "Une des maisons de kura abrite une brasserie de saké encore en activité, avec dégustation. Sinon, on rentre : il est 16 h et Tokyo est à trente minutes.", 500, "eat"),
+   b("18h30", "Retour sur Tokyo", "", 1000, "move"),
+ ], note="Remplace Nikko, qui coûtait cinquante euros de transport par personne pour la même journée. Kawagoe est à 30 minutes, à 10 € l'aller-retour, et répond mieux au thème de la vie d'autrefois."),
 
  j(4, "tokyo", "Kamakura", [
    b("08h40", "Ligne JR Yokosuka", "55 minutes depuis Tokyo. L'ancienne capitale militaire du Japon, de 1185 à 1333, coincée entre les collines et la mer.", 950, "move"),
@@ -782,7 +782,6 @@ TK_RESA = [
  r("Les hôtels", "3 mois avant", "Quatre réservations seulement. La chambre à trois reste ce qui limite le choix, à Tokyo surtout."),
  r("L'atelier de porcelaine à Arita", "3 semaines avant", "La pièce est cuite après votre départ et expédiée : compter un mois."),
  r("Le shippoku de Nagasaki", "2 semaines avant", "Se commande à l'avance, et pour trois personnes minimum — ce qui tombe bien."),
- r("Le Nikko All Area Pass", "la veille", "Couvre le train Tobu et les bus du lac. Se prend au guichet d'Asakusa."),
  r("L'état de la route de l'Irohazaka et du cratère de l'Aso", "le matin même", "Les deux ferment sans préavis, l'une par neige, l'autre par les gaz."),
 ]
 
@@ -806,7 +805,7 @@ TRAMES.append({
  "etapes": TK_ETAPES, "jours": TK_JOURS, "resa": TK_RESA, "budget": TK_BUDGET,
  "carte": ('[{id:"tokyo",nights:6,anchor:"e"},{id:"fukuoka",nights:5,air:true,anchor:"n"},'
            '{id:"nagasaki",nights:4,anchor:"w"},{id:"kumamoto",nights:3,anchor:"s"}]',
-           '[{from:"tokyo",to:"nikko",anchor:"e"},{from:"tokyo",to:"kamakura",anchor:"s"},'
+           '[{from:"tokyo",to:"kamakura",anchor:"s"},{from:"tokyo",to:"kamakura",anchor:"s"},'
            '{from:"fukuoka",to:"arita",anchor:"n"},{from:"kumamoto",to:"aso",anchor:"e"}]',
            '{in:"HND",out:"HND"}')})
 
