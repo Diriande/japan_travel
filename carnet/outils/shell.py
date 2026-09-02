@@ -196,8 +196,9 @@ section{padding:44px 0 4px}
 .dnote{margin-top:13px;padding:11px 13px;border-radius:10px;
   background:color-mix(in srgb,var(--ambre) 9%,transparent);
   border-left:3px solid var(--ambre);color:var(--encre);font-size:13.5px}
-.dnote b{display:block;font-family:var(--f-num);font-size:9.5px;letter-spacing:.15em;
+.dnote>b:first-child{display:block;font-family:var(--f-num);font-size:9.5px;letter-spacing:.15em;
   text-transform:uppercase;color:var(--clay);margin-bottom:3px}
+.dnote b{color:var(--sumi);font-weight:600}
 .jot{width:100%;margin-top:11px;background:var(--sheet);border:1px solid var(--trait);border-radius:10px;
   padding:10px 12px;font:inherit;font-size:13.5px;color:var(--encre);resize:vertical;min-height:52px}
 .jot:focus{outline:none;border-color:var(--bero)}
