@@ -66,7 +66,7 @@ Prix relevés en basse saison, économie, aller-retour depuis Paris.
 | Korean Air | CDG–Séoul–HND | 1 x 23kg | 2e payant (~100€) | 33-34″ | 985€ | ✗ |
 | **Finnair** | CDG–HEL–HND | **2 x 23kg** (Classic) | inclus | 31″ | 515€ à 995€ selon dates | ✓ |
 | EVA Air | CDG–Taipei–NRT | **2 x 23kg** | inclus sauf tarif Discount (classe A) | 32-33″ | 1099€ | ✓ |
-| ANA | CDG–HND direct | **0 à 2 pièces** selon tarif | tarif supérieur requis | **34″** | 1093€ | ~ |
+| ANA | CDG–HND direct | **1 x 23kg** au départ de Paris | 2e à ~100€ **par trajet** | **34″** | 1093€ | ✓ |
 | Japan Airlines | CDG–HND direct | **2 x 23kg** | inclus, tous tarifs éco | 33-34″ | à vérifier sur jal.co.jp | ✓ |
 | Turkish Airlines | CDG–Istanbul–HND | 0 en EcoFly | tarif FlexFly | 31-32″ | 1138€ | ✗ |
 | Air France | CDG–HND direct | 1 x 23kg | 2e payant (70-125€) | 31-32″ | non relevé | ✗ |
@@ -87,14 +87,22 @@ avec un exemple explicitement européen (Osaka→Tokyo→Londres). Le 3e bagage 
 Up (B/Y), Standard (Q/H/M) et **Basic (V/W/S) : 2 pièces de 23kg**. Seul le tarif **Discount (classe A)**
 est limité à **1 pièce**. La nuance sur le tarif Discount est donc réelle et à surveiller au moment de payer.
 
-**ANA** — page officielle « Weight, Size, and Number of Items Which Can Be Checked in Free of Charge » :
-économie **« Between 0-2 pieces »**, avec la mention *« Free baggage allowance varies depending on fare
-rules »*. La variabilité est confirmée — on ne peut pas compter sur deux valises sans vérifier son tarif —
-mais la page ne détaille pas la règle par route. Le passage à 1 pièce sur l'Europe au 1er novembre 2024
-reste rapporté par la presse spécialisée, non confirmé par ANA directement.
+**ANA** — **vérifié par un vol effectué**, Paris–Tokyo aller-retour en 2025 : **une seule pièce de 23 kg
+incluse** au départ de Paris, et la seconde achetée en option pour **un peu plus de 100 € sur un seul
+trajet**. Le passage de 2 à 1 pièce est donc bien effectif sur l'Europe.
+
+La page officielle « Weight, Size, and Number of Items Which Can Be Checked in Free of Charge » reste
+évasive — économie « Between 0-2 pieces », *« varies depending on fare rules »* — et le tableau des
+révisions publié par ANA ne couvre que les tarifs **au départ du Japon**. C'est l'expérience directe qui
+tranche, pas la documentation.
+
+> **Astuce retenue de ce vol :** n'acheter la seconde pièce que **sur le trajet retour**. On part léger et
+> on revient chargé — c'est là que se jouent Arita, Kappabashi et les dépachika. Une option au lieu de deux,
+> soit une centaine d'euros économisés par personne.
 
 **Compagnies donnant 2 x 23kg sans supplément** sur cette route : **Finnair** (tarif Classic), **JAL** (tous
 tarifs éco), **EVA Air** (hors tarif Economy Discount) et les chinoises **China Southern** / **Air China**.
+**ANA n'en fait plus partie** — c'est désormais établi, pas supposé.
 
 Sur un critère bagages strict, Finnair reste le meilleur rapport qualité-prix : deux valises incluses dès
 515€ en basse saison, contre 759€ pour la première alternative à deux valises.
@@ -103,7 +111,7 @@ Sur un critère bagages strict, Finnair reste le meilleur rapport qualité-prix 
 > 23/08/2026). Les autres lignes viennent de recherches web et de relevés de comparateurs : **elles sont à
 > confirmer sur le site de chaque compagnie avant de conclure**. Une première version de ce fichier annonçait
 > à tort que Finnair n'incluait qu'une pièce, sur la foi de sites agrégateurs — la même prudence s'impose
-> pour ANA, EVA et les chinoises.
+> pour EVA et les chinoises. La ligne ANA, elle, est maintenant confirmée par un vol effectué.
 
 ## Indemnisation en cas de retard
 
