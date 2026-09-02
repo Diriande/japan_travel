@@ -824,7 +824,7 @@ SUD_ETAPES = [
    ["Tsukiji le matin, debout : oursin, omelette dashi, thé grillé",
     "Un izakaya de comptoir, seul, où l'on parle à son voisin",
     "Monjayaki, qu'on cuit soi-même sur la plaque"],
-   "Trois nuits pour poser le décalage, et une excursion."),
+   "Trois nuits pour poser le décalage, sur ce que Tokyo garde de moins évident."),
 
  e("kagoshima", "Kagoshima", "鹿児島", 3, 4, 7, "9–16 °C, la ville la plus douce du pays",
    "Guesthouse vers Tenmonkan, le quartier des arcades", 30, "volcan", "soir",
@@ -871,10 +871,10 @@ SUD_JOURS = sorted(
    b("18h45", "Poser le sac", "La guesthouse est à dix minutes de la gare. Douche, et ressortir aussitôt.", 0, "stay"),
    b("19h30", "Premier repas, tout près", "Ne rien viser haut ce soir : un ramen ou l'izakaya de la rue d'à côté, et une supérette pour l'eau et le petit déjeuner.", 2000, "eat"),
    b("22h00", "Se coucher", "Il est 14 h à Paris. Vous vous réveillerez vers 4 h du matin. Tant mieux : les deux premières journées commencent tôt.", 0, "rest"),
- ], note="<b>NH216 se pose à 16 h 10</b> : le premier jour n'est qu'une soirée. La première vraie journée est le J2. <b>Kamakura y est placé un vendredi</b> : le week-end, l'ancienne capitale est prise d'assaut par les Tokyoïtes."),
+ ], note="<b>NH216 se pose à 16 h 10</b> : le premier jour n'est qu'une soirée. La première vraie journée est le J2, et le décalage la fait commencer à Tsukiji avant l'aube — ce qui tombe bien."),
  ]
- + repris(TK_JOURS, [4], decale=-2)                      # Kamakura, placé un vendredi
- + repris(TK_JOURS, [2], decale=1)                       # le vieux Tokyo
+ + repris(TK_JOURS, [2], decale=0)                       # Tsukiji avant l'aube, le décalage aidant
+ + repris(TK_JOURS, [6], decale=-3)                      # le musée en plein air d'Edo-Tokyo
  + [
  j(4, "kagoshima", "Tokyo le matin, le volcan le soir", [
    b("06h30", "Tsukiji, le marché extérieur", "Le marché aux poissons a déménagé à Toyosu, mais les échoppes de rue sont restées. Oursin, omelette dashi, thé grillé, debout. C'est l'heure où le décalage vous réveille de toute façon.", 2000, "eat"),
