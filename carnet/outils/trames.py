@@ -993,8 +993,8 @@ SUD_JOURS = sorted(
 SUD_RESA = [
  r("Le billet ANA avec la promotion TOKYO+", "<b>avant le 30 septembre 2026</b>",
    "La mise en vente ne dure qu'un mois. Demander les deux vols intérieurs <b>dans la même réservation</b> : Haneda → Kagoshima et Fukuoka → Haneda. Les aéroports d'entrée et de sortie peuvent différer — c'est ce qui rend cette trame possible.", True),
- r("Vérifier que deux escales à Tokyo passent", "à la réservation",
-   "Trois nuits à l'aller <b>et</b> trois au retour font deux escales. La promotion en annonce une ; la page précise que « les restrictions concernant le nombre d'escales varient selon le type de tarif ». <b>À faire confirmer avant de payer</b> — c'est le point qui peut faire tomber la trame.", True),
+ r("Les deux séjours à Tokyo", "à la réservation",
+   "Trois nuits à l'aller et trois au retour : <b>la formule passe</b> — elle a déjà été réservée telle quelle sur cette même offre l'an dernier. C'est la logique du produit : les vols internationaux d'ANA arrivent à Tokyo, et le domestique sert à aller ailleurs. Demander simplement les deux segments dans la même réservation."),
  r("Le ryokan de Kurokawa", "3 mois avant",
    "Une seule nuit, mais c'est la nuit du voyage. Les bonnes maisons partent tôt, et l'hiver est leur haute saison.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
