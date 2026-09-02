@@ -847,25 +847,25 @@ SUD_ETAPES = [
     "Toruko rice : riz pilaf, spaghettis et escalope dans la même assiette"],
    "Une ville à flanc de baie, seule fenêtre du Japon fermé."),
 
- e("fukuoka", "Fukuoka", "福岡", 2, 15, 17, "9–15 °C, doux",
+ e("fukuoka", "Fukuoka", "福岡", 3, 15, 18, "9–15 °C, doux",
    "Vers Hakata, à onze minutes de l'aéroport", 34, "torii", "jour",
    ["Les <b>yatai</b> — cent trente baraques de rue montées chaque soir",
     "Tonkotsu ramen, le bouillon d'os de porc, né ici",
     "Mentaiko, œufs de morue au piment, sur du riz blanc"],
-   "Deux nuits : la porcelaine, les pruniers, et les baraques de rue."),
+   "Trois nuits : la porcelaine, les pruniers, et les baraques de rue."),
 
- e("hakone", "Hakone", "箱根", 3, 17, 20, "3–11 °C, et <b>le Fuji dégagé un jour sur deux</b> en février",
+ e("hakone", "Hakone", "箱根", 3, 18, 21, "3–11 °C, et <b>le Fuji dégagé un jour sur deux</b> en février",
    "Une auberge à Hakone-Yumoto, puis un ryokan avec bain privatif", 90, "volcan", "aube",
    ["Les <b>kuro-tamago</b> d'Owakudani, œufs noircis dans l'eau sulfureuse",
     "Le tofu de Hakone, monté à l'eau de source",
     "Un kaiseki de ryokan servi en chambre, le dernier vrai repas du voyage"],
    "Trois nuits de bains et de volcan, avec le Fuji en face — et rien à courir."),
 
- e("tokyo-fin", "Tokyo, le dernier soir", "東京", 1, 20, 21, "8–15 °C, la ville s'ouvre au printemps",
-   "Sur la Yamanote ou près de Haneda — le vol part à 9 h 50", 45, "pagode", "soir",
+ e("tokyo-fin", "Tokyo, pour finir", "東京", 3, 21, 24, "8–15 °C, la ville s'ouvre au printemps",
+   "Sur la Yamanote, à portée de Kappabashi et de Ginza", 45, "pagode", "soir",
    ["Les dépachika de Ginza pour les cadeaux",
     "Un dernier izakaya, sans carte en anglais"],
-   "Une nuit, pour ne pas jouer le vol du matin depuis la montagne."),
+   "Trois nuits pour les achats, une flânerie, et un vol du matin sans stress."),
 ]
 
 SUD_JOURS = sorted(
@@ -930,7 +930,7 @@ SUD_JOURS = sorted(
    b("16h00", "Poser ses affaires au ryokan", "<b>La nuit à ne pas économiser du voyage.</b> Demi-pension, futon au sol. C'est le seul hébergement cher de la trame, et il le vaut.", 0, "stay"),
    b("18h30", "Le dîner de la maison", "Une dizaine de petits plats de montagne : truite, légumes sauvages, bœuf de Kumamoto.", 0, "eat"),
    b("20h30", "Les yuakari", "De décembre à mars, le village allume chaque soir des <b>lanternes de bambou tressé</b> le long de la rivière. C'est la raison de venir l'hiver plutôt qu'à l'automne, et elle suffit.", 0, "walk"),
- ], note="Dates des yuakari à confirmer auprès du syndicat d'initiative : elles bougent d'une année sur l'autre. <b>Attention, cette nuit tombe un vendredi</b> : les ryokans de Kurokawa facturent le week-end plus cher et se remplissent d'abord. Si le prix pique, décaler d'un jour en inversant avec l'Aso."),
+ ], note="Dates des yuakari à confirmer auprès du syndicat d'initiative : elles bougent d'une année sur l'autre. Sur ces dates la nuit tombe un <b>mardi</b> : c'est le tarif de semaine, le plus bas, et le village est à peu près vide."),
 
  j(10, "kumamoto", "Redescendre à son rythme", [
    b("07h30", "Bain du matin", "Le bain extérieur avant le petit déjeuner, quand il gèle encore. C'est pour ça qu'on vient l'hiver, et c'est la meilleure demi-heure du voyage.", 0, "rest"),
@@ -950,19 +950,26 @@ SUD_JOURS = sorted(
  ]
  + repris(KYUSHU_JOURS, [11, 12, 13], decale=1)          # la bombe, Gunkanjima, Unzen
  + [
- j(15, "fukuoka", "Vers le nord, et les pruniers", [
+ j(15, "fukuoka", "Vers le nord", [
    b("09h30", "Train jusqu'à Hakata", "1 h 30 avec un changement à Takeo-Onsen.", 6600, "move"),
    b("11h10", "Déposer le sac", "La gare de Hakata est une ville : dix étages de boutiques et de restaurants au-dessus des quais.", 0, "stay"),
-   b("12h30", "Nishitetsu jusqu'à Dazaifu", "45 minutes depuis Tenjin. Certaines rames sont dessinées par un designer de trains célèbre.", 420, "move"),
-   b("13h30", "Tenman-gu", "Le sanctuaire des études, où les lycéens viennent avant les examens. <b>Six mille pruniers</b>, et un bœuf de bronze qu'on frotte à la tête. Début mars, la floraison bat son plein — c'est la première de l'année, un mois avant les cerisiers.", 0, "see"),
-   b("15h00", "Komozen-ji", "À deux minutes, et presque personne : un jardin de mousse et de pierres qu'on regarde assis sur la véranda de bois. Deux cents yens dans une boîte.", 200, "rest"),
-   b("16h00", "Musée national de Kyushu", "Un des quatre musées nationaux du pays, dans un bâtiment de verre courbe adossé à la colline. Il raconte le Japon par ses échanges avec le continent — ce qui est tout le sujet de cette étape.", 700, "see"),
-   b("19h30", "Yatai", "Retour à Fukuoka. Cent trente baraques montées chaque soir sur les trottoirs de Nakasu et Tenjin, démontées à l'aube. Huit tabourets, un rideau. <b>Ça n'existe plus qu'ici</b> — et c'est le meilleur endroit du voyage pour parler à quelqu'un quand on voyage seul.", 2500, "eat"),
- ], note="Journée dense mais sans transport lourd : Dazaifu est à 45 minutes, et la floraison des pruniers ne dure pas. Shofuku-ji et le parc Ohori se glissent dans la matinée de demain si le cœur y est."),
+   b("13h00", "Shofuku-ji", "<b>Le premier temple zen du Japon</b>, fondé en 1195 par le moine qui a rapporté le thé de Chine. On y entre librement, il n'y a rien à payer et presque personne.", 0, "see"),
+   b("15h00", "Kushida-jinja et le parc Ohori", "Le char de festival de dix mètres gardé toute l'année, puis un ancien fossé de château devenu lac. Deux kilomètres à plat, et c'est là que la ville se promène.", 0, "walk"),
+   b("19h00", "Yatai", "Cent trente baraques montées chaque soir sur les trottoirs de Nakasu et Tenjin, démontées à l'aube. Huit tabourets, un rideau. <b>Ça n'existe plus qu'ici</b> — et c'est le meilleur endroit du voyage pour parler à quelqu'un quand on voyage seul.", 2500, "eat"),
+ ]),
+
+ j(17, "fukuoka", "Dazaifu", [
+   b("09h30", "Nishitetsu jusqu'à Dazaifu", "45 minutes depuis Tenjin. Certaines rames sont dessinées par un designer de trains célèbre.", 420, "move"),
+   b("10h30", "Tenman-gu", "Le sanctuaire des études, où les lycéens viennent avant les examens. <b>Six mille pruniers</b>, et un bœuf de bronze qu'on frotte à la tête. Début mars la floraison bat son plein — c'est la première de l'année, un mois avant les cerisiers.", 0, "see"),
+   b("12h00", "Komozen-ji", "À deux minutes, et presque personne : un jardin de mousse et de pierres qu'on regarde assis sur la véranda de bois. Deux cents yens dans une boîte.", 200, "rest"),
+   b("13h00", "Umegae-mochi", "La galette de riz grillée fourrée de haricot rouge, vendue tout le long de l'allée. Un four tous les dix mètres.", 1200, "eat"),
+   b("14h30", "Musée national de Kyushu", "Un des quatre musées nationaux du pays, dans un bâtiment de verre courbe adossé à la colline. Il raconte le Japon par ses échanges avec le continent — ce qui est tout le sujet de cette étape.", 700, "see"),
+   b("18h00", "Derniers yatai", "La dernière soirée de Kyushu.", 2500, "eat"),
+ ], note="Dazaifu a sa journée entière au lieu d'être collé à l'après-midi d'arrivée."),
  ]
  + repris(KYUSHU_JOURS, [6], decale=10)                  # Arita
   + [
- j(17, "hakone", "Kyushu le matin, la montagne le soir", [
+ j(18, "hakone", "Kyushu le matin, la montagne le soir", [
    b("08h00", "Petit déjeuner et sac", "Les sous-sols de la gare de Hakata pour les cadeaux qui voyagent mal : mentaiko sous vide, gâteaux de Kyushu.", 0, "stay"),
    b("11h15", "Métro jusqu'à l'aéroport", "<b>Onze minutes depuis la gare de Hakata.</b> Fukuoka a l'aéroport le mieux placé du pays.", 260, "move"),
    b("12h15", "Vol Fukuoka → Haneda", "<b>NH252</b>, 1 h 40, <b>compris dans le billet</b>. Onze vols entre 9 h et 14 h 30 : de la marge si le matin déborde.", 0, "move"),
@@ -973,7 +980,7 @@ SUD_JOURS = sorted(
  ], note="Journée de transition longue mais sans rupture : un vol, deux trains, et on dort dans une vallée thermale."),
  ]
  + [
- j(18, "hakone", "Le tour du volcan", [
+ j(19, "hakone", "Le tour du volcan", [
    b("08h30", "La crémaillère jusqu'à Gora", "40 minutes et 500 m de dénivelé sur <b>le plus vieux train de montagne du Japon</b>, qui monte en trois rebroussements : le conducteur et le contrôleur échangent de cabine à chaque fois.", 0, "move"),
    b("09h30", "Funiculaire, puis téléphérique", "Compris dans le pass. À l'instant où la cabine bascule au-dessus de la crête, <b>le Fuji apparaît d'un coup</b> en face. En février il est enneigé jusqu'aux deux tiers.", 0, "see"),
    b("10h30", "Owakudani", "La vallée qui fume, ouverte par une éruption il y a trois mille ans. On y cuit des œufs dans l'eau sulfureuse : ils en ressortent <b>noirs</b>, et la coutume veut que chacun ajoute sept ans de vie. <b>La zone ferme sans préavis</b> quand les gaz montent — se renseigner la veille.", 500, "see"),
@@ -981,9 +988,9 @@ SUD_JOURS = sorted(
    b("13h30", "Déjeuner à Motohakone", "", 1800, "eat"),
    b("15h00", "Hakone-jinja et le torii du lac", "Le sanctuaire est dans une futaie de cryptomères, et son <b>torii vermillon est planté dans l'eau</b>, au bord du lac. Fondé en 757, sur la route que tout le monde devait emprunter entre Kyoto et Edo.", 0, "see"),
    b("17h00", "Rentrer par le bus", "Compris dans le pass. Puis le bain, encore.", 0, "rest"),
- ], note="C'est le <b>Hakone Round Course</b> : une boucle qui ne revient jamais sur ses pas, et dont le pass couvre chacun des six moyens de transport. <b>Sur ces dates il tombe un dimanche</b> — c'est l'excursion favorite des Tokyoïtes : partir à 8 h 30 comme prévu, ou l'inverser avec l'ancienne route du lendemain."),
+ ], note="C'est le <b>Hakone Round Course</b> : une boucle qui ne revient jamais sur ses pas, et dont le pass couvre chacun des six moyens de transport. Sur ces dates il tombe un <b>vendredi</b> : l'excursion favorite des Tokyoïtes se fait donc hors du week-end, et l'ancienne route du lendemain absorbe le samedi, bien plus calme."),
 
- j(19, "hakone", "L'ancienne route du Tokaido", [
+ j(20, "hakone", "L'ancienne route du Tokaido", [
    b("09h00", "La cédraie du Tokaido", "Un kilomètre de l'<b>ancienne route de Kyoto à Edo</b>, bordé de quatre cents cryptomères plantés en 1618 pour abriter les voyageurs. On marche sur les pavés d'origine — c'est la route des cinquante-trois stations.", 0, "walk"),
    b("10h00", "Le poste de contrôle de Hakone", "Reconstruit à l'identique d'après les plans d'époque. <b>On y fouillait les voyageurs</b>, et surtout on empêchait les femmes des seigneurs de quitter Edo, où le shogun les gardait en otage. Les cellules, les armes et les registres sont là.", 500, "see"),
    b("12h00", "Déjeuner, et le dernier bain", "Un onsen à ciel ouvert avant de redescendre.", 2500, "eat"),
@@ -992,17 +999,33 @@ SUD_JOURS = sorted(
  ], note="Le poste de contrôle et la cédraie prolongent tout ce voyage : la route par étapes, celle des cinquante-trois stations."),
  ]
  + [
- j(20, "tokyo-fin", "Un dernier matin, puis Tokyo", [
+ j(21, "tokyo-fin", "Un dernier matin, puis Tokyo", [
    b("08h00", "Le bain avant tout le monde", "Le rotenburo au petit jour, quand la vapeur monte et qu'il gèle encore. C'est la dernière fois du voyage.", 0, "rest"),
    b("10h00", "Le musée en plein air", "Cent sculptures dans un parc face aux montagnes — Moore, Miró, un pavillon entier de Picasso, et un bain de pieds chaud au milieu des œuvres. Le seul musée du voyage où l'on ressort les pieds au chaud.", 1600, "see"),
    b("12h30", "Déjeuner à Gora", "", 2000, "eat"),
    b("15h00", "Romancecar jusqu'à Shinjuku", "1 h 25, compris dans le pass hors supplément.", 1200, "move"),
-   b("17h00", "Poser le sac à Tokyo", "Sur la Yamanote ou vers Haneda. Les dépachika de Ginza restent ouverts jusqu'à 20 h pour les derniers cadeaux.", 0, "stay"),
-   b("20h00", "Dernier izakaya", "Sans carte en anglais, avec des habitués. Le vol part tôt : ne pas traîner.", 3500, "eat"),
+   b("17h00", "Poser le sac à Tokyo", "Sur la Yamanote, à portée de Kappabashi et de Ginza. Haneda est à 45 minutes de là.", 0, "stay"),
+   b("19h30", "Retrouver la ville", "Après trois semaines de province et de montagne, Tokyo au retour ne ressemble pas à Tokyo à l'aller.", 2500, "eat"),
  ], note="La troisième nuit de Hakone sert à ça : ne pas enchaîner le Round Course, l'ancienne route et le retour sur Tokyo en deux jours."),
 
- j(21, "tokyo-fin", "Retour", [
-   b("05h45", "Lever", "<b>NH215 décolle à 9 h 50</b> : il n'y a pas de dernière matinée. C'est la raison de redescendre dormir à Tokyo : depuis Hakone, ce vol aurait été injouable.", 0, "rest"),
+ j(22, "tokyo-fin", "Kappabashi, et le reste", [
+   b("09h00", "Kappabashi", "La rue des fournisseurs de restaurants, entre Ueno et Asakusa. Couteaux forgés, moules à pâtisserie, vaisselle au kilo, répliques de plats en résine. <b>C'est là qu'on achète un couteau qui durera trente ans</b>, gravé à son nom devant soi — et il faut du temps pour choisir, d'où cette journée.", 0, "see"),
+   b("12h00", "Déjeuner à Asakusa", "", 1500, "eat"),
+   b("13h30", "Senso-ji et Nakamise", "Le plus vieux temple de Tokyo, à dix minutes à pied. La grande lanterne, et la rue d'échoppes qui y mène.", 0, "walk"),
+   b("16h00", "Ameyoko", "Le marché sous les voies, à Ueno : ce qui reste du marché noir d'après-guerre. Épices, poisson séché, thés en vrac, et des vendeurs qui hèlent — le contraire du Japon feutré.", 1500, "see"),
+   b("19h00", "Un izakaya de Yanaka", "Sans carte en anglais, avec des habitués.", 3000, "eat"),
+ ], note="Les achats se font ici, pas le dernier jour : le vol part à 9 h 50 et Kappabashi n'ouvre qu'à 9 h."),
+
+ j(23, "tokyo-fin", "Le dernier jour", [
+   b("09h30", "Ce qu'on avait laissé", "Une matinée sans programme, la dernière. Le musée qu'on a raté, le quartier qu'on voulait revoir, ou rien du tout.", 0, "rest"),
+   b("13h00", "Dépachika", "Les sous-sols alimentaires des grands magasins de Ginza ou de Shinjuku. C'est là qu'on prend les cadeaux : thés, sucreries, sauces, emballés comme des bijoux. <b>Tout se garde plusieurs semaines</b>, contrairement à ce qu'on trouve à l'aéroport.", 0, "see"),
+   b("16h00", "Faire la valise", "Prévoir large à la pesée : Arita, Kappabashi et les dépachika laissent des traces. C'est le moment de savoir si l'option second bagage était une bonne idée.", 0, "stay"),
+   b("18h00", "Un dernier bain", "Le sento du quartier, à 550 ¥. Partir propre après trois semaines et demie.", 550, "rest"),
+   b("19h30", "Le dernier repas", "Celui qu'on s'était promis. Ne pas se coucher trop tard : lever à 5 h 45.", 4000, "eat"),
+ ], note="Journée délibérément vide. C'est ce que les trois nuits gagnées sur le vol ont acheté."),
+
+ j(24, "tokyo-fin", "Retour", [
+   b("05h45", "Lever", "<b>NH215 décolle à 9 h 50</b> : il n'y a pas de dernière matinée. Tout ce qu'on voulait rapporter a été acheté avant-hier à Kappabashi et hier aux dépachika.", 0, "rest"),
    b("06h50", "Yamanote puis monorail", "50 minutes jusqu'au terminal international. Les premiers trains partent vers 5 h.", 800, "move"),
    b("07h50", "Comptoir, puis détaxe", "Deux heures avant le vol. Si des achats ont été détaxés, le guichet des douanes est <b>avant</b> la sécurité et prend du temps.", 0, "move"),
    b("09h50", "Vol Haneda → Paris CDG", "<b>NH215</b>, direct, 14 h 40. Arrivée à Paris le même jour à 16 h 30 : on regagne les huit heures perdues à l'aller.", 0, "move"),
@@ -1018,9 +1041,9 @@ SUD_RESA = [
  r("L'option second bagage, sur le retour", "à la réservation, ou plus tard",
    "ANA n'inclut plus qu'<b>une pièce de 23 kg</b> au départ de Paris — vérifié sur un vol effectué en 2025. La seconde coûte un peu plus de 100 € <b>par trajet</b> : ne la prendre que sur le retour, quand la valise est pleine d'Arita et de Kappabashi."),
  r("Le ryokan de Hakone", "2 mois avant",
-   "Trois nuits, dont une avec bain privatif pour finir. Hakone est la station thermale de Tokyo : <b>la première nuit tombe un samedi</b>, la plus chère de la semaine — comparer avec une auberge simple ce soir-là et garder le ryokan pour le dimanche ou le lundi."),
+   "Trois nuits, dont une avec bain privatif pour finir. Hakone est la station thermale de Tokyo : les trois nuits tombent jeudi, vendredi et <b>samedi</b> — cette dernière est la plus chère : garder le ryokan avec bain privatif pour le jeudi ou le vendredi, et une auberge simple le samedi."),
  r("Le ryokan de Kurokawa", "3 mois avant",
-   "Une seule nuit, mais c'est la nuit du voyage. Les bonnes maisons partent tôt, et l'hiver est leur haute saison. <b>Sur ces dates elle tombe un vendredi</b> — comparer avec le jeudi, en inversant avec la journée de l'Aso.", True),
+   "Une seule nuit, mais c'est la nuit du voyage. Les bonnes maisons partent tôt, et l'hiver est leur haute saison. Sur ces dates elle tombe un <b>mardi</b>, au tarif de semaine.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
    "Sièges limités, et <b>annulée si la houle dépasse 50 cm</b> — l'hiver est la saison la plus agitée. Garder le jour 15 en repli."),
   r("Les hébergements", "2 mois avant", "Six réservations, dont deux fois la même à Tokyo. En solo, guesthouses et business hotels se trouvent tard — sauf Kurokawa."),
@@ -1029,12 +1052,12 @@ SUD_RESA = [
 ]
 
 SUD_BUDGET = [
- ("Vol A/R", "ANA direct CDG–Haneda, <b>les deux vols intérieurs compris</b>. 1 × 23 kg inclus", 893),
+ ("Vol A/R", "ANA direct CDG–Haneda, <b>les deux vols intérieurs compris</b>. Relevé sur le tunnel ANA le 02/09/2026", 993),
  ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
- ("Hébergement", "20 nuits : guesthouses, un ryokan à Kurokawa, trois nuits à Hakone", 900),
- ("Transport", "131 € entre les étapes, 175 € d'excursions, le Hakone Freepass, 7 €/jour de local", 482),
- ("Nourriture", "35 € par jour", 735),
- ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine", 160),
+ ("Hébergement", "23 nuits : guesthouses, un ryokan à Kurokawa, trois nuits à Hakone", 1024),
+ ("Transport", "131 € entre les étapes, 180 € d'excursions, le Hakone Freepass, 7 €/jour de local", 502),
+ ("Nourriture", "35 € par jour", 840),
+ ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine", 164),
  ("Divers", "eSIM, assurance, souvenirs", 200),
 ]
 
@@ -1043,7 +1066,7 @@ TRAMES.append({
  "deck": "En solo, sur la promotion ANA : trois nuits à Tokyo en arrivant, Kyushu du sud au nord — "
          "Kagoshima et son volcan en activité, l'Aso, Kurokawa, Nagasaki — puis Hakone, ses bains "
          "et le Fuji en face. Les deux vols offerts font les deux sauts, et aucun trajet n'est fait deux fois.",
- "nuits": 20, "depart": "2027-02-18", "trajet": "7 h 05", "par_pers": sum(x[2] for x in SUD_BUDGET),
+ "nuits": 23, "depart": "2027-02-15", "trajet": "7 h 05", "par_pers": sum(x[2] for x in SUD_BUDGET),
  "vol": {"in": "HND", "out": "HND"}, "vols": True, "solo": True,
  "etapes": SUD_ETAPES, "jours": SUD_JOURS, "resa": SUD_RESA, "budget": SUD_BUDGET,
  "carte": ('[{id:"tokyo",nights:4,anchor:"e"},{id:"kagoshima",nights:3,air:true,anchor:"w"},'
