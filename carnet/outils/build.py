@@ -112,6 +112,7 @@ def main():
             "nuits": t["nuits"], "trajet": t["trajet"],
             "par_pers": sum(b[2] for b in t["budget"]),
             "vols": t.get("vols", False), "solo": t.get("solo", False),
+            "depart": t.get("depart"),
             "etapes": t["etapes"], "jours": t["jours"], "resa": t["resa"],
             "budget": t["budget"],
         })

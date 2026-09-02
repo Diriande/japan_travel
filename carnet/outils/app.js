@@ -50,6 +50,12 @@ function save() {
 function T() { return DATA.trames.filter(function (t) { return t.id === S.trame; })[0]; }
 function etape(t, id) { return t.etapes.filter(function (e) { return e.id === id; })[0]; }
 function esc(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function dateDuJour(t, n) {
+  if (!t.depart) return "";
+  var d = new Date(t.depart + "T12:00:00");
+  d.setDate(d.getDate() + n - 1);
+  return d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" });
+}
 function eur(n) { return Math.round(n).toLocaleString("fr-FR") + " €"; }
 function yen(n) { return "¥" + Math.round(n).toLocaleString("fr-FR"); }
 
@@ -69,7 +75,7 @@ function vVoyage() {
     (t.solo ? cell("Par jour", eur(t.par_pers / (t.nuits + 1)))
             : cell("À trois", eur(t.par_pers * 3))) +
     cell("Nuits", String(t.nuits)) +
-    cell("Trajet", t.trajet) +
+    (t.depart ? cell("Dates", dateDuJour(t, 1) + " → " + dateDuJour(t, t.nuits + 1)) : cell("Trajet", t.trajet)) +
     (t.solo ? cell("Étapes", String(t.etapes.length))
             : cell("Sous le plafond", eur(3000 - t.par_pers))) + '</div>';
 
@@ -164,7 +170,8 @@ function bloc(t, d) {
   var h = '<article class="day' + (ouv ? ' open' : '') + (fini ? ' done' : '') + '" data-day="' + d.n + '">' +
     '<button class="dh" data-open="' + d.n + '" aria-expanded="' + (ouv ? "true" : "false") + '">' +
     '<span class="dn">J' + d.n + '</span><span class="dt"><span class="t">' + d.titre + '</span>' +
-    '<span class="s">' + e.nom + ' · ' + d.blocs.length + ' moments' +
+    '<span class="s">' + (dateDuJour(t, d.n) ? dateDuJour(t, d.n) + ' · ' : '') +
+    e.nom + ' · ' + d.blocs.length + ' moments' +
     (cout ? ' · ' + yen(cout) : '') + (barres ? ' · ' + barres + ' barré' + (barres > 1 ? 's' : '') : '') +
     '</span></span>' + I.chev + '</button><div class="dbody">';
 
