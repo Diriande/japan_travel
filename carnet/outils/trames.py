@@ -1087,3 +1087,68 @@ TRAMES.append({
            '{from:"kumamoto",to:"aso",anchor:"n"},{from:"kumamoto",to:"kurokawa",anchor:"e"},'
            '{from:"fukuoka",to:"arita",anchor:"w"},{from:"tokyo",to:"hakone",anchor:"s"}]',
            '{in:"HND",out:"HND"}, hops:[{from:"fukuoka",to:"tokyo"}]')})
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  6 · Le février des lanternes — même trame, décalée de deux semaines
+#      Départ le 1er février : le vol tombe à 893 €, et Nagasaki
+#      coïncide avec son festival des lanternes (5 au 21 février 2027).
+# ══════════════════════════════════════════════════════════════════════
+
+LANT_BLOCS = {
+ 11: b("20h30", "Les lanternes, premier soir", "Le festival a commencé le 5 février. <b>Quinze mille lanternes chinoises</b> couvrent la ville — le quartier chinois de Shinchi, le pont aux lunettes, l'arcade de Hamanomachi. Celles du canal se reflètent dans l'eau, et le Megane-bashi fait alors quatre cercles au lieu de deux.", 0, "see"),
+ 12: b("19h00", "Minato Park", "Après la journée du musée, le contrepoint exact : les grands objets d'art du festival, dragons et divinités de dix mètres montés sur le port, et une scène où se succèdent danses du lion et changeurs de masques — un acteur retourne son visage en une fraction de seconde, sept fois de suite.", 0, "see"),
+ 13: b("20h00", "La danse du dragon", "Dix porteurs font onduler un dragon de vingt mètres au bout de perches, en poursuivant une boule qui figure la lune. C'est le <b>jaodori</b>, hérité des marchands chinois de Dejima, et il se donne plusieurs fois par soir pendant le festival.", 0, "see"),
+ 14: b("20h00", "Dernier tour des lanternes", "Le parc Chuo et l'ancien temple Kofuku-ji, le premier temple chinois du Japon, fondé en 1620. C'est la dernière soirée avant de remonter vers Fukuoka.", 0, "walk"),
+}
+
+
+def avec_lanternes(jours):
+    """La même trame, mais les soirées de Nagasaki tombent pendant le festival."""
+    out = []
+    for d in jours:
+        d = dict(d)
+        if d["n"] in LANT_BLOCS:
+            d["blocs"] = list(d["blocs"]) + [LANT_BLOCS[d["n"]]]
+            if d["n"] == 11:
+                d["note"] = ("Le <b>festival des lanternes</b> se tient du 5 au 21 février 2027, "
+                             "dix-sept jours. Vos quatre nuits tombent dedans. Les illuminations "
+                             "s'allument vers 17 h et s'éteignent à 22 h.")
+        out.append(d)
+    return out
+
+
+LANT_ETAPES = [dict(e, resume=(
+    "Quatre nuits pendant le festival des lanternes." if e["id"] == "nagasaki" else e["resume"]))
+    for e in SUD_ETAPES]
+
+LANT_RESA = [
+ r("Le billet ANA, départ le 1er février", "<b>avant le 30 septembre 2026</b>",
+   "<b>893 € au lieu de 993 €</b> sur ces dates — c'est l'exemple que le deal annonçait. Mêmes segments : "
+   "Haneda → Kagoshima et Fukuoka → Haneda dans la même réservation, par « Rechercher plusieurs villes ».", True),
+ r("Les hôtels de Nagasaki", "<b>4 à 5 mois avant</b>",
+   "C'est le prix à payer pour le festival : la ville se remplit sur ces dix-sept jours et les tarifs montent "
+   "de dix à vingt euros la nuit. <b>À réserver avant tout le reste de Kyushu.</b>", True),
+] + [x for x in SUD_RESA if "ANA" not in x["quoi"]]
+
+LANT_BUDGET = [
+ ("Vol A/R", "ANA direct CDG–Haneda, deux vols intérieurs compris. <b>Tarif du 1er février</b>", 893),
+ ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
+ ("Hébergement", "23 nuits, dont quatre à Nagasaki <b>en période de festival</b>", 1084),
+ ("Transport", "131 € entre les étapes, 180 € d'excursions, le Hakone Freepass, 7 €/jour de local", 502),
+ ("Nourriture", "35 € par jour", 840),
+ ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine. <b>Le festival est gratuit</b>", 164),
+ ("Divers", "eSIM, assurance, souvenirs", 200),
+]
+
+TRAMES.append({
+ "id": "lanternes", "nom": "Le février des lanternes", "kanji": "灯",
+ "deck": "La même trame, décalée de deux semaines. Le vol tombe à 893 €, et les quatre nuits de Nagasaki "
+         "coïncident avec son festival des lanternes — quinze mille lampions chinois dans toute la ville, "
+         "dix-sept jours par an. En échange, les pruniers de Dazaifu ne seront qu'au début de leur floraison.",
+ "nuits": 23, "depart": "2027-02-02", "trajet": "7 h 05",
+ "par_pers": sum(x[2] for x in LANT_BUDGET),
+ "vol": {"in": "HND", "out": "HND"}, "vols": True, "solo": True,
+ "etapes": LANT_ETAPES, "jours": avec_lanternes(SUD_JOURS),
+ "resa": LANT_RESA, "budget": LANT_BUDGET,
+ "carte": TRAMES[-1]["carte"]})

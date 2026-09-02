@@ -29,6 +29,8 @@ TITRES = {
                "Quatre stations, du Kanto au sud, reliées par deux vols compris dans le billet."),
     "sud-nord": ("Tokyo, Kyushu,<br>et <em>Tokyo</em>", "Tokyo, Kyushu, Tokyo — en solo",
                "Six étapes, du sud volcanique au nord de l'île, sans jamais refaire un trajet."),
+    "lanternes": ("Le février<br>des <em>lanternes</em>", "Le février des lanternes — variante",
+               "La même trame décalée de deux semaines, pour tomber sur le festival de Nagasaki."),
 }
 
 # Dépenses courantes, enregistrées d'un geste. (libellé, yens, poste)
