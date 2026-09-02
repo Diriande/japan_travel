@@ -43,10 +43,12 @@ function buildMap(steps, excursions = [], opts = {}) {
     return `M${x1.toFixed(1)},${y1.toFixed(1)}Q${(mx - dy / len * bow).toFixed(1)},${(my + dx / len * bow).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`;
   };
 
-  let main = "";
+  let main = "", hop = "";
   for (let i = 0; i < pts.length - 1; i++) {
     const len = Math.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]) || 1;
-    main += arc(pts[i], pts[i + 1], Math.min(len * 0.15, w * 0.05));
+    const d = arc(pts[i], pts[i + 1], Math.min(len * 0.15, w * 0.05));
+    // steps[i+1].air : on rejoint cette étape en avion — tracé de vol, pas de rail
+    if (steps[i + 1].air) hop += d; else main += d;
   }
   let exc = "";
   for (const [a, b] of excPts) {
@@ -116,6 +118,7 @@ function buildMap(steps, excursions = [], opts = {}) {
   <g>${land}</g>
   <g opacity=".85">${water}</g>
   ${exc ? `<path d="${exc}" fill="none" stroke="var(--m-exc)" stroke-width="1.6" stroke-dasharray="4 4" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".9"/>` : ""}
+  ${hop ? `<path d="${hop}" fill="none" stroke="var(--m-air)" stroke-width="2" stroke-dasharray="1 5" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".95"/>` : ""}
   <path d="${main}" fill="none" stroke="var(--m-route)" stroke-width="2.4" stroke-dasharray="7 6" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
   ${planes}${excMarks}${marks}
 </svg>`;

@@ -106,6 +106,7 @@ function vVoyage() {
     '<span class="li"><span class="sw" style="background:var(--m-route)"></span> le fil du voyage</span>' +
     '<span class="li"><span class="sw" style="background:var(--m-exc)"></span> excursion depuis la base</span>' +
     '<span class="li"><span class="sw" style="background:var(--m-air)"></span> arrivée et départ</span>' +
+    (t.vols ? '<span class="li"><span class="sw" style="background:var(--m-air);opacity:.6"></span> vol intérieur compris dans le billet</span>' : '') +
     '</div></div></section>';
 
   h += '<section><p class="eyebrow">Ce que ça coûte</p><h2>Le <em>budget</em></h2>' +
@@ -192,6 +193,7 @@ function vCarte() {
     '<span class="li"><span class="sw" style="background:var(--m-route)"></span> le fil du voyage</span>' +
     '<span class="li"><span class="sw" style="background:var(--m-exc)"></span> excursion depuis la base</span>' +
     '<span class="li"><span class="sw" style="background:var(--m-air)"></span> arrivée et départ</span>' +
+    (t.vols ? '<span class="li"><span class="sw" style="background:var(--m-air);opacity:.6"></span> vol intérieur compris dans le billet</span>' : '') +
     '</div></div>';
 
   h += '<div class="grid g2" style="margin-top:26px">';
