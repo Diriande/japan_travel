@@ -774,7 +774,7 @@ TK_RESA = [
  r("Le billet ANA avec la promotion TOKYO+", "<b>avant le 30 septembre 2026</b>",
    "La mise en vente ne dure qu'un mois. <b>Vérifier sur le tunnel la franchise bagages pour trois passagers</b> — le tableau officiel du passage de 2 à 1 pièce ne couvre que les départs du Japon, pas de Paris — et la durée de séjour maximale du tarif.", True),
  r("Les deux vols intérieurs", "à la réservation du billet",
-   "Haneda → Fukuoka et Kumamoto → Haneda, à demander <b>dans la même réservation</b>. Les aéroports d'entrée et de sortie peuvent différer : c'est ce qui rend cette trame possible.", True),
+   "Haneda → Fukuoka et Kumamoto → Haneda, à demander <b>dans la même réservation</b>. <b>Les deux aéroports intérieurs peuvent différer</b> — c'est l'itinéraire B donné en exemple par ANA : Tokyo → Fukuoka à l'aller, Hiroshima → Tokyo au retour, le trajet terrestre entre les deux restant à la charge du voyageur. Réserver via « <b>Rechercher plusieurs villes</b> », en saisissant les segments dans l'ordre et en terminant par le vol retour.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
    "Deux compagnies, sièges limités. <b>Annulée si la houle dépasse 50 cm</b>, et l'hiver est la saison la plus agitée — garder le jour 15 en repli.", True),
  r("L'option second bagage, sur le retour", "à la réservation, ou plus tard",
@@ -992,7 +992,7 @@ SUD_JOURS = sorted(
 
 SUD_RESA = [
  r("Le billet ANA avec la promotion TOKYO+", "<b>avant le 30 septembre 2026</b>",
-   "La mise en vente ne dure qu'un mois. Demander les deux vols intérieurs <b>dans la même réservation</b> : Haneda → Kagoshima et Fukuoka → Haneda. Les aéroports d'entrée et de sortie peuvent différer — c'est ce qui rend cette trame possible.", True),
+   "La mise en vente ne dure qu'un mois. Demander les deux vols intérieurs <b>dans la même réservation</b> : Haneda → Kagoshima et Fukuoka → Haneda. <b>Les deux aéroports intérieurs peuvent différer</b> — c'est l'itinéraire B donné en exemple par ANA : Tokyo → Fukuoka à l'aller, Hiroshima → Tokyo au retour, le trajet terrestre entre les deux restant à la charge du voyageur. Réserver via « <b>Rechercher plusieurs villes</b> », en saisissant les segments dans l'ordre et en terminant par le vol retour.", True),
  r("Les deux séjours à Tokyo", "à la réservation",
    "Trois nuits à l'aller et trois au retour : <b>la formule passe</b> — elle a déjà été réservée telle quelle sur cette même offre l'an dernier. C'est la logique du produit : les vols internationaux d'ANA arrivent à Tokyo, et le domestique sert à aller ailleurs. Demander simplement les deux segments dans la même réservation."),
  r("L'option second bagage, sur le retour", "à la réservation, ou plus tard",
