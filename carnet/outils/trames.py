@@ -838,7 +838,7 @@ SUD_ETAPES = [
    ["Basashi — le sashimi de cheval, dont Kumamoto est la capitale",
     "Karashi renkon, racine de lotus à la moutarde, frite",
     "Le dîner du ryokan de Kurokawa, servi en chambre"],
-   "Le plus grand cirque volcanique du monde, et la gorge de Takachiho."),
+   "Le plus grand cirque volcanique du monde, et deux jours sans rien courir."),
 
  e("nagasaki", "Nagasaki", "長崎", 4, 12, 16, "8–14 °C, la mer tempère",
    "Sur les pentes, vers Glover ou Dejima", 34, "vague", "soir",
@@ -898,23 +898,21 @@ SUD_JOURS = sorted(
    b("18h30", "Shochu", "Kagoshima en produit plus que toute autre région. Celui de patate douce se boit coupé d'eau chaude : l'eau d'abord, l'alcool ensuite.", 1500, "eat"),
  ]),
 
- j(6, "kagoshima", "Le sable brûlant et les samouraïs", [
-   b("08h20", "Train pour Ibusuki", "1 h 20 le long de la côte. Le Fuji de Satsuma — le Kaimondake, un cône parfait — apparaît à droite.", 1020, "move"),
-   b("10h00", "Le bain de sable", "On enfile un yukata, on s'allonge sur la plage, et <b>on vous enterre sous le sable chauffé par la source</b>, tête découverte. Dix minutes suffisent : le poids et la chaleur font transpirer comme rien d'autre. On se rince aux bains ensuite.", 1100, "rest"),
-   b("12h30", "Déjeuner", "Les nouilles somen qui tournent dans un bassin d'eau de source, à Tosenkyo — on les attrape au passage.", 1300, "eat"),
-   b("14h30", "Chiran", "1 h 15 de bus vers l'intérieur. <b>Sept jardins de samouraïs</b> le long d'une rue de haies taillées et de murs de pierre, entretenus par les familles qui y habitent toujours. On entre dans les jardins, pas dans les maisons.", 530, "see"),
-   b("16h30", "Le musée de la paix", "Chiran était la base d'où décollaient les pilotes kamikazes vers Okinawa. Le musée expose leurs dernières lettres, traduites. <b>C'est éprouvant</b>, et ça prépare ce que Nagasaki racontera.", 500, "see"),
-   b("19h00", "Retour sur Kagoshima", "", 1400, "move"),
- ], note="Longue journée et deux sujets lourds. Chiran se fait aussi seul, en demi-journée, si le moral n'y est pas."),
+ j(6, "kagoshima", "Le sable brûlant", [
+   b("09h20", "Train pour Ibusuki", "1 h 20 le long de la côte, sur la ligne Ibusuki-Makurazaki. Le Fuji de Satsuma — le Kaimondake, un cône parfait — apparaît à droite : c'est la moitié du plaisir de la journée.", 1020, "move"),
+   b("11h00", "Le bain de sable", "On enfile un yukata, on s'allonge sur la plage, et <b>on vous enterre sous le sable chauffé par la source</b>, tête découverte. Dix minutes suffisent : le poids et la chaleur font transpirer comme rien d'autre. On se rince aux bains ensuite.", 1100, "rest"),
+   b("13h00", "Déjeuner", "Les nouilles somen qui tournent dans un bassin d'eau de source, à Tosenkyo — on les attrape au passage.", 1300, "eat"),
+   b("15h00", "Le lac Ikeda, ou rien", "Un cratère rempli d'eau à vingt minutes, avec le Kaimondake derrière. Ou bien on reste sur la plage : la journée est courte exprès.", 0, "rest"),
+   b("17h30", "Retour sur Kagoshima", "", 1020, "move"),
+ ], note="Journée volontairement légère : trois heures de train aller-retour, et rien d'autre à courir."),
 
- j(7, "kagoshima", "Kirishima", [
-   b("07h30", "Train puis bus pour Kirishima", "1 h 40. Le premier parc national du Japon, créé en 1934, à cheval sur une vingtaine de cônes volcaniques.", 1800, "move"),
-   b("09h30", "Le Karakuni-dake", "Le plus haut du massif, 1 700 m. Trois heures aller-retour depuis Ebino, sur des pentes de scories nues, avec le cratère bleu du lac Onami en contrebas. <b>Vérifier le niveau d'alerte volcanique la veille</b> : plusieurs sommets ferment par périodes.", 0, "walk"),
-   b("13h00", "Déjeuner au refuge d'Ebino", "", 1200, "eat"),
-   b("14h30", "Kirishima-jingu", "Un sanctuaire vermillon dans la forêt de cryptomères, dédié au petit-fils de la déesse du soleil — qui selon le mythe est descendu sur ces montagnes fonder le Japon. C'est le berceau, littéralement.", 0, "see"),
-   b("16h00", "Les bains de Kirishima", "Eaux laiteuses et soufrées, plusieurs auberges ouvrent leurs bains à la journée.", 800, "rest"),
-   b("18h30", "Retour", "", 1800, "move"),
- ], note="Marche exigeante mais sans difficulté technique — le genre de journée qu'un voyage à trois ne permettait pas. Par mauvais temps, replier sur les gorges de Sogi."),
+ j(7, "kagoshima", "Chiran", [
+   b("09h30", "Bus pour Chiran", "1 h 15 vers l'intérieur, à travers les plantations de thé — Kagoshima est le deuxième producteur du pays après Uji.", 950, "move"),
+   b("11h00", "Les jardins de samouraïs", "<b>Sept jardins alignés</b> le long d'une rue de haies taillées et de murs de pierre, entretenus par les familles qui y habitent toujours. On entre dans les jardins, pas dans les maisons — et on prend le temps, ils sont petits et se regardent assis.", 530, "see"),
+   b("13h00", "Déjeuner au village", "Soba de sarrasin, et le thé de Chiran, qu'on sert partout ici.", 1200, "eat"),
+   b("14h30", "Le musée de la paix", "Chiran était la base d'où décollaient les pilotes kamikazes vers Okinawa. Le musée expose leurs dernières lettres, traduites. <b>C'est éprouvant</b>, et ça prépare ce que Nagasaki racontera dans une semaine.", 500, "see"),
+   b("17h00", "Retour", "", 950, "move"),
+ ], note="Option pour qui veut de la montagne : le <b>Kirishima</b> et le Karakuni-dake, 1 700 m, trois heures de marche sur des pentes de scories — mais 3 h 20 de bus dans la journée, et il faut vérifier le niveau d'alerte volcanique."),
 
  j(8, "kumamoto", "Remonter d'un cran", [
    b("09h00", "Shinkansen Sakura jusqu'à Kumamoto", "50 minutes. Le seul long trajet du voyage qui ne soit pas un vol offert.", 6000, "move"),
@@ -937,14 +935,13 @@ SUD_JOURS = sorted(
    b("20h30", "Les yuakari", "De décembre à mars, le village allume chaque soir des <b>lanternes de bambou tressé</b> le long de la rivière. C'est la raison de venir l'hiver plutôt qu'à l'automne, et elle suffit.", 0, "walk"),
  ], note="Dates des yuakari à confirmer auprès du syndicat d'initiative : elles bougent d'une année sur l'autre."),
 
- j(11, "kumamoto", "Takachiho", [
-   b("07h30", "Bain du matin", "Le bain extérieur avant le petit déjeuner, quand il gèle encore. C'est pour ça qu'on vient l'hiver.", 0, "rest"),
-   b("09h30", "Bus pour Takachiho", "2 h par la route de montagne. La gorge est au cœur de la mythologie japonaise : c'est ici que la déesse du soleil se serait cachée dans une grotte, plongeant le monde dans le noir.", 2500, "move"),
-   b("12h00", "La gorge en barque", "Des <b>orgues basaltiques</b> de quatre-vingts mètres, taillées dans une coulée de lave refroidie, et la chute de Manai qui tombe dedans. On rame soi-même, trente minutes. <b>Réserver un créneau en ligne</b> : les barques partent complètes.", 4100, "walk"),
-   b("14h00", "Déjeuner", "Nagashi-somen, les nouilles qui descendent dans une gouttière de bambou.", 1300, "eat"),
-   b("15h30", "Amano Iwato", "Le sanctuaire de la grotte, et un lit de rivière où les visiteurs empilent des milliers de cairns. Sombre et sérieux, très différent du reste.", 0, "see"),
-   b("20h00", "Kagura", "<b>Tous les soirs à 20 h</b>, quatre danses du cycle sacré sont jouées au sanctuaire, une heure. Les villages alentour en donnent la version complète — trente-trois danses, toute la nuit — de novembre à février.", 1000, "see"),
- ], note="Journée dense et longue en bus. Dormir à Takachiho et rejoindre Nagasaki le lendemain est une variante plus douce."),
+ j(11, "kumamoto", "Redescendre à son rythme", [
+   b("07h30", "Bain du matin", "Le bain extérieur avant le petit déjeuner, quand il gèle encore. C'est pour ça qu'on vient l'hiver, et c'est la meilleure demi-heure du voyage.", 0, "rest"),
+   b("10h00", "Le village au réveil", "Les boutiques ouvrent tard. Une heure à flâner le long de la rivière, un café dans une maison de bois, la boutique de pâtisseries au marron.", 800, "walk"),
+   b("12h30", "Bus vers Kumamoto", "2 h 30 en redescendant l'Aso. Se placer à droite : la caldeira défile pendant une heure.", 3000, "move"),
+   b("15h30", "Kumamoto, l'après-midi libre", "Le quartier de Kamitori sous ses arcades, un café, la librairie. <b>Une après-midi sans programme au milieu du voyage</b>, c'est délibéré.", 0, "rest"),
+   b("19h00", "Ramen de Kumamoto", "À l'ail noir grillé, plus épais que celui de Fukuoka.", 1200, "eat"),
+ ], note="<b>Takachiho a été retiré de la trame</b> : quatre heures de car aller-retour pour trente minutes de barque, c'est le plus mauvais rapport du voyage. Si les gorges te tentent quand même, cette journée est celle où les caser — en partant à 7 h."),
 
  j(12, "nagasaki", "La fenêtre du Japon fermé", [
    b("09h30", "Train jusqu'à Nagasaki", "1 h 55 avec un changement à Shin-Tosu, sur la ligne à grande vitesse ouverte en 2022.", 9100, "move"),
@@ -1004,26 +1001,25 @@ SUD_RESA = [
    "Une seule nuit, mais c'est la nuit du voyage. Les bonnes maisons partent tôt, et l'hiver est leur haute saison.", True),
  r("La sortie à Gunkanjima", "2 mois avant",
    "Sièges limités, et <b>annulée si la houle dépasse 50 cm</b> — l'hiver est la saison la plus agitée. Garder le jour 15 en repli."),
- r("La barque des gorges de Takachiho", "1 mois avant", "Créneau à réserver en ligne : elles partent complètes, même hors saison."),
- r("Les hébergements", "2 mois avant", "Six réservations, dont deux fois la même à Tokyo. En solo, guesthouses et business hotels se trouvent tard — sauf Kurokawa."),
+  r("Les hébergements", "2 mois avant", "Six réservations, dont deux fois la même à Tokyo. En solo, guesthouses et business hotels se trouvent tard — sauf Kurokawa."),
  r("L'atelier de porcelaine à Arita", "3 semaines avant", "La pièce est cuite après le départ et expédiée : compter un mois."),
- r("Alerte volcanique du Kirishima et cratère de l'Aso", "le matin même", "Les deux ferment sans préavis. Le parc national publie les niveaux chaque jour."),
+ r("État du cratère de l'Aso", "le matin même", "Il ferme sans préavis selon les gaz, et par neige. Le parc national publie le niveau chaque jour."),
 ]
 
 SUD_BUDGET = [
  ("Vol A/R", "ANA direct CDG–Haneda, <b>les deux vols intérieurs compris</b>. 1 × 23 kg inclus", 893),
  ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
  ("Hébergement", "22 nuits en solo : guesthouses, plus une nuit de ryokan à Kurokawa", 848),
- ("Transport", "131 € entre les étapes, 295 € d'excursions, 7 €/jour de local", 587),
+ ("Transport", "131 € entre les étapes, 218 € d'excursions, 7 €/jour de local", 510),
  ("Nourriture", "35 € par jour", 805),
- ("Activités", "Entrées, Gunkanjima, bain de sable, Takachiho, atelier de porcelaine", 200),
+ ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine", 172),
  ("Divers", "eSIM, assurance, souvenirs", 200),
 ]
 
 TRAMES.append({
  "id": "sud-nord", "nom": "Tokyo, Kyushu, Tokyo", "kanji": "南",
  "deck": "En solo, sur la promotion ANA : trois nuits à Tokyo en arrivant, Kyushu du sud au nord — "
-         "Kagoshima et son volcan en activité, l'Aso, Takachiho, Nagasaki — puis trois nuits à Tokyo "
+         "Kagoshima et son volcan en activité, l'Aso, Kurokawa, Nagasaki — puis trois nuits à Tokyo "
          "en repartant. Les deux vols offerts font les deux sauts, et aucun trajet n'est fait deux fois.",
  "nuits": 22, "trajet": "5 h 15", "par_pers": sum(x[2] for x in SUD_BUDGET),
  "vol": {"in": "HND", "out": "HND"}, "vols": True, "solo": True,
@@ -1031,7 +1027,7 @@ TRAMES.append({
  "carte": ('[{id:"tokyo",nights:6,anchor:"e"},{id:"kagoshima",nights:4,air:true,anchor:"w"},'
            '{id:"kumamoto",nights:4,anchor:"e"},{id:"nagasaki",nights:4,anchor:"w"},'
            '{id:"fukuoka",nights:4,anchor:"n"}]',
-           '[{from:"kagoshima",to:"ibusuki",anchor:"s"},{from:"kagoshima",to:"kirishima",anchor:"e"},'
-           '{from:"kumamoto",to:"aso",anchor:"n"},{from:"kumamoto",to:"takachiho",anchor:"e"},'
+           '[{from:"kagoshima",to:"ibusuki",anchor:"s"},{from:"kagoshima",to:"chiran",anchor:"w"},'
+           '{from:"kumamoto",to:"aso",anchor:"n"},{from:"kumamoto",to:"kurokawa",anchor:"e"},'
            '{from:"fukuoka",to:"arita",anchor:"w"},{from:"tokyo",to:"nikko",anchor:"e"}]',
            '{in:"HND",out:"HND"}, hops:[{from:"fukuoka",to:"tokyo"}]')})
