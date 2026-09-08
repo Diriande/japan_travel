@@ -65,3 +65,23 @@ Kikuchi comme journée de marche depuis Kumamoto.
 Yufuin, les ponts suspendus, les cascades — et vers **Miyazaki**. Ce sont les deux préfectures
 que la trame évite, faute de temps. Les atteindre supposerait de remplacer Nagasaki ou de
 transformer Kurokawa en étape de deux ou trois nuits, ouvrant sur Yufuin.
+
+## Deux voyages, pas un
+
+La liste d'ANA rend visible ce que la géographie de l'île impose déjà : **Kyushu se coupe en
+deux le long de l'axe Aso–Kurokawa**, et chaque moitié tient un voyage entier.
+
+| | **Ouest** — la trame actuelle | **Est** — un second voyage |
+|---|---|---|
+| Bases | Fukuoka, Nagasaki, Kumamoto | Beppu ou Yufuin, Takachiho, Miyazaki |
+| Le sujet | L'ouverture au monde : Dejima et les Hollandais, la porcelaine d'Arita née de potiers coréens, les chrétiens cachés, Gunkanjima, la bombe | La montagne et l'eau : les enfers de Beppu, le lac Kinrin, les ponts suspendus, les cascades de Harajiri et de Ryumon, les gorges de Takachiho et la mythologie shinto |
+| Randonnées | l'Aso, le Fugendake, Kikuchi | Kokonoe, Yabakei, Aya, Umagase |
+| Artisanat | **Arita, Imari** | Beppu et sa vannerie de bambou |
+| Entrée / sortie | Fukuoka ou Kagoshima | Oita ou Miyazaki, tous deux desservis par ANA |
+
+Les deux se recouvrent seulement sur l'Aso et Kurokawa, qui sont à la charnière — c'est
+d'ailleurs pourquoi une étape allongée à Kurokawa suffirait à goûter l'est sans le faire.
+
+**Conséquence pratique** : inutile de chercher à tout caser. La promotion TOKYO+ dessert aussi
+bien Oita et Miyazaki que Kagoshima et Fukuoka, au même tarif — le second voyage se fera dans
+les mêmes conditions que le premier, quand il viendra.
