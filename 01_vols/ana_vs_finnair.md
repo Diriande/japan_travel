@@ -59,6 +59,11 @@ dates — les deux vols intérieurs y valent 279 à 321 € à eux seuls.
 
 À bagages égaux (Finnair en inclut deux), la comparaison honnête est la ligne « ANA + option ».
 
+> **Réserve pratique.** Le multi-destination n'est pas simple à obtenir sur le tunnel Finnair —
+> le formulaire ne l'expose pas aussi clairement que le « Rechercher plusieurs villes » d'ANA.
+> Un avantage tarifaire qui demande une heure de manipulation, ou un appel, n'est pas tout à
+> fait le même qu'un avantage disponible en trois clics. À prix voisin, l'exécution compte.
+
 ## Le piège du tarif à deux bagages
 
 Passer au tarif supérieur pour obtenir la seconde pièce coûte **+237,52 €**. Acheter la
