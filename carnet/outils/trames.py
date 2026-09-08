@@ -316,7 +316,7 @@ KYUSHU_ETAPES = [
    ["Basashi — le sashimi de cheval, spécialité locale, à goûter ou non",
     "Karashi renkon, racine de lotus fourrée à la moutarde et frite",
     "Le ramen de Kumamoto, à l'ail noir"],
-   "Le plus grand cirque volcanique du monde, à une heure."),
+   "Le plus grand cirque volcanique du monde, une cascade qu'on traverse, et Kurokawa."),
 ]
 
 KYUSHU_JOURS = (
@@ -395,10 +395,12 @@ KYUSHU_JOURS = (
  j(13, "nagasaki", "Unzen, ou la ville", [
    b("08h30", "Bus pour Unzen", "1 h 40 par la péninsule de Shimabara.", 1850, "move"),
    b("10h30", "Les Enfers d'Unzen", "Des fumerolles en plein village, avec des passerelles entre les évents. C'est là qu'on a exécuté des chrétiens en les ébouillantant au XVIIᵉ — le lieu porte les deux histoires.", 0, "walk"),
-   b("12h30", "Déjeuner et bain", "Les auberges du village ouvrent leurs bains à la journée.", 2200, "rest"),
-   b("15h00", "Retour sur Nagasaki", "", 1850, "move"),
+   b("12h00", "Déjeuner au village", "", 1600, "eat"),
+   b("13h00", "Le plateau de Nita et le Fugendake", "Téléphérique jusqu'à 1 300 m, puis <b>une heure de sentier de crête</b> jusqu'au belvédère du Fugendake. Dénivelé modéré, marches de pierre, et par temps clair la mer d'Ariake d'un côté, le dôme de lave né de l'éruption de 1991 de l'autre — le plus jeune sommet du Japon.", 1500, "walk"),
+   b("15h30", "Un bain avant de redescendre", "Les auberges du village ouvrent leurs bains à la journée, et on en a besoin.", 900, "rest"),
+   b("16h30", "Retour sur Nagasaki", "", 1850, "move"),
    b("18h00", "Shippoku, si l'envie est là", "La table sino-portugaise de Nagasaki, servie à partager sur un plateau rond — ce qui, au Japon, ne se fait nulle part ailleurs. Se réserve à trois minimum, donc c'est jouable.", 5000, "eat"),
- ], note="Variante si la sortie à Gunkanjima a été annulée la veille : c'est le jour de repli."),
+ ], note="Variante si la sortie à Gunkanjima a été annulée la veille : c'est le jour de repli. Le sentier du Fugendake se fait aussi par temps couvert — mais il ferme si le niveau d'alerte volcanique monte, à vérifier le matin."),
 
  j(14, "kumamoto", "Le château qui se relève", [
    b("10h00", "Shinkansen via Fukuoka", "1 h 55 avec un changement à Hakata.", 9100, "move"),
@@ -412,16 +414,19 @@ KYUSHU_JOURS = (
    b("08h00", "Train pour Aso", "1 h 20 par la ligne de Hohi, qui monte dans la caldeira.", 1130, "move"),
    b("09h30", "Entrer dans le cirque", "<b>Le plus grand cirque volcanique du monde</b> : 25 km sur 18, avec quarante mille personnes qui vivent dedans, des villages, des routes et des rizières. Le rebord se voit de partout.", 0, "see"),
    b("10h30", "Le Nakadake", "Le cratère actif, fumant, qu'on approche en car jusqu'au bord. <b>L'accès ferme sans préavis</b> selon les gaz — vérifier le matin même sur le site du parc.", 1200, "see"),
-   b("12h30", "Déjeuner à Kusasenri", "La prairie d'altitude, avec des chevaux en liberté et un ancien cratère devenu étang.", 1400, "eat"),
-   b("14h00", "Le Komezuka", "Une colline conique parfaite, un cône de scories de cent mètres, avec une entaille au sommet — la légende dit qu'un dieu y a puisé du riz pour les affamés.", 0, "walk"),
-   b("16h00", "Retour", "", 1130, "move"),
+   b("12h00", "Déjeuner à Kusasenri", "La prairie d'altitude, avec des chevaux en liberté et un ancien cratère devenu étang.", 1400, "eat"),
+   b("13h00", "Le tour de Kusasenri, à pied", "<b>Une heure et demie de prairie à 1 100 m</b>, presque plate, autour de l'étang, avec le Nakadake qui fume en face et les chevaux qui pâturent librement. C'est la marche la plus facile du massif et la plus ouverte — rien ne cache la vue.", 0, "walk"),
+   b("14h45", "Le Komezuka", "Un cône de scories de cent mètres, parfait, avec une entaille au sommet : la légende dit qu'un dieu y a puisé du riz pour les affamés. On en fait le tour par la base, vingt minutes.", 0, "walk"),
+   b("15h30", "Le Daikanbo", "Le belvédère du rebord nord, à 936 m. <b>De là on embrasse la caldeira entière</b> — 25 km sur 18 — et la ligne des cinq sommets centraux, que les Japonais lisent comme un bouddha couché. Un sentier de crête court sur le rebord, à plat.", 0, "walk"),
+   b("17h00", "Retour", "", 1130, "move"),
  ], note="Alternative si le cratère est fermé : Takachiho et ses gorges, où l'on descend une barque entre des orgues basaltiques sous une cascade. Trois heures de route, donc journée pleine."),
 
  j(16, "kumamoto", "Kurokawa", [
    b("09h00", "Bus pour Kurokawa Onsen", "2 h 30 à travers l'Aso. Un village thermal qui a refusé les néons et les grands hôtels : bois, pierre, lanternes, et une rivière au milieu.", 3000, "move"),
    b("12h00", "Le passeport des bains", "Un jeton de bois donne accès à <b>trois bains extérieurs au choix</b> parmi vingt-quatre, répartis dans les auberges du village. On circule en yukata d'un bain à l'autre.", 1500, "rest"),
    b("13h30", "Déjeuner au village", "", 1800, "eat"),
-   b("17h00", "Retour à Kumamoto", "", 3000, "move"),
+   b("15h00", "Nabegataki", "Vingt minutes de route vers Oguni. Une cascade large de vingt mètres et haute de dix, dont le rideau tombe en avant d'une cavité creusée par l'eau : <b>on passe derrière, à sec</b>, et on la regarde de l'intérieur. Le matin, la lumière traverse la nappe et pose un arc dans les embruns.", 300, "see"),
+   b("17h30", "Retour à Kumamoto", "", 3000, "move"),
    b("19h30", "Dernier dîner", "", 4000, "eat"),
  ]),
 
@@ -448,7 +453,7 @@ KYUSHU_BUDGET = [
  ("Hébergement", "16 nuits en chambre à trois, aucune nuit de montagne", 428),
  ("Transport", "265 € de trajets et d'excursions, 7 €/jour de local", 377),
  ("Nourriture", "40 € par jour et par personne", 680),
- ("Activités", "Entrées, Gunkanjima, atelier de porcelaine", 132),
+ ("Activités", "Entrées, Gunkanjima, Nabegataki, téléphérique d'Unzen, atelier de porcelaine", 145),
  ("Divers", "eSIM, assurance, souvenirs", 100),
 ]
 
@@ -673,7 +678,7 @@ TK_ETAPES = [
    ["Basashi — le sashimi de cheval, spécialité locale",
     "Karashi renkon, racine de lotus à la moutarde, frite",
     "Le ramen de Kumamoto, à l'ail noir"],
-   "Le plus grand cirque volcanique du monde, à une heure."),
+   "Le plus grand cirque volcanique du monde, une cascade qu'on traverse, et Kurokawa."),
 ]
 
 TK_JOURS = sorted(
@@ -791,7 +796,7 @@ TK_BUDGET = [
  ("Hébergement", "18 nuits en chambre à trois, aucune nuit de montagne", 489),
  ("Transport", "95 € entre les étapes, 164 € d'excursions, 7 €/jour de local", 392),
  ("Nourriture", "40 € par jour et par personne", 760),
- ("Activités", "Entrées, Gunkanjima, atelier de porcelaine", 145),
+ ("Activités", "Entrées, Gunkanjima, Nabegataki, téléphérique d'Unzen, atelier de porcelaine", 158),
  ("Divers", "eSIM, assurance, souvenirs", 200),
 ]
 
@@ -837,7 +842,7 @@ SUD_ETAPES = [
    ["Basashi — le sashimi de cheval, dont Kumamoto est la capitale",
     "Karashi renkon, racine de lotus à la moutarde, frite",
     "Le dîner du ryokan de Kurokawa, servi en chambre"],
-   "Le plus grand cirque volcanique du monde, et deux jours sans rien courir."),
+   "Le cirque volcanique, une cascade qu'on traverse, et deux jours sans rien courir."),
 
  e("nagasaki", "Nagasaki", "長崎", 4, 11, 15, "8–14 °C, la mer tempère",
    "Sur les pentes, vers Glover ou Dejima", 34, "vague", "soir",
@@ -938,7 +943,8 @@ SUD_JOURS = sorted(
    b("09h00", "Bus pour Kurokawa Onsen", "2 h 30 à travers l'Aso. Un village thermal qui a refusé les néons et les grands hôtels : bois, pierre, lanternes, et une rivière au milieu.", 3000, "move"),
    b("12h00", "Le passeport des bains", "Un jeton de bois donne accès à <b>trois bains extérieurs au choix</b> parmi vingt-quatre, répartis dans les auberges. On circule en yukata de l'un à l'autre.", 1500, "rest"),
    b("14h00", "Déjeuner au village", "", 1800, "eat"),
-   b("16h00", "Poser ses affaires au ryokan", "<b>La nuit à ne pas économiser du voyage.</b> Demi-pension, futon au sol. C'est le seul hébergement cher de la trame, et il le vaut.", 0, "stay"),
+   b("15h00", "Nabegataki", "Vingt minutes de route vers Oguni. Une cascade large de vingt mètres et haute de dix, dont le rideau tombe en avant d'une cavité creusée par l'eau : <b>on passe derrière, à sec</b>, et on la regarde de l'intérieur. Le matin, la lumière traverse la nappe et pose un arc dans les embruns.", 300, "see"),
+   b("17h00", "Poser ses affaires au ryokan", "<b>La nuit à ne pas économiser du voyage.</b> Demi-pension, futon au sol. C'est le seul hébergement cher de la trame, et il le vaut.", 0, "stay"),
    b("18h30", "Le dîner de la maison", "Une dizaine de petits plats de montagne : truite, légumes sauvages, bœuf de Kumamoto.", 0, "eat"),
    b("20h30", "Les yuakari", "De décembre à mars, le village allume chaque soir des <b>lanternes de bambou tressé</b> le long de la rivière. C'est la raison de venir l'hiver plutôt qu'à l'automne, et elle suffit.", 0, "walk"),
  ], note="Dates des yuakari à confirmer auprès du syndicat d'initiative : elles bougent d'une année sur l'autre. Sur ces dates la nuit tombe un <b>mardi</b> : c'est le tarif de semaine, le plus bas, et le village est à peu près vide."),
@@ -1140,7 +1146,7 @@ LANT_BUDGET = [
  ("Hébergement", "23 nuits, dont quatre à Nagasaki <b>en période de festival</b> : +28 %, mesuré à cinq mois", 1056),
  ("Transport", "131 € entre les étapes, 180 € d'excursions, le Hakone Freepass, 7 €/jour de local", 502),
  ("Nourriture", "35 € par jour", 840),
- ("Activités", "Entrées, Gunkanjima, bain de sable, atelier de porcelaine. <b>Le festival est gratuit</b>", 164),
+ ("Activités", "Entrées, Gunkanjima, bain de sable, Nabegataki, atelier de porcelaine. <b>Le festival est gratuit</b>", 166),
  ("Divers", "eSIM, assurance, souvenirs", 200),
 ]
 
