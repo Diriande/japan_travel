@@ -1135,7 +1135,7 @@ LANT_RESA = [
 ] + [x for x in SUD_RESA if "ANA" not in x["quoi"]]
 
 LANT_BUDGET = [
- ("Vol A/R", "ANA direct CDG–Haneda, deux vols intérieurs compris. <b>Tarif du 1er février</b>", 893),
+ ("Vol A/R", "ANA direct CDG–Haneda, deux vols intérieurs compris. <b>Relevé multi-villes du 08/09/2026</b>", 952),
  ("Second bagage", "Option achetée <b>sur le retour seulement</b> : on part léger, on revient chargé", 105),
  ("Hébergement", "23 nuits, dont quatre à Nagasaki <b>en période de festival</b> : +28 %, mesuré à cinq mois", 1056),
  ("Transport", "131 € entre les étapes, 180 € d'excursions, le Hakone Freepass, 7 €/jour de local", 502),
