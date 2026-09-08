@@ -338,7 +338,7 @@ KYUSHU_JOURS = (
    b("10h30", "Le musée Kyushu Ceramic", "Quatre siècles de production, dont la collection Shibata — dix mille pièces d'Imari d'exportation. Gratuit.", 0, "see"),
    b("12h30", "Déjeuner à Arita", "Servi dans de la porcelaine locale, forcément.", 1300, "eat"),
    b("14h00", "Le quartier des fours", "Uchiyama, une rue de kilns et d'ateliers, avec les murs de tessons — les rebuts de quatre siècles, encastrés dans les clôtures.", 0, "walk"),
-   b("15h30", "Peindre une pièce", "Plusieurs ateliers font décorer une tasse au pinceau, cuite ensuite et expédiée. Compter un mois pour la recevoir.", 2500, "see"),
+   b("15h30", "Peindre une pièce au Hiryugama", "Un des fours en activité de la ville — suggéré par ANA, et l'un des rares qui reçoive. On décore une tasse au pinceau, elle est cuite ensuite et expédiée : compter un mois pour la recevoir.", 2500, "see"),
    b("17h00", "Retour sur Fukuoka", "", 2800, "move"),
  ]),
 
@@ -418,7 +418,8 @@ KYUSHU_JOURS = (
    b("13h00", "Le tour de Kusasenri, à pied", "<b>Une heure et demie de prairie à 1 100 m</b>, presque plate, autour de l'étang, avec le Nakadake qui fume en face et les chevaux qui pâturent librement. C'est la marche la plus facile du massif et la plus ouverte — rien ne cache la vue.", 0, "walk"),
    b("14h45", "Le Komezuka", "Un cône de scories de cent mètres, parfait, avec une entaille au sommet : la légende dit qu'un dieu y a puisé du riz pour les affamés. On en fait le tour par la base, vingt minutes.", 0, "walk"),
    b("15h30", "Le Daikanbo", "Le belvédère du rebord nord, à 936 m. <b>De là on embrasse la caldeira entière</b> — 25 km sur 18 — et la ligne des cinq sommets centraux, que les Japonais lisent comme un bouddha couché. Un sentier de crête court sur le rebord, à plat.", 0, "walk"),
-   b("17h00", "Retour", "", 1130, "move"),
+   b("16h30", "Kamishikimi Kumanoimasu", "Dix minutes de Takamori, sur la route du retour. <b>Un escalier de forêt bordé de cent lanternes de pierre couvertes de mousse</b>, et tout en haut une faille ouverte dans le rocher, haute de dix mètres. On y monte en silence, et il n'y a presque jamais personne.", 0, "walk"),
+   b("17h30", "Retour", "", 1130, "move"),
  ], note="Alternative si le cratère est fermé : Takachiho et ses gorges, où l'on descend une barque entre des orgues basaltiques sous une cascade. Trois heures de route, donc journée pleine."),
 
  j(16, "kumamoto", "Kurokawa", [
