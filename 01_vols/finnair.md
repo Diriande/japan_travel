@@ -113,6 +113,14 @@ Sur un critère bagages strict, Finnair reste le meilleur rapport qualité-prix 
 > à tort que Finnair n'incluait qu'une pièce, sur la foi de sites agrégateurs — la même prudence s'impose
 > pour EVA et les chinoises. La ligne ANA, elle, est maintenant confirmée par un vol effectué.
 
+## Comparaison chiffrée avec l'offre ANA TOKYO+
+
+Voir **[ana_vs_finnair.md](ana_vs_finnair.md)** : relevé multi-villes du 08/09/2026 à
+954,62 € avec un bagage, et l'arbitrage complet selon la destination intérieure et le nombre
+de voyageurs. En résumé — ANA gagne dès que le vol intérieur couvre une longue distance
+(321 € de Shinkansen épargnés sur Kyushu contre 170 € sur Osaka), et l'écart se creuse avec
+la taille du groupe.
+
 ## Indemnisation en cas de retard
 
 Le règlement européen couvre **tous les départs de Paris**, quelle que soit la compagnie. Mais **au retour du
