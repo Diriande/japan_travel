@@ -97,30 +97,25 @@ pièce chacun suffit.
 
 ### Itinéraire Kyushu
 
-> ⚠ **Le tarif ANA de 954,62 € est relevé pour Osaka, pas pour Kyushu.** Les chiffres qui
-> suivent lui appliquent le même prix, ce qui est une **extrapolation non vérifiée** : rien ne
-> garantit que la promotion coûte autant vers Kagoshima, plus éloigné. À confirmer par une
-> recherche multi-villes dédiée.
+**Relevé le 08/09/2026, mêmes dates, avec Haneda → Kagoshima à l'aller et Fukuoka → Haneda
+au retour : 952,31 €.** Soit **2,31 € de moins que vers Osaka**, alors que Kagoshima est deux
+fois plus loin.
 
 | | 1 personne | 2 personnes | 3 personnes |
 |---|---|---|---|
-| ANA, *au tarif d'Osaka* | 1 060 € | 1 909 € | 2 864 € |
+| ANA | 1 057 € | 1 905 € | 2 857 € |
 | Finnair A/R + 2 trajets | 1 271 € | 2 542 € | 3 814 € |
-| **Écart en faveur d'ANA** | **212 €** | **633 €** | **950 €** |
+| **Écart en faveur d'ANA** | **214 €** | **637 €** | **957 €** |
 
-**Le surcoût que Kyushu peut absorber.** Si le billet vers Kagoshima coûte plus cher que vers
-Osaka, ANA reste devant Finnair tant que l'écart ne dépasse pas :
+Trois choses sont établies par ce relevé :
 
-| | Surcoût maximal toléré |
-|---|---|
-| 1 personne | **212 €** |
-| 2 personnes | **317 €** par personne |
-| 3 personnes | **317 €** par personne |
-
-Pour situer : le vol intérieur seul, au tarif public relevé sur ces dates, vaut 81 à 170 €
-(Haneda → Kagoshima) et 84 à 242 € (Fukuoka → Haneda). **Un surcoût de plus de 200 €
-reviendrait donc à ne plus rien offrir du tout** — ce qui serait contraire à l'objet même de
-la promotion. L'extrapolation est donc raisonnable, mais elle reste à vérifier.
+1. **Le tarif TOKYO+ ne dépend pas de la destination intérieure.** La promotion tient sa
+   promesse des « plus de 40 destinations » sans facturer la distance.
+2. **Les deux aéroports intérieurs différents passent le moteur de réservation** — entrée par
+   Kagoshima, sortie par Fukuoka — au prix affiché. C'est la confirmation pratique de
+   l'itinéraire B donné en exemple par ANA.
+3. **Plus le vol intérieur est long, plus l'offre est rentable.** À prix égal, elle remplace
+   321 € de Shinkansen sur Kyushu contre 170 € sur Osaka.
 
 Deux effets se cumulent quand le groupe grandit : le train économisé est multiplié par le
 nombre de voyageurs, et le besoin d'une seconde valise disparaît — à trois, une pièce chacun
