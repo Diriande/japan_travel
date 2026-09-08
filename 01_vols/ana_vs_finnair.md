@@ -97,11 +97,30 @@ pièce chacun suffit.
 
 ### Itinéraire Kyushu
 
+> ⚠ **Le tarif ANA de 954,62 € est relevé pour Osaka, pas pour Kyushu.** Les chiffres qui
+> suivent lui appliquent le même prix, ce qui est une **extrapolation non vérifiée** : rien ne
+> garantit que la promotion coûte autant vers Kagoshima, plus éloigné. À confirmer par une
+> recherche multi-villes dédiée.
+
 | | 1 personne | 2 personnes | 3 personnes |
 |---|---|---|---|
-| ANA | 1 060 € | 1 909 € | 2 864 € |
+| ANA, *au tarif d'Osaka* | 1 060 € | 1 909 € | 2 864 € |
 | Finnair A/R + 2 trajets | 1 271 € | 2 542 € | 3 814 € |
 | **Écart en faveur d'ANA** | **212 €** | **633 €** | **950 €** |
+
+**Le surcoût que Kyushu peut absorber.** Si le billet vers Kagoshima coûte plus cher que vers
+Osaka, ANA reste devant Finnair tant que l'écart ne dépasse pas :
+
+| | Surcoût maximal toléré |
+|---|---|
+| 1 personne | **212 €** |
+| 2 personnes | **317 €** par personne |
+| 3 personnes | **317 €** par personne |
+
+Pour situer : le vol intérieur seul, au tarif public relevé sur ces dates, vaut 81 à 170 €
+(Haneda → Kagoshima) et 84 à 242 € (Fukuoka → Haneda). **Un surcoût de plus de 200 €
+reviendrait donc à ne plus rien offrir du tout** — ce qui serait contraire à l'objet même de
+la promotion. L'extrapolation est donc raisonnable, mais elle reste à vérifier.
 
 Deux effets se cumulent quand le groupe grandit : le train économisé est multiplié par le
 nombre de voyageurs, et le besoin d'une seconde valise disparaît — à trois, une pièce chacun
