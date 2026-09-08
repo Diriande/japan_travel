@@ -26,25 +26,38 @@ Ce ne sont pas *un* mais **deux** trajets, et leur valeur dépend entièrement d
 
 **C'est le cœur de l'arbitrage.** Sur Osaka, l'offre est marginale. Sur Kyushu, elle est décisive — et elle épargne onze heures et demie de train.
 
-## L'arbitrage, par personne
+## La forme du billet Finnair change tout
 
-Hypothèse Finnair Economy Classic à **950 €** (2 × 23 kg des deux côtés) — voir la réserve plus bas.
+Une première version de cette note comparait ANA à un Finnair **aller-retour sur Tokyo**, ce
+qui obligeait à compter deux Shinkansen. C'était biaisé : Finnair vend aussi du
+**multi-destination** — entrée par Tokyo, sortie par Osaka. On ne revient alors pas sur ses
+pas, et un seul trajet terrestre reste à payer.
 
-### Sur Osaka
+| Forme du billet Finnair | Trajets à sa charge | Coût |
+|---|---|---|
+| Aller-retour Tokyo, séjour à Osaka | Tokyo → Osaka, aller **et** retour | 170 € |
+| **Multi-destination Tokyo / Osaka** | Tokyo → Osaka, **une fois** | **85 €** |
+| Aller-retour Tokyo, itinéraire Kyushu | Tokyo → Kagoshima, Fukuoka → Tokyo | 321 € |
+| **Multi-destination Tokyo / Osaka, via Kyushu** | Tokyo → Kagoshima, Fukuoka → Osaka | **279 €** |
 
-| | ANA | Finnair + train | |
-|---|---|---|---|
-| ANA au tarif de base, 1 bagage | 955 € | 1 120 € | **ANA −165 €** |
-| ANA + option 2e bagage au retour | 1 060 € | 1 120 € | **ANA −60 €** |
-| ANA au tarif à 2 bagages | 1 192 € | 1 120 € | Finnair −72 € |
+## Le seuil de bascule
 
-### Sur Kyushu
+Plutôt qu'une hypothèse de prix, voici **à quel tarif le multi-destination Finnair égale
+ANA**. En dessous du seuil, Finnair gagne ; au-dessus, ANA gagne.
 
-| | ANA | Finnair + train | |
-|---|---|---|---|
-| ANA au tarif de base, 1 bagage | 955 € | 1 271 € | **ANA −317 €** |
-| ANA + option 2e bagage au retour | 1 060 € | 1 271 € | **ANA −212 €** |
-| ANA au tarif à 2 bagages | 1 192 € | 1 271 € | **ANA −79 €** |
+| | ANA | Seuil Finnair |
+|---|---|---|
+| Osaka, ANA au tarif de base (1 bagage) | 955 € | **870 €** |
+| Osaka, ANA + option bagage au retour | 1 060 € | **975 €** |
+| Kyushu, ANA au tarif de base (1 bagage) | 955 € | **676 €** |
+| Kyushu, ANA + option bagage au retour | 1 060 € | **781 €** |
+
+**Sur Osaka, l'arbitrage est serré** : il suffit que Finnair descende sous 870 € pour passer
+devant, et le dépôt a déjà relevé du Finnair à 515 € en décembre. **Sur Kyushu, ANA garde une
+avance confortable** : il faudrait un Finnair sous 676 €, ce qui ne s'est jamais vu sur ces
+dates — les deux vols intérieurs y valent 279 à 321 € à eux seuls.
+
+À bagages égaux (Finnair en inclut deux), la comparaison honnête est la ligne « ANA + option ».
 
 ## Le piège du tarif à deux bagages
 
@@ -76,6 +89,6 @@ inutilisables sur cette compagnie : interrogés sur ces dates, ils remontent 2 4
 soit du billet d'agence sans rapport avec le tunnel. Le dépôt a relevé 515 € en décembre et
 916 à 995 € sur d'autres dates.
 
-**À vérifier sur finnair.com avant de conclure.** Si Finnair descend sous 800 € en février,
-l'arbitrage se resserre nettement sur Osaka ; il reste favorable à ANA sur Kyushu, où les
-deux vols intérieurs valent à eux seuls 321 €.
+**À vérifier sur finnair.com, en multi-destination Paris → Tokyo / Osaka → Paris**, et à
+comparer aux seuils ci-dessus. C'est la seule recherche qui tranche : un aller-retour simple
+sur Tokyo fausse la comparaison en faveur d'ANA.
