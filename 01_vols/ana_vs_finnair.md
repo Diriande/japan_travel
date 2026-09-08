@@ -59,10 +59,55 @@ dates — les deux vols intérieurs y valent 279 à 321 € à eux seuls.
 
 À bagages égaux (Finnair en inclut deux), la comparaison honnête est la ligne « ANA + option ».
 
-> **Réserve pratique.** Le multi-destination n'est pas simple à obtenir sur le tunnel Finnair —
-> le formulaire ne l'expose pas aussi clairement que le « Rechercher plusieurs villes » d'ANA.
-> Un avantage tarifaire qui demande une heure de manipulation, ou un appel, n'est pas tout à
-> fait le même qu'un avantage disponible en trois clics. À prix voisin, l'exécution compte.
+> **Ce que la recherche a donné, le 08/09/2026.** Le multi-destination Paris → Tokyo /
+> Osaka → Paris **n'est pas obtenable à bon prix sur le tunnel Finnair** : le formulaire ne
+> l'expose pas comme le « Rechercher plusieurs villes » d'ANA, et les combinaisons trouvées
+> ressortent au-dessus des seuils. L'avantage théorique de l'open-jaw Finnair existe donc sur
+> le papier, mais **il n'est pas achetable en pratique**.
+
+## Conclusion
+
+**ANA TOKYO+ est le bon choix**, et pour une raison qui n'est pas celle attendue. Ce n'est
+pas que Finnair soit cher : c'est que la seule forme de billet qui le rendrait compétitif —
+le multi-destination — n'est pas disponible à un tarif correct.
+
+Il reste donc à comparer ANA à un **Finnair aller-retour sur Tokyo**, qui oblige à payer les
+trajets intérieurs dans les deux sens :
+
+| | ANA | Finnair A/R + trajets | |
+|---|---|---|---|
+| Osaka, ANA + option bagage | 1 060 € | 950 + 170 = 1 120 € | **ANA −60 €** |
+| Kyushu, ANA + option bagage | 1 060 € | 950 + 321 = 1 271 € | **ANA −211 €** |
+
+**Deux Shinkansen, donc** — pas un. C'est la conséquence directe de devoir revenir à Tokyo
+pour reprendre l'avion, et c'est ce que les vols intérieurs d'ANA suppriment.
+
+## Les scénarios, par nombre de voyageurs
+
+ANA au tarif de base, une option bagage ajoutée seulement en solo — à deux ou trois, une
+pièce chacun suffit.
+
+### Itinéraire Osaka
+
+| | 1 personne | 2 personnes | 3 personnes |
+|---|---|---|---|
+| ANA | 1 060 € | 1 909 € | 2 864 € |
+| Finnair A/R + 2 Shinkansen | 1 120 € | 2 239 € | 3 359 € |
+| **Écart en faveur d'ANA** | **60 €** | **330 €** | **495 €** |
+
+### Itinéraire Kyushu
+
+| | 1 personne | 2 personnes | 3 personnes |
+|---|---|---|---|
+| ANA | 1 060 € | 1 909 € | 2 864 € |
+| Finnair A/R + 2 trajets | 1 271 € | 2 542 € | 3 814 € |
+| **Écart en faveur d'ANA** | **212 €** | **633 €** | **950 €** |
+
+Deux effets se cumulent quand le groupe grandit : le train économisé est multiplié par le
+nombre de voyageurs, et le besoin d'une seconde valise disparaît — à trois, une pièce chacun
+fait déjà trois valises.
+
+Franchise disponible sans supplément : **ANA 1, 2 ou 3 pièces** ; **Finnair 2, 4 ou 6**.
 
 ## Le piège du tarif à deux bagages
 
